@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/TDA367OOP.iml" filepath="$PROJECT_DIR$/.idea/TDA367OOP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/projecttemplate.iml" filepath="$PROJECT_DIR$/projecttemplate.iml" />
     </modules>
   </component>
 </project>
