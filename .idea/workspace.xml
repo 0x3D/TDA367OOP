@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,11 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b800477-d145-47f4-bcbf-9d5f20ce73df" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Notes/ThursdayThirdSep" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/projecttemplate.iml" beforeDir="false" afterPath="$PROJECT_DIR$/projecttemplate.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -40,6 +41,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
@@ -59,8 +67,10 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../basicFX" />
-    <property name="project.structure.last.edited" value="Facets" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -200,6 +210,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -265,6 +288,7 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -275,8 +299,13 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1489657083855</updated>
+      <workItem from="1599134517388" duration="419000" />
+      <workItem from="1599135019269" duration="1096000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -307,30 +336,43 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1599044082708" />
+    <state x="466" y="250" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1599135301227">
+      <screen x="42" y="23" width="1398" height="877" />
+    </state>
+    <state x="466" y="250" key="#com.intellij.fileTypes.FileTypeChooser/42.23.1398.877@42.23.1398.877" timestamp="1599135301227" />
     <state x="707" y="364" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1599043981821">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="707" y="364" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1599043981821" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1599134052613">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1336" height="217" key="GridCell.Tab.0.bottom" timestamp="1599134936769">
+      <screen x="42" y="23" width="1398" height="877" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1599134052613" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1599134052612">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1336" height="217" key="GridCell.Tab.0.bottom/42.23.1398.877@42.23.1398.877" timestamp="1599134936769" />
+    <state width="1336" height="217" key="GridCell.Tab.0.center" timestamp="1599134936769">
+      <screen x="42" y="23" width="1398" height="877" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1599134052612" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1599134052612">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1336" height="217" key="GridCell.Tab.0.center/42.23.1398.877@42.23.1398.877" timestamp="1599134936769" />
+    <state width="1336" height="217" key="GridCell.Tab.0.left" timestamp="1599134936768">
+      <screen x="42" y="23" width="1398" height="877" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1599134052612" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1599134052612">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1336" height="217" key="GridCell.Tab.0.left/42.23.1398.877@42.23.1398.877" timestamp="1599134936768" />
+    <state width="1336" height="217" key="GridCell.Tab.0.right" timestamp="1599134936769">
+      <screen x="42" y="23" width="1398" height="877" />
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599134052612" />
-    <state x="440" y="94" key="SettingsEditor" timestamp="1599134250007">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1336" height="217" key="GridCell.Tab.0.right/42.23.1398.877@42.23.1398.877" timestamp="1599134936769" />
+    <state x="362" y="63" key="SettingsEditor" timestamp="1599134578575">
+      <screen x="42" y="23" width="1398" height="877" />
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1599134250007" />
+    <state x="362" y="63" key="SettingsEditor/42.23.1398.877@42.23.1398.877" timestamp="1599134578575" />
+    <state x="329" y="181" key="Vcs.Push.Dialog.v2" timestamp="1599136108928">
+      <screen x="42" y="23" width="1398" height="877" />
+    </state>
+    <state x="329" y="181" key="Vcs.Push.Dialog.v2/42.23.1398.877@42.23.1398.877" timestamp="1599136108928" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1599134230840">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
