@@ -39,6 +39,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -227,7 +228,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
       <option name="filePath" />
       <option name="vmParameters" />
       <option name="alternativeJrePath" />
@@ -366,10 +367,15 @@
     </state>
     <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1599137794727" />
     <state x="362" y="63" key="SettingsEditor/42.23.1398.877@42.23.1398.877" timestamp="1599134578575" />
-    <state x="329" y="181" key="Vcs.Push.Dialog.v2" timestamp="1599136108928">
-      <screen x="42" y="23" width="1398" height="877" />
+    <state x="296" y="162" key="Vcs.Push.Dialog.v2" timestamp="1599221030270">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="296" y="162" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1599221030270" />
     <state x="329" y="181" key="Vcs.Push.Dialog.v2/42.23.1398.877@42.23.1398.877" timestamp="1599136108928" />
+    <state x="503" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1599221022549">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="503" y="374" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1599221022549" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1599137781025">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
