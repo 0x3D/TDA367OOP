@@ -67,14 +67,14 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../basicFX" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/ws_junit" />
+    <property name="project.structure.last.edited" value="Problems" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.com.teamjeaa.projecttemplate.model in projecttemplate">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="DEPLOY" value="true" />
@@ -220,6 +220,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ProjectTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="projecttemplate" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.teamjeaa.projecttemplate.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.teamjeaa.projecttemplate.model" />
+      <option name="MAIN_CLASS_NAME" value="com.teamjeaa.projecttemplate.model.ProjectTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -227,7 +243,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+    <configuration name="com.teamjeaa.projecttemplate.model in projecttemplate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="projecttemplate" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.teamjeaa.projecttemplate.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.teamjeaa.projecttemplate.model" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
       <option name="filePath" />
       <option name="vmParameters" />
       <option name="alternativeJrePath" />
@@ -281,6 +312,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.com.teamjeaa.projecttemplate.model in projecttemplate" />
+        <item itemvalue="JUnit.ProjectTest" />
         <item itemvalue="Application.ProjectTemplate" />
       </list>
     </recent_temporary>
@@ -341,6 +374,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="707" y="364" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.0.1920.1040@0.0.1920.1040" timestamp="1599043981821" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1599639907386">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1599639907386" />
     <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1599221035404">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -361,10 +398,10 @@
     </state>
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1599221035404" />
     <state width="1336" height="217" key="GridCell.Tab.0.right/42.23.1398.877@42.23.1398.877" timestamp="1599134936769" />
-    <state x="440" y="94" key="SettingsEditor" timestamp="1599137794727">
+    <state x="440" y="94" key="SettingsEditor" timestamp="1599640090136">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1599137794727" />
+    <state x="440" y="94" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1599640090136" />
     <state x="362" y="63" key="SettingsEditor/42.23.1398.877@42.23.1398.877" timestamp="1599134578575" />
     <state x="296" y="162" key="Vcs.Push.Dialog.v2" timestamp="1599221030270">
       <screen x="0" y="0" width="1440" height="900" />
