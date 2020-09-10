@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.util.Objects;
+import java.util.ResourceBundle;
 
 public final class ObPaint extends Application {
 
@@ -14,7 +15,8 @@ public final class ObPaint extends Application {
 	public void start(Stage primaryStage) throws Exception{
 		Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().
 				getResource("obPaint.fxml")));
-		primaryStage.setTitle("ObPaint");
+		ResourceBundle obPaintResourceBundle = ResourceBundle.getBundle("obPaint");
+		primaryStage.setTitle(obPaintResourceBundle.getString("application.name"));
 		primaryStage.setScene(new Scene(root, 600, 600));
 		primaryStage.show();
 	}
