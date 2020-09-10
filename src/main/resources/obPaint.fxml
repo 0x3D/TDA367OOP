@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PaintController">
+<top>
+    <VBox prefHeight="78.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+        <children>
+            <ToolBar prefHeight="40.0" prefWidth="200.0">
+                <items>
+                    <HBox prefHeight="28.0" prefWidth="367.0">
+                        <children>
+                            <TextField fx:id="brushSize" text="18" />
+                            <ColorPicker fx:id="colorPicker" />
+                            <CheckBox fx:id="eraser" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
+                            <CheckBox fx:id="brush" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
+                        </children>
+                    </HBox>
+                    <MenuBar>
+                        <menus>
+                            <Menu mnemonicParsing="false" text="File">
+                                <items>
+                                    <MenuItem mnemonicParsing="false" onAction="" text="Save" />
+                                    <MenuItem mnemonicParsing="false" onAction="" text="Close" />
+                                </items>
+                            </Menu>
+                        </menus>
+                    </MenuBar>
+                </items>
+            </ToolBar>
+        </children>
+    </VBox>
+</top>
+<center>
+    <Canvas fx:id="canvas" height="542.0" width="600.0" BorderPane.alignment="CENTER" />
+</center>
+</BorderPane>
