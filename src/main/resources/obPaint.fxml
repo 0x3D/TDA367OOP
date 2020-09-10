@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PaintController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamjeaa.obpaint.view.ProjectView">
 <top>
     <VBox prefHeight="78.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <children>
@@ -22,16 +22,16 @@
                         <children>
                             <TextField fx:id="brushSize" text="18" />
                             <ColorPicker fx:id="colorPicker" />
-                            <CheckBox fx:id="eraser" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
-                            <CheckBox fx:id="brush" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
+                            <CheckBox mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
+                            <CheckBox mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" />
                         </children>
                     </HBox>
                     <MenuBar>
                         <menus>
                             <Menu mnemonicParsing="false" text="File">
                                 <items>
-                                    <MenuItem mnemonicParsing="false" onAction="" text="Save" />
-                                    <MenuItem mnemonicParsing="false" onAction="" text="Close" />
+                                    <MenuItem mnemonicParsing="false" text="Save" />
+                                    <MenuItem mnemonicParsing="false" text="Close" />
                                 </items>
                             </Menu>
                         </menus>
