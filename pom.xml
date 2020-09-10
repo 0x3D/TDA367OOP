@@ -24,10 +24,24 @@
       <version>4.13</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>org.openjfx</groupId>
+      <artifactId>javafx-controls</artifactId>
+      <version>12.0.2</version>
+    </dependency>
+
   </dependencies>
   
   <build>
     <plugins>
+      <plugin>
+        <groupId>org.openjfx</groupId>
+        <artifactId>javafx-maven-plugin</artifactId>
+        <version>0.0.4</version>
+        <configuration>
+          <mainClass>com.teamjeaa.projecttemplate.ObPaint</mainClass>
+        </configuration>
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
@@ -53,7 +67,7 @@
             <manifest>
               <addClasspath>true</addClasspath>
               <classpathPrefix>lib/</classpathPrefix>
-              <mainClass>com.teamjeaa.projecttemplate.ProjectTemplate</mainClass>
+              <mainClass>com.teamjeaa.projecttemplate.ObPaint</mainClass>
             </manifest>
           </archive>
         </configuration>
