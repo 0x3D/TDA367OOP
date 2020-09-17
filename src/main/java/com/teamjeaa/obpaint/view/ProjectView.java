@@ -2,6 +2,7 @@ package com.teamjeaa.obpaint.view;
 
 import com.teamjeaa.obpaint.model.FileManager;
 import com.teamjeaa.obpaint.model.Project;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -26,6 +27,7 @@ public class ProjectView {
 
 	public void initialize() {
 		GraphicsContext graphicsContext = canvas.getGraphicsContext2D();
+		brushSize.setText("12");
 
 		canvas.setOnMouseDragged(e -> {
 			double size = Double.parseDouble(brushSize.getText());
@@ -43,6 +45,11 @@ public class ProjectView {
 	@FXML
 	private void onFileChoser () {
 		fileChooser.loaderFile();
+	}
+
+	@FXML
+	public void onClose () {
+		Platform.exit();
 	}
 
 
