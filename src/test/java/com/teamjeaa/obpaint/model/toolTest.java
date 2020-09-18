@@ -23,12 +23,19 @@ public class toolTest {
     }
 
     @Test
-    public void testCreate (){
+    public void testPencil (){
        Tool pencil = createPencil();
-       Tool brush = createBrush();
-       Tool eraser = createEraser();
         Assert.assertEquals(10, pencil.getSize());
+    }
+
+    @Test
+    public void testBrush () {
+        Tool brush = createBrush();
         Assert.assertEquals(20,brush.getSize());
+    }
+    @Test
+    public void testEraser () {
+        Tool eraser = createEraser();
         Assert.assertEquals(15,eraser.getSize());
     }
 }
