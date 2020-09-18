@@ -1,13 +1,11 @@
 package com.teamjeaa.obpaint.view;
 
 import com.teamjeaa.obpaint.model.FileManager;
-import com.teamjeaa.obpaint.model.Project;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
-import javafx.stage.FileChooser;
 
 
 public class ProjectView {

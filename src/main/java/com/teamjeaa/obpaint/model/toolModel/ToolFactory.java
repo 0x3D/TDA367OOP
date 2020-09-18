@@ -1,4 +1,4 @@
-package com.teamjeaa.obpaint.model;
+package com.teamjeaa.obpaint.model.toolModel;
 
 public interface ToolFactory {
      Tool createPencil (int size);

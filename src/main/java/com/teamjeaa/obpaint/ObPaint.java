@@ -21,7 +21,7 @@ public final class ObPaint extends Application {
 		primaryStage.getIcons().add(new Image("images/logo.png"));
 		primaryStage.setScene(new Scene(root, 600, 600));
 		primaryStage.show();
-		this.primaryStage = primaryStage;
+		ObPaint.primaryStage = primaryStage;
 	}
 
 

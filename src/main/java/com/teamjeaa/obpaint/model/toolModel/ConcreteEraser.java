@@ -1,11 +1,10 @@
-package com.teamjeaa.obpaint.model;
+package com.teamjeaa.obpaint.model.toolModel;
 
-public class ConcreteBrush implements Tool {
+public class ConcreteEraser implements Tool {
     private final int size;
 
-
-    public ConcreteBrush(int size) {
-        this.size=size;
+    public ConcreteEraser(int size) {
+        this.size = size;
     }
 
     public int getSize() {
@@ -14,11 +13,11 @@ public class ConcreteBrush implements Tool {
 
     @Override
     public void onClick() {
-        //TODO
+
     }
 
     @Override
     public void operation() {
-        //TODO
+
     }
 }

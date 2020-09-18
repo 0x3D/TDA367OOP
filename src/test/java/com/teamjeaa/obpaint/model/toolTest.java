@@ -1,5 +1,8 @@
 package com.teamjeaa.obpaint.model;
 
+import com.teamjeaa.obpaint.model.toolModel.ConcreteToolFactory;
+import com.teamjeaa.obpaint.model.toolModel.Tool;
+import com.teamjeaa.obpaint.model.toolModel.ToolFactory;
 import org.junit.Assert;
 import org.junit.Test;
 

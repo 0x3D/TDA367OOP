@@ -1,10 +1,9 @@
-package com.teamjeaa.obpaint.model;
+package com.teamjeaa.obpaint.model.toolModel;
 
-public class ConcreteEraser implements Tool {
+public class ConcretePencil implements Tool {
     private final int size;
-
-    public ConcreteEraser(int size) {
-        this.size = size;
+    public ConcretePencil(int size) {
+        this.size=size;
     }
 
     public int getSize() {
