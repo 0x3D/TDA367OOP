@@ -1,6 +1,6 @@
 package com.teamjeaa.obpaint.model;
 
-public interface ITool {
+public interface Tool {
      void onClick();
      void operation();
      //TestMethod

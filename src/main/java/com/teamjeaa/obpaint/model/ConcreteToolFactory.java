@@ -1,19 +1,19 @@
 package com.teamjeaa.obpaint.model;
 
-public class ConcreteToolFactory implements IToolFactory {
+public class ConcreteToolFactory implements ToolFactory {
 
     @Override
-    public ITool createPencil(int size) {
+    public Tool createPencil(int size) {
        return new ConcretePencil(10);
     }
 
     @Override
-    public ITool createBrush(int size) {
+    public Tool createBrush(int size) {
         return new ConcreteBrush(20);
     }
 
     @Override
-    public ITool createEraser(int size) {
+    public Tool createEraser(int size) {
         return new ConcreteEraser(15);
     }
 }

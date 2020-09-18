@@ -1,6 +1,6 @@
 package com.teamjeaa.obpaint.model;
 
-public class ConcreteBrush implements ITool{
+public class ConcreteBrush implements Tool {
     private final int size;
 
 

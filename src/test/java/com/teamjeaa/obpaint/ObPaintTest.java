@@ -1,14 +1,13 @@
 package com.teamjeaa.obpaint;
 
-import com.teamjeaa.obpaint.model.ITool;
-import com.teamjeaa.obpaint.model.IToolFactory;
-import org.junit.Test;
+import com.teamjeaa.obpaint.model.Tool;
+import com.teamjeaa.obpaint.model.ToolFactory;
 
 public class ObPaintTest {
-    private IToolFactory iToolFactory;
+    private ToolFactory toolFactory;
 
-    private ITool createPencil (int size){
-        return iToolFactory.createPencil(size);
+    private Tool createPencil (int size){
+        return toolFactory.createPencil(size);
     }
 
 
