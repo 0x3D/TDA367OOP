@@ -7,17 +7,8 @@ public class ConcreteEraser implements Tool {
         this.size = size;
     }
 
-    public int getSize() {
-        return size;
-    }
-
     @Override
-    public void onClick() {
-
-    }
-
-    @Override
-    public void operation() {
+    public void initialize() {
 
     }
 }

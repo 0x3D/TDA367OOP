@@ -1,5 +1,8 @@
 package com.teamjeaa.obpaint;
 
+import com.teamjeaa.obpaint.model.toolModel.ConcreteToolFactory;
+import com.teamjeaa.obpaint.model.toolModel.Tool;
+import com.teamjeaa.obpaint.model.toolModel.ToolFactory;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -11,6 +14,10 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public final class ObPaint extends Application {
+	private Tool selectedTool;
+	private ToolFactory toolFactory = new ConcreteToolFactory();
+
+
 	public static  Stage primaryStage;
 	@Override
 	public void start(Stage primaryStage) throws Exception{
@@ -27,6 +34,14 @@ public final class ObPaint extends Application {
 
 	public static void main(String[] args) {
 		launch(args);
+	}
+
+	public Tool getSelectedTool() {
+		return selectedTool;
+	}
+
+	public void setSelectedTool(Tool selectedTool) {
+		this.selectedTool = selectedTool;
 	}
 
 }

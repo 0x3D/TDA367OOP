@@ -16,4 +16,9 @@ public class ConcreteToolFactory implements ToolFactory {
     public Tool createEraser(int size) {
         return new ConcreteEraser(15);
     }
+
+    @Override
+    public Tool createMoveTool() {
+        return new ConcreteMoveTool();
+    }
 }
