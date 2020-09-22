@@ -14,34 +14,34 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public final class ObPaint extends Application {
-	private Tool selectedTool;
-	private ToolFactory toolFactory = new ConcreteToolFactory();
+  public static Stage primaryStage;
+  private final ToolFactory toolFactory = new ConcreteToolFactory();
+  private Tool selectedTool;
 
+  public static void main(String[] args) {
+    launch(args);
+  }
 
-	public static  Stage primaryStage;
-	@Override
-	public void start(Stage primaryStage) throws Exception{
-		Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getClassLoader().
-				getResource("obPaint.fxml")));
-		ResourceBundle obPaintResourceBundle = ResourceBundle.getBundle("obPaint");
-		primaryStage.setTitle(obPaintResourceBundle.getString("application.name"));
-		primaryStage.getIcons().add(new Image("images/logo.png"));
-		primaryStage.setScene(new Scene(root, 600, 600));
-		primaryStage.show();
-		ObPaint.primaryStage = primaryStage;
-	}
+  @Override
+  public void start(Stage primaryStage) throws Exception {
+    Parent root =
+            FXMLLoader.load(
+                    Objects.requireNonNull(getClass().getClassLoader().getResource("obPaint.fxml")));
+    ResourceBundle obPaintResourceBundle = ResourceBundle.getBundle("obPaint");
+    primaryStage.setTitle(obPaintResourceBundle.getString("application.name"));
+    primaryStage.getIcons().add(new Image("images/logo.png"));
+    primaryStage.setScene(new Scene(root, 600, 600));
+    primaryStage.show();
+    // TODO: Add a drawing area
 
+    ObPaint.primaryStage = primaryStage;
+  }
 
-	public static void main(String[] args) {
-		launch(args);
-	}
+  public Tool getSelectedTool() {
+    return selectedTool;
+  }
 
-	public Tool getSelectedTool() {
-		return selectedTool;
-	}
-
-	public void setSelectedTool(Tool selectedTool) {
-		this.selectedTool = selectedTool;
-	}
-
+  public void setSelectedTool(Tool selectedTool) {
+    this.selectedTool = selectedTool;
+  }
 }
