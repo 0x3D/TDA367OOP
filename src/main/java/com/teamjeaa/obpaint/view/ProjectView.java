@@ -6,9 +6,11 @@ import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 
 
 public class ProjectView {
+	@FXML private BorderPane rootBorderPane;
 	public FileManager fileChooser = new FileManager();
 
 	@FXML
@@ -21,6 +23,8 @@ public class ProjectView {
 	CheckBox eraser;
 	@FXML
 	MenuItem fileChoser;
+
+
 
 
 	public void initialize() {
@@ -51,4 +55,7 @@ public class ProjectView {
 	}
 
 
+	public  BorderPane getRootBorderPane() {
+		return rootBorderPane;
+	}
 }
