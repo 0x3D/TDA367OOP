@@ -1,7 +1,9 @@
 package com.teamjeaa.obpaint.model;
 
+import com.teamjeaa.obpaint.model.shapeModel.ShapeUtil;
 import javafx.css.CssMetaData;
 import javafx.css.Styleable;
+import javafx.geometry.Point3D;
 import javafx.scene.shape.Shape;
 
 import java.util.ArrayList;
@@ -19,7 +21,6 @@ public class ModelCanvas {
   }
   public ModelCanvas() {
     this(new ArrayList<>(), new ArrayList<>());
-
   }
 
   public void addToRender(Shape shape) {
@@ -31,9 +32,10 @@ public class ModelCanvas {
 
   public Shape findShapeAt(double x, double y) throws IllegalArgumentException {
     for (Shape shape : shapes) {
-      // TODO:fix this
-      if (Double.compare(shape.getTranslateX(), x) == 0
-          && Double.compare(shape.getTranslateY(), y) == 0) {
+      Point3D point3D = ShapeUtil.getPosOfShape(shape);
+
+      if (Double.compare(point3D.getX(), x) == 0
+          && Double.compare(point3D.getY(), y) == 0) {
         return shape;
       }
     }

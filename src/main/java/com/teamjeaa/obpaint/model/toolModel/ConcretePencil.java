@@ -15,4 +15,6 @@ public class ConcretePencil implements Tool {
   public int getSize() {
     return size;
   }
+
+
 }

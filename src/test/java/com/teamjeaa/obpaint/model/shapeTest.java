@@ -1,40 +1,44 @@
 package com.teamjeaa.obpaint.model;
 
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
+import javafx.scene.Node;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Shape;
-import org.junit.Assert;
+import javafx.scene.transform.Transform;
+import javafx.scene.transform.Translate;
 import org.junit.Test;
+import org.junit.Assert;
 
 public class shapeTest {
-  ConcreteShapeFactory concreteShapeFactory = new ConcreteShapeFactory();
+    ConcreteShapeFactory concreteShapeFactory = new ConcreteShapeFactory();
 
-  public Shape createTriangle() {
-    // TODO: move creation logic to new factory
-    // Polygon triangle = (Polygon) concreteShapeFactory.createTriangle();
-    // triangle.getPoints().addAll(50.0, 0.0,  0.0, 50.0,100.0, 50.0);
-    // return triangle;
-    return null;
-  }
 
-  public Shape createCircle() {
-    Shape circle = concreteShapeFactory.createCircle(20, 20, 10);
-    return circle;
-  }
+    public Shape createCircle() {
+         Shape circle = concreteShapeFactory.createCircle(20,20,10);
+         return circle;
+    }
+    public Shape createRectangle() {
+        Shape rectangle = concreteShapeFactory.createRectangle(0,0,0,0);
+        return rectangle;
+    }
 
-  public Shape createRectangle() {
-    Shape rectangle = concreteShapeFactory.createRectangle(80, 40, 20, 10);
-    return rectangle;
-  }
 
-  @Test
-  public void testMove() {
-    Shape rectangle = createRectangle();
-    rectangle.setTranslateX(20);
-    rectangle.setTranslateY(20);
-    // rectangle.translateXProperty().setValue(20);
-    // TODO: Fix this test to better try if object has moved.
-    int sumX = (int) rectangle.getTranslateX();
-    // System.out.println(sumX);
-    Assert.assertEquals(sumX, 20.0, 0.5);
-  }
+    @Test
+    public void testMove() {
+        double totX = 0;
+
+        Shape rectangle = createRectangle();
+        Translate translate = new Translate();
+        translate.setX(40);
+        translate.setY(40);
+        rectangle.getTransforms().addAll(translate);
+        // Kollar alla translate totala
+        for (Transform translate1 : rectangle.getTransforms())  {
+            totX += translate1.getTx();
+        }
+        System.out.println(totX);
+        Assert.assertEquals(totX, 40,0.5);
+    }
+
+
 }
