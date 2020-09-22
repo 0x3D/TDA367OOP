@@ -1,6 +1,9 @@
 package com.teamjeaa.obpaint.model.shapeModel;
 import javafx.scene.shape.Shape;
 
+/**
+ * Interface that holds the methods for our creating of the Shapes
+ */
 public interface ShapeFactory {
     Shape createCircle(int x1, int y1, int radius);
 
