@@ -1,11 +1,6 @@
 package com.teamjeaa.obpaint.model.toolModel;
 
-public class ConcretePencil implements Tool {
-  private final int size;
-
-  public ConcretePencil(int size) {
-    this.size = size;
-  }
+public class ConcreteMoveTool implements Tool {
 
   @Override
   public void initialize() {
@@ -13,6 +8,6 @@ public class ConcretePencil implements Tool {
 
   // TODO is this really fitting for public interface?
   public int getSize() {
-    return size;
+    return 0;
   }
 }

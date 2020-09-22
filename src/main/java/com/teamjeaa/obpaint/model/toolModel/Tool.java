@@ -1,8 +1,8 @@
 package com.teamjeaa.obpaint.model.toolModel;
 
 public interface Tool {
-     void onClick();
-     void operation();
-     //TestMethod
-     int getSize();
+  void initialize();
+
+  // TODO is this really fitting for public interface?
+  int getSize();
 }
