@@ -3,7 +3,9 @@ package com.teamjeaa.obpaint.model;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeUtil;
 import javafx.css.CssMetaData;
 import javafx.css.Styleable;
+
 import javafx.geometry.Point3D;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.shape.Shape;
 
 import java.util.ArrayList;
@@ -13,6 +15,7 @@ public class ModelCanvas {
 
   // TODO: Add ? extends
   private final List<Shape> shapes;
+  //TODO: Fix typo here
   private final List<? extends Updateable> updateables;
 
   private ModelCanvas(List<Shape> shapes, List<? extends Updateable> updateables) {
@@ -22,6 +25,8 @@ public class ModelCanvas {
   public ModelCanvas() {
     this(new ArrayList<>(), new ArrayList<>());
   }
+
+
 
   public void addToRender(Shape shape) {
     this.shapes.add(shape);
@@ -43,4 +48,10 @@ public class ModelCanvas {
     }
     throw new IllegalArgumentException("Object not found");
   }
+
+  //Not my proudest solution but
+  public List<Shape> getShapes() {
+    return shapes;
+  }
+
 }

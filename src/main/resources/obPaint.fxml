@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamjeaa.obpaint.view.ProjectView">
+<BorderPane fx:id="rootBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
 <top>
     <VBox prefHeight="78.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <children>
@@ -42,6 +42,6 @@
     </VBox>
 </top>
 <center>
-    <Canvas fx:id="canvas" height="542.0" width="600.0" BorderPane.alignment="CENTER" />
+    <Canvas fx:id="canvas" height="539.0" width="600.0" BorderPane.alignment="CENTER" />
 </center>
 </BorderPane>
