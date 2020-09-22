@@ -28,7 +28,9 @@ public class ModelCanvas {
   }
 
   // TODO: Implement
-  public void removeFromRender(Shape shape) {}
+  public void removeFromRender(Shape shape) {
+    this.shapes.remove(shape);
+  }
 
   public Shape findShapeAt(double x, double y) throws IllegalArgumentException {
     for (Shape shape : shapes) {
