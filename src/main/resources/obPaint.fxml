@@ -84,6 +84,24 @@
                      </image></ImageView>
                </graphic>
             </ToggleButton>
+            <ToggleButton layoutX="9.0" layoutY="56.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/circle-512.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </ToggleButton>
+            <ToggleButton layoutX="54.0" layoutY="56.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0">
+               <graphic>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/button_shape_rectangle-512.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </ToggleButton>
          </children></AnchorPane>
       <AnchorPane layoutX="752.0" layoutY="67.0" prefHeight="379.0" prefWidth="143.0" style="-fx-background-color: rgb(230,230,230) rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" />
       <AnchorPane layoutX="753.0" layoutY="455.0" prefHeight="216.0" prefWidth="145.0" style="-fx-background-color: rgb(230,230,230) rgb(230,230,230) rgb(230,230,230) rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" />

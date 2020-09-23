@@ -34,8 +34,6 @@ public final class ObPaint extends Application {
   private final ToolFactory toolFactory = new ConcreteToolFactory();
   private Tool selectedTool;
   private ModelCanvas modelCanvas;
-
-
   private BorderPane rootBorderPane;
 
   //TODO: Discuss with team
@@ -67,6 +65,8 @@ public final class ObPaint extends Application {
     primaryStage.setTitle(obPaintResourceBundle.getString("application.name"));
     primaryStage.getIcons().add(new Image("images/logo.png"));
     primaryStage.setScene(new Scene(fxmlLoader.getRoot(), 900, 675));
+    primaryStage.setMinHeight(680);
+    primaryStage.setMinWidth(900);
     primaryStage.show();
     ObPaint.primaryStage = primaryStage;
 
@@ -89,7 +89,7 @@ public final class ObPaint extends Application {
     Rectangle r = new Rectangle(100,100, Color.BLACK);
     modelCanvas.addToRender(r);
 
-    Shape c = new Circle(10,20,30,Color.WHITE);
+    Shape c = new Circle(10,20,30,Color.PINK);
     modelCanvas.addToRender(c);
     animationTimer.start();
     rootBorderPane=projectView.getRootBorderPane();
@@ -107,8 +107,6 @@ public final class ObPaint extends Application {
   }
 
   //Testing on the borderPane!!!
-
-
 
   public void mouseXpos (){
 

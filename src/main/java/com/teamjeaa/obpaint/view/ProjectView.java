@@ -16,7 +16,6 @@ import javafx.scene.shape.Shape;
 public class ProjectView {
 	@FXML private BorderPane rootBorderPane;
 	public FileManager fileChooser = new FileManager();
-
 	@FXML
 	ColorPicker colorPicker;
 	@FXML
