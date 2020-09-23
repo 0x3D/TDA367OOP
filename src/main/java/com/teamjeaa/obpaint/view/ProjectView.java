@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.shape.Shape;
 
@@ -22,8 +23,10 @@ public class ProjectView {
 	CheckBox eraser;
 	@FXML
 	MenuItem fileChoser;
-
-
+	@FXML
+	ToggleButton darkModeToggle;
+	@FXML
+	AnchorPane mainPain;
 
 	@FXML
 	private void onFileChoser () {
@@ -35,7 +38,15 @@ public class ProjectView {
 		Platform.exit();
 
 	}
+	@FXML
+	public void darkModeOn () {
+		if (darkModeToggle.isSelected() ) {
+			mainPain.setStyle("-fx-background-color: rgb(45,45,45)");
+		}else {
+			mainPain.setStyle("-fx-background-color: transparent");
+		}
 
+	}
 
 	public  BorderPane getRootBorderPane() {
 		return rootBorderPane;
