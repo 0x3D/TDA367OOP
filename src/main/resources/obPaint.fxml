@@ -1,47 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.canvas.Canvas?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="rootBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-<top>
-    <VBox prefHeight="78.0" prefWidth="600.0" BorderPane.alignment="CENTER">
-        <children>
-            <ToolBar prefHeight="40.0" prefWidth="200.0">
-                <items>
-                    <HBox prefHeight="28.0" prefWidth="367.0">
-                        <children>
-                            <TextField fx:id="brushSize" text="18" />
-                            <ColorPicker fx:id="colorPicker" />
-                            <CheckBox fx:id="eraser" mnemonicParsing="false" prefHeight="29.0" prefWidth="69.0" text="Eraser" />
-                        </children>
-                    </HBox>
-                    <MenuBar>
-                        <menus>
-                            <Menu mnemonicParsing="false" text="File">
-                                <items>
-                                    <MenuItem mnemonicParsing="false" text="Save" />
-                                    <MenuItem mnemonicParsing="false" onAction="#onClose" text="Close" />
-                              <MenuItem fx:id="fileChoser" mnemonicParsing="false" onAction="#onFileChoser" text="Filechoser" />
-                                </items>
-                            </Menu>
-                        </menus>
-                    </MenuBar>
-                </items>
-            </ToolBar>
-        </children>
-    </VBox>
-</top>
-<center>
-    <Canvas fx:id="canvas" height="539.0" width="600.0" BorderPane.alignment="CENTER" />
-</center>
-</BorderPane>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane fx:id="rootBorderPane" layoutX="150.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" style="-fx-border-color: #000000;" />
+      <AnchorPane prefHeight="28.5" prefWidth="900.0">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#onClose" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="View">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Image">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Options">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Help">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                     </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
+         </children></AnchorPane>
+      <AnchorPane layoutX="-2.0" layoutY="70.0" prefHeight="190.0" prefWidth="150.0" style="-fx-background-color: lightgreen;" />
+      <AnchorPane layoutX="-2.0" layoutY="266.0" prefHeight="389.0" prefWidth="150.0" style="-fx-background-color: green;" />
+      <AnchorPane layoutX="752.0" layoutY="67.0" prefHeight="343.0" prefWidth="143.0" style="-fx-background-color: pink;" />
+      <AnchorPane layoutX="753.0" layoutY="424.0" prefHeight="216.0" prefWidth="145.0" style="-fx-background-color: lightblue;" />
+   </children>
+</AnchorPane>
