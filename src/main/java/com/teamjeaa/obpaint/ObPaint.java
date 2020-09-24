@@ -36,15 +36,19 @@ public final class ObPaint extends Application {
   private ModelCanvas modelCanvas;
   private BorderPane rootBorderPane;
 
-  //TODO: Discuss with team
-
 
   public static void main(String[] args) {
     launch(args);
   }
 
+  /**
+   * This method starts up JavaFX and initializes the Model, also sets up renderer
+   * @param primaryStage
+   * @throws Exception
+   */
   @Override
   public void start(Stage primaryStage) throws Exception {
+    //TODO: separate this method into smaller functions. At the moment it does do much
     ProjectView projectView = new ProjectView();
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("obPaint.fxml"));
     //Do it like this to be able to set which class has display items. Maybe unnecessary coupling
@@ -106,21 +110,22 @@ public final class ObPaint extends Application {
     }
   }
 
-  //Testing on the borderPane!!!
+  // Testing on the borderPane!!! | We shouldn't add methods to do tests /eric
 
-  public void mouseXpos (){
+  /** */
+  public void mouseXpos() {}
 
-  }
-  public void mouseYpos (){
+  /** */
+  public void mouseYpos() {}
 
-  }
-  //END
+  // END
 
-
+  /** @return the selected tool */
   public Tool getSelectedTool() {
     return selectedTool;
   }
 
+  /** @param selectedTool This method is used to save a tool when the user selects it*/
   public void setSelectedTool(Tool selectedTool) {
     this.selectedTool = selectedTool;
   }
