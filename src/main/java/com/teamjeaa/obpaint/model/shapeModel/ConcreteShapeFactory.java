@@ -1,6 +1,6 @@
 package com.teamjeaa.obpaint.model.shapeModel;
 
-/** Class that holds the logic for all our creating of Shapes TODO Ska detta vara kvar? */
+/** Class that holds the logic for all our creating of Shapes */
 public class ConcreteShapeFactory implements ShapeFactory {
   //
   //    /**

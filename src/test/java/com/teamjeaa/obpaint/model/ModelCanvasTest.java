@@ -41,4 +41,24 @@ public class ModelCanvasTest {
       Assert.assertEquals("Object not found", e.getMessage());
     }
   }
+
+  @Test
+  public void addToRender() {
+    //TODO: Implement
+  }
+
+  @Test
+  public void removeFromRender() {
+    //TODO: Implement
+  }
+
+  @Test
+  public void findShapeAt() {
+    //TODO: Implement
+  }
+
+  @Test
+  public void getShapes() {
+    //TODO: Implement
+  }
 }
