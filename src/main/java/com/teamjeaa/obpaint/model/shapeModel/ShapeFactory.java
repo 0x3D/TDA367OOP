@@ -5,7 +5,9 @@ import javafx.scene.shape.Shape;
  * Interface that holds the methods for our creating of the Shapes
  */
 public interface ShapeFactory {
-    Shape createCircle(int x1, int y1, int radius);
+    public Mshape createCircle(int radius, int x, int y);
+
+    //Shape createCircle(int x1, int y1, int radius);
 
     Shape createRectangle(int x1, int y1, int x2, int y2);
 

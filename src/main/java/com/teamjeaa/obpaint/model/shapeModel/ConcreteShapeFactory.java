@@ -38,6 +38,11 @@ public class ConcreteShapeFactory implements ShapeFactory {
         return new Rectangle();
     }
 
+    @Override
+    public Mshape createCircle(int radius, int x, int y) {
+        return new Mellipse(new Mpoint(x,y,0),radius,radius);
+    }
+
     /**
      * TODO
      * @param x1
@@ -45,9 +50,9 @@ public class ConcreteShapeFactory implements ShapeFactory {
      * @param radius
      * @return the Circle
      */
-    public Shape createCircle(int x1, int y1, int radius) {
+    /*public Shape createCircle(int x1, int y1, int radius) {
         return new Circle();
-    }
+    }*/
 
 
 }
