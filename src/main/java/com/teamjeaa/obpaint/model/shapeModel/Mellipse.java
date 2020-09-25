@@ -17,7 +17,7 @@ public class Mellipse implements Mshape {
 
   @Override
   public Mpoint getPosition() {
-    return null;
+    return centerPoint;
   }
 
   @Override

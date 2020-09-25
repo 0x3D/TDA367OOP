@@ -19,8 +19,9 @@ public class shapeTest {
          return circle;
     }
     public Shape createRectangle() {
-        Shape rectangle = concreteShapeFactory.createRectangle(0,0,0,0);
-        return rectangle;
+        //Shape rectangle = concreteShapeFactory.createRectangle(0,0,0,0);
+        //return rectangle;
+        return null;
     }
 
 
