@@ -15,6 +15,7 @@ public class ConcretePencil implements Tool {
    */
   public ConcretePencil(int size) {
     this.size = size;
+    initialize();
   }
 
   /**
@@ -22,6 +23,7 @@ public class ConcretePencil implements Tool {
    */
   @Override
   public void initialize() {
+
   }
 
   /**

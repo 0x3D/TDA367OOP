@@ -15,6 +15,7 @@ public class ConcreteBrush implements Tool {
      */
     public ConcreteBrush(int size) {
         this.size = size;
+        initialize();
     }
 
     /**

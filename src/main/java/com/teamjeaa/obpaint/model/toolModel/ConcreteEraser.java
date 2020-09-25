@@ -15,6 +15,7 @@ public class ConcreteEraser implements Tool {
    */
   public ConcreteEraser(int size) {
     this.size = size;
+    initialize();
   }
 
   /**

@@ -11,6 +11,7 @@ public class ConcreteMoveTool implements Tool {
    */
   @Override
   public void initialize() {
+    initialize();
   }
 
 
