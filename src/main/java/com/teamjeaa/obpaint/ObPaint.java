@@ -1,6 +1,7 @@
 package com.teamjeaa.obpaint;
 
 import com.teamjeaa.obpaint.model.ModelCanvas;
+import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeUtil;
 import com.teamjeaa.obpaint.model.toolModel.ConcreteToolFactory;
 import com.teamjeaa.obpaint.model.toolModel.Tool;
@@ -22,7 +23,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
+//import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 
 import javax.xml.crypto.dsig.Transform;
@@ -88,14 +89,13 @@ public final class ObPaint extends Application {
         };
 
 
-    Rectangle r = new Rectangle(100, 100, Color.BLACK);
+    //Rectangle r = new Rectangle(100, 100, Color.BLACK);
+    //modelCanvas.addToRender(r);
 
+    //ShapeUtil.moveBy(r, 100, 100);
 
-    modelCanvas.addToRender(r);
-    ShapeUtil.moveBy(r, 100, 100);
-
-    Shape c = new Circle(10, 20, 30, Color.PINK);
-    modelCanvas.addToRender(c);
+    //Shape c = new Circle(10, 20, 30, Color.PINK);
+    //modelCanvas.addToRender(c);
     animationTimer.start();
     rootBorderPane = projectView.getRootBorderPane();
     // rootBorderPane.setCenter(foreground);
@@ -111,23 +111,24 @@ public final class ObPaint extends Application {
     }
 
     private void initialMouseClick(Double x, Double y) {
-      Shape s = selectedTool.initialMouseClick(x, y);
+      Mshape s = selectedTool.initialMouseClick(x, y);
       modelCanvas.addToRender(s);
     }
 
     private void stopUse(Double x, Double y){
-      Shape s=selectedTool.stopUse(x,y);
+      //Shape s=selectedTool.stopUse(x,y);
       //modelCanvas.addToRender(s);
     }
 
   private void render() {
     //GraphicsContext fgcx = foreground.getGraphicsContext2D();
     //fgcx.clearRect(0,0,600,600);
-    for(Shape s: modelCanvas.getShapes()){
+    /*for(Shape s: modelCanvas.getShapes()){
       //It wants the old one to be removed if already is a child.
       rootBorderPane.getChildren().remove(s);
       rootBorderPane.getChildren().add(s);
     }
+     */
   }
 
   // Testing on the borderPane!!! | We shouldn't add methods to do tests /eric
