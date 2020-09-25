@@ -1,8 +1,4 @@
 package com.teamjeaa.obpaint.model.toolModel;
 
-/**
- * //TODO
- */
-public class Project {
-
-}
+/** //TODO */
+public class Project {}

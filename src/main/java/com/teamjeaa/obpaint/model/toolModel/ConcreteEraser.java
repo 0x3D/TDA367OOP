@@ -1,11 +1,8 @@
 package com.teamjeaa.obpaint.model.toolModel;
 
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
-import javafx.scene.shape.Shape;
 
-/**
- * Eraser class that holds the EraserLogic
- */
+/** Eraser class that holds the EraserLogic */
 public class ConcreteEraser implements Tool {
   /**
    * Size og the eraser. Final because we want to create a new eraser everytime we change the size
@@ -14,6 +11,7 @@ public class ConcreteEraser implements Tool {
 
   /**
    * Constructor for our eraser
+   *
    * @param size of the eraser
    */
   public ConcreteEraser(int size) {
@@ -21,17 +19,12 @@ public class ConcreteEraser implements Tool {
     initialize();
   }
 
-  /**
-   * initializing the eraser
-   */
+  /** initializing the eraser */
   @Override
-  public void initialize() {
-  }
+  public void initialize() {}
 
   @Override
-  public void startUse(Double x1, Double y1) {
-
-  }
+  public void startUse(Double x1, Double y1) {}
 
   @Override
   public Mshape stopUse(Double x1, Double y1) {
@@ -45,6 +38,7 @@ public class ConcreteEraser implements Tool {
 
   /**
    * getter for the size of the eraser
+   *
    * @return size of the eraser
    */
   // TODO is this really fitting for public interface?

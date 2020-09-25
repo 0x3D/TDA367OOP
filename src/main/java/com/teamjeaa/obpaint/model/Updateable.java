@@ -1,6 +1,4 @@
 package com.teamjeaa.obpaint.model;
 
-/**
- * TODO
- */
+/** TODO */
 public interface Updateable {}

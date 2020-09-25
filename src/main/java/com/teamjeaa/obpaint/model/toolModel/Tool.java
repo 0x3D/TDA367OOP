@@ -1,12 +1,9 @@
 package com.teamjeaa.obpaint.model.toolModel;
 
-
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
-//import javafx.scene.shape.Shape;
+// import javafx.scene.shape.Shape;
 
-/**
- * Tool interface that holds the methods that our tools will use
- */
+/** Tool interface that holds the methods that our tools will use */
 public interface Tool {
   void initialize();
 
@@ -18,9 +15,9 @@ public interface Tool {
 
   /**
    * Test method for now
+   *
    * @return a size of a tool
    */
   // TODO is this really fitting for public interface?
   int getSize();
-
 }

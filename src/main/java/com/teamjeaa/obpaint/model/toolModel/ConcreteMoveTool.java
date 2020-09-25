@@ -1,25 +1,16 @@
 package com.teamjeaa.obpaint.model.toolModel;
 
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
-import javafx.scene.shape.Shape;
 
-/**
- * Class that holds the logic when we move all of our tools
- */
+/** Class that holds the logic when we move all of our tools */
 public class ConcreteMoveTool implements Tool {
 
-
-  /**
-   * initializing from the TOOL- interface
-   */
+  /** initializing from the TOOL- interface */
   @Override
-  public void initialize() {
-  }
+  public void initialize() {}
 
   @Override
-  public void startUse(Double x1, Double y1) {
-
-  }
+  public void startUse(Double x1, Double y1) {}
 
   @Override
   public Mshape stopUse(Double x1, Double y1) {
@@ -31,10 +22,10 @@ public class ConcreteMoveTool implements Tool {
     return null;
   }
 
-
-//TODO Getter för denna är konstigt
+  // TODO Getter för denna är konstigt
   /**
    * getter of our mover
+   *
    * @return
    */
   // TODO is this really fitting for public interface?
