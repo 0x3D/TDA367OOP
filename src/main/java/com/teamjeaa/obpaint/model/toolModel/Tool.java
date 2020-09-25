@@ -1,10 +1,17 @@
 package com.teamjeaa.obpaint.model.toolModel;
 
+
+import javafx.scene.shape.Shape;
+
 /**
  * Tool interface that holds the methods that our tools will use
  */
 public interface Tool {
   void initialize();
+
+  void startUse(Double x1, Double y1);
+
+  Shape stopUse(Double x1, Double y1);
 
   /**
    * Test method for now

@@ -1,5 +1,7 @@
 package com.teamjeaa.obpaint.model.toolModel;
 
+import javafx.scene.shape.Shape;
+
 /**
  * Eraser class that holds the EraserLogic
  */
@@ -23,6 +25,16 @@ public class ConcreteEraser implements Tool {
    */
   @Override
   public void initialize() {
+  }
+
+  @Override
+  public void startUse(Double x1, Double y1) {
+
+  }
+
+  @Override
+  public Shape stopUse(Double x1, Double y1) {
+    return null;
   }
 
   /**

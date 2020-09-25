@@ -8,6 +8,7 @@ import com.teamjeaa.obpaint.model.toolModel.ToolFactory;
 import com.teamjeaa.obpaint.view.ProjectView;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
@@ -43,15 +45,16 @@ public final class ObPaint extends Application {
 
   /**
    * This method starts up JavaFX and initializes the Model, also sets up renderer
+   *
    * @param primaryStage
    * @throws Exception
    */
   @Override
   public void start(Stage primaryStage) throws Exception {
-    //TODO: separate this method into smaller functions. At the moment it does do much
+    // TODO: separate this method into smaller functions. At the moment it does do much
     ProjectView projectView = new ProjectView();
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("obPaint.fxml"));
-    //Do it like this to be able to set which class has display items. Maybe unnecessary coupling
+    // Do it like this to be able to set which class has display items. Maybe unnecessary coupling
     fxmlLoader.setController(projectView);
 
     try {
@@ -62,9 +65,7 @@ public final class ObPaint extends Application {
 
     ResourceBundle obPaintResourceBundle = ResourceBundle.getBundle("obPaint");
 
-    Canvas foreground = new Canvas(600, 600);
-
-
+    // Canvas foreground = new Canvas(600, 600);
 
     primaryStage.setTitle(obPaintResourceBundle.getString("application.name"));
     primaryStage.getIcons().add(new Image("images/logo.png"));
@@ -74,31 +75,43 @@ public final class ObPaint extends Application {
     primaryStage.show();
     ObPaint.primaryStage = primaryStage;
 
-
     modelCanvas = new ModelCanvas();
 
-    //Pull based for now :)
-    AnimationTimer animationTimer = new AnimationTimer() {
-      public void handle(long now) {
-        //Random to display movement, Should be replace by actually doing things
-        Random r = new Random();
-        for(Shape s: modelCanvas.getShapes()){
-          s.setTranslateX(50);
-          s.setTranslateY(200);
-        }
-        render();
-      }
-    };
+    // Pull based for now :)
+    AnimationTimer animationTimer =
+        new AnimationTimer() {
+          public void handle(long now) {
+            // Random to display movement, Should be replace by actually doing things
+            Random r = new Random();
+            for (Shape s : modelCanvas.getShapes()) {
+              s.setTranslateX(50);
+              s.setTranslateY(200);
+            }
+            render();
+          }
+        };
 
-    Rectangle r = new Rectangle(100,100, Color.BLACK);
+    Rectangle r = new Rectangle(100, 100, Color.BLACK);
     modelCanvas.addToRender(r);
 
-    Shape c = new Circle(10,20,30,Color.PINK);
+    Shape c = new Circle(10, 20, 30, Color.PINK);
     modelCanvas.addToRender(c);
     animationTimer.start();
-    rootBorderPane=projectView.getRootBorderPane();
-    //rootBorderPane.setCenter(foreground);
-  }
+    rootBorderPane = projectView.getRootBorderPane();
+    // rootBorderPane.setCenter(foreground);
+
+    setSelectedTool(toolFactory.createBrush(1));
+
+    rootBorderPane.setOnMouseDragged(
+            mouseEvent -> selectedTool.startUse(mouseEvent.getX(),mouseEvent.getY()));
+    rootBorderPane.setOnMouseReleased(mouseEvent ->
+            stopUse(mouseEvent.getX(),mouseEvent.getY()));
+    }
+
+    private void stopUse(Double x, Double y){
+      Shape s=selectedTool.stopUse(x,y);
+      modelCanvas.addToRender(s);
+    }
 
   private void render() {
     //GraphicsContext fgcx = foreground.getGraphicsContext2D();
