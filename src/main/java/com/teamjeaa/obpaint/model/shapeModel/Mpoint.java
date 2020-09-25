@@ -2,6 +2,8 @@ package com.teamjeaa.obpaint.model.shapeModel;
 
 import java.util.Objects;
 
+/**
+ * Class that represents a point in space */
 public class Mpoint {
   private final int x;
   private final int y;
@@ -12,19 +14,30 @@ public class Mpoint {
     this.y = y;
     this.z = z;
   }
+  Mpoint(int x, int y){
+    this(x,y,0);
+  }
 
+  /** @return The x cordinate of the point in space */
   public int getX() {
     return x;
   }
 
+  /** @return The y cordinate of the point in space*/
   public int getY() {
     return y;
   }
 
+  /** @return This could be a third dimension to do buffering */
   private int getZ() {
     return z;
   }
 
+  /**
+   * Method that checks if this object is the same as another object
+   * @param o Object to check if equal to
+   * @return True if equal and false if unequal
+   */
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -40,8 +53,9 @@ public class Mpoint {
     return Objects.hash(getX(), getY(), getZ());
   }
 
+  /** @return A copy of this point*/
   @Override
-  public Mpoint clone(){
+  public Mpoint clone() {
     return new Mpoint(x,y,z);
   }
 

@@ -15,18 +15,19 @@ public class ModelCanvasTest {
     //Shape shape = new Rectangle();
     ModelCanvas modelCanvas = new ModelCanvas();
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
-    Mshape shape = shapeFactory.createRectangle(0,0,2,2);
+    Mshape shape = shapeFactory.createCircle(10,2,2);
     modelCanvas.addToRender(shape);
 
     // This will check if got added to list since default position p is (0,0)
-    Assert.assertEquals(modelCanvas.findShapeAt(0, 0), shape);
+    Assert.assertEquals(modelCanvas.findShapeAt(2, 2), shape);
   }
 
   @Test
   public void removeFromModel() {
     // set up
-    Shape shape = new Rectangle();
     ModelCanvas modelCanvas = new ModelCanvas();
+    ShapeFactory shapeFactory = new ConcreteShapeFactory();
+    Mshape shape = shapeFactory.createCircle(10,2,2);
 
     // adding, see test addToModel()
     modelCanvas.addToRender(shape);
@@ -35,7 +36,7 @@ public class ModelCanvasTest {
     modelCanvas.removeFromRender(shape);
 
     try {
-      Shape secondShape = modelCanvas.findShapeAt(0, 0);
+      Mshape secondShape = modelCanvas.findShapeAt(0, 0);
     } catch (IllegalArgumentException e) {
       Assert.assertEquals("Object not found", e.getMessage());
     }

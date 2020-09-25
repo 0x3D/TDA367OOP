@@ -1,4 +1,4 @@
-package com.teamjeaa.obpaint.model;
+package com.teamjeaa.obpaint.model.shapeModel;
 
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.Mellipse;
@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Assert;
 
-public class ellipseTest {
+public class MellipseTest {
     ConcreteShapeFactory concreteShapeFactory = new ConcreteShapeFactory();
 
 
