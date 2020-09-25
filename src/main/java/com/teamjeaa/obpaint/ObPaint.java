@@ -1,6 +1,7 @@
 package com.teamjeaa.obpaint;
 
 import com.teamjeaa.obpaint.model.ModelCanvas;
+import com.teamjeaa.obpaint.model.shapeModel.ShapeUtil;
 import com.teamjeaa.obpaint.model.toolModel.ConcreteToolFactory;
 import com.teamjeaa.obpaint.model.toolModel.Tool;
 import com.teamjeaa.obpaint.model.toolModel.ToolFactory;
@@ -63,7 +64,9 @@ public final class ObPaint extends Application {
 
     primaryStage.setTitle(obPaintResourceBundle.getString("application.name"));
     primaryStage.getIcons().add(new Image("images/logo.png"));
-    primaryStage.setScene(new Scene(fxmlLoader.getRoot(), 600, 600));
+    primaryStage.setScene(new Scene(fxmlLoader.getRoot(), 900, 675));
+    primaryStage.setMinHeight(680);
+    primaryStage.setMinWidth(900);
     primaryStage.show();
     ObPaint.primaryStage = primaryStage;
 
@@ -76,7 +79,8 @@ public final class ObPaint extends Application {
         //Random to display movement, Should be replace by actually doing things
         Random r = new Random();
         for(Shape s: modelCanvas.getShapes()){
-          s.setTranslateX(r.nextDouble()*600);
+          s.setTranslateX(50);
+          s.setTranslateY(200);
         }
         render();
       }
@@ -85,7 +89,7 @@ public final class ObPaint extends Application {
     Rectangle r = new Rectangle(100,100, Color.BLACK);
     modelCanvas.addToRender(r);
 
-    Shape c = new Circle(10,20,30,Color.RED);
+    Shape c = new Circle(10,20,30,Color.PINK);
     modelCanvas.addToRender(c);
     animationTimer.start();
     rootBorderPane=projectView.getRootBorderPane();
@@ -101,6 +105,17 @@ public final class ObPaint extends Application {
       rootBorderPane.getChildren().add(s);
     }
   }
+
+  //Testing on the borderPane!!!
+
+  public void mouseXpos (){
+
+  }
+  public void mouseYpos (){
+
+  }
+  //END
+
 
   public Tool getSelectedTool() {
     return selectedTool;
