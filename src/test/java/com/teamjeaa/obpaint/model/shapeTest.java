@@ -1,6 +1,7 @@
 package com.teamjeaa.obpaint.model;
 
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
+import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import javafx.scene.Node;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Shape;
@@ -13,8 +14,8 @@ public class shapeTest {
     ConcreteShapeFactory concreteShapeFactory = new ConcreteShapeFactory();
 
 
-    public Shape createCircle() {
-         Shape circle = concreteShapeFactory.createCircle(20,20,10);
+    public Mshape createCircle() {
+         Mshape circle = concreteShapeFactory.createCircle(20,20,10);
          return circle;
     }
     public Shape createRectangle() {
