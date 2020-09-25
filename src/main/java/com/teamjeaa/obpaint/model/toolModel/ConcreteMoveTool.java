@@ -25,6 +25,11 @@ public class ConcreteMoveTool implements Tool {
     return null;
   }
 
+  @Override
+  public Shape initialMouseClick(double x, double y) {
+    return null;
+  }
+
 
 //TODO Getter för denna är konstigt
   /**

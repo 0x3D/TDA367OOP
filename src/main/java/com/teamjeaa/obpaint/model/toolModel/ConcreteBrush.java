@@ -43,6 +43,11 @@ public class ConcreteBrush implements Tool {
         return strokeCopy;
     }
 
+    @Override
+    public Shape initialMouseClick(double x, double y) {
+        return stroke;
+    }
+
     /**
      * getter for get the size of the brush
      * @return brushsize

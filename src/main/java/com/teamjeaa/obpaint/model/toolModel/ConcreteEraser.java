@@ -37,6 +37,11 @@ public class ConcreteEraser implements Tool {
     return null;
   }
 
+  @Override
+  public Shape initialMouseClick(double x, double y) {
+    return null;
+  }
+
   /**
    * getter for the size of the eraser
    * @return size of the eraser

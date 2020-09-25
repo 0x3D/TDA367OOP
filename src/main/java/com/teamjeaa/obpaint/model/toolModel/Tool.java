@@ -13,10 +13,13 @@ public interface Tool {
 
   Shape stopUse(Double x1, Double y1);
 
+  Shape initialMouseClick(double x, double y);
+
   /**
    * Test method for now
    * @return a size of a tool
    */
   // TODO is this really fitting for public interface?
   int getSize();
+
 }

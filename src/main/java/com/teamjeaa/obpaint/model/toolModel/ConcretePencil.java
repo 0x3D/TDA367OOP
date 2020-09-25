@@ -38,6 +38,11 @@ public class ConcretePencil implements Tool {
     return null;
   }
 
+  @Override
+  public Shape initialMouseClick(double x, double y) {
+    return null;
+  }
+
   /**
    * getter for the pencilSize
    * Most for the tests

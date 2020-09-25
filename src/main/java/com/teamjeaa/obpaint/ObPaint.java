@@ -25,6 +25,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 
+import javax.xml.crypto.dsig.Transform;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Random;
@@ -81,18 +82,14 @@ public final class ObPaint extends Application {
     AnimationTimer animationTimer =
         new AnimationTimer() {
           public void handle(long now) {
-            // Random to display movement, Should be replace by actually doing things
-            Random r = new Random();
-            for (Shape s : modelCanvas.getShapes()) {
-              s.setTranslateX(50);
-              s.setTranslateY(200);
-            }
             render();
           }
         };
 
+
     Rectangle r = new Rectangle(100, 100, Color.BLACK);
     modelCanvas.addToRender(r);
+    ShapeUtil.moveBy(r, 100, 100);
 
     Shape c = new Circle(10, 20, 30, Color.PINK);
     modelCanvas.addToRender(c);
@@ -102,15 +99,22 @@ public final class ObPaint extends Application {
 
     setSelectedTool(toolFactory.createBrush(1));
 
+    rootBorderPane.setOnMouseClicked(
+            mouseEvent -> initialMouseClick(mouseEvent.getX(), mouseEvent.getY()));
     rootBorderPane.setOnMouseDragged(
             mouseEvent -> selectedTool.startUse(mouseEvent.getX(),mouseEvent.getY()));
     rootBorderPane.setOnMouseReleased(mouseEvent ->
             stopUse(mouseEvent.getX(),mouseEvent.getY()));
     }
 
+    private void initialMouseClick(Double x, Double y) {
+      Shape s = selectedTool.initialMouseClick(x, y);
+      modelCanvas.addToRender(s);
+    }
+
     private void stopUse(Double x, Double y){
       Shape s=selectedTool.stopUse(x,y);
-      modelCanvas.addToRender(s);
+      //modelCanvas.addToRender(s);
     }
 
   private void render() {
