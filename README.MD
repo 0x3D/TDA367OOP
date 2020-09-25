@@ -29,4 +29,5 @@ This is a object based draw program
 `mvn compile`  
 `mvn test`  
 `mvn package`  
-`mvn clean`  
+`mvn clean`
+`mvn site`
