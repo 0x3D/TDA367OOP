@@ -3,7 +3,7 @@ package com.teamjeaa.obpaint.model.shapeModel;
 import java.util.Objects;
 
 /** Class that represents a point in space */
-public class Mpoint {
+public class Mpoint implements Cloneable {
   private final int x;
   private final int y;
   private final int z;
@@ -55,6 +55,13 @@ public class Mpoint {
   /** @return A copy of this point */
   @Override
   public Mpoint clone() {
-    return new Mpoint(x, y, z);
+    final Mpoint clone;
+    try {
+      clone = (Mpoint) super.clone();
+    }
+    catch (CloneNotSupportedException ex) {
+      throw new RuntimeException("superclass messed up", ex);
+    }
+    return clone;
   }
 }
