@@ -1,7 +1,8 @@
 package com.teamjeaa.obpaint.model.toolModel;
 
 
-import javafx.scene.shape.Shape;
+import com.teamjeaa.obpaint.model.shapeModel.Mshape;
+//import javafx.scene.shape.Shape;
 
 /**
  * Tool interface that holds the methods that our tools will use
@@ -11,9 +12,9 @@ public interface Tool {
 
   void startUse(Double x1, Double y1);
 
-  Shape stopUse(Double x1, Double y1);
+  Mshape stopUse(Double x1, Double y1);
 
-  Shape initialMouseClick(double x, double y);
+  Mshape initialMouseClick(double x, double y);
 
   /**
    * Test method for now

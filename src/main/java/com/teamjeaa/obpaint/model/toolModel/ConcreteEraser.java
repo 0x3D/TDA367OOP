@@ -1,5 +1,6 @@
 package com.teamjeaa.obpaint.model.toolModel;
 
+import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import javafx.scene.shape.Shape;
 
 /**
@@ -33,12 +34,12 @@ public class ConcreteEraser implements Tool {
   }
 
   @Override
-  public Shape stopUse(Double x1, Double y1) {
+  public Mshape stopUse(Double x1, Double y1) {
     return null;
   }
 
   @Override
-  public Shape initialMouseClick(double x, double y) {
+  public Mshape initialMouseClick(double x, double y) {
     return null;
   }
 
