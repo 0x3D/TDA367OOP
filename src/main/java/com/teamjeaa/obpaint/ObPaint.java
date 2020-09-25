@@ -78,6 +78,7 @@ public final class ObPaint extends Application {
 
     modelCanvas = new ModelCanvas();
 
+
     // Pull based for now :)
     AnimationTimer animationTimer =
         new AnimationTimer() {
@@ -88,6 +89,8 @@ public final class ObPaint extends Application {
 
 
     Rectangle r = new Rectangle(100, 100, Color.BLACK);
+
+
     modelCanvas.addToRender(r);
     ShapeUtil.moveBy(r, 100, 100);
 

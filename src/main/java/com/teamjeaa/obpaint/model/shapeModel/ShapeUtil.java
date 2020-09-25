@@ -2,15 +2,19 @@ package com.teamjeaa.obpaint.model.shapeModel;
 
 import javafx.geometry.Point3D;
 import javafx.scene.Node;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 import javafx.scene.transform.Transform;
 import javafx.scene.transform.Translate;
 
-public final class ShapeUtil {
+public final class ShapeUtil  {
 
     /**
      * made it private so we cant create a ShapeUtil
      */
     private ShapeUtil() {
+        //Do nothing, its like a Static class
     }
     /**
      *
@@ -53,5 +57,21 @@ public final class ShapeUtil {
     public static void rotateBy (Node node, int angle) {
         //TODO This rotate is F-upped
         node.setRotate(angle);
+    }
+
+
+
+    public static Shape createCircle(double x1, double y1, int radius) {
+        return new Circle(x1,y1,radius);
+    }
+
+
+    public static Shape createRectangle(double x1, double y1, double x2, double y2) {
+        return new Rectangle(x1,y1,x2,y2);
+    }
+
+
+    public static Shape createTriangle(double x1, double y1, double x2, double y2, double x3, double y3) {
+        return null;
     }
 }
