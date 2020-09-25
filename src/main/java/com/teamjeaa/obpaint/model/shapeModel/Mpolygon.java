@@ -1,5 +1,7 @@
 package com.teamjeaa.obpaint.model.shapeModel;
 
+import com.teamjeaa.obpaint.view.DrawVisistor;
+
 import java.util.List;
 
 /** This class provides what a polygon is in our model*/
@@ -56,5 +58,11 @@ public class Mpolygon implements Mshape {
     Mpoint minPoint = getMinPosition();
     Mpoint maxPoint = getMaxPosition();
     return maxPoint.getY()-minPoint.getY();
+  }
+
+  @Override
+  public void acceptDrawVisitor(DrawVisistor drawVisistor) {
+    drawVisistor.visitMpolyogon(this);
+
   }
 }

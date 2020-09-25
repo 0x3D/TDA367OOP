@@ -1,5 +1,7 @@
 package com.teamjeaa.obpaint.model.shapeModel;
 
+import com.teamjeaa.obpaint.view.DrawVisistor;
+
 public class Mellipse implements Mshape {
   private final Mpoint centerPoint;
 
@@ -28,5 +30,18 @@ public class Mellipse implements Mshape {
   @Override
   public int getHeight() {
     return 0;
+  }
+
+  @Override
+  public void acceptDrawVisitor(DrawVisistor drawVisistor) {
+    drawVisistor.visitMellipse(this);
+  }
+
+  public int getSemiAxesA() {
+    return semiAxesA;
+  }
+
+  public int getSemiAxesB() {
+    return SemiAxesB;
   }
 }

@@ -1,11 +1,11 @@
 package com.teamjeaa.obpaint;
 
 import com.teamjeaa.obpaint.model.ModelCanvas;
-import com.teamjeaa.obpaint.model.shapeModel.Mshape;
-import com.teamjeaa.obpaint.model.shapeModel.ShapeUtil;
+import com.teamjeaa.obpaint.model.shapeModel.*;
 import com.teamjeaa.obpaint.model.toolModel.ConcreteToolFactory;
 import com.teamjeaa.obpaint.model.toolModel.Tool;
 import com.teamjeaa.obpaint.model.toolModel.ToolFactory;
+import com.teamjeaa.obpaint.view.JavaFXDrawVisitor;
 import com.teamjeaa.obpaint.view.ProjectView;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
@@ -22,6 +22,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Rectangle;
 //import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
@@ -39,6 +40,7 @@ public final class ObPaint extends Application {
   private Tool selectedTool;
   private ModelCanvas modelCanvas;
   private BorderPane rootBorderPane;
+  private JavaFXDrawVisitor javaFXDrawVisitor;
 
 
   public static void main(String[] args) {
@@ -77,7 +79,11 @@ public final class ObPaint extends Application {
     primaryStage.show();
     ObPaint.primaryStage = primaryStage;
 
+    ShapeFactory shapeFactory = new ConcreteShapeFactory();
+
+
     modelCanvas = new ModelCanvas();
+    modelCanvas.addToRender(shapeFactory.createCircle(200,300,300));
 
 
     // Pull based for now :)
@@ -99,6 +105,8 @@ public final class ObPaint extends Application {
     animationTimer.start();
     rootBorderPane = projectView.getRootBorderPane();
     // rootBorderPane.setCenter(foreground);
+    javaFXDrawVisitor = new JavaFXDrawVisitor(rootBorderPane);
+
 
     setSelectedTool(toolFactory.createBrush(1));
 
@@ -121,14 +129,14 @@ public final class ObPaint extends Application {
     }
 
   private void render() {
+
     //GraphicsContext fgcx = foreground.getGraphicsContext2D();
     //fgcx.clearRect(0,0,600,600);
-    /*for(Shape s: modelCanvas.getShapes()){
+    for(Mshape s: modelCanvas.getShapes()){
       //It wants the old one to be removed if already is a child.
-      rootBorderPane.getChildren().remove(s);
-      rootBorderPane.getChildren().add(s);
+      s.acceptDrawVisitor(javaFXDrawVisitor);
     }
-     */
+
   }
 
   // Testing on the borderPane!!! | We shouldn't add methods to do tests /eric
