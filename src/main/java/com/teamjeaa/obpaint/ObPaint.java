@@ -43,7 +43,31 @@ public final class ObPaint extends Application {
    */
   @Override
   public void start(Stage primaryStage) throws Exception {
-    // TODO: separate this method into smaller functions. At the moment it does do much
+    ProjectView projectView = setupScene(primaryStage);
+    setupModel();
+
+    rootBorderPane = projectView.getRootBorderPane();
+    javaFXDrawVisitor = new JavaFXDrawVisitor(rootBorderPane);
+
+    setSelectedTool(toolFactory.createBrush(1));
+    setupTool();
+  }
+
+  private void setupModel() {
+    ShapeFactory shapeFactory = new ConcreteShapeFactory();
+    modelCanvas = new ModelCanvas();
+    modelCanvas.addToRender(shapeFactory.createCircle(200, 300, 300));
+  }
+
+  private void setupTool() {
+    rootBorderPane.setOnMouseClicked(
+        mouseEvent -> initialMouseClick(mouseEvent.getX(), mouseEvent.getY()));
+    rootBorderPane.setOnMouseDragged(
+        mouseEvent -> selectedTool.startUse(mouseEvent.getX(), mouseEvent.getY()));
+    rootBorderPane.setOnMouseReleased(mouseEvent -> stopUse(mouseEvent.getX(), mouseEvent.getY()));
+  }
+
+  private ProjectView setupScene(Stage primaryStage) {
     ProjectView projectView = new ProjectView();
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("obPaint.fxml"));
     // Do it like this to be able to set which class has display items. Maybe unnecessary coupling
@@ -57,8 +81,6 @@ public final class ObPaint extends Application {
 
     ResourceBundle obPaintResourceBundle = ResourceBundle.getBundle("obPaint");
 
-    // Canvas foreground = new Canvas(600, 600);
-
     primaryStage.setTitle(obPaintResourceBundle.getString("application.name"));
     primaryStage.getIcons().add(new Image("images/logo.png"));
     primaryStage.setScene(new Scene(fxmlLoader.getRoot(), 900, 675));
@@ -66,39 +88,14 @@ public final class ObPaint extends Application {
     primaryStage.setMinWidth(900);
     primaryStage.show();
     ObPaint.primaryStage = primaryStage;
-
-    ShapeFactory shapeFactory = new ConcreteShapeFactory();
-
-    modelCanvas = new ModelCanvas();
-    modelCanvas.addToRender(shapeFactory.createCircle(200, 300, 300));
-
-    // Pull based for now :)
     AnimationTimer animationTimer =
-        new AnimationTimer() {
-          public void handle(long now) {
-            render();
-          }
-        };
-
-    // Rectangle r = new Rectangle(100, 100, Color.BLACK);
-    // modelCanvas.addToRender(r);
-
-    // ShapeUtil.moveBy(r, 100, 100);
-
-    // Shape c = new Circle(10, 20, 30, Color.PINK);
-    // modelCanvas.addToRender(c);
+            new AnimationTimer() {
+              public void handle(long now) {
+                render();
+              }
+            };
     animationTimer.start();
-    rootBorderPane = projectView.getRootBorderPane();
-    // rootBorderPane.setCenter(foreground);
-    javaFXDrawVisitor = new JavaFXDrawVisitor(rootBorderPane);
-
-    setSelectedTool(toolFactory.createBrush(1));
-
-    rootBorderPane.setOnMouseClicked(
-        mouseEvent -> initialMouseClick(mouseEvent.getX(), mouseEvent.getY()));
-    rootBorderPane.setOnMouseDragged(
-        mouseEvent -> selectedTool.startUse(mouseEvent.getX(), mouseEvent.getY()));
-    rootBorderPane.setOnMouseReleased(mouseEvent -> stopUse(mouseEvent.getX(), mouseEvent.getY()));
+    return projectView;
   }
 
   private void initialMouseClick(Double x, Double y) {
