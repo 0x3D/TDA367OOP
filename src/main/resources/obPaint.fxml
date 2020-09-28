@@ -12,7 +12,9 @@
 
 <AnchorPane fx:id="mainPain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <BorderPane fx:id="rootBorderPane" layoutX="150.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="600.0" style="-fx-border-color: #000000; -fx-background-color: white;" />
+
+      <BorderPane fx:id="rootBorderPane" layoutX="150.0" layoutY="70.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#placeRectangleShape" prefHeight="600.0" prefWidth="600.0" style="-fx-border-color: #000000; -fx-background-color: white;" />
+
       <AnchorPane prefHeight="28.5" prefWidth="900.0">
          <children>
             <MenuBar>
@@ -58,7 +60,7 @@
       <AnchorPane layoutX="-2.0" layoutY="70.0" prefHeight="195.0" prefWidth="150.0" style="-fx-background-color: rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" />
       <AnchorPane layoutY="272.0" prefHeight="400.0" prefWidth="150.0" style="-fx-background-color: rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);">
          <children>
-            <ColorPicker layoutX="9.0" layoutY="313.0" prefHeight="70.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-border-color: grey;" />
+            <ColorPicker fx:id="cp" editable="true" layoutX="9.0" layoutY="313.0" prefHeight="70.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-border-color: grey;" />
             <ToggleButton layoutX="9.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" selected="true">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
@@ -76,7 +78,7 @@
                   </ImageView>
                </graphic>
             </ToggleButton>
-            <ToggleButton layoutX="97.0" layoutY="15.0" mnemonicParsing="false">
+            <ToggleButton fx:id="eraserButton" layoutX="97.0" layoutY="15.0" mnemonicParsing="false" onAction="#onEraserButton">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -84,7 +86,7 @@
                      </image></ImageView>
                </graphic>
             </ToggleButton>
-            <ToggleButton layoutX="9.0" layoutY="56.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0">
+            <ToggleButton fx:id="circleB" layoutX="9.0" layoutY="56.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -93,7 +95,7 @@
                   </ImageView>
                </graphic>
             </ToggleButton>
-            <ToggleButton layoutX="54.0" layoutY="56.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0">
+            <ToggleButton fx:id="rectangleB" layoutX="54.0" layoutY="56.0" mnemonicParsing="false" onAction="#onRectangleButton" prefHeight="25.0" prefWidth="25.0">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>

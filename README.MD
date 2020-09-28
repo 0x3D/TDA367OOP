@@ -14,7 +14,7 @@ This is a object based draw program
 5. `git status`
 6. `git commit -a -m ""`
 7. Integrate changes 
-    * `git checkout mater`
+    * `git checkout master`
     * `git pull`
     * `git checkout myTask`
     * `git rebase master` [optional](https://www.atlassian.com/git/tutorials/rewriting-history/git-rebase)

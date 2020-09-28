@@ -8,6 +8,7 @@ import com.teamjeaa.obpaint.model.toolModel.ToolFactory;
 import com.teamjeaa.obpaint.view.ProjectView;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
@@ -23,6 +25,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 
+import javax.xml.crypto.dsig.Transform;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Random;
@@ -36,18 +39,23 @@ public final class ObPaint extends Application {
   private ModelCanvas modelCanvas;
   private BorderPane rootBorderPane;
 
-  //TODO: Discuss with team
-
 
   public static void main(String[] args) {
     launch(args);
   }
 
+  /**
+   * This method starts up JavaFX and initializes the Model, also sets up renderer
+   *
+   * @param primaryStage
+   * @throws Exception
+   */
   @Override
   public void start(Stage primaryStage) throws Exception {
+    // TODO: separate this method into smaller functions. At the moment it does do much
     ProjectView projectView = new ProjectView();
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getClassLoader().getResource("obPaint.fxml"));
-    //Do it like this to be able to set which class has display items. Maybe unnecessary coupling
+    // Do it like this to be able to set which class has display items. Maybe unnecessary coupling
     fxmlLoader.setController(projectView);
 
     try {
@@ -58,9 +66,7 @@ public final class ObPaint extends Application {
 
     ResourceBundle obPaintResourceBundle = ResourceBundle.getBundle("obPaint");
 
-    Canvas foreground = new Canvas(600, 600);
-
-
+    // Canvas foreground = new Canvas(600, 600);
 
     primaryStage.setTitle(obPaintResourceBundle.getString("application.name"));
     primaryStage.getIcons().add(new Image("images/logo.png"));
@@ -70,31 +76,49 @@ public final class ObPaint extends Application {
     primaryStage.show();
     ObPaint.primaryStage = primaryStage;
 
-
     modelCanvas = new ModelCanvas();
 
-    //Pull based for now :)
-    AnimationTimer animationTimer = new AnimationTimer() {
-      public void handle(long now) {
-        //Random to display movement, Should be replace by actually doing things
-        Random r = new Random();
-        for(Shape s: modelCanvas.getShapes()){
-          s.setTranslateX(50);
-          s.setTranslateY(200);
-        }
-        render();
-      }
-    };
 
-    Rectangle r = new Rectangle(100,100, Color.BLACK);
+    // Pull based for now :)
+    AnimationTimer animationTimer =
+        new AnimationTimer() {
+          public void handle(long now) {
+            render();
+          }
+        };
+
+
+    Rectangle r = new Rectangle(100, 100, Color.BLACK);
+
+
     modelCanvas.addToRender(r);
+    ShapeUtil.moveBy(r, 100, 100);
 
-    Shape c = new Circle(10,20,30,Color.PINK);
+    Shape c = new Circle(10, 20, 30, Color.PINK);
     modelCanvas.addToRender(c);
     animationTimer.start();
-    rootBorderPane=projectView.getRootBorderPane();
-    //rootBorderPane.setCenter(foreground);
-  }
+    rootBorderPane = projectView.getRootBorderPane();
+    // rootBorderPane.setCenter(foreground);
+
+    setSelectedTool(toolFactory.createBrush(1));
+
+    rootBorderPane.setOnMouseClicked(
+            mouseEvent -> initialMouseClick(mouseEvent.getX(), mouseEvent.getY()));
+    rootBorderPane.setOnMouseDragged(
+            mouseEvent -> selectedTool.startUse(mouseEvent.getX(),mouseEvent.getY()));
+    rootBorderPane.setOnMouseReleased(mouseEvent ->
+            stopUse(mouseEvent.getX(),mouseEvent.getY()));
+    }
+
+    private void initialMouseClick(Double x, Double y) {
+      Shape s = selectedTool.initialMouseClick(x, y);
+      modelCanvas.addToRender(s);
+    }
+
+    private void stopUse(Double x, Double y){
+      Shape s=selectedTool.stopUse(x,y);
+      //modelCanvas.addToRender(s);
+    }
 
   private void render() {
     //GraphicsContext fgcx = foreground.getGraphicsContext2D();
@@ -106,21 +130,22 @@ public final class ObPaint extends Application {
     }
   }
 
-  //Testing on the borderPane!!!
+  // Testing on the borderPane!!! | We shouldn't add methods to do tests /eric
 
-  public void mouseXpos (){
+  /** */
+  public void mouseXpos() {}
 
-  }
-  public void mouseYpos (){
+  /** */
+  public void mouseYpos() {}
 
-  }
-  //END
+  // END
 
-
+  /** @return the selected tool */
   public Tool getSelectedTool() {
     return selectedTool;
   }
 
+  /** @param selectedTool This method is used to save a tool when the user selects it*/
   public void setSelectedTool(Tool selectedTool) {
     this.selectedTool = selectedTool;
   }

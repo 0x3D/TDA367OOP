@@ -1,5 +1,7 @@
 package com.teamjeaa.obpaint.model.toolModel;
 
+import javafx.scene.shape.Shape;
+
 /**
  * Class that holds the logic when we move all of our tools
  */
@@ -11,6 +13,21 @@ public class ConcreteMoveTool implements Tool {
    */
   @Override
   public void initialize() {
+  }
+
+  @Override
+  public void startUse(Double x1, Double y1) {
+
+  }
+
+  @Override
+  public Shape stopUse(Double x1, Double y1) {
+    return null;
+  }
+
+  @Override
+  public Shape initialMouseClick(double x, double y) {
+    return null;
   }
 
 

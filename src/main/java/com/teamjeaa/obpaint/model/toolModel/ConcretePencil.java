@@ -1,5 +1,7 @@
 package com.teamjeaa.obpaint.model.toolModel;
 
+import javafx.scene.shape.Shape;
+
 /**
  * Class that holds the logic of out pencil
  */
@@ -15,6 +17,7 @@ public class ConcretePencil implements Tool {
    */
   public ConcretePencil(int size) {
     this.size = size;
+    initialize();
   }
 
   /**
@@ -22,6 +25,22 @@ public class ConcretePencil implements Tool {
    */
   @Override
   public void initialize() {
+
+  }
+
+  @Override
+  public void startUse(Double x1, Double y1) {
+
+  }
+
+  @Override
+  public Shape stopUse(Double x1, Double y1) {
+    return null;
+  }
+
+  @Override
+  public Shape initialMouseClick(double x, double y) {
+    return null;
   }
 
   /**
