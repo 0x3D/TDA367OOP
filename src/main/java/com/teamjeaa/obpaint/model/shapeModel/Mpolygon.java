@@ -69,4 +69,9 @@ public class Mpolygon implements Mshape {
     // TODO Auto-generated method stub
     return null;
   }
+
+  public List<Mpoint> getPoints() {
+    //this has to duplicate list and points! TODO: implement
+    return points;
+  }
 }

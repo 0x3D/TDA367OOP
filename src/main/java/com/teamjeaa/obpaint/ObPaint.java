@@ -7,6 +7,7 @@ import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 import com.teamjeaa.obpaint.model.toolModel.ConcreteToolFactory;
 import com.teamjeaa.obpaint.model.toolModel.Tool;
 import com.teamjeaa.obpaint.model.toolModel.ToolFactory;
+import com.teamjeaa.obpaint.model.toolModel.ConcreteRectangleTool;
 import com.teamjeaa.obpaint.view.JavaFXDrawVisitor;
 import com.teamjeaa.obpaint.view.ProjectView;
 import javafx.animation.AnimationTimer;
@@ -49,21 +50,22 @@ public final class ObPaint extends Application {
     rootBorderPane = projectView.getRootBorderPane();
     javaFXDrawVisitor = new JavaFXDrawVisitor(rootBorderPane);
 
-    setSelectedTool(toolFactory.createBrush(1));
+    setSelectedTool(new ConcreteRectangleTool());
     setupTool();
   }
 
   private void setupModel() {
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
     modelCanvas = new ModelCanvas();
-    modelCanvas.addToRender(shapeFactory.createCircle(200, 300, 300));
+    //modelCanvas.addToRender(shapeFactory.createCircle(200, 300, 300));
+    //modelCanvas.addToRender(shapeFactory.createRectangle(0,0,300,300));
   }
 
   private void setupTool() {
-    rootBorderPane.setOnMouseClicked(
-        mouseEvent -> initialMouseClick(mouseEvent.getX(), mouseEvent.getY()));
+//    rootBorderPane.setOnMouseClicked(
+//        mouseEvent -> initialMouseClick(mouseEvent.getX(), mouseEvent.getY()));
     rootBorderPane.setOnMouseDragged(
-        mouseEvent -> selectedTool.startUse(mouseEvent.getX(), mouseEvent.getY()));
+        mouseEvent -> {selectedTool.startUse(mouseEvent.getX(), mouseEvent.getY());mouseEvent.consume();});
     rootBorderPane.setOnMouseReleased(mouseEvent -> stopUse(mouseEvent.getX(), mouseEvent.getY()));
   }
 
@@ -100,12 +102,12 @@ public final class ObPaint extends Application {
 
   private void initialMouseClick(Double x, Double y) {
     Mshape s = selectedTool.initialMouseClick(x, y);
-    modelCanvas.addToRender(s);
+    //modelCanvas.addToRender(s);
   }
 
   private void stopUse(Double x, Double y) {
-    // Shape s=selectedTool.stopUse(x,y);
-    // modelCanvas.addToRender(s);
+    Mshape s=selectedTool.stopUse(x,y);
+     modelCanvas.addToRender(s);
   }
 
   private void render() {

@@ -14,7 +14,7 @@ public class Mpoint implements Cloneable {
     this.z = z;
   }
 
-  Mpoint(int x, int y) {
+  public Mpoint(int x, int y) {
     this(x, y, 0);
   }
 

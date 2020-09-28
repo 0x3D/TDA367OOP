@@ -1,9 +1,12 @@
 package com.teamjeaa.obpaint.view;
 
 import com.teamjeaa.obpaint.model.shapeModel.Mellipse;
+import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 import com.teamjeaa.obpaint.model.shapeModel.Mpolygon;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Polygon;
 
 public class JavaFXDrawVisitor implements DrawVisistor {
   private final BorderPane rootBorderPane;
@@ -25,6 +28,12 @@ public class JavaFXDrawVisitor implements DrawVisistor {
 
   @Override
   public void visitMpolyogon(Mpolygon mpolygon) {
-    // TODO: implement
+    Polygon polygon = new Polygon();
+    for(Mpoint mpoint :mpolygon.getPoints()){
+      polygon.getPoints().addAll((double)mpoint.getX(),(double)mpoint.getY()); //TODO: Make prettier
+    }
+    //polygon.setFill(Color.RED);
+    //polygon.setVisible(true);
+    rootBorderPane.getChildren().add(polygon);
   }
 }
