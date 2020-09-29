@@ -25,6 +25,11 @@ public class JavaFXDrawVisitor implements DrawVisistor {
             mellipse.getPosition().getY(),
             mellipse.getSemiAxesA(),
             mellipse.getSemiAxesB());
+            ellipse.setFill(new Color(
+                    mellipse.getColor().getRed()/255.0,
+                    mellipse.getColor().getGreen()/255.0,
+                    mellipse.getColor().getBlue()/255.0,
+                    mellipse.getColor().getAlpha()/255.0));
     rootBorderPane.getChildren().add(ellipse);
   }
 

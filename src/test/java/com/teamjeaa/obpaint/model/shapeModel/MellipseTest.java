@@ -15,13 +15,15 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Assert;
 
+import java.awt.*;
+
 public class MellipseTest {
     ConcreteShapeFactory concreteShapeFactory = new ConcreteShapeFactory();
 
 
     public Mshape createCircle() {
     	// Circle r = 10, y = 20, x = 15
-         Mshape circle = concreteShapeFactory.createCircle(10,15,20);
+         Mshape circle = concreteShapeFactory.createCircle(10,15,20,Color.BLACK);
          return circle;
     }
    

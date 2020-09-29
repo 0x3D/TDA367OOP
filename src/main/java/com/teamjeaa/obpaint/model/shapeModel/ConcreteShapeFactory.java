@@ -41,8 +41,8 @@ public class ConcreteShapeFactory implements ShapeFactory {
    * @return
    */
   @Override
-  public Mshape createCircle(int radius, int x, int y) {
-    return new Mellipse(new Mpoint(x, y, 0), radius, radius);
+  public Mshape createCircle(int radius, int x, int y,Color color) {
+    return new Mellipse(new Mpoint(x, y, 0), radius, radius, color);
   }
 
   /**

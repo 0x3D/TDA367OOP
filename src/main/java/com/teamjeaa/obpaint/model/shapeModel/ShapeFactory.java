@@ -4,7 +4,7 @@ import java.awt.*;
 
 /** Interface that holds the methods for our creating of the Shapes */
 public interface ShapeFactory {
-  Mshape createCircle(int radius, int x, int y);
+  Mshape createCircle(int radius, int x, int y, Color color);
 
   //TODO: cant be same have to handle
   Mshape createRectangle(int x1, int y1, int x2, int y2, Color color);

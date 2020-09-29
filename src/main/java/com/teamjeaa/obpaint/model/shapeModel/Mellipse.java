@@ -2,6 +2,8 @@ package com.teamjeaa.obpaint.model.shapeModel;
 
 import com.teamjeaa.obpaint.view.DrawVisistor;
 
+import java.awt.*;
+
 public class Mellipse implements Mshape {
   private final Mpoint centerPoint;
 
@@ -11,10 +13,18 @@ public class Mellipse implements Mshape {
   // Semiaxis for y
   private final int semiAxesB;
 
-  Mellipse(Mpoint centerPoint, int semiAxesA, int semiAxesB) {
+  //Color
+  private final Color color;
+
+  Mellipse(Mpoint centerPoint, int semiAxesA, int semiAxesB, Color color) {
     this.centerPoint = centerPoint;
     this.semiAxesA = semiAxesA;
     this.semiAxesB = semiAxesB;
+    this.color=color;
+  }
+
+  public Color getColor() {
+    return color;
   }
 
   @Override
@@ -47,6 +57,6 @@ public class Mellipse implements Mshape {
 
   @Override
   public Mshape translate(int x, int y) {
-    return new Mellipse(new Mpoint(x, y, 0), this.semiAxesA, this.semiAxesB);
+    return new Mellipse(new Mpoint(x, y, 0), this.semiAxesA, this.semiAxesB,this.color);
   }
 }
