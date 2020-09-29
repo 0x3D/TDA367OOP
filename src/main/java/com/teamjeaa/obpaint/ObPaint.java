@@ -5,10 +5,7 @@ import com.teamjeaa.obpaint.model.Observer;
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
-import com.teamjeaa.obpaint.model.toolModel.ConcreteToolFactory;
-import com.teamjeaa.obpaint.model.toolModel.Tool;
-import com.teamjeaa.obpaint.model.toolModel.ToolFactory;
-import com.teamjeaa.obpaint.model.toolModel.ConcreteRectangleTool;
+import com.teamjeaa.obpaint.model.toolModel.*;
 import com.teamjeaa.obpaint.view.JavaFXDrawVisitor;
 import com.teamjeaa.obpaint.view.MainView;
 import javafx.animation.AnimationTimer;
@@ -49,7 +46,7 @@ public final class ObPaint extends Application {
     instance = this;
     observers = new ArrayList<Observer>();
 
-    setSelectedTool(new ConcreteRectangleTool());
+    setSelectedTool(new ConcreteCircleTool());
     setupModel();
     Parent root = setupScene(primaryStage);
   }
