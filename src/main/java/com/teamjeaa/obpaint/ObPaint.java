@@ -44,9 +44,10 @@ public final class ObPaint extends Application {
     instance = this;
     observers = new ArrayList<Observer>();
 
-    setSelectedTool(new ConcreteCircleTool());
+    //setSelectedTool(new ConcreteCircleTool());
     setupModel();
     Parent root = setupScene(primaryStage);
+    setSelectedColor(Color.RED);
   }
 
   private Parent setupScene(Stage primaryStage) {
@@ -121,7 +122,7 @@ public final class ObPaint extends Application {
   }
 
 //TODO Clone
-  public Color getSelectedColor() {
+  public static Color getSelectedColor() {
     return color;
   }
 

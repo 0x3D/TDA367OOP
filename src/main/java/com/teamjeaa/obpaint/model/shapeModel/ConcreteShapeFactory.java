@@ -1,5 +1,6 @@
 package com.teamjeaa.obpaint.model.shapeModel;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,13 +53,13 @@ public class ConcreteShapeFactory implements ShapeFactory {
    * @return
    */
   @Override
-  public Mshape createRectangle(int x1, int y1, int x2, int y2) {
+  public Mshape createRectangle(int x1, int y1, int x2, int y2, Color color) {
     List<Mpoint> mpointList = new ArrayList<>();
     mpointList.add(new Mpoint(x1,y1));
     mpointList.add(new Mpoint(x2,y1));
     mpointList.add(new Mpoint(x2,y2));
     mpointList.add(new Mpoint(x1,y2));
-    return new Mpolygon(mpointList);
+    return new Mpolygon(mpointList, color);
   }
 
 

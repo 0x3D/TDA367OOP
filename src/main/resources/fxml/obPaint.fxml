@@ -15,6 +15,7 @@
                                           <BorderPane fx:id="rootBorderPane" layoutX="-7.0" layoutY="-8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="572.0" style="-fx-border-color: #000000; -fx-background-color: white;" />
          </children>
       </AnchorPane>
+      <AnchorPane layoutY="26.0" prefHeight="649.0" prefWidth="150.0" style="-fx-background-color: -fx-background;" />
 
             <AnchorPane prefHeight="28.5" prefWidth="900.0">
          <children>

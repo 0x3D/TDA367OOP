@@ -2,15 +2,23 @@ package com.teamjeaa.obpaint.model.shapeModel;
 
 import com.teamjeaa.obpaint.view.DrawVisistor;
 
+import java.awt.*;
 import java.util.List;
 
 /** This class provides what a polygon is in our model */
 public class Mpolygon implements Mshape {
   private final List<Mpoint> points;
 
-  Mpolygon(List<Mpoint> points) {
+  public Color getColor() {
+    return color;
+  }
+
+  private final Color color;
+
+  Mpolygon(List<Mpoint> points, Color color) {
     // TODO: This should make a new list
     this.points = points;
+    this.color = color;
   }
 
   /** @return the point in the upper left corner, not necessarily on the figure */

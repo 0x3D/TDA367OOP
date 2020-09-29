@@ -1,5 +1,6 @@
 package com.teamjeaa.obpaint.model.toolModel;
 
+import com.teamjeaa.obpaint.ObPaint;
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
@@ -29,7 +30,7 @@ public class ConcreteRectangleTool implements Tool {
     firstVertice = null;
     secondVertice = null;
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
-    Mshape rect = shapeFactory.createRectangle(fv.getX(),fv.getY(), sv.getX(),sv.getY());
+    Mshape rect = shapeFactory.createRectangle(fv.getX(),fv.getY(), sv.getX(),sv.getY(), ObPaint.getSelectedColor());
     return rect;
   }
 

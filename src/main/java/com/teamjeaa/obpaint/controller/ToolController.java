@@ -2,6 +2,7 @@ package com.teamjeaa.obpaint.controller;
 
 import com.teamjeaa.obpaint.ObPaint;
 import com.teamjeaa.obpaint.model.Observer;
+import com.teamjeaa.obpaint.model.toolModel.ConcreteCircleTool;
 import com.teamjeaa.obpaint.model.toolModel.ConcreteRectangleTool;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -77,6 +78,11 @@ public class ToolController implements Initializable {
     @FXML
     void onEraserButton(ActionEvent event) {
         System.out.println("Eraser");
+    }
+
+    @FXML
+    void onCircleButton(ActionEvent event) {
+        backend.setSelectedTool(new ConcreteCircleTool());
     }
 
     @FXML

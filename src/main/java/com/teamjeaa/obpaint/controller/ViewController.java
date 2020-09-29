@@ -61,7 +61,7 @@ public class ViewController implements Initializable {
         if (darkModeToggle.isSelected()) {
             mainPane.setStyle("-fx-background-color: rgb(45,45,45)");
         } else {
-            mainPane.setStyle("-fx-background-color: transparent");
+            mainPane.setStyle("-fx-background-color: rgb(244,244,244)");
         }
     }
 }

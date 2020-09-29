@@ -1,10 +1,12 @@
 package com.teamjeaa.obpaint.view;
 
+import com.teamjeaa.obpaint.ObPaint;
 import com.teamjeaa.obpaint.model.shapeModel.Mellipse;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 import com.teamjeaa.obpaint.model.shapeModel.Mpolygon;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Polygon;
 
@@ -32,8 +34,11 @@ public class JavaFXDrawVisitor implements DrawVisistor {
     for(Mpoint mpoint :mpolygon.getPoints()){
       polygon.getPoints().addAll((double)mpoint.getX(),(double)mpoint.getY()); //TODO: Make prettier
     }
-    //polygon.setFill(Color.RED);
-    //polygon.setVisible(true);
+    // polygon.setFill(Color.RED);
+    // polygon.setVisible(true);
+    // polygon.setFill(mpolygon.getColor().getRed(),mpolygon.getColor().getGreen(),mpolygon.getColor().getBlue(),mpolygon.getColor().get);
+    polygon.setFill(new Color(mpolygon.getColor().getRed()/255.0,mpolygon.getColor().getGreen()/255.0,mpolygon.getColor().getBlue()/255.0,
+            mpolygon.getColor().getAlpha()/255.0));
     rootBorderPane.getChildren().add(polygon);
   }
 }
