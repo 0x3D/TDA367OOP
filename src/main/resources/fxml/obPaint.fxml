@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+
+<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="900.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane fx:id="canvasViewRoot" layoutX="159.0" layoutY="70.0" prefHeight="545.0" prefWidth="553.0">
+         <children>
+      
+                                          <BorderPane fx:id="rootBorderPane" layoutX="-7.0" layoutY="-8.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="572.0" style="-fx-border-color: #000000; -fx-background-color: white;" />
+         </children>
+      </AnchorPane>
+
+            <AnchorPane prefHeight="28.5" prefWidth="900.0">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="File">
+                  <items>
+                    <MenuItem mnemonicParsing="false" onAction="#onClose" text="Close" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Edit">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="Delete" />
+                  </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="View">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                        <MenuItem mnemonicParsing="false">
+                           <graphic>
+                              <ToggleButton fx:id="darkModeToggle" mnemonicParsing="false" onAction="#darkModeOn" text="DarkMode" />
+                           </graphic>
+                        </MenuItem>
+                  </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Image">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Options">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Help">
+                     <items>
+                        <MenuItem mnemonicParsing="false" text="About" />
+                     </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="-2.0" layoutY="70.0" prefHeight="195.0" prefWidth="150.0" style="-fx-background-color: rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" />
+      <AnchorPane fx:id="toolViewRoot" layoutY="272.0" prefHeight="400.0" prefWidth="150.0" style="-fx-background-color: rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" />
+      <AnchorPane layoutX="752.0" layoutY="67.0" prefHeight="379.0" prefWidth="143.0" style="-fx-background-color: rgb(230,230,230) rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" />
+      <AnchorPane layoutX="753.0" layoutY="455.0" prefHeight="216.0" prefWidth="145.0" style="-fx-background-color: rgb(230,230,230) rgb(230,230,230) rgb(230,230,230) rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" />
+   </children>
+</fx:root>
