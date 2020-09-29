@@ -5,9 +5,12 @@ import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 
+import java.awt.*;
+
 public class ConcreteRectangleTool implements Tool {
   Mpoint firstVertice;
   Mpoint secondVertice;
+
   @Override
   public void initialize() {
 

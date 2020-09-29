@@ -6,19 +6,15 @@ import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 import com.teamjeaa.obpaint.model.toolModel.*;
-import com.teamjeaa.obpaint.view.JavaFXDrawVisitor;
 import com.teamjeaa.obpaint.view.MainView;
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -27,9 +23,11 @@ public final class ObPaint extends Application {
   // Maybe not the static here
   public static Stage primaryStage;
   private Tool selectedTool;
+  private static Color color;
   private ModelCanvas modelCanvas;
   private List<Observer> observers;
   private static ObPaint instance;
+
 
   public static void main(String[] args) {
     launch(args);
@@ -83,9 +81,6 @@ public final class ObPaint extends Application {
     modelCanvas.addToRender(s);
   }
 
-
-  // Testing on the borderPane!!! | We shouldn't add methods to do tests /eric
-
   /** */
   public void mouseXpos() {}
 
@@ -123,5 +118,14 @@ public final class ObPaint extends Application {
   }
   public List<Mshape> getCanvasShapes() {
     return modelCanvas.getShapes();
+  }
+
+//TODO Clone
+  public Color getSelectedColor() {
+    return color;
+  }
+
+  public void setSelectedColor(Color color) {
+    ObPaint.color = color;
   }
 }

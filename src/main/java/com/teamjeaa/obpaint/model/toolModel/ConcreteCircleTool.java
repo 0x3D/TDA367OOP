@@ -5,9 +5,12 @@ import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 
+import java.awt.*;
+
 public class ConcreteCircleTool implements Tool {
     Mpoint centerPoint;
     private int radie;
+    private Color color;
 
     @Override
     public void initialize() {
@@ -38,5 +41,6 @@ public class ConcreteCircleTool implements Tool {
     public int getSize() {
         return 0;
     }
+
 }
 
