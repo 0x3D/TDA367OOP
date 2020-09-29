@@ -29,14 +29,9 @@ import java.util.ResourceBundle;
 public final class ObPaint extends Application {
   // Maybe not the static here
   public static Stage primaryStage;
-  private final ToolFactory toolFactory = new ConcreteToolFactory();
   private Tool selectedTool;
   private ModelCanvas modelCanvas;
-  private BorderPane rootBorderPane;
-  private JavaFXDrawVisitor javaFXDrawVisitor;
-
   private List<Observer> observers;
-
   private static ObPaint instance;
 
   public static void main(String[] args) {
@@ -44,7 +39,7 @@ public final class ObPaint extends Application {
   }
 
   /**
-   * This method starts up JavaFX and initializes the Model, also sets up renderer
+   * This method starts up JavaFX and initializes the Model
    *
    * @param primaryStage
    * @throws Exception
@@ -57,9 +52,6 @@ public final class ObPaint extends Application {
     setSelectedTool(new ConcreteRectangleTool());
     setupModel();
     Parent root = setupScene(primaryStage);
-    //rootBorderPane = projectView.getRootBorderPane();
-    javaFXDrawVisitor = new JavaFXDrawVisitor(rootBorderPane);
-
   }
 
   private Parent setupScene(Stage primaryStage) {
@@ -80,13 +72,6 @@ public final class ObPaint extends Application {
     primaryStage.setMinWidth(900);
     primaryStage.show();
     ObPaint.primaryStage = primaryStage;
-    AnimationTimer animationTimer =
-            new AnimationTimer() {
-              public void handle(long now) {
-                render();
-              }
-            };
-    animationTimer.start();
     return root;
   }
 
@@ -101,15 +86,6 @@ public final class ObPaint extends Application {
     modelCanvas.addToRender(s);
   }
 
-  private void render() {
-
-    // GraphicsContext fgcx = foreground.getGraphicsContext2D();
-    // fgcx.clearRect(0,0,600,600);
-    for (Mshape s : modelCanvas.getShapes()) {
-      // It wants the old one to be removed if already is a child.
-      s.acceptDrawVisitor(javaFXDrawVisitor);
-    }
-  }
 
   // Testing on the borderPane!!! | We shouldn't add methods to do tests /eric
 
@@ -147,5 +123,8 @@ public final class ObPaint extends Application {
   }
   public void removeObserver(Observer observer) {
     observers.remove(observer);
+  }
+  public List<Mshape> getCanvasShapes() {
+    return modelCanvas.getShapes();
   }
 }

@@ -26,8 +26,8 @@ public class ConcreteRectangleTool implements Tool {
     firstVertice = null;
     secondVertice = null;
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
-    return shapeFactory.createRectangle(fv.getX(),fv.getY(),
-            sv.getX(),sv.getY());
+    Mshape rect = shapeFactory.createRectangle(fv.getX(),fv.getY(), sv.getX(),sv.getY());
+    return rect;
   }
 
   @Override

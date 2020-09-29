@@ -72,22 +72,5 @@ public class ProjectController {
    */
 
 
-    private void setupTool() {
-//    rootBorderPane.setOnMouseClicked(
-//      mouseEvent -> initialMouseClick(mouseEvent.getX(), mouseEvent.getY()));
-        rootBorderPane.setOnMouseDragged(
-                mouseEvent -> {backend.getSelectedTool().startUse(mouseEvent.getX(), mouseEvent.getY());mouseEvent.consume();});
-        rootBorderPane.setOnMouseReleased(mouseEvent -> stopUse(mouseEvent.getX(), mouseEvent.getY()));
-    }
-
-    private void initialMouseClick(Double x, Double y) {
-        Mshape s = backend.getSelectedTool().initialMouseClick(x, y);
-        //modelCanvas.addToRender(s);
-    }
-
-    public void stopUse(Double x, Double y) {
-        Mshape s = backend.getSelectedTool().stopUse(x,y);
-        backend.addToRender(s);
-    }
 
 }
