@@ -11,56 +11,62 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Provides the controller for main window
+ *
+ * <p>This controller provides method to control the main window. Like toggling darkmode also set up
+ * the other controllers.
+ */
 public class ViewController implements Initializable {
 
-    @FXML AnchorPane toolViewRoot;
-    @FXML AnchorPane canvasViewRoot;
-    @FXML AnchorPane mainPane;
-    @FXML ToggleButton darkModeToggle;
+  private static ViewController instance;
+  private final ToolController toolController;
+  private final CanvasController canvasController;
+  @FXML AnchorPane toolViewRoot;
+  @FXML AnchorPane canvasViewRoot;
+  @FXML AnchorPane mainPane;
+  @FXML ToggleButton darkModeToggle;
 
-    private final ToolController toolController;
-    private final CanvasController canvasController;
+  private ViewController() {
+    this.toolController = new ToolController();
+    this.canvasController = new CanvasController();
+  }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        toolViewRoot.getChildren().clear();
-        toolViewRoot.getChildren().add(new ToolView());
-
-        canvasViewRoot.getChildren().clear();
-        canvasViewRoot.getChildren().add(new CanvasView());
+  public static ViewController getInstance() {
+    if (instance == null) {
+      instance = new ViewController();
     }
-    private ViewController() {
-        this.toolController = new ToolController();
-        this.canvasController = new CanvasController();
-    }
+    return instance;
+  }
 
-    private static ViewController instance;
-    public static ViewController getInstance() {
-        if (instance == null) {
-            instance = new ViewController();
-        }
-        return instance;
-    }
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    toolViewRoot.getChildren().clear();
+    toolViewRoot.getChildren().add(new ToolView());
 
-    public ToolController getToolController() {
-        return toolController;
-    }
+    canvasViewRoot.getChildren().clear();
+    canvasViewRoot.getChildren().add(new CanvasView());
+  }
 
-    public CanvasController getCanvasController() {
-        return canvasController;
-    }
+  public ToolController getToolController() {
+    return toolController;
+  }
 
-    @FXML
-    public void onClose() {
-        Platform.exit();
-    }
+  public CanvasController getCanvasController() {
+    return canvasController;
+  }
 
-    @FXML
-    public void darkModeOn() {
-        if (darkModeToggle.isSelected()) {
-            mainPane.setStyle("-fx-background-color: rgb(45,45,45)");
-        } else {
-            mainPane.setStyle("-fx-background-color: rgb(244,244,244)");
-        }
+  @FXML
+  public void onClose() {
+    Platform.exit();
+  }
+
+  @FXML
+  public void darkModeOn() {
+    if (darkModeToggle.isSelected()) {
+      mainPane.setStyle("-fx-background-color: rgb(45,45,45)");
+    } else {
+      mainPane.setStyle("-fx-background-color: rgb(244,244,244)");
     }
+  }
 }

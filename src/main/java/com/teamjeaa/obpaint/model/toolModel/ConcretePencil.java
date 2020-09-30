@@ -16,7 +16,6 @@ public class ConcretePencil implements Tool {
     this.size = size;
   }
 
-
   @Override
   public void startUse(Double x1, Double y1) {}
 
@@ -29,6 +28,4 @@ public class ConcretePencil implements Tool {
   public Mshape initialMouseClick(double x, double y) {
     return null;
   }
-
-
 }

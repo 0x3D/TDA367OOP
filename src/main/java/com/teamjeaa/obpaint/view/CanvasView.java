@@ -8,16 +8,15 @@ import java.io.IOException;
 
 public class CanvasView extends BorderPane {
 
-    public CanvasView() {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/canvasView.fxml"));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(ViewController.getInstance().getCanvasController());
+  public CanvasView() {
+    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/canvasView.fxml"));
+    fxmlLoader.setRoot(this);
+    fxmlLoader.setController(ViewController.getInstance().getCanvasController());
 
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
+    try {
+      fxmlLoader.load();
+    } catch (IOException exception) {
+      throw new RuntimeException(exception);
     }
-
+  }
 }

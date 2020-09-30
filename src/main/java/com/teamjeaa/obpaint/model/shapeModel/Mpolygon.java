@@ -8,17 +8,16 @@ import java.util.List;
 /** This class provides what a polygon is in our model */
 public class Mpolygon implements Mshape {
   private final List<Mpoint> points;
-
-  public Color getColor() {
-    return color;
-  }
-
   private final Color color;
 
   Mpolygon(List<Mpoint> points, Color color) {
     // TODO: This should make a new list
     this.points = points;
     this.color = color;
+  }
+
+  public Color getColor() {
+    return color;
   }
 
   /** @return the point in the upper left corner, not necessarily on the figure */
@@ -79,7 +78,7 @@ public class Mpolygon implements Mshape {
   }
 
   public List<Mpoint> getPoints() {
-    //this has to duplicate list and points! TODO: implement
+    // this has to duplicate list and points! TODO: implement
     return points;
   }
 }

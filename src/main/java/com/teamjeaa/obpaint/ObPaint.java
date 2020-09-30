@@ -5,7 +5,7 @@ import com.teamjeaa.obpaint.model.Observer;
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
-import com.teamjeaa.obpaint.model.toolModel.*;
+import com.teamjeaa.obpaint.model.toolModel.Tool;
 import com.teamjeaa.obpaint.view.MainView;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -14,7 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -22,15 +22,27 @@ import java.util.ResourceBundle;
 public final class ObPaint extends Application {
   // Maybe not the static here
   public static Stage primaryStage;
-  private Tool selectedTool;
   private static Color color;
+  private static ObPaint instance;
+  private Tool selectedTool;
   private ModelCanvas modelCanvas;
   private List<Observer> observers;
-  private static ObPaint instance;
-
 
   public static void main(String[] args) {
     launch(args);
+  }
+
+  public static ObPaint getInstance() {
+    return instance;
+  }
+
+  // TODO Clone
+  public static Color getSelectedColor() {
+    return color;
+  }
+
+  public void setSelectedColor(Color color) {
+    ObPaint.color = color;
   }
 
   /**
@@ -43,7 +55,7 @@ public final class ObPaint extends Application {
     instance = this;
     observers = new ArrayList<>();
 
-    //setSelectedTool(new ConcreteCircleTool());
+    // setSelectedTool(new ConcreteCircleTool());
     setupModel();
     Parent root = setupScene(primaryStage);
     setSelectedColor(Color.RED);
@@ -52,12 +64,16 @@ public final class ObPaint extends Application {
   private Parent setupScene(Stage primaryStage) {
     Parent root = new MainView();
 
-    primaryStage.setOnCloseRequest(e->{
-      try{stop();}
-      catch (Exception exception){exception.printStackTrace();}
-      Platform.exit();
-      System.exit(0);
-    });
+    primaryStage.setOnCloseRequest(
+        e -> {
+          try {
+            stop();
+          } catch (Exception exception) {
+            exception.printStackTrace();
+          }
+          Platform.exit();
+          System.exit(0);
+        });
 
     ResourceBundle obPaintResourceBundle = ResourceBundle.getBundle("obPaint");
     primaryStage.setTitle(obPaintResourceBundle.getString("application.name"));
@@ -73,14 +89,13 @@ public final class ObPaint extends Application {
   private void setupModel() {
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
     modelCanvas = new ModelCanvas();
-    //modelCanvas.addToRender(shapeFactory.createCircle(200, 300, 300));
-    //modelCanvas.addToRender(shapeFactory.createRectangle(0,0,300,300));
+    // modelCanvas.addToRender(shapeFactory.createCircle(200, 300, 300));
+    // modelCanvas.addToRender(shapeFactory.createRectangle(0,0,300,300));
   }
 
   public void addToRender(Mshape s) {
     modelCanvas.addToRender(s);
   }
-
 
   /** @return the selected tool */
   public Tool getSelectedTool() {
@@ -99,26 +114,15 @@ public final class ObPaint extends Application {
     }
   }
 
-  public static ObPaint getInstance() {
-    return instance;
-  }
-
   public void addObserver(Observer observer) {
     observers.add(observer);
   }
+
   public void removeObserver(Observer observer) {
     observers.remove(observer);
   }
+
   public List<Mshape> getCanvasShapes() {
     return modelCanvas.getShapes();
-  }
-
-//TODO Clone
-  public static Color getSelectedColor() {
-    return color;
-  }
-
-  public void setSelectedColor(Color color) {
-    ObPaint.color = color;
   }
 }
