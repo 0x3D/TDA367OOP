@@ -1,19 +1,15 @@
 package com.teamjeaa.obpaint.controller;
 
 import com.teamjeaa.obpaint.ObPaint;
-import com.teamjeaa.obpaint.model.Observer;
 import com.teamjeaa.obpaint.model.toolModel.ConcreteCircleTool;
 import com.teamjeaa.obpaint.model.toolModel.ConcreteRectangleTool;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
@@ -21,7 +17,7 @@ import java.util.ResourceBundle;
 
 public class ToolController implements Initializable {
 
-    ObPaint backend = ObPaint.getInstance();
+    private final ObPaint backend = ObPaint.getInstance();
 
     @FXML
     private ColorPicker cp;

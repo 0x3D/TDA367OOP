@@ -1,11 +1,8 @@
 package com.teamjeaa.obpaint.model;
 
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
-import com.teamjeaa.obpaint.model.shapeModel.Mpolygon;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 import org.junit.Assert;
 import org.junit.Test;
 

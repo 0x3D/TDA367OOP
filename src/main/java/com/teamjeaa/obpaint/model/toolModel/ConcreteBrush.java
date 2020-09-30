@@ -17,12 +17,8 @@ public class ConcreteBrush implements Tool {
    */
   public ConcreteBrush(int size) {
     this.size = size;
-    initialize();
   }
 
-  /** initialize our brush */
-  @Override
-  public void initialize() {}
 
   @Override
   public void startUse(Double x1, Double y1) {
@@ -44,14 +40,5 @@ public class ConcreteBrush implements Tool {
     return null;
   }
 
-  /**
-   * getter for get the size of the brush
-   *
-   * @return brushsize
-   */
-  // TODO is this really fitting for public interface?
-  @Override
-  public int getSize() {
-    return size;
-  }
+
 }

@@ -1,7 +1,6 @@
 package com.teamjeaa.obpaint.controller;
 
 import com.teamjeaa.obpaint.view.CanvasView;
-import com.teamjeaa.obpaint.view.JavaFXDrawVisitor;
 import com.teamjeaa.obpaint.view.ToolView;
 import javafx.application.Platform;
 import javafx.fxml.FXML;

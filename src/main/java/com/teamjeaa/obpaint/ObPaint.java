@@ -37,12 +37,11 @@ public final class ObPaint extends Application {
    * This method starts up JavaFX and initializes the Model
    *
    * @param primaryStage
-   * @throws Exception
    */
   @Override
-  public void start(Stage primaryStage) throws Exception {
+  public void start(Stage primaryStage) {
     instance = this;
-    observers = new ArrayList<Observer>();
+    observers = new ArrayList<>();
 
     //setSelectedTool(new ConcreteCircleTool());
     setupModel();
@@ -82,13 +81,6 @@ public final class ObPaint extends Application {
     modelCanvas.addToRender(s);
   }
 
-  /** */
-  public void mouseXpos() {}
-
-  /** */
-  public void mouseYpos() {}
-
-  // END
 
   /** @return the selected tool */
   public Tool getSelectedTool() {

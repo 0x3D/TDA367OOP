@@ -14,12 +14,8 @@ public class ConcretePencil implements Tool {
    */
   public ConcretePencil(int size) {
     this.size = size;
-    initialize();
   }
 
-  /** initializing our pencil */
-  @Override
-  public void initialize() {}
 
   @Override
   public void startUse(Double x1, Double y1) {}
@@ -34,13 +30,5 @@ public class ConcretePencil implements Tool {
     return null;
   }
 
-  /**
-   * getter for the pencilSize Most for the tests
-   *
-   * @return size of the pencil
-   */
-  // TODO is this really fitting for public interface?
-  public int getSize() {
-    return size;
-  }
+
 }

@@ -5,10 +5,6 @@ import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 /** Class that holds the logic when we move all of our tools */
 public class ConcreteMoveTool implements Tool {
 
-  /** initializing from the TOOL- interface */
-  @Override
-  public void initialize() {}
-
   @Override
   public void startUse(Double x1, Double y1) {}
 

@@ -5,7 +5,6 @@ import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 
 /** Tool interface that holds the methods that our tools will use */
 public interface Tool {
-  void initialize();
 
   void startUse(Double x1, Double y1);
 
@@ -13,11 +12,4 @@ public interface Tool {
 
   Mshape initialMouseClick(double x, double y);
 
-  /**
-   * Test method for now
-   *
-   * @return a size of a tool
-   */
-  // TODO is this really fitting for public interface?
-  int getSize();
 }

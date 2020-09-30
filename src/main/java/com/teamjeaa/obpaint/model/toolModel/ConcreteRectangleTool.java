@@ -6,16 +6,8 @@ import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 
-import java.awt.*;
-
 public class ConcreteRectangleTool implements Tool {
-  Mpoint firstVertice;
-  Mpoint secondVertice;
-
-  @Override
-  public void initialize() {
-
-  }
+  private Mpoint firstVertice;
 
   @Override
   public void startUse(Double x1, Double y1) {
@@ -24,14 +16,11 @@ public class ConcreteRectangleTool implements Tool {
 
   @Override
   public Mshape stopUse(Double x, Double y) {
-    secondVertice = new Mpoint(x.intValue(),y.intValue());
+    Mpoint secondVertice = new Mpoint(x.intValue(), y.intValue());
     Mpoint fv = firstVertice.clone();
-    Mpoint sv = secondVertice.clone();
     firstVertice = null;
-    secondVertice = null;
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
-    Mshape rect = shapeFactory.createRectangle(fv.getX(),fv.getY(), sv.getX(),sv.getY(), ObPaint.getSelectedColor());
-    return rect;
+    return shapeFactory.createRectangle(fv.getX(),fv.getY(), secondVertice.getX(),secondVertice.getY(), ObPaint.getSelectedColor());
   }
 
   @Override
@@ -39,8 +28,5 @@ public class ConcreteRectangleTool implements Tool {
     return null;
   }
 
-  @Override
-  public int getSize() {
-    return 0;
-  }
+
 }

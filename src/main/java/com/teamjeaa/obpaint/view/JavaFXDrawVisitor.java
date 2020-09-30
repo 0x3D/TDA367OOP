@@ -1,12 +1,10 @@
 package com.teamjeaa.obpaint.view;
 
-import com.teamjeaa.obpaint.ObPaint;
 import com.teamjeaa.obpaint.model.shapeModel.Mellipse;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 import com.teamjeaa.obpaint.model.shapeModel.Mpolygon;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Polygon;
 

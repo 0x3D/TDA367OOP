@@ -10,13 +10,7 @@ import java.awt.*;
 
 public class ConcreteCircleTool implements Tool {
     Mpoint centerPoint;
-    private int radie;
     private Color color;
-
-    @Override
-    public void initialize() {
-
-    }
 
     @Override
     public void startUse(Double x1, Double y1) {
@@ -27,21 +21,15 @@ public class ConcreteCircleTool implements Tool {
     public Mshape stopUse(Double x, Double y) {
         ShapeFactory shapeFactory = new ConcreteShapeFactory();
         Mpoint cloneStartCenter = centerPoint.clone();
-        radie = (int) Math.sqrt(Math.pow(cloneStartCenter.getX()-x.intValue(),2)
-                + Math.pow(cloneStartCenter.getY()-y.intValue(),2));
-        Mshape circle = shapeFactory.createCircle(radie,centerPoint.getX(),centerPoint.getY(),
+        int radie = (int) Math.sqrt(Math.pow(cloneStartCenter.getX() - x.intValue(), 2)
+                + Math.pow(cloneStartCenter.getY() - y.intValue(), 2));
+        return shapeFactory.createCircle(radie,centerPoint.getX(),centerPoint.getY(),
                 ObPaint.getSelectedColor());
-        return circle;
     }
 
     @Override
     public Mshape initialMouseClick(double x, double y) {
         return null;
-    }
-
-    @Override
-    public int getSize() {
-        return 0;
     }
 
 }

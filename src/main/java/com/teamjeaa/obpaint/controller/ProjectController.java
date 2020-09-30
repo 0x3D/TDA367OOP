@@ -8,7 +8,7 @@ import javafx.scene.control.MenuItem;
  * Controller
  */
 public class ProjectController {
-    public FileManager fileChooser = new FileManager();
+    public final FileManager fileChooser = new FileManager();
     @FXML
     MenuItem fileChoser;
     /** Lite go testning bara */

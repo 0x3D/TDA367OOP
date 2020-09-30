@@ -16,15 +16,13 @@ public class ModelCanvas {
   // TODO: Add ? extends
   private final List<Mshape> shapes;
   // TODO: Fix typo here
-  private final List<? extends Updateable> updateables;
 
-  private ModelCanvas(List<Mshape> shapes, List<? extends Updateable> updateables) {
+  private ModelCanvas(List<Mshape> shapes) {
     this.shapes = shapes;
-    this.updateables = updateables;
   }
 
   public ModelCanvas() {
-    this(new ArrayList<>(), new ArrayList<>());
+    this(new ArrayList<>());
   }
 
   public void addToRender(Mshape shape) {

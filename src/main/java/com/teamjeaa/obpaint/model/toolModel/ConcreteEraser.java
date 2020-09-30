@@ -16,12 +16,8 @@ public class ConcreteEraser implements Tool {
    */
   public ConcreteEraser(int size) {
     this.size = size;
-    initialize();
   }
 
-  /** initializing the eraser */
-  @Override
-  public void initialize() {}
 
   @Override
   public void startUse(Double x1, Double y1) {}
