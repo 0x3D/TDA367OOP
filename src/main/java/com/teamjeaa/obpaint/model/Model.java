@@ -5,7 +5,6 @@ import com.teamjeaa.obpaint.controller.CanvasController;
 import com.teamjeaa.obpaint.controller.ToolController;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.toolModel.*;
-import javafx.stage.Stage;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,19 +24,15 @@ import java.util.List;
  * @see ToolController
  * @see Color
  * @see List
- * @see Observer
+ * @see SelectedToolObserver
  * @see Tool
  * @since 0.1-SNAPSHOT
  */
 public final class Model {
-  // Maybe not the static here
-
-
-  public static Stage primaryStage;
   private static Color color;
   private Tool selectedTool;
   private ModelCanvas modelCanvas;
-  private List<Observer> observers;
+  private List<SelectedToolObserver> observers;
 
   private static Model instance;
 
@@ -76,7 +71,7 @@ public final class Model {
   }
 
   private void notifyObservers() {
-    for (Observer o : observers) {
+    for (SelectedToolObserver o : observers) {
       o.selectedToolHasChanged();
     }
   }
@@ -96,7 +91,7 @@ public final class Model {
    * Observer Pattern. Adds a Observer to the list of observer.
    * @param observer The Observer that should be notified in case of change.
    */
-  public void addObserver(Observer observer) {
+  public void addObserver(SelectedToolObserver observer) {
     observers.add(observer);
   }
 
@@ -104,7 +99,7 @@ public final class Model {
    * Removes choosen Observer from list of Observers. Vill no longer be notified.
    * @param observer Observer to be removed from list and no longer will be notified in case of change.
    */
-  public void removeObserver(Observer observer) {
+  public void removeObserver(SelectedToolObserver observer) {
     observers.remove(observer);
   }
 

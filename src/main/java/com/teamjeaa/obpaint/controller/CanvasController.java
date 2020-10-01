@@ -1,7 +1,7 @@
 package com.teamjeaa.obpaint.controller;
 
 import com.teamjeaa.obpaint.model.Model;
-import com.teamjeaa.obpaint.model.Observer;
+import com.teamjeaa.obpaint.model.SelectedToolObserver;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.toolModel.Tool;
 import com.teamjeaa.obpaint.view.JavaFXDrawVisitor;
@@ -16,17 +16,25 @@ import java.util.ResourceBundle;
 /**
  * This class provides a controller for the painting area
  *
- * <p>This class sets up our DrawVisitor and provides the code to render Responsibility Used by Uses
+ * <p>This class sets up our DrawVisitor and provides the code to render Responsibility
+ * The class implements the interfaces Initializable and Observer and is used by canvasView.fxml
  *
  * @author Jonas N
  * @since 0.1-SNAPSHOT
  */
-public class CanvasController implements Initializable, Observer {
-  @FXML BorderPane rootBorderPane;
-  Model backend;
-  Tool selectedTool;
+public class CanvasController implements Initializable, SelectedToolObserver {
+  private @FXML BorderPane rootBorderPane;
+  private Model backend;
+  private Tool selectedTool;
   private JavaFXDrawVisitor javaFXDrawVisitor;
 
+
+  /**
+   * This method initializes the controller for CanvasView
+   *
+   * @param location - The location used to resolve relative paths for the root object
+   * @param resources - The resources used to localize the root object
+   */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     backend = Model.getInstance();
@@ -51,10 +59,14 @@ public class CanvasController implements Initializable, Observer {
     }
   }
 
+  /**
+   * Used by the model through Observer interface to notify all observers that the selected tool has changed
+   */
   @Override
   public void selectedToolHasChanged() {
     selectedTool = backend.getSelectedTool();
   }
+
 
   private void initMouseActions() {
     //    rootBorderPane.setOnMouseClicked(
@@ -72,7 +84,8 @@ public class CanvasController implements Initializable, Observer {
   //    Mshape s = selectedTool.initialMouseClick(x, y);
   //  }
 
-  public void stopUse(Double x, Double y) {
+
+  private void stopUse(Double x, Double y) {
     System.out.println(x + " " + y);
     Mshape s = selectedTool.stopUse(x, y);
     backend.addToRender(s);

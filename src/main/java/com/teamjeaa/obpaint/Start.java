@@ -1,6 +1,5 @@
 package com.teamjeaa.obpaint;
 
-import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.view.MainView;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -8,11 +7,22 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-
 import java.util.ResourceBundle;
 
+/**
+ * This class is used to start the application
+ *
+ * @author Jonas N
+ * @since 0.1 SNAPSHOT
+ *
+ */
 public final class Start extends Application {
 
+    /**
+     * Main method of the program
+     *
+     * @param args - args
+     */
   public static void main(String[] args) {
     launch(args);
   }
@@ -20,7 +30,7 @@ public final class Start extends Application {
   /**
    * This method starts up JavaFX and initializes the Model
    *
-   * @param primaryStage
+   * @param primaryStage - The rootview of the project
    */
   @Override
   public void start(Stage primaryStage) {
@@ -48,6 +58,5 @@ public final class Start extends Application {
     primaryStage.setMinHeight(680);
     primaryStage.setMinWidth(900);
     primaryStage.show();
-    Model.primaryStage = primaryStage;
   }
 }

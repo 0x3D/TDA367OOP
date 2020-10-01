@@ -16,10 +16,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Provides a controller for tools.
+ * This class provides a controller for the tools
  *
- * <p>This class provides methods for the graphical interface to change which tool is selected in
- * the model * Responsibility Used by Uses
+ * <p>This class sets up a group of buttons to tell the model what tool is selected
+ * The class implements the interface Initializable and is used by toolView.fxml
  *
  * @author Jonas N
  * @since 0.1-SNAPSHOT
@@ -27,7 +27,6 @@ import java.util.ResourceBundle;
 public class ToolController implements Initializable {
 
   private final Model backend = Model.getInstance();
-  ToggleGroup toolButtons;
   @FXML private ColorPicker cp;
   @FXML private ToggleButton pencilButton;
   @FXML private ToggleButton brushButton;
@@ -35,20 +34,20 @@ public class ToolController implements Initializable {
   @FXML private ToggleButton circleButton;
   @FXML private ToggleButton rectangleButton;
 
+  /**
+   * This method initializes the controller for ToolView
+   *
+   * @param location - The location used to resolve relative paths for the root object
+   * @param resources - The resources used to localize the root object
+   */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    toolButtons = new ToggleGroup();
+    ToggleGroup toolButtons = new ToggleGroup();
     pencilButton.setToggleGroup(toolButtons);
     brushButton.setToggleGroup(toolButtons);
     eraserButton.setToggleGroup(toolButtons);
     circleButton.setToggleGroup(toolButtons);
     rectangleButton.setToggleGroup(toolButtons);
-    /*toolButtons.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-        @Override
-        public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
-            newValue.
-        }
-    });*/
 
     cp.valueProperty()
         .addListener(
@@ -65,17 +64,17 @@ public class ToolController implements Initializable {
   }
 
   @FXML
-  void onEraserButton(ActionEvent event) {
+  private void onEraserButton(ActionEvent event) {
     System.out.println("Eraser");
   }
 
   @FXML
-  void onCircleButton(ActionEvent event) {
+  private void onCircleButton(ActionEvent event) {
     backend.setSelectedTool(new ConcreteCircleTool());
   }
 
   @FXML
-  void onRectangleButton(ActionEvent event) {
+  private void onRectangleButton(ActionEvent event) {
     backend.setSelectedTool(new ConcreteRectangleTool());
   }
 }
