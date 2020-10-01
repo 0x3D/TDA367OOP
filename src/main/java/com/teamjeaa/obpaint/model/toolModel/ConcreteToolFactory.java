@@ -2,7 +2,12 @@ package com.teamjeaa.obpaint.model.toolModel;
 
 import java.util.Scanner;
 
-/** Holds the logic of out Factory Creates all the Tools */
+/**
+ * Holds the logic of out Factory Creates all the Tools, Used By NONE, Uses Scanner, Tool,
+ * ToolFactory,ConcretePencil,ConcreteBrush,ConcreteEraser and ConcreteMoveTool
+ *
+ * @author Axel H
+ */
 public class ConcreteToolFactory implements ToolFactory {
 
   /**
@@ -37,7 +42,7 @@ public class ConcreteToolFactory implements ToolFactory {
   }
 
   /**
-   * //TODO
+   * creating a ConcreteMoveTool its public because//TODO
    *
    * @return new ConcreteMoveTool
    */
