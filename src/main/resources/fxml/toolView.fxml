@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<fx:root fx:id="toolView" prefHeight="400.0" prefWidth="150.0" style="-fx-background-color: rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="toolView" prefHeight="400.0" prefWidth="150.0" style="-fx-background-color: rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamjeaa.obpaint.controller.ToolController">
    <children>
       <ColorPicker fx:id="cp" editable="true" layoutX="9.0" layoutY="313.0" prefHeight="70.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-border-color: grey;" />
       <ToggleButton fx:id="pencilButton" layoutX="9.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" selected="true">
@@ -55,4 +55,4 @@
          </graphic>
       </ToggleButton>
    </children>
-</fx:root>
+</AnchorPane>

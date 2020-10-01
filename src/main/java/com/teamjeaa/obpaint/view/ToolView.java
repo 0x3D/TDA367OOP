@@ -1,6 +1,6 @@
+/*
 package com.teamjeaa.obpaint.view;
 
-import com.teamjeaa.obpaint.controller.ViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
@@ -11,9 +11,9 @@ public class ToolView extends AnchorPane {
 
   public ToolView() {
 
-    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/toolView.fxml"));
-    fxmlLoader.setRoot(this);
-    fxmlLoader.setController(ViewController.getInstance().getToolController());
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/toolView.fxml"));
+        fxmlLoader.setRoot(this);
+        //fxmlLoader.setController(ViewController.getInstance().getToolController());
 
     try {
       fxmlLoader.load();
@@ -22,3 +22,6 @@ public class ToolView extends AnchorPane {
     }
   }
 }
+*/
+
+

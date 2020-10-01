@@ -1,6 +1,6 @@
 package com.teamjeaa.obpaint.controller;
 
-import com.teamjeaa.obpaint.ObPaint;
+import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.Observer;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.toolModel.Tool;
@@ -22,26 +22,27 @@ import java.util.ResourceBundle;
  * @since 0.1-SNAPSHOT
  */
 public class CanvasController implements Initializable, Observer {
-  @FXML BorderPane rootBorderPane;
-  ObPaint backend;
-  Tool selectedTool;
-  private JavaFXDrawVisitor javaFXDrawVisitor;
+    @FXML
+    BorderPane rootBorderPane;
+    Model backend;
+    Tool selectedTool;
+    private JavaFXDrawVisitor javaFXDrawVisitor;
 
-  @Override
-  public void initialize(URL location, ResourceBundle resources) {
-    backend = ObPaint.getInstance();
-    selectedTool = backend.getSelectedTool();
-    backend.addObserver(this);
-    initMouseActions();
-    javaFXDrawVisitor = new JavaFXDrawVisitor(rootBorderPane);
-    AnimationTimer animationTimer =
-        new AnimationTimer() {
-          public void handle(long now) {
-            render();
-          }
-        };
-    animationTimer.start();
-  }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        backend = Model.getInstance();
+        selectedTool = backend.getSelectedTool();
+        backend.addObserver(this);
+        initMouseActions();
+        javaFXDrawVisitor = new JavaFXDrawVisitor(rootBorderPane);
+        AnimationTimer animationTimer =
+                new AnimationTimer() {
+                    public void handle(long now) {
+                        render();
+                    }
+                };
+        animationTimer.start();
+    }
 
   private void render() {
 
