@@ -18,8 +18,8 @@ import java.util.ResourceBundle;
 /**
  * This class provides a controller for the tools
  *
- * <p>This class sets up a group of buttons to tell the model what tool is selected
- * The class implements the interface Initializable and is used by toolView.fxml
+ * <p>This class sets up a group of buttons to tell the model what tool is selected The class
+ * implements the interface Initializable and is used by toolView.fxml
  *
  * @author Jonas N
  * @since 0.1-SNAPSHOT

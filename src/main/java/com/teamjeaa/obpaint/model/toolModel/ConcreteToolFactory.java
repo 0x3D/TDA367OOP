@@ -57,7 +57,8 @@ public class ConcreteToolFactory implements ToolFactory {
    * @return size from the Terminal
    */
   public int initFinalSize() {
-    // TODO get in from a text field or a scroller to get an integer instead of typing in the terminal
+    // TODO get in from a text field or a scroller to get an integer instead of typing in the
+    // terminal
     Scanner sc = new Scanner(System.in);
     System.out.println("Enter Size on your tool: ");
     return sc.nextInt();

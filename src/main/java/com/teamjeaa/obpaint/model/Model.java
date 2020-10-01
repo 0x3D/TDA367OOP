@@ -4,18 +4,19 @@ import com.teamjeaa.obpaint.Start;
 import com.teamjeaa.obpaint.controller.CanvasController;
 import com.teamjeaa.obpaint.controller.ToolController;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
-import com.teamjeaa.obpaint.model.toolModel.*;
+import com.teamjeaa.obpaint.model.toolModel.ConcreteCircleTool;
+import com.teamjeaa.obpaint.model.toolModel.ConcreteRectangleTool;
+import com.teamjeaa.obpaint.model.toolModel.Tool;
+
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <p>
  * Responsibility Offers the most vital parts of the model without exposing. Creates ModelCanvas and
- * holds List with Observers
- * Used by Start, CanvasController , ConcreteCircleTool, ConcreteRectangleTool, ToolController
- * Uses Color, List, Observer, Tool
- * </p>
+ * holds List with Observers Used by Start, CanvasController , ConcreteCircleTool,
+ * ConcreteRectangleTool, ToolController Uses Color, List, Observer, Tool
+ *
  * @author Jonas N
  * @see CanvasController
  * @see ConcreteCircleTool
@@ -30,12 +31,10 @@ import java.util.List;
  */
 public final class Model {
   private static Color color;
+  private static Model instance;
+  private final List<SelectedToolObserver> observers;
   private Tool selectedTool;
   private ModelCanvas modelCanvas;
-  private final List<SelectedToolObserver> observers;
-
-  private static Model instance;
-
 
   private Model() {
     instance = this;
@@ -44,12 +43,37 @@ public final class Model {
     setupModel();
   }
 
+  /**
+   * Singleton pattern. If instance of Model is created it gives requesting class reference to
+   * object.
+   *
+   * @return instance of the Model.
+   */
+  public static Model getInstance() {
+    if (instance == null) {
+      instance = new Model();
+    }
+    return instance;
+  }
+
+  /** @return Returns the JavaAWT Color that is selected from Controller. */
+  // TODO Clone
+  public static Color getSelectedColor() {
+    return color;
+  }
+
+  /** @param color Java AWT Color */
+  public void setSelectedColor(Color color) {
+    Model.color = color;
+  }
+
   private void setupModel() {
     modelCanvas = new ModelCanvas();
   }
 
   /**
    * Adds received instance of Mshape to ModelCanvas list for render.
+   *
    * @param s some kind of Mshape.
    */
   public void addToRender(Mshape s) {
@@ -62,8 +86,11 @@ public final class Model {
   }
 
   /**
-   * This method is used to save a tool when the user selects it. Uses Observer pattern to notify observers.
-   * @param selectedTool Sets the chosen tool to selected for user in order to be able to create som kind of shape.
+   * This method is used to save a tool when the user selects it. Uses Observer pattern to notify
+   * observers.
+   *
+   * @param selectedTool Sets the chosen tool to selected for user in order to be able to create som
+   *     kind of shape.
    */
   public void setSelectedTool(Tool selectedTool) {
     this.selectedTool = selectedTool;
@@ -77,18 +104,8 @@ public final class Model {
   }
 
   /**
-   * Singleton pattern. If instance of Model is created it gives requesting class reference to object.
-   * @return instance of the Model.
-   */
-  public static Model getInstance() {
-    if (instance == null) {
-      instance = new Model();
-    }
-    return instance;
-  }
-
-  /**
    * Observer Pattern. Adds a Observer to the list of observer.
+   *
    * @param observer The Observer that should be notified in case of change.
    */
   public void addObserver(SelectedToolObserver observer) {
@@ -97,33 +114,16 @@ public final class Model {
 
   /**
    * Removes chosen Observer from list of Observers. Vill no longer be notified.
-   * @param observer Observer to be removed from list and no longer will be notified in case of change.
+   *
+   * @param observer Observer to be removed from list and no longer will be notified in case of
+   *     change.
    */
   public void removeObserver(SelectedToolObserver observer) {
     observers.remove(observer);
   }
 
-  /**
-   * @return Returns the list of Mshapes collected from modelCanvas.
-   */
+  /** @return Returns the list of Mshapes collected from modelCanvas. */
   public List<Mshape> getCanvasShapes() {
     return modelCanvas.getShapes();
-  }
-
-  /**
-   *
-   * @return Returns the JavaAWT Color that is selected from Controller.
-   */
-  // TODO Clone
-  public static Color getSelectedColor() {
-    return color;
-  }
-
-  /**
-   *
-   * @param color Java AWT Color
-   */
-  public void setSelectedColor(Color color) {
-    Model.color = color;
   }
 }

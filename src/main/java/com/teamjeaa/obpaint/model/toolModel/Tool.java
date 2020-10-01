@@ -17,8 +17,8 @@ import com.teamjeaa.obpaint.model.shapeModel.Mshape;
  */
 public interface Tool {
   /**
-   * StartUse is a method that takes the mouse position x1 and y1, and we define what startUse should
-   * do on the object that implements this Interface.
+   * StartUse is a method that takes the mouse position x1 and y1, and we define what startUse
+   * should do on the object that implements this Interface.
    *
    * @param x1 the x value (Mainly from the mouse)
    * @param y1 the y value (Mainly from the mouse)

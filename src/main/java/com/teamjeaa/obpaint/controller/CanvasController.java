@@ -16,8 +16,8 @@ import java.util.ResourceBundle;
 /**
  * This class provides a controller for the painting area
  *
- * <p>This class sets up our DrawVisitor and provides the code to render Responsibility
- * The class implements the interfaces Initializable and Observer and is used by canvasView.fxml
+ * <p>This class sets up our DrawVisitor and provides the code to render Responsibility The class
+ * implements the interfaces Initializable and Observer and is used by canvasView.fxml
  *
  * @author Jonas N
  * @since 0.1-SNAPSHOT
@@ -27,7 +27,6 @@ public class CanvasController implements Initializable, SelectedToolObserver {
   private Model backend;
   private Tool selectedTool;
   private JavaFXDrawVisitor javaFXDrawVisitor;
-
 
   /**
    * This method initializes the controller for CanvasView
@@ -60,13 +59,13 @@ public class CanvasController implements Initializable, SelectedToolObserver {
   }
 
   /**
-   * Used by the model through Observer interface to notify all observers that the selected tool has changed
+   * Used by the model through Observer interface to notify all observers that the selected tool has
+   * changed
    */
   @Override
   public void selectedToolHasChanged() {
     selectedTool = backend.getSelectedTool();
   }
-
 
   private void initMouseActions() {
     //    rootBorderPane.setOnMouseClicked(
@@ -83,7 +82,6 @@ public class CanvasController implements Initializable, SelectedToolObserver {
   //  private void initialMouseClick(Double x, Double y) {
   //    Mshape s = selectedTool.initialMouseClick(x, y);
   //  }
-
 
   private void stopUse(Double x, Double y) {
     System.out.println(x + " " + y);

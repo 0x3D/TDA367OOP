@@ -7,12 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class is used to store all the created objects by the user in canvas
- * The class is used by the model class
+ * This class is used to store all the created objects by the user in canvas The class is used by
+ * the model class
  *
  * @author Erik R
  * @since 0.1 SNAPSHOT
- *
  */
 public class ModelCanvas {
 
@@ -23,13 +22,10 @@ public class ModelCanvas {
     this.shapes = shapes;
   }
 
-  /**
-   * Initializes an empty model canvas object
-   */
+  /** Initializes an empty model canvas object */
   public ModelCanvas() {
     this(new ArrayList<>());
   }
-
 
   /**
    * Adds a shape to a list with objects created by the user

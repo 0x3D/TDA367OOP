@@ -16,17 +16,18 @@ import com.teamjeaa.obpaint.view.DrawVisitor;
  * @see Mpolygon
  */
 public interface Mshape {
-  /** @return Position of the Mshape as a Mpoint*/
+  /** @return Position of the Mshape as a Mpoint */
   Mpoint getPosition();
 
-  /** @return Width of the Mshape*/
+  /** @return Width of the Mshape */
   int getWidth();
 
-  /** @return Height of the Mshape*/
+  /** @return Height of the Mshape */
   int getHeight();
 
-  /** Part of the visitor pattern
-   * Accept a visitor to the Mshape to be able to draw model
+  /**
+   * Part of the visitor pattern Accept a visitor to the Mshape to be able to draw model
+   *
    * @param drawVisitor The visitor that would like to draw
    */
   void acceptDrawVisitor(DrawVisitor drawVisitor);

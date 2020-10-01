@@ -9,12 +9,11 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-
 /**
  * This class provides a controller for the main view
  *
- * <p>This class is used as the controller for the main view
- * The class implements the interface Initializable and is used by mainView.fxml
+ * <p>This class is used as the controller for the main view The class implements the interface
+ * Initializable and is used by mainView.fxml
  *
  * @author Jonas N
  * @since 0.1-SNAPSHOT

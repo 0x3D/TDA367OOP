@@ -15,11 +15,17 @@ import com.teamjeaa.obpaint.model.shapeModel.Mpolygon;
  * @since 0.1-SNAPSHOT
  */
 public interface DrawVisitor {
-  /** The method to implement what should happen when visiting a Mellipse
-   * @param mellipse The Mellipse to visit */
+  /**
+   * The method to implement what should happen when visiting a Mellipse
+   *
+   * @param mellipse The Mellipse to visit
+   */
   void visitMellipse(Mellipse mellipse);
 
-  /** The method to implement what should happen when visiting a Mpolygon
-   * @param mshape The MPolygon to visit*/
+  /**
+   * The method to implement what should happen when visiting a Mpolygon
+   *
+   * @param mshape The MPolygon to visit
+   */
   void visitMpolyogon(Mpolygon mshape);
 }

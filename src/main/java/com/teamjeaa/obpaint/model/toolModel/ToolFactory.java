@@ -29,6 +29,7 @@ public interface ToolFactory {
 
   /**
    * Creates a MoveTool Object
+   *
    * @return a new MoveTool
    */
   Tool createMoveTool();

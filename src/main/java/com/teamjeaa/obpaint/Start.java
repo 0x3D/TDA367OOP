@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
 import java.util.ResourceBundle;
 
 /**
@@ -14,15 +15,14 @@ import java.util.ResourceBundle;
  *
  * @author Jonas N
  * @since 0.1 SNAPSHOT
- *
  */
 public final class Start extends Application {
 
-    /**
-     * Main method of the program
-     *
-     * @param args - args
-     */
+  /**
+   * Main method of the program
+   *
+   * @param args - args
+   */
   public static void main(String[] args) {
     launch(args);
   }
