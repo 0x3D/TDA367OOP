@@ -13,11 +13,12 @@ public class CanvasView extends BorderPane {
         fxmlLoader.setRoot(this);
         //fxmlLoader.setController(ViewController.getInstance().getCanvasController());
 
-        try {
-            fxmlLoader.load();
-        } catch (IOException exception) {
-            throw new RuntimeException(exception);
-        }
+    try {
+      fxmlLoader.load();
+    } catch (IOException exception) {
+      throw new RuntimeException(exception);
     }
+
+  }
 }
 */

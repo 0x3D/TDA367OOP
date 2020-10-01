@@ -18,14 +18,4 @@ public class ConcreteMoveTool implements Tool {
     return null;
   }
 
-  // TODO Getter för denna är konstigt
-  /**
-   * getter of our mover
-   *
-   * @return
-   */
-  // TODO is this really fitting for public interface?
-  public int getSize() {
-    return 0;
-  }
 }

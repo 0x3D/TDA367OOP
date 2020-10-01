@@ -6,16 +6,11 @@ import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import java.util.ArrayList;
 import java.util.List;
 
-// import javafx.geometry.Point3D;
-// import javafx.scene.canvas.Canvas;
-// import javafx.scene.shape.Shape;
-
-/** //TODO */
+/** This class saves every object in our model */
 public class ModelCanvas {
 
   // TODO: Add ? extends
   private final List<Mshape> shapes;
-  // TODO: Fix typo here
 
   private ModelCanvas(List<Mshape> shapes) {
     this.shapes = shapes;

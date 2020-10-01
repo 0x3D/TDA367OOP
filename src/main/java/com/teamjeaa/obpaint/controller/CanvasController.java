@@ -9,10 +9,18 @@ import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/** */
+/**
+ * This class provides a controller for the painting area
+ *
+ * <p>This class sets up our DrawVisitor and provides the code to render Responsibility Used by Uses
+ *
+ * @author Jonas N
+ * @since 0.1-SNAPSHOT
+ */
 public class CanvasController implements Initializable, Observer {
     @FXML
     BorderPane rootBorderPane;
@@ -36,37 +44,38 @@ public class CanvasController implements Initializable, Observer {
         animationTimer.start();
     }
 
-    private void render() {
+  private void render() {
 
-        // GraphicsContext fgcx = foreground.getGraphicsContext2D();
-        // fgcx.clearRect(0,0,600,600);
-        for (Mshape s : backend.getCanvasShapes()) {
-            // It wants the old one to be removed if already is a child.
-            s.acceptDrawVisitor(javaFXDrawVisitor);
-        }
+    for (Mshape s : backend.getCanvasShapes()) {
+      // It wants the old one to be removed if already is a child.
+      s.acceptDrawVisitor(javaFXDrawVisitor);
     }
+  }
 
-    @Override
-    public void selectedToolHasChanged() {
-        selectedTool = backend.getSelectedTool();
-    }
+  @Override
+  public void selectedToolHasChanged() {
+    selectedTool = backend.getSelectedTool();
+  }
 
-    private void initMouseActions() {
-//    rootBorderPane.setOnMouseClicked(
-//      mouseEvent -> initialMouseClick(mouseEvent.getX(), mouseEvent.getY()));
-        rootBorderPane.setOnMousePressed(
-                mouseEvent -> {selectedTool.startUse(mouseEvent.getX(), mouseEvent.getY());mouseEvent.consume();System.out.println(mouseEvent.getX()+" "+mouseEvent.getY());});
-        rootBorderPane.setOnMouseReleased(mouseEvent -> stopUse(mouseEvent.getX(), mouseEvent.getY()));
-    }
+  private void initMouseActions() {
+    //    rootBorderPane.setOnMouseClicked(
+    //      mouseEvent -> initialMouseClick(mouseEvent.getX(), mouseEvent.getY()));
+    rootBorderPane.setOnMousePressed(
+        mouseEvent -> {
+          selectedTool.startUse(mouseEvent.getX(), mouseEvent.getY());
+          mouseEvent.consume();
+          System.out.println(mouseEvent.getX() + " " + mouseEvent.getY());
+        });
+    rootBorderPane.setOnMouseReleased(mouseEvent -> stopUse(mouseEvent.getX(), mouseEvent.getY()));
+  }
 
-    private void initialMouseClick(Double x, Double y) {
-        Mshape s = selectedTool.initialMouseClick(x, y);
-    }
+  //  private void initialMouseClick(Double x, Double y) {
+  //    Mshape s = selectedTool.initialMouseClick(x, y);
+  //  }
 
-    public void stopUse(Double x, Double y) {
-        System.out.println(x + " " + y);
-        Mshape s = selectedTool.stopUse(x,y);
-        backend.addToRender(s);
-    }
-
+  public void stopUse(Double x, Double y) {
+    System.out.println(x + " " + y);
+    Mshape s = selectedTool.stopUse(x, y);
+    backend.addToRender(s);
+  }
 }

@@ -5,7 +5,6 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-
 public class MainView extends AnchorPane {
 
   public MainView() {
@@ -15,8 +14,7 @@ public class MainView extends AnchorPane {
 
     try {
       fxmlLoader.load();
-    } catch (
-    IOException exception) {
+    } catch (IOException exception) {
       throw new RuntimeException(exception);
     }
   }

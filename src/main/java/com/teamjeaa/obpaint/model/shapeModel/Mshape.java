@@ -2,6 +2,12 @@ package com.teamjeaa.obpaint.model.shapeModel;
 
 import com.teamjeaa.obpaint.view.DrawVisistor;
 
+/**
+ * This is the common interface of the shapes in our model
+ *
+ * @see Mellipse
+ * @see Mpolygon
+ */
 public interface Mshape {
   Mpoint getPosition();
 

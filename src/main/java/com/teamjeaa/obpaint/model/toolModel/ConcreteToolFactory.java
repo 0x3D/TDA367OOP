@@ -8,23 +8,21 @@ public class ConcreteToolFactory implements ToolFactory {
   /**
    * creating the pencil its public because of the //TODO
    *
-   * @param size is the size we want
    * @return a new Pencil with a Size
    */
   @Override
-  public Tool createPencil(int size) {
-    return new ConcretePencil(initFinalSize());
+  public Tool createPencil() {
+    return new ConcretePencil();
   }
 
   /**
    * creating the brush its public because of the //TODO
    *
-   * @param size is the size we want
    * @return a new Brush with a Size
    */
   @Override
-  public Tool createBrush(int size) {
-    return new ConcreteBrush(initFinalSize());
+  public Tool createBrush() {
+    return new ConcreteBrush();
   }
 
   /**

@@ -4,18 +4,9 @@ import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 
 /** Class that holds the logic of out pencil */
 public class ConcretePencil implements Tool {
-  /** Instance of the size of the pencil */
-  private final int size;
 
-  /**
-   * Constructor for our pencil
-   *
-   * @param size of the pencil
-   */
-  public ConcretePencil(int size) {
-    this.size = size;
-  }
-
+  /** Constructor for our pencil */
+  public ConcretePencil() {}
 
   @Override
   public void startUse(Double x1, Double y1) {}
@@ -29,6 +20,4 @@ public class ConcretePencil implements Tool {
   public Mshape initialMouseClick(double x, double y) {
     return null;
   }
-
-
 }

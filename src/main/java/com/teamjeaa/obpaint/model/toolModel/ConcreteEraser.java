@@ -18,7 +18,6 @@ public class ConcreteEraser implements Tool {
     this.size = size;
   }
 
-
   @Override
   public void startUse(Double x1, Double y1) {}
 

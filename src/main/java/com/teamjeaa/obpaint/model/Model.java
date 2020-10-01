@@ -1,22 +1,26 @@
 package com.teamjeaa.obpaint.model;
 
+
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 import com.teamjeaa.obpaint.model.toolModel.*;
+
+
 import javafx.stage.Stage;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class Model {
   // Maybe not the static here
   public static Stage primaryStage;
-  private Tool selectedTool;
   private static Color color;
+  private Tool selectedTool;
   private ModelCanvas modelCanvas;
   private List<Observer> observers;
+
   private static Model instance;
 
 
@@ -28,16 +32,15 @@ public final class Model {
   }
 
   private void setupModel() {
-    ShapeFactory shapeFactory = new ConcreteShapeFactory();
     modelCanvas = new ModelCanvas();
-    //modelCanvas.addToRender(shapeFactory.createCircle(200, 300, 300));
-    //modelCanvas.addToRender(shapeFactory.createRectangle(0,0,300,300));
+    // ShapeFactory shapeFactory = new ConcreteShapeFactory();
+    // modelCanvas.addToRender(shapeFactory.createCircle(200, 300, 300));
+    // modelCanvas.addToRender(shapeFactory.createRectangle(0,0,300,300));
   }
 
   public void addToRender(Mshape s) {
     modelCanvas.addToRender(s);
   }
-
 
   /** @return the selected tool */
   public Tool getSelectedTool() {
@@ -66,9 +69,11 @@ public final class Model {
   public void addObserver(Observer observer) {
     observers.add(observer);
   }
+
   public void removeObserver(Observer observer) {
     observers.remove(observer);
   }
+
   public List<Mshape> getCanvasShapes() {
     return modelCanvas.getShapes();
   }

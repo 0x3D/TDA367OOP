@@ -1,10 +1,15 @@
 # Objektorienterat programmeringsprojekt TDA367
 This is a object based draw program  
 [![Build Status](https://travis-ci.com/0x3D/TDA367OOP.svg?branch=master)](https://travis-ci.com/0x3D/TDA367OOP)
-## Setup
+## Setup in intellij
 1. Download files from github
 2. Right click pom.xml and choose reimport
-3. Add configuration, select application and fill in `com.teamjeaa.obpaint.model.Model` in Main Class
+3. Add configuration, select application and fill in `com.teamjeaa.obpaint.ObPaint` in Main Class
+## Running the program 
+1. Clone repository
+2. `mvn compile`
+3. `> mvn javafx:run`
+
 
 ## Git workflow
 1. `git checkout master`
@@ -26,8 +31,8 @@ This is a object based draw program
 [Source](https://chalmers.instructure.com/courses/10412/assignments/21444)
 
 ## Maven
-`mvn compile`  
-`mvn test`  
-`mvn package`  
-`mvn clean`
-`mvn site`
+`mvn compile` Compile the project  
+`mvn test` Run the projects tests  
+`mvn package` Currently not working, Should package everything into a .jar    
+`mvn clean` Remove Class ./target this removes .class files and documentation  
+`mvn site` Generate documentation

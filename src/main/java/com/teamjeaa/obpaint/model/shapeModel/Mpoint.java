@@ -2,7 +2,10 @@ package com.teamjeaa.obpaint.model.shapeModel;
 
 import java.util.Objects;
 
-/** Class that represents a point in space */
+/** Class that represents a point in the model
+ *
+ *
+ * */
 public class Mpoint implements Cloneable {
   private final int x;
   private final int y;
@@ -58,8 +61,7 @@ public class Mpoint implements Cloneable {
     final Mpoint clone;
     try {
       clone = (Mpoint) super.clone();
-    }
-    catch (CloneNotSupportedException ex) {
+    } catch (CloneNotSupportedException ex) {
       throw new RuntimeException("superclass messed up", ex);
     }
     return clone;
