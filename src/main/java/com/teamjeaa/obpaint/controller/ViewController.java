@@ -1,3 +1,4 @@
+/*
 package com.teamjeaa.obpaint.controller;
 
 import com.teamjeaa.obpaint.view.CanvasView;
@@ -11,12 +12,16 @@ import javafx.scene.layout.AnchorPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+*/
 /**
  * Provides the controller for main window
  *
  * <p>This controller provides method to control the main window. Like toggling darkmode also set up
- * the other controllers.
- */
+ * the other controllers. Responsibility Used by Uses
+ * @author Jonas N
+ * @since 0.1-SNAPSHOT
+ *//*
+
 public class ViewController implements Initializable {
 
   private static ViewController instance;
@@ -41,11 +46,13 @@ public class ViewController implements Initializable {
 
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    toolViewRoot.getChildren().clear();
+    */
+/*toolViewRoot.getChildren().clear();
     toolViewRoot.getChildren().add(new ToolView());
 
     canvasViewRoot.getChildren().clear();
-    canvasViewRoot.getChildren().add(new CanvasView());
+    canvasViewRoot.getChildren().add(new CanvasView());*//*
+
   }
 
   public ToolController getToolController() {
@@ -70,3 +77,4 @@ public class ViewController implements Initializable {
     }
   }
 }
+*/

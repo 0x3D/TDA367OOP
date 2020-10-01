@@ -4,7 +4,17 @@ import com.teamjeaa.obpaint.view.DrawVisistor;
 
 import java.awt.*;
 
-/** The models implementation of an ellipse */
+/**
+ * The models implementation of an ellipse
+ *
+ * <p>
+ *   Responsibility
+ *   Used by
+ *   Uses
+ * </p>
+ * @author Erik R
+ * @since 0.1-SNAPSHOT
+ */
 public class Mellipse implements Mshape {
   private final Mpoint centerPoint;
 

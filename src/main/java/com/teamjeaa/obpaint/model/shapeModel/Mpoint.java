@@ -2,7 +2,10 @@ package com.teamjeaa.obpaint.model.shapeModel;
 
 import java.util.Objects;
 
-/** Class that represents a point in the model */
+/** Class that represents a point in the model
+ *
+ *
+ * */
 public class Mpoint implements Cloneable {
   private final int x;
   private final int y;

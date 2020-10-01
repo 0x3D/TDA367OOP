@@ -10,6 +10,7 @@ This is a object based draw program
 2. `mvn compile`
 3. `> mvn javafx:run`
 
+
 ## Git workflow
 1. `git checkout master`
 2. `git pull`

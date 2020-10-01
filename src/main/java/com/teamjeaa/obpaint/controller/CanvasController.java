@@ -1,6 +1,6 @@
 package com.teamjeaa.obpaint.controller;
 
-import com.teamjeaa.obpaint.ObPaint;
+import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.Observer;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.toolModel.Tool;
@@ -16,29 +16,33 @@ import java.util.ResourceBundle;
 /**
  * This class provides a controller for the painting area
  *
- * <p>This class sets up our DrawVisitor and provides the code to render
+ * <p>This class sets up our DrawVisitor and provides the code to render Responsibility Used by Uses
+ *
+ * @author Jonas N
+ * @since 0.1-SNAPSHOT
  */
 public class CanvasController implements Initializable, Observer {
-  @FXML BorderPane rootBorderPane;
-  ObPaint backend;
-  Tool selectedTool;
-  private JavaFXDrawVisitor javaFXDrawVisitor;
+    @FXML
+    BorderPane rootBorderPane;
+    Model backend;
+    Tool selectedTool;
+    private JavaFXDrawVisitor javaFXDrawVisitor;
 
-  @Override
-  public void initialize(URL location, ResourceBundle resources) {
-    backend = ObPaint.getInstance();
-    selectedTool = backend.getSelectedTool();
-    backend.addObserver(this);
-    initMouseActions();
-    javaFXDrawVisitor = new JavaFXDrawVisitor(rootBorderPane);
-    AnimationTimer animationTimer =
-        new AnimationTimer() {
-          public void handle(long now) {
-            render();
-          }
-        };
-    animationTimer.start();
-  }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        backend = Model.getInstance();
+        selectedTool = backend.getSelectedTool();
+        backend.addObserver(this);
+        initMouseActions();
+        javaFXDrawVisitor = new JavaFXDrawVisitor(rootBorderPane);
+        AnimationTimer animationTimer =
+                new AnimationTimer() {
+                    public void handle(long now) {
+                        render();
+                    }
+                };
+        animationTimer.start();
+    }
 
   private void render() {
 
@@ -65,9 +69,9 @@ public class CanvasController implements Initializable, Observer {
     rootBorderPane.setOnMouseReleased(mouseEvent -> stopUse(mouseEvent.getX(), mouseEvent.getY()));
   }
 
-  private void initialMouseClick(Double x, Double y) {
-    Mshape s = selectedTool.initialMouseClick(x, y);
-  }
+  //  private void initialMouseClick(Double x, Double y) {
+  //    Mshape s = selectedTool.initialMouseClick(x, y);
+  //  }
 
   public void stopUse(Double x, Double y) {
     System.out.println(x + " " + y);
