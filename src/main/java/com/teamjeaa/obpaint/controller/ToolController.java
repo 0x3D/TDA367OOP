@@ -19,7 +19,10 @@ import java.util.ResourceBundle;
  * Provides a controller for tools.
  *
  * <p>This class provides methods for the graphical interface to change which tool is selected in
- * the model
+ * the model * Responsibility Used by Uses
+ *
+ * @author Jonas N
+ * @since 0.1-SNAPSHOT
  */
 public class ToolController implements Initializable {
 

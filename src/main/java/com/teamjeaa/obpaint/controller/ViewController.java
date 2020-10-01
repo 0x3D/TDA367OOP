@@ -15,7 +15,9 @@ import java.util.ResourceBundle;
  * Provides the controller for main window
  *
  * <p>This controller provides method to control the main window. Like toggling darkmode also set up
- * the other controllers.
+ * the other controllers. Responsibility Used by Uses
+ * @author Jonas N
+ * @since 0.1-SNAPSHOT
  */
 public class ViewController implements Initializable {
 

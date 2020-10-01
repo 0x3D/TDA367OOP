@@ -4,7 +4,16 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/** Class that holds the logic for creating Shapes */
+/**
+ * Class that holds the logic for creating Shapes
+ * <p>
+ * Responsibility
+ * Used by
+ * Uses
+ * </p>
+ * @author Axel H
+ * @since 0.1-SNAPSHOT
+ */
 public class ConcreteShapeFactory implements ShapeFactory {
 
   /**

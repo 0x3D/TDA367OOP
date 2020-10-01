@@ -16,7 +16,10 @@ import java.util.ResourceBundle;
 /**
  * This class provides a controller for the painting area
  *
- * <p>This class sets up our DrawVisitor and provides the code to render
+ * <p>This class sets up our DrawVisitor and provides the code to render Responsibility Used by Uses
+ *
+ * @author Jonas N
+ * @since 0.1-SNAPSHOT
  */
 public class CanvasController implements Initializable, Observer {
   @FXML BorderPane rootBorderPane;
