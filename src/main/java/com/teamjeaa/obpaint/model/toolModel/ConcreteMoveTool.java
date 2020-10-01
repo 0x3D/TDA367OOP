@@ -1,43 +1,21 @@
 package com.teamjeaa.obpaint.model.toolModel;
 
-import javafx.scene.shape.Shape;
+import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 
-/**
- * Class that holds the logic when we move all of our tools
- */
+/** Class that holds the logic when we move all of our tools */
 public class ConcreteMoveTool implements Tool {
 
-
-  /**
-   * initializing from the TOOL- interface
-   */
   @Override
-  public void initialize() {
-  }
+  public void startUse(Double x1, Double y1) {}
 
   @Override
-  public void startUse(Double x1, Double y1) {
-
-  }
-
-  @Override
-  public Shape stopUse(Double x1, Double y1) {
+  public Mshape stopUse(Double x1, Double y1) {
     return null;
   }
 
   @Override
-  public Shape initialMouseClick(double x, double y) {
+  public Mshape initialMouseClick(double x, double y) {
     return null;
   }
 
-
-//TODO Getter för denna är konstigt
-  /**
-   * getter of our mover
-   * @return
-   */
-  // TODO is this really fitting for public interface?
-  public int getSize() {
-    return 0;
-  }
 }

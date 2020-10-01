@@ -4,12 +4,12 @@
   <modelVersion>4.0.0</modelVersion>
   
   <groupId>com.teamjeaa.tda367</groupId>
-  <artifactId>projecttemplate</artifactId>
+  <artifactId>ObPaint</artifactId>
   <version>0.1-SNAPSHOT</version>
   
   <packaging>jar</packaging>
   
-  <name>ProjectTemplate</name>
+  <name>ObPaint</name>
   
   <properties>
     <!-- Set java version to use here-->

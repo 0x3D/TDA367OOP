@@ -1,13 +1,17 @@
 package com.teamjeaa.obpaint.model.shapeModel;
-import javafx.scene.shape.Shape;
 
-/**
- * Interface that holds the methods for our creating of the Shapes
- */
+import java.awt.*;
+
+/** Interface that holds the methods for creating the Shapes */
 public interface ShapeFactory {
-    Shape createCircle(int x1, int y1, int radius);
+  Mshape createCircle(int radius, int x, int y, Color color);
 
-    Shape createRectangle(int x1, int y1, int x2, int y2);
+  // TODO: cant be same have to handle
+  Mshape createRectangle(int x1, int y1, int x2, int y2, Color color);
 
-    Shape createTriangle(double x1, double y1, double x2, double y2, double x3, double y3);
+  // Shape createCircle(int x1, int y1, int radius);
+
+  // Shape createRectangle(int x1, int y1, int x2, int y2);
+
+  // Shape createTriangle(double x1, double y1, double x2, double y2, double x3, double y3);
 }

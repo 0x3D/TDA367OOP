@@ -1,60 +1,47 @@
 package com.teamjeaa.obpaint.model;
 
-import com.teamjeaa.obpaint.model.shapeModel.ShapeUtil;
-import javafx.css.CssMetaData;
-import javafx.css.Styleable;
-
-import javafx.geometry.Point3D;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.shape.Shape;
+import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
+import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * //TODO
- */
+/** This class saves every object in our model */
 public class ModelCanvas {
 
   // TODO: Add ? extends
-  private final List<Shape> shapes;
-  //TODO: Fix typo here
-  private final List<? extends Updateable> updateables;
+  private final List<Mshape> shapes;
 
-  private ModelCanvas(List<Shape> shapes, List<? extends Updateable> updateables) {
+  private ModelCanvas(List<Mshape> shapes) {
     this.shapes = shapes;
-    this.updateables = updateables;
   }
+
   public ModelCanvas() {
-    this(new ArrayList<>(), new ArrayList<>());
+    this(new ArrayList<>());
   }
 
-
-
-  public void addToRender(Shape shape) {
+  public void addToRender(Mshape shape) {
     this.shapes.add(shape);
   }
 
   // TODO: Implement
-  public void removeFromRender(Shape shape) {
+  public void removeFromRender(Mshape shape) {
     this.shapes.remove(shape);
   }
 
-  public Shape findShapeAt(double x, double y) throws IllegalArgumentException {
-    for (Shape shape : shapes) {
-      Point3D point3D = ShapeUtil.getPosOfShape(shape);
+  public Mshape findShapeAt(double x, double y) throws IllegalArgumentException {
+    for (Mshape shape : shapes) {
+      Mpoint pos = shape.getPosition();
 
-      if (Double.compare(point3D.getX(), x) == 0
-          && Double.compare(point3D.getY(), y) == 0) {
+      if (Double.compare(pos.getX(), x) == 0 && Double.compare(pos.getY(), y) == 0) {
         return shape;
       }
     }
     throw new IllegalArgumentException("Object not found");
   }
 
-  //Not my proudest solution but
-  public List<Shape> getShapes() {
+  // Not my proudest solution but
+  public List<Mshape> getShapes() {
     return shapes;
   }
-
 }

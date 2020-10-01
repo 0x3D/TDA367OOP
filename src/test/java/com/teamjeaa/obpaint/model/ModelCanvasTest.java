@@ -1,26 +1,32 @@
 package com.teamjeaa.obpaint.model;
 
-import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
+import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
+import com.teamjeaa.obpaint.model.shapeModel.Mshape;
+import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 import org.junit.Assert;
 import org.junit.Test;
+
+import java.awt.*;
 
 public class ModelCanvasTest {
   @Test
   public void addToModel() {
-    Shape shape = new Rectangle();
+    //Shape shape = new Rectangle();
     ModelCanvas modelCanvas = new ModelCanvas();
+    ShapeFactory shapeFactory = new ConcreteShapeFactory();
+    Mshape shape = shapeFactory.createCircle(10,2,2, Color.BLACK);
     modelCanvas.addToRender(shape);
 
     // This will check if got added to list since default position p is (0,0)
-    Assert.assertEquals(modelCanvas.findShapeAt(0, 0), shape);
+    Assert.assertEquals(modelCanvas.findShapeAt(2, 2), shape);
   }
 
   @Test
   public void removeFromModel() {
     // set up
-    Shape shape = new Rectangle();
     ModelCanvas modelCanvas = new ModelCanvas();
+    ShapeFactory shapeFactory = new ConcreteShapeFactory();
+    Mshape shape = shapeFactory.createCircle(10,2,2,Color.BLACK);
 
     // adding, see test addToModel()
     modelCanvas.addToRender(shape);
@@ -29,9 +35,29 @@ public class ModelCanvasTest {
     modelCanvas.removeFromRender(shape);
 
     try {
-      Shape secondShape = modelCanvas.findShapeAt(0, 0);
+      Mshape secondShape = modelCanvas.findShapeAt(0, 0);
     } catch (IllegalArgumentException e) {
       Assert.assertEquals("Object not found", e.getMessage());
     }
+  }
+
+  @Test
+  public void addToRender() {
+    //TODO: Implement
+  }
+
+  @Test
+  public void removeFromRender() {
+    //TODO: Implement
+  }
+
+  @Test
+  public void findShapeAt() {
+    //TODO: Implement
+  }
+
+  @Test
+  public void getShapes() {
+    //TODO: Implement
   }
 }
