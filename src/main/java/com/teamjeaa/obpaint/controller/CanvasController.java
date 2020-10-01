@@ -22,27 +22,26 @@ import java.util.ResourceBundle;
  * @since 0.1-SNAPSHOT
  */
 public class CanvasController implements Initializable, Observer {
-    @FXML
-    BorderPane rootBorderPane;
-    Model backend;
-    Tool selectedTool;
-    private JavaFXDrawVisitor javaFXDrawVisitor;
+  @FXML BorderPane rootBorderPane;
+  Model backend;
+  Tool selectedTool;
+  private JavaFXDrawVisitor javaFXDrawVisitor;
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        backend = Model.getInstance();
-        selectedTool = backend.getSelectedTool();
-        backend.addObserver(this);
-        initMouseActions();
-        javaFXDrawVisitor = new JavaFXDrawVisitor(rootBorderPane);
-        AnimationTimer animationTimer =
-                new AnimationTimer() {
-                    public void handle(long now) {
-                        render();
-                    }
-                };
-        animationTimer.start();
-    }
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    backend = Model.getInstance();
+    selectedTool = backend.getSelectedTool();
+    backend.addObserver(this);
+    initMouseActions();
+    javaFXDrawVisitor = new JavaFXDrawVisitor(rootBorderPane);
+    AnimationTimer animationTimer =
+        new AnimationTimer() {
+          public void handle(long now) {
+            render();
+          }
+        };
+    animationTimer.start();
+  }
 
   private void render() {
 

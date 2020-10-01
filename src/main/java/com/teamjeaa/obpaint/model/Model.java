@@ -1,12 +1,7 @@
 package com.teamjeaa.obpaint.model;
 
-
-import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
-import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
-import com.teamjeaa.obpaint.model.toolModel.*;
-
-
+import com.teamjeaa.obpaint.model.toolModel.Tool;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -17,18 +12,32 @@ public final class Model {
   // Maybe not the static here
   public static Stage primaryStage;
   private static Color color;
+  private static Model instance;
   private Tool selectedTool;
   private ModelCanvas modelCanvas;
   private List<Observer> observers;
-
-  private static Model instance;
-
 
   private Model() {
     instance = this;
     observers = new ArrayList<>();
     setSelectedColor(Color.RED);
     setupModel();
+  }
+
+  public static Model getInstance() {
+    if (instance == null) {
+      instance = new Model();
+    }
+    return instance;
+  }
+
+  // TODO Clone
+  public static Color getSelectedColor() {
+    return color;
+  }
+
+  public void setSelectedColor(Color color) {
+    Model.color = color;
   }
 
   private void setupModel() {
@@ -59,13 +68,6 @@ public final class Model {
     }
   }
 
-  public static Model getInstance() {
-    if (instance == null) {
-      instance = new Model();
-    }
-    return instance;
-  }
-
   public void addObserver(Observer observer) {
     observers.add(observer);
   }
@@ -76,14 +78,5 @@ public final class Model {
 
   public List<Mshape> getCanvasShapes() {
     return modelCanvas.getShapes();
-  }
-
-//TODO Clone
-  public static Color getSelectedColor() {
-    return color;
-  }
-
-  public void setSelectedColor(Color color) {
-    Model.color = color;
   }
 }

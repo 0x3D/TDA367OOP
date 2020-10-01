@@ -23,5 +23,3 @@ public class ToolView extends AnchorPane {
   }
 }
 */
-
-

@@ -5,7 +5,14 @@ import com.teamjeaa.obpaint.view.DrawVisistor;
 import java.awt.*;
 import java.util.List;
 
-/** This class provides what a polygon is in our model */
+/**
+ * This class provides what a polygon is in our model
+ *
+ * <p>Responsibility Used by Uses
+ *
+ * @author Erik R
+ * @since 0.1-SNAPSHOT
+ */
 public class Mpolygon implements Mshape {
   private final List<Mpoint> points;
   private final Color color;
