@@ -2,9 +2,7 @@ package com.teamjeaa.obpaint;
 
 import com.teamjeaa.obpaint.model.ModelCanvas;
 import com.teamjeaa.obpaint.model.Observer;
-import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
-import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 import com.teamjeaa.obpaint.model.toolModel.Tool;
 import com.teamjeaa.obpaint.view.MainView;
 import javafx.application.Application;
@@ -57,11 +55,11 @@ public final class ObPaint extends Application {
 
     // setSelectedTool(new ConcreteCircleTool());
     setupModel();
-    Parent root = setupScene(primaryStage);
+    setupScene(primaryStage);
     setSelectedColor(Color.RED);
   }
 
-  private Parent setupScene(Stage primaryStage) {
+  private void setupScene(Stage primaryStage) {
     Parent root = new MainView();
 
     primaryStage.setOnCloseRequest(
@@ -83,12 +81,11 @@ public final class ObPaint extends Application {
     primaryStage.setMinWidth(900);
     primaryStage.show();
     ObPaint.primaryStage = primaryStage;
-    return root;
   }
 
   private void setupModel() {
-    ShapeFactory shapeFactory = new ConcreteShapeFactory();
     modelCanvas = new ModelCanvas();
+    // ShapeFactory shapeFactory = new ConcreteShapeFactory();
     // modelCanvas.addToRender(shapeFactory.createCircle(200, 300, 300));
     // modelCanvas.addToRender(shapeFactory.createRectangle(0,0,300,300));
   }

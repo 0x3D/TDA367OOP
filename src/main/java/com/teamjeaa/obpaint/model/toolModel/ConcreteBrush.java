@@ -5,19 +5,9 @@ import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 
 /** Our Brushtool that takes care of the logic of our brush */
 public class ConcreteBrush implements Tool {
-  /** Size of the brush that is final. We creating a new brush everytime we change the Size */
-  private final int size;
 
-  // private Polyline stroke = new Polyline();
-
-  /**
-   * Constructor for our brush
-   *
-   * @param size of the brush
-   */
-  public ConcreteBrush(int size) {
-    this.size = size;
-  }
+  /** Constructor for our brush */
+  public ConcreteBrush() {}
 
   @Override
   public void startUse(Double x1, Double y1) {

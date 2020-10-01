@@ -9,7 +9,7 @@ import java.io.IOException;
 public class MainView extends AnchorPane {
 
   public MainView() {
-    FXMLLoader fxmlLoader = new FXMLLoader((getClass().getResource("/fxml/obPaint.fxml")));
+    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/obPaint.fxml"));
     fxmlLoader.setRoot(this);
     fxmlLoader.setController(ViewController.getInstance());
 

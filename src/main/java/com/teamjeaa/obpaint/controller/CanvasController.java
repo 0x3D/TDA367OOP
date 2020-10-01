@@ -65,9 +65,9 @@ public class CanvasController implements Initializable, Observer {
     rootBorderPane.setOnMouseReleased(mouseEvent -> stopUse(mouseEvent.getX(), mouseEvent.getY()));
   }
 
-  private void initialMouseClick(Double x, Double y) {
-    Mshape s = selectedTool.initialMouseClick(x, y);
-  }
+  //  private void initialMouseClick(Double x, Double y) {
+  //    Mshape s = selectedTool.initialMouseClick(x, y);
+  //  }
 
   public void stopUse(Double x, Double y) {
     System.out.println(x + " " + y);

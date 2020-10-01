@@ -6,12 +6,10 @@ import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 
-import java.awt.*;
 
 /** A tool to create a circle at a place in the model */
 public class ConcreteCircleTool implements Tool {
   Mpoint centerPoint;
-  private Color color;
 
   @Override
   public void startUse(Double x1, Double y1) {
