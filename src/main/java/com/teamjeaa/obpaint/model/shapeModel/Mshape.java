@@ -1,6 +1,6 @@
 package com.teamjeaa.obpaint.model.shapeModel;
 
-import com.teamjeaa.obpaint.view.DrawVisistor;
+import com.teamjeaa.obpaint.view.DrawVisitor;
 
 /**
  * This is the common interface of the shapes in our model *
@@ -27,9 +27,9 @@ public interface Mshape {
 
   /** Part of the visitor pattern
    * Accept a visitor to the Mshape to be able to draw model
-   * @param drawVisistor The visitor that would like to draw
+   * @param drawVisitor The visitor that would like to draw
    */
-  void acceptDrawVisitor(DrawVisistor drawVisistor);
+  void acceptDrawVisitor(DrawVisitor drawVisitor);
 
   /**
    * @param x - int new x pos

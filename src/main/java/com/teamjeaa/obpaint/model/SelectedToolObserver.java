@@ -7,7 +7,7 @@ package com.teamjeaa.obpaint.model;
  * The interface is implemented by CanvasController
  *
  * @author Jonas N
- * @since 0.1 SNAPSHOP
+ * @since 0.1 SNAPSHOT
  * @see com.teamjeaa.obpaint.controller.CanvasController
  */
 public interface SelectedToolObserver {

@@ -14,7 +14,7 @@ import com.teamjeaa.obpaint.model.shapeModel.Mpolygon;
  * @author Erik R
  * @since 0.1-SNAPSHOT
  */
-public interface DrawVisistor {
+public interface DrawVisitor {
   /** The method to implement what should happen when visiting a Mellipse
    * @param mellipse The Mellipse to visit */
   void visitMellipse(Mellipse mellipse);

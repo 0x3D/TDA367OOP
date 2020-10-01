@@ -1,6 +1,6 @@
 package com.teamjeaa.obpaint.model.shapeModel;
 
-import com.teamjeaa.obpaint.view.DrawVisistor;
+import com.teamjeaa.obpaint.view.DrawVisitor;
 
 import java.awt.Color;
 import java.util.List;
@@ -80,8 +80,8 @@ public class Mpolygon implements Mshape {
   }
 
   @Override
-  public void acceptDrawVisitor(DrawVisistor drawVisistor) {
-    drawVisistor.visitMpolyogon(this);
+  public void acceptDrawVisitor(DrawVisitor drawVisitor) {
+    drawVisitor.visitMpolyogon(this);
   }
 
   @Override

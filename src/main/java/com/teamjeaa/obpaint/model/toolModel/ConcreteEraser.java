@@ -44,7 +44,7 @@ public class ConcreteEraser implements Tool {
   }
 
   /**
-   * Used for get the mousepressed
+   * Used for get the mouse pressed
    *
    * @param x position
    * @param y position

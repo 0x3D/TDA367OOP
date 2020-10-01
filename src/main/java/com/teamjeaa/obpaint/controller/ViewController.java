@@ -13,10 +13,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 */
-/**
+/*
  * Provides the controller for main window
  *
- * <p>This controller provides method to control the main window. Like toggling darkmode also set up
+ * <p>This controller provides method to control the main window. Like toggling dark mode also set up
  * the other controllers. Responsibility Used by Uses
  *
  * @author Jonas N

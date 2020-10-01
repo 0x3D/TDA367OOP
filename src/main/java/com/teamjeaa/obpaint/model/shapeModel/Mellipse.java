@@ -1,6 +1,6 @@
 package com.teamjeaa.obpaint.model.shapeModel;
 
-import com.teamjeaa.obpaint.view.DrawVisistor;
+import com.teamjeaa.obpaint.view.DrawVisitor;
 
 import java.awt.*;
 
@@ -61,8 +61,8 @@ public class Mellipse implements Mshape {
   }
 
   @Override
-  public void acceptDrawVisitor(DrawVisistor drawVisistor) {
-    drawVisistor.visitMellipse(this);
+  public void acceptDrawVisitor(DrawVisitor drawVisitor) {
+    drawVisitor.visitMellipse(this);
   }
 
   /** @return The semi-axes in the x direction */

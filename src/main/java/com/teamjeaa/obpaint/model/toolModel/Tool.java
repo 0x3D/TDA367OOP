@@ -17,7 +17,7 @@ import com.teamjeaa.obpaint.model.shapeModel.Mshape;
  */
 public interface Tool {
   /**
-   * StartUse is a method that takes the mouseposition x1 and y1, and we define what startUse should
+   * StartUse is a method that takes the mouse position x1 and y1, and we define what startUse should
    * do on the object that implements this Interface.
    *
    * @param x1 the x value (Mainly from the mouse)
@@ -26,17 +26,17 @@ public interface Tool {
   void startUse(Double x1, Double y1);
 
   /**
-   * StopUse method is a method that is called when we stoped use the mouse to "Paint" a object in
+   * StopUse method is a method that is called when we stopped use the mouse to "Paint" a object in
    * our Canvas. When this is called we tell what a object to create
    *
    * @param x1 x value of the endPoint of the mouse
    * @param y1 y value of the endPoint of the mouse
-   * @return MShape type of obbject that can be any of our concrete objects
+   * @return MShape type of object that can be any of our concrete shapes
    */
   Mshape stopUse(Double x1, Double y1);
 
   /**
-   * Method that sais what to do on mouse pressed. Not used much for now, but we think we need to
+   * Method that says what to do on mouse pressed. Not used much for now, but we think we need to
    * have it for the future
    *
    * @param x mouse value of x

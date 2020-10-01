@@ -23,7 +23,7 @@ public interface ToolFactory {
 
   /**
    * @param size size of the eraser
-   * @return a eraser with a sixe
+   * @return a eraser with a size
    */
   Tool createEraser(int size);
 

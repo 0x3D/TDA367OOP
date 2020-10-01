@@ -30,7 +30,7 @@ public final class Start extends Application {
   /**
    * This method starts up JavaFX and initializes the Model
    *
-   * @param primaryStage - The rootview of the project
+   * @param primaryStage - The root view of the project
    */
   @Override
   public void start(Stage primaryStage) {

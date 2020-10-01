@@ -10,9 +10,9 @@ import java.util.List;
 /**
  * Class that holds the logic for creating Shapes
  * <p>
- * Responsibility Factory class that creates instances of different Mhapes for model.
+ * Responsibility Factory class that creates instances of different Mshapes for model.
  * Used by ConcreteCircleTool, ConcreteRectangleTool
- * Uses Color, Mpoint, Mpolygon, Mellipse, some more tools might be added. Uses ShapeFactort Interface.
+ * Uses Color, Mpoint, Mpolygon, Mellipse, some more tools might be added. Uses ShapeFactory Interface.
  * </p>
  *
  * @author Axel H

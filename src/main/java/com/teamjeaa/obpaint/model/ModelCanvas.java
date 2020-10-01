@@ -55,7 +55,7 @@ public class ModelCanvas {
    * @param x - Point x
    * @param y - Point y
    * @return - The shape at the point (x,y)
-   * @throws IllegalArgumentException
+   * @throws IllegalArgumentException If Shape is not in list
    */
   public Mshape findShapeAt(double x, double y) throws IllegalArgumentException {
     for (Mshape shape : shapes) {
@@ -64,7 +64,7 @@ public class ModelCanvas {
         return shape;
       }
     }
-    throw new IllegalArgumentException("Object not found");
+    throw new IllegalArgumentException("Shape not found in list, ModelCanvas");
   }
 
   /**

@@ -27,7 +27,7 @@ public interface ShapeFactory {
    * Method used by factory to create a Rectangle.
    * @param x1 X value for point where user starts mouse click.
    * @param y1 Y value for point where user starts mouse click.
-   * @param x2 X valie for point where user releases mouse.
+   * @param x2 X value for point where user releases mouse.
    * @param y2 Y value for point where user releases mouse.
    * @return returns instance of a Mpolygon.
    */

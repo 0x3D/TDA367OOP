@@ -1,10 +1,10 @@
 # Objektorienterat programmeringsprojekt TDA367
-This is a object based draw program  
+This is an object based draw program  
 [![Build Status](https://travis-ci.com/0x3D/TDA367OOP.svg?branch=master)](https://travis-ci.com/0x3D/TDA367OOP)
 ## Setup in intellij
 1. Download files from github
 2. Right click pom.xml and choose reimport
-3. Add configuration, select application and fill in `com.teamjeaa.obpaint.ObPaint` in Main Class
+3. Add the configuration, select application and fill in `com.teamjeaa.obpaint.ObPaint` in Main Class
 ## Running the program 
 1. Clone repository
 2. `mvn compile`

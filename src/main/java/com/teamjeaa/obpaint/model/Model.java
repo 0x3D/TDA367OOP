@@ -13,7 +13,7 @@ import java.util.List;
  * <p>
  * Responsibility Offers the most vital parts of the model without exposing. Creates ModelCanvas and
  * holds List with Observers
- * Used by Start, CanvasController , ConcreteCricleTool, ConcreteRectangleTool, ToolController
+ * Used by Start, CanvasController , ConcreteCircleTool, ConcreteRectangleTool, ToolController
  * Uses Color, List, Observer, Tool
  * </p>
  * @author Jonas N
@@ -32,7 +32,7 @@ public final class Model {
   private static Color color;
   private Tool selectedTool;
   private ModelCanvas modelCanvas;
-  private List<SelectedToolObserver> observers;
+  private final List<SelectedToolObserver> observers;
 
   private static Model instance;
 
@@ -49,7 +49,7 @@ public final class Model {
   }
 
   /**
-   * Adds received instence of Mshape to ModelCanvas list for render.
+   * Adds received instance of Mshape to ModelCanvas list for render.
    * @param s some kind of Mshape.
    */
   public void addToRender(Mshape s) {
@@ -78,7 +78,7 @@ public final class Model {
 
   /**
    * Singleton pattern. If instance of Model is created it gives requesting class reference to object.
-   * @return intance of the Model.
+   * @return instance of the Model.
    */
   public static Model getInstance() {
     if (instance == null) {
@@ -96,7 +96,7 @@ public final class Model {
   }
 
   /**
-   * Removes choosen Observer from list of Observers. Vill no longer be notified.
+   * Removes chosen Observer from list of Observers. Vill no longer be notified.
    * @param observer Observer to be removed from list and no longer will be notified in case of change.
    */
   public void removeObserver(SelectedToolObserver observer) {

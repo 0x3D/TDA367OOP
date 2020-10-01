@@ -4,7 +4,7 @@ import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 // import javafx.scene.shape.Polyline;
 
 /**
- * Our Brushtool that takes care of the logic of our brush Used by ConcreteToolFactory to create the
+ * Our BrushTool that takes care of the logic of our brush Used by ConcreteToolFactory to create the
  * Brush Uses Mshape
  *
  * @author Axel H
@@ -42,7 +42,7 @@ public class ConcreteBrush implements Tool {
   }
 
   /**
-   * Used for get the mousepressed
+   * Used for get the mouse pressed
    *
    * @param x position
    * @param y position
