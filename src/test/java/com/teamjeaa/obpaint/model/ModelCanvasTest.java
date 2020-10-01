@@ -37,7 +37,7 @@ public class ModelCanvasTest {
     try {
       Mshape secondShape = modelCanvas.findShapeAt(0, 0);
     } catch (IllegalArgumentException e) {
-      Assert.assertEquals("Object not found", e.getMessage());
+      Assert.assertEquals("Shape not found in list, ModelCanvas", e.getMessage());
     }
   }
 
