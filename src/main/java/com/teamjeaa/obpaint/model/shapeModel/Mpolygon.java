@@ -2,13 +2,15 @@ package com.teamjeaa.obpaint.model.shapeModel;
 
 import com.teamjeaa.obpaint.view.DrawVisistor;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.List;
 
 /**
- * This class provides what a polygon is in our model
+ * This class provides polygon in our model
  *
- * <p>Responsibility Used by Uses
+ * <p>Responsibility Represent a Polygon <br>
+ * Used by ConcreteShapeFactory, JavaFXDrawVisitor, DrawVisitor, MpolygonTest <br>
+ * Uses java.util.List, java.awt, Mshape, Mpoint, DrawVisitor
  *
  * @author Erik R
  * @since 0.1-SNAPSHOT
@@ -17,6 +19,10 @@ public class Mpolygon implements Mshape {
   private final List<Mpoint> points;
   private final Color color;
 
+  /**
+   * @param points A list of Mpoints which makes up the polygon
+   * @param color The color of the polygon
+   */
   Mpolygon(List<Mpoint> points, Color color) {
     // TODO: This should make a new list
     this.points = points;
@@ -84,6 +90,7 @@ public class Mpolygon implements Mshape {
     return null;
   }
 
+  /** @return All the points of the Polygon */
   public List<Mpoint> getPoints() {
     // this has to duplicate list and points! TODO: implement
     return points;

@@ -8,13 +8,27 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Polygon;
 
+/** Class that implements the DrawVisitor using JavaFX
+ *
+ * <p>Responsibility implement DrawVisitor using JavaFX <br>
+ * Implements DrawVisitor <br>
+ * Used by CanvasController <br>
+ * Uses Mellipse, Mpoint, Mpolygon, javafx.scene.shape.Ellipse, javafx.scene.Polygon, javafx.scene.paint.Color, javafx.scene.layout.BorderPane
+ *
+ * @author Erik R
+ * @since 0.1-SNAPSHOT
+ *
+ * */
 public class JavaFXDrawVisitor implements DrawVisistor {
   private final BorderPane rootBorderPane;
 
+  /** @param rootBorderPane Borderpane to add the JavaFX shape to */
   public JavaFXDrawVisitor(BorderPane rootBorderPane) {
     this.rootBorderPane = rootBorderPane;
   }
 
+  /** {@inheritDoc}
+   * This provides the JavaFX implementation of visitMellipse */
   @Override
   public void visitMellipse(Mellipse mellipse) {
     Ellipse ellipse =
@@ -32,6 +46,8 @@ public class JavaFXDrawVisitor implements DrawVisistor {
     rootBorderPane.getChildren().add(ellipse);
   }
 
+  /** {@inheritDoc}
+   * This provides the JavaFX implementation of visistMpolygon*/
   @Override
   public void visitMpolyogon(Mpolygon mpolygon) {
     Polygon polygon = new Polygon();

@@ -5,7 +5,10 @@ import java.util.Objects;
 /**
  * Class that represents a point in the model
  *
- * <p>Responsibility Used by Uses
+ * <p>Responsibility Represent a point <br>
+ * Used by ConcreteShapeFactory, Mellipse, Mpolygon, Mshape, ConcreteCircleTool, MpointTest
+ * ConcreteRectangleTool, ModelCanvas, JavaFXDrawVisitor <br>
+ * Uses java.util.Objects
  *
  * @author Erik R
  * @since 0.1-SNAPSHOT
@@ -15,22 +18,31 @@ public class Mpoint implements Cloneable {
   private final int y;
   private final int z;
 
+  /**
+   * @param x x coordinate of the point created
+   * @param y y coordinate of the point created
+   * @param z z coordinate of the point created
+   */
   Mpoint(int x, int y, int z) {
     this.x = x;
     this.y = y;
     this.z = z;
   }
 
+  /**
+   * @param x x coordinate of the point created
+   * @param y y coordinate of the point created
+   */
   public Mpoint(int x, int y) {
     this(x, y, 0);
   }
 
-  /** @return The x cordinate of the point in space */
+  /** @return The x coordinate of the point */
   public int getX() {
     return x;
   }
 
-  /** @return The y cordinate of the point in space */
+  /** @return The y coordinate of the point */
   public int getY() {
     return y;
   }
