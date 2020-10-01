@@ -2,7 +2,13 @@ package com.teamjeaa.obpaint.model.shapeModel;
 
 import java.awt.*;
 
-/** Interface that holds the methods for creating the Shapes */
+/**
+ * Interface that holds the methods for creating the Shapes *
+ *
+ * <p>Responsibility Used by Uses
+ * @author Axel H
+ * @since 0.1-SNAPSHOT
+ */
 public interface ShapeFactory {
   Mshape createCircle(int radius, int x, int y, Color color);
 

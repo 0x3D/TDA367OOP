@@ -6,11 +6,9 @@ import java.util.List;
 
 /**
  * Class that holds the logic for creating Shapes
- * <p>
- * Responsibility
- * Used by
- * Uses
- * </p>
+ *
+ * <p>Responsibility Used by Uses
+ *
  * @author Axel H
  * @since 0.1-SNAPSHOT
  */

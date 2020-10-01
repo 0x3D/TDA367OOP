@@ -3,7 +3,11 @@ package com.teamjeaa.obpaint.model.shapeModel;
 import com.teamjeaa.obpaint.view.DrawVisistor;
 
 /**
- * This is the common interface of the shapes in our model
+ * This is the common interface of the shapes in our model *
+ *
+ * <p>Responsibility Used by Uses
+ * @author Erik R
+ * @since 0.1-SNAPSHOT
  *
  * @see Mellipse
  * @see Mpolygon

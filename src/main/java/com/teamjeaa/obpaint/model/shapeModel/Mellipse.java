@@ -7,11 +7,8 @@ import java.awt.*;
 /**
  * The models implementation of an ellipse
  *
- * <p>
- *   Responsibility
- *   Used by
- *   Uses
- * </p>
+ * <p>Responsibility Used by Uses
+ *
  * @author Erik R
  * @since 0.1-SNAPSHOT
  */

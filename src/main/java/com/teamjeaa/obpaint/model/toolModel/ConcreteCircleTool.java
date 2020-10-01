@@ -7,7 +7,11 @@ import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 
 
-/** A tool to create a circle at a place in the model */
+/** A tool to create a circle at a place in the model
+ * <p>Responsibility Used by Uses
+ * @author Axel H
+ * @since 0.1-SNAPSHOT
+ */
 public class ConcreteCircleTool implements Tool {
   Mpoint centerPoint;
 
