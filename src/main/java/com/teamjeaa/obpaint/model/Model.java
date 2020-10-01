@@ -1,73 +1,30 @@
-package com.teamjeaa.obpaint;
+package com.teamjeaa.obpaint.model;
 
-import com.teamjeaa.obpaint.model.ModelCanvas;
-import com.teamjeaa.obpaint.model.Observer;
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 import com.teamjeaa.obpaint.model.toolModel.*;
-import com.teamjeaa.obpaint.view.MainView;
-import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
-public final class ObPaint extends Application {
+public final class Model {
   // Maybe not the static here
   public static Stage primaryStage;
   private Tool selectedTool;
   private static Color color;
   private ModelCanvas modelCanvas;
   private List<Observer> observers;
-  private static ObPaint instance;
+  private static Model instance;
 
 
-  public static void main(String[] args) {
-    launch(args);
-  }
-
-  /**
-   * This method starts up JavaFX and initializes the Model
-   *
-   * @param primaryStage
-   */
-  @Override
-  public void start(Stage primaryStage) {
+  private Model() {
     instance = this;
     observers = new ArrayList<>();
-
-    //setSelectedTool(new ConcreteCircleTool());
-    setupModel();
-    Parent root = setupScene(primaryStage);
     setSelectedColor(Color.RED);
-  }
-
-  private Parent setupScene(Stage primaryStage) {
-    Parent root = new MainView();
-
-    primaryStage.setOnCloseRequest(e->{
-      try{stop();}
-      catch (Exception exception){exception.printStackTrace();}
-      Platform.exit();
-      System.exit(0);
-    });
-
-    ResourceBundle obPaintResourceBundle = ResourceBundle.getBundle("obPaint");
-    primaryStage.setTitle(obPaintResourceBundle.getString("application.name"));
-    primaryStage.getIcons().add(new Image("images/logo.png"));
-    primaryStage.setScene(new Scene(root, 900, 675));
-    primaryStage.setMinHeight(680);
-    primaryStage.setMinWidth(900);
-    primaryStage.show();
-    ObPaint.primaryStage = primaryStage;
-    return root;
+    setupModel();
   }
 
   private void setupModel() {
@@ -99,7 +56,10 @@ public final class ObPaint extends Application {
     }
   }
 
-  public static ObPaint getInstance() {
+  public static Model getInstance() {
+    if (instance == null) {
+      instance = new Model();
+    }
     return instance;
   }
 
@@ -119,6 +79,6 @@ public final class ObPaint extends Application {
   }
 
   public void setSelectedColor(Color color) {
-    ObPaint.color = color;
+    Model.color = color;
   }
 }

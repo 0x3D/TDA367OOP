@@ -1,6 +1,6 @@
 package com.teamjeaa.obpaint.controller;
 
-import com.teamjeaa.obpaint.ObPaint;
+import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.Observer;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.toolModel.Tool;
@@ -16,13 +16,13 @@ import java.util.ResourceBundle;
 public class CanvasController implements Initializable, Observer {
     @FXML
     BorderPane rootBorderPane;
-    ObPaint backend;
+    Model backend;
     Tool selectedTool;
     private JavaFXDrawVisitor javaFXDrawVisitor;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        backend = ObPaint.getInstance();
+        backend = Model.getInstance();
         selectedTool = backend.getSelectedTool();
         backend.addObserver(this);
         initMouseActions();

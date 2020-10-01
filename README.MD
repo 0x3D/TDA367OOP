@@ -4,7 +4,7 @@ This is a object based draw program
 ## Setup
 1. Download files from github
 2. Right click pom.xml and choose reimport
-3. Add configuration, select application and fill in `com.teamjeaa.obpaint.ObPaint` in Main Class
+3. Add configuration, select application and fill in `com.teamjeaa.obpaint.model.Model` in Main Class
 
 ## Git workflow
 1. `git checkout master`

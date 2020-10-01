@@ -1,6 +1,5 @@
 package com.teamjeaa.obpaint.view;
 
-import com.teamjeaa.obpaint.controller.ViewController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 
@@ -10,9 +9,9 @@ import java.io.IOException;
 public class MainView extends AnchorPane {
 
   public MainView() {
-    FXMLLoader fxmlLoader = new FXMLLoader((getClass().getResource("/fxml/obPaint.fxml")));
+    FXMLLoader fxmlLoader = new FXMLLoader((getClass().getResource("/fxml/mainView.fxml")));
     fxmlLoader.setRoot(this);
-    fxmlLoader.setController(ViewController.getInstance());
+    //fxmlLoader.setController(MainController.getInstance());
 
     try {
       fxmlLoader.load();
