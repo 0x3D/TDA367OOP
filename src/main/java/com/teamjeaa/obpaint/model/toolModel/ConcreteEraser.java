@@ -2,8 +2,11 @@ package com.teamjeaa.obpaint.model.toolModel;
 
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 
-/** Eraser class that holds the EraserLogic
+/**
+ * Eraser class that holds the EraserLogic
+ *
  * <p>Responsibility Used by Uses
+ *
  * @author Erik R
  * @since 0.1-SNAPSHOT
  */

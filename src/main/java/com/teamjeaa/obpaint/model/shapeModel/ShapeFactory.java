@@ -6,6 +6,7 @@ import java.awt.*;
  * Interface that holds the methods for creating the Shapes *
  *
  * <p>Responsibility Used by Uses
+ *
  * @author Axel H
  * @since 0.1-SNAPSHOT
  */

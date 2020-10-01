@@ -22,11 +22,7 @@ public class ConcreteRectangleTool implements Tool {
     firstVertice = null;
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
     return shapeFactory.createRectangle(
-        fv.getX(),
-        fv.getY(),
-        secondVertice.getX(),
-        secondVertice.getY(),
-        Model.getSelectedColor());
+        fv.getX(), fv.getY(), secondVertice.getX(), secondVertice.getY(), Model.getSelectedColor());
   }
 
   @Override

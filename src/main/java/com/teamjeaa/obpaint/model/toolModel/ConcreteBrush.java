@@ -3,8 +3,11 @@ package com.teamjeaa.obpaint.model.toolModel;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 // import javafx.scene.shape.Polyline;
 
-/** Our Brushtool that takes care of the logic of our brush
+/**
+ * Our Brushtool that takes care of the logic of our brush
+ *
  * <p>Responsibility Used by Uses
+ *
  * @author Axel H
  * @since 0.1-SNAPSHOT
  */

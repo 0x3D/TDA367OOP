@@ -11,10 +11,10 @@ import java.awt.*;
 public class ModelCanvasTest {
   @Test
   public void addToModel() {
-    //Shape shape = new Rectangle();
+    // Shape shape = new Rectangle();
     ModelCanvas modelCanvas = new ModelCanvas();
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
-    Mshape shape = shapeFactory.createCircle(10,2,2, Color.BLACK);
+    Mshape shape = shapeFactory.createCircle(10, 2, 2, Color.BLACK);
     modelCanvas.addToRender(shape);
 
     // This will check if got added to list since default position p is (0,0)
@@ -26,7 +26,7 @@ public class ModelCanvasTest {
     // set up
     ModelCanvas modelCanvas = new ModelCanvas();
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
-    Mshape shape = shapeFactory.createCircle(10,2,2,Color.BLACK);
+    Mshape shape = shapeFactory.createCircle(10, 2, 2, Color.BLACK);
 
     // adding, see test addToModel()
     modelCanvas.addToRender(shape);
@@ -43,21 +43,21 @@ public class ModelCanvasTest {
 
   @Test
   public void addToRender() {
-    //TODO: Implement
+    // TODO: Implement
   }
 
   @Test
   public void removeFromRender() {
-    //TODO: Implement
+    // TODO: Implement
   }
 
   @Test
   public void findShapeAt() {
-    //TODO: Implement
+    // TODO: Implement
   }
 
   @Test
   public void getShapes() {
-    //TODO: Implement
+    // TODO: Implement
   }
 }

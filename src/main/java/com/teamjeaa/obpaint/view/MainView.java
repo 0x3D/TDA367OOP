@@ -8,9 +8,9 @@ import java.io.IOException;
 public class MainView extends AnchorPane {
 
   public MainView() {
-    FXMLLoader fxmlLoader = new FXMLLoader((getClass().getResource("/fxml/mainView.fxml")));
+    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/mainView.fxml"));
     fxmlLoader.setRoot(this);
-    //fxmlLoader.setController(MainController.getInstance());
+    // fxmlLoader.setController(MainController.getInstance());
 
     try {
       fxmlLoader.load();

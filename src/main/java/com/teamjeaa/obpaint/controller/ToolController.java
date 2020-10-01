@@ -26,66 +26,56 @@ import java.util.ResourceBundle;
  */
 public class ToolController implements Initializable {
 
-    private final Model backend = Model.getInstance();
+  private final Model backend = Model.getInstance();
+  ToggleGroup toolButtons;
+  @FXML private ColorPicker cp;
+  @FXML private ToggleButton pencilButton;
+  @FXML private ToggleButton brushButton;
+  @FXML private ToggleButton eraserButton;
+  @FXML private ToggleButton circleButton;
+  @FXML private ToggleButton rectangleButton;
 
-    @FXML
-    private ColorPicker cp;
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    toolButtons = new ToggleGroup();
+    pencilButton.setToggleGroup(toolButtons);
+    brushButton.setToggleGroup(toolButtons);
+    eraserButton.setToggleGroup(toolButtons);
+    circleButton.setToggleGroup(toolButtons);
+    rectangleButton.setToggleGroup(toolButtons);
+    /*toolButtons.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+        @Override
+        public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
+            newValue.
+        }
+    });*/
 
-    @FXML
-    private ToggleButton pencilButton;
+    cp.valueProperty()
+        .addListener(
+            (ObservableValue<? extends Color> observable, Color oldValue, Color newValue) -> {
+              java.awt.Color awtColor =
+                  new java.awt.Color(
+                      (float) newValue.getRed(),
+                      (float) newValue.getGreen(),
+                      (float) newValue.getBlue(),
+                      (float) newValue.getOpacity());
 
-    @FXML
-    private ToggleButton brushButton;
+              backend.setSelectedColor(awtColor);
+            });
+  }
 
-    @FXML
-    private ToggleButton eraserButton;
+  @FXML
+  void onEraserButton(ActionEvent event) {
+    System.out.println("Eraser");
+  }
 
-    @FXML
-    private ToggleButton circleButton;
+  @FXML
+  void onCircleButton(ActionEvent event) {
+    backend.setSelectedTool(new ConcreteCircleTool());
+  }
 
-    @FXML
-    private ToggleButton rectangleButton;
-
-    ToggleGroup toolButtons;
-
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        toolButtons = new ToggleGroup();
-        pencilButton.setToggleGroup(toolButtons);
-        brushButton.setToggleGroup(toolButtons);
-        eraserButton.setToggleGroup(toolButtons);
-        circleButton.setToggleGroup(toolButtons);
-        rectangleButton.setToggleGroup(toolButtons);
-        /*toolButtons.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-            @Override
-            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
-                newValue.
-            }
-        });*/
-
-        cp.valueProperty().addListener((ObservableValue<? extends Color> observable, Color oldValue, Color newValue) -> {
-            java.awt.Color awtColor = new java.awt.Color((float) newValue.getRed(),
-                    (float) newValue.getGreen(),
-                    (float) newValue.getBlue(),
-                    (float) newValue.getOpacity());
-
-            backend.setSelectedColor(awtColor);
-        });
-    }
-
-
-    @FXML
-    void onEraserButton(ActionEvent event) {
-        System.out.println("Eraser");
-    }
-
-    @FXML
-    void onCircleButton(ActionEvent event) {
-        backend.setSelectedTool(new ConcreteCircleTool());
-    }
-
-    @FXML
-    void onRectangleButton(ActionEvent event) {
-        backend.setSelectedTool(new ConcreteRectangleTool());
-    }
+  @FXML
+  void onRectangleButton(ActionEvent event) {
+    backend.setSelectedTool(new ConcreteRectangleTool());
+  }
 }
