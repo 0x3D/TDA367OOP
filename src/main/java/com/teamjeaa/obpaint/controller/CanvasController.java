@@ -51,6 +51,7 @@ public class CanvasController implements Initializable, SelectedToolObserver {
   }
 
   private void render() {
+    rootBorderPane.getChildren().clear();
 
     for (Mshape s : backend.getCanvasShapes()) {
       // It wants the old one to be removed if already is a child.
