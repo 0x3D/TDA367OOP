@@ -36,7 +36,7 @@ public class CanvasController implements Initializable, SelectedToolObserver {
    */
   @Override
   public void initialize(URL location, ResourceBundle resources) {
-    backend = Model.getInstance();
+    backend = Model.INSTANCE;
     selectedTool = backend.getSelectedTool();
     backend.addObserver(this);
     initMouseActions();

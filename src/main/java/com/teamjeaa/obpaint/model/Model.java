@@ -30,31 +30,18 @@ import java.util.List;
  * @see Tool
  * @since 0.1-SNAPSHOT
  */
-public final class Model {
+public enum Model {
+  INSTANCE;
+
   private static Color color;
-  private static Model instance;
   private final List<SelectedToolObserver> observers;
   private Tool selectedTool;
   private ModelCanvas modelCanvas;
 
   private Model() {
-    instance = this;
     observers = new ArrayList<>();
     setSelectedColor(Color.RED);
     setupModel();
-  }
-
-  /**
-   * Singleton pattern. If instance of Model is created it gives requesting class reference to
-   * object.
-   *
-   * @return instance of the Model.
-   */
-  public static Model getInstance() {
-    if (instance == null) {
-      instance = new Model();
-    }
-    return instance;
   }
 
   /** @return Returns the JavaAWT Color that is selected from Controller. */
