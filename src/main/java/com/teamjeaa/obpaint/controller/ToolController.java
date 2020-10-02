@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
  */
 public class ToolController implements Initializable {
 
-  private final Model backend = Model.getInstance();
+  private final Model backend = Model.INSTANCE;
   @FXML private ColorPicker cp;
   @FXML private ToggleButton pencilButton;
   @FXML private ToggleButton brushButton;
