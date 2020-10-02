@@ -14,7 +14,7 @@ import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
  */
 public class ConcreteCircleTool implements Tool {
   /** center of the circle */
-  Mpoint centerPoint;
+  Mpoint startPoint;
 
   /**
    * Start use method is used for our mouseMethods
@@ -24,7 +24,7 @@ public class ConcreteCircleTool implements Tool {
    */
   @Override
   public void startUse(Double x1, Double y1) {
-    centerPoint = new Mpoint(x1.intValue(), y1.intValue());
+    startPoint = new Mpoint(x1.intValue(), y1.intValue());
   }
 
   /**
@@ -37,14 +37,11 @@ public class ConcreteCircleTool implements Tool {
   @Override
   public Mshape stopUse(Double x, Double y) {
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
-    Mpoint cloneStartCenter = centerPoint.clone();
-    int radie =
-        (int)
-            Math.sqrt(
-                Math.pow(cloneStartCenter.getX() - x.intValue(), 2)
-                    + Math.pow(cloneStartCenter.getY() - y.intValue(), 2));
+    int dia = (int) Math.sqrt(Math.pow(startPoint.getX() - x.intValue(), 2) + Math.pow(startPoint.getY() - y.intValue(), 2));
+    Mpoint centerPoint = new Mpoint((startPoint.getX() + x.intValue())/2, (startPoint.getY() + y.intValue())/2);
+
     return shapeFactory.createCircle(
-        radie, centerPoint.getX(), centerPoint.getY(), Model.getSelectedColor());
+        dia/2, centerPoint.getX(), centerPoint.getY(), Model.getSelectedColor());
   }
 
   /**
