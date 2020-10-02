@@ -21,8 +21,8 @@ public class ModelCanvasTest {
     Assert.assertEquals(modelCanvas.findShapeAt(2, 2), shape);
   }
 
-  @Test
-  public void removeFromModel() {
+  @Test(expected = IllegalArgumentException.class)
+  public void removeFromModel() throws IllegalArgumentException {
     // set up
     ModelCanvas modelCanvas = new ModelCanvas();
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
@@ -34,11 +34,7 @@ public class ModelCanvasTest {
     // Removing,
     modelCanvas.removeFromRender(shape);
 
-    try {
-      Mshape secondShape = modelCanvas.findShapeAt(0, 0);
-    } catch (IllegalArgumentException e) {
-      Assert.assertEquals("Shape not found in list, ModelCanvas", e.getMessage());
-    }
+    Mshape secondShape = modelCanvas.findShapeAt(0, 0);
   }
 
   @Test
