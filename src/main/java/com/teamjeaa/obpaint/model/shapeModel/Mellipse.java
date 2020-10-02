@@ -29,8 +29,8 @@ public class Mellipse implements Mshape {
 
   /**
    * @param centerPoint The point in the center of the Ellipse
-   * @param semiAxesA The axis of the ellipse in the y direction
-   * @param semiAxesB The axis of the ellipse ion the x direction
+   * @param semiAxesA The axis of the ellipse in the x direction
+   * @param semiAxesB The axis of the ellipse ion the y direction
    * @param color The color the ellipse created
    */
   Mellipse(Mpoint centerPoint, int semiAxesA, int semiAxesB, Color color) {
@@ -40,6 +40,14 @@ public class Mellipse implements Mshape {
     this.color = color;
   }
 
+  /**
+   * Getter for the Mpoint in the center of ellipse
+   * @return centerPoint, a Mpoint which is the middle of the ellipse
+   */
+  public Mpoint getCenterPoint(){
+    return this.centerPoint.clone();
+  }
+
   /** @return The color of this Ellipse */
   public Color getColor() {
     return color; // TODO: create a new color instead of giving object reference
@@ -47,7 +55,7 @@ public class Mellipse implements Mshape {
 
   @Override
   public Mpoint getPosition() {
-    return this.centerPoint;
+    return new Mpoint(centerPoint.getX()-semiAxesB, centerPoint.getY()-semiAxesA);
   }
 
   @Override
@@ -77,6 +85,6 @@ public class Mellipse implements Mshape {
 
   @Override
   public Mshape translate(int x, int y) {
-    return new Mellipse(new Mpoint(x, y), this.semiAxesA, this.semiAxesB, this.color);
+    return new Mellipse(new Mpoint(this.getSemiAxesA()+x,this.getSemiAxesB() + y), this.semiAxesA, this.semiAxesB, this.color);
   }
 }

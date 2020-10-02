@@ -14,8 +14,9 @@ import java.util.List;
 
 /**
  * Responsibility Offers the most vital parts of the model without exposing. Creates ModelCanvas and
- * holds List with Observers Used by Start, CanvasController , ConcreteCircleTool,
- * ConcreteRectangleTool, ToolController Uses Color, List, Observer, Tool
+ * holds List with Observers <br>
+ * Used by Start, CanvasController , ConcreteCircleTool, ConcreteRectangleTool, ToolController Uses
+ * Color, List, Observer, Tool
  *
  * @author Jonas N
  * @see CanvasController

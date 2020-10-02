@@ -33,8 +33,8 @@ public class JavaFXDrawVisitor implements DrawVisitor {
   public void visitMellipse(Mellipse mellipse) {
     Ellipse ellipse =
         new Ellipse(
-            mellipse.getPosition().getX(),
-            mellipse.getPosition().getY(),
+            mellipse.getCenterPoint().getX(),
+            mellipse.getCenterPoint().getY(),
             mellipse.getSemiAxesA(),
             mellipse.getSemiAxesB());
     ellipse.setFill(
