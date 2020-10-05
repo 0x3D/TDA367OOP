@@ -2,6 +2,7 @@ package com.teamjeaa.obpaint.view;
 
 import com.teamjeaa.obpaint.model.shapeModel.Mellipse;
 import com.teamjeaa.obpaint.model.shapeModel.Mpolygon;
+import com.teamjeaa.obpaint.model.shapeModel.Mpolyline;
 
 /**
  * This interface provides the methods a visitor has to implement
@@ -28,4 +29,6 @@ public interface DrawVisitor {
    * @param mshape The MPolygon to visit
    */
   void visitMpolyogon(Mpolygon mshape);
+
+  void visitMpolyline(Mpolyline mpolyline);
 }

@@ -3,10 +3,12 @@ package com.teamjeaa.obpaint.view;
 import com.teamjeaa.obpaint.model.shapeModel.Mellipse;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 import com.teamjeaa.obpaint.model.shapeModel.Mpolygon;
+import com.teamjeaa.obpaint.model.shapeModel.Mpolyline;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Polyline;
 
 /**
  * Class that implements the DrawVisitor using JavaFX
@@ -51,9 +53,8 @@ public class JavaFXDrawVisitor implements DrawVisitor {
   public void visitMpolyogon(Mpolygon mpolygon) {
     Polygon polygon = new Polygon();
     for (Mpoint mpoint : mpolygon.getPoints()) {
-      polygon
-          .getPoints()
-          .addAll((double) mpoint.getX(), (double) mpoint.getY()); // TODO: Make prettier
+      polygon.getPoints().addAll(
+              (double) mpoint.getX(), (double) mpoint.getY()); // TODO: Make prettier
     }
     polygon.setFill(
         new Color(
@@ -62,5 +63,16 @@ public class JavaFXDrawVisitor implements DrawVisitor {
             mpolygon.getColor().getBlue() / 255.0,
             mpolygon.getColor().getAlpha() / 255.0));
     rootBorderPane.getChildren().add(polygon);
+  }
+
+  @Override
+  public void visitMpolyline(Mpolyline mpolyline) {
+    Polyline polyline = new Polyline();
+    for(Mpoint mpoint: mpolyline.getPoints()){
+      polyline.getPoints().addAll(
+              (double) mpoint.getX(), (double) mpoint.getY()
+      );
+    }
+    rootBorderPane.getChildren().add(polyline);
   }
 }
