@@ -1,7 +1,7 @@
 package com.teamjeaa.obpaint.model.shapeModel;
 
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -15,8 +15,8 @@ public class MpolygonTest {
     mpointList.add(new Mpoint(0, 0));
     mpointList.add(new Mpoint(1, 1));
     Mpolygon mpolygon = new Mpolygon(mpointList, Color.black);
-    Assert.assertEquals(mpolygon.getPosition().getX(), 0);
-    Assert.assertEquals(mpolygon.getPosition().getY(), 0);
+    assertEquals(mpolygon.getPosition().getX(), 0);
+    assertEquals(mpolygon.getPosition().getY(), 0);
   }
 
   @Test
@@ -25,7 +25,7 @@ public class MpolygonTest {
     mpointList.add(new Mpoint(0, 0));
     mpointList.add(new Mpoint(2, 2));
     Mpolygon mpolygon = new Mpolygon(mpointList, Color.black);
-    Assert.assertEquals(mpolygon.getWidth(), 2);
+    assertEquals(mpolygon.getWidth(), 2);
   }
 
   @Test
@@ -34,6 +34,6 @@ public class MpolygonTest {
     mpointList.add(new Mpoint(0, 0));
     mpointList.add(new Mpoint(2, 3));
     Mpolygon mpolygon = new Mpolygon(mpointList, Color.black);
-    Assert.assertEquals(mpolygon.getHeight(), 3);
+    assertEquals(mpolygon.getHeight(), 3);
   }
 }

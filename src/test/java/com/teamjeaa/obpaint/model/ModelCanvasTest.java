@@ -3,10 +3,11 @@ package com.teamjeaa.obpaint.model;
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
-import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.awt.*;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ModelCanvasTest {
   @Test
@@ -18,11 +19,11 @@ public class ModelCanvasTest {
     modelCanvas.addToRender(shape);
 
     // This will check if got added to list since default position p is (0,0)
-    Assert.assertEquals(modelCanvas.findShapeAt(2-10,2-10 ), shape);
+    assertEquals(modelCanvas.findShapeAt(2-10,2-10 ), shape);
   }
 
-  @Test(expected = IllegalArgumentException.class)
-  public void removeFromModel() throws IllegalArgumentException {
+  @Test
+  public void removeFromModel() {
     // set up
     ModelCanvas modelCanvas = new ModelCanvas();
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
@@ -34,7 +35,9 @@ public class ModelCanvasTest {
     // Removing,
     modelCanvas.removeFromRender(shape);
 
-    Mshape secondShape = modelCanvas.findShapeAt(0, 0);
+    Exception exception = assertThrows(IllegalArgumentException.class,()-> {modelCanvas.findShapeAt(0, 0);});
+    String expectedMessage = "Shape not found in list";
+    assertTrue(exception.getMessage().contains(expectedMessage));
   }
 
   @Test
