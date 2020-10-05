@@ -35,7 +35,7 @@ public class ModelCanvasTest {
     // Removing,
     modelCanvas.removeFromRender(shape);
 
-    Exception exception = assertThrows(IllegalArgumentException.class,()-> {modelCanvas.findShapeAt(0, 0);});
+    Exception exception = assertThrows(IllegalArgumentException.class,()-> modelCanvas.findShapeAt(0, 0));
     String expectedMessage = "Shape not found in list";
     assertTrue(exception.getMessage().contains(expectedMessage));
   }

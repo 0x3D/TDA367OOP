@@ -2,6 +2,7 @@ package com.teamjeaa.obpaint.model.shapeModel;
 
 import org.junit.jupiter.api.Test;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,17 +17,17 @@ public class MpolylineTest {
     mPoints.add(new Mpoint(0, 10));
     mPoints.add(new Mpoint(10, 100));
     mPoints.add(new Mpoint(0, 100));
-    return new Mpolyline(mPoints);
+    return new Mpolyline(mPoints, Color.BLACK);
   }
 
   @Test
-   void getPosition() {
+  void getPosition() {
     Mpolyline mpolyline = setUpMpolyline();
     assertEquals(new Mpoint(0, 0), mpolyline.getPosition());
   }
 
   @Test
-   void getWidth() {
+  void getWidth() {
     Mpolyline mpolyline = setUpMpolyline();
     assertEquals(mpolyline.getWidth(), 10);
   }
@@ -34,21 +35,22 @@ public class MpolylineTest {
   @Test
   public void getHeight() {
     Mpolyline mpolyline = setUpMpolyline();
-    assertEquals(mpolyline.getHeight(),100);
+    assertEquals(mpolyline.getHeight(), 100);
   }
 
   @Test
   void translate() {
     Mpolyline mpolyline = setUpMpolyline();
-    Mshape translated = mpolyline.translate(10,10);
-    assertEquals(translated.getPosition().getX(),10);
-    assertEquals(translated.getPosition().getY(),10);
+    Mshape translated = mpolyline.translate(10, 10);
+    assertEquals(translated.getPosition().getX(), 10);
+    assertEquals(translated.getPosition().getY(), 10);
   }
 
   @Test
   void acceptDrawVisitor() {
-    //TODO: Implement test for this
+    // TODO: Implement test for this
   }
+
   @Test
   void getPoints() {
     Mpolyline mpolyline = setUpMpolyline();
@@ -58,5 +60,11 @@ public class MpolylineTest {
     mPoints.add(new Mpoint(10, 100));
     mPoints.add(new Mpoint(0, 100));
     assertTrue(mpolyline.getPoints().containsAll(mPoints));
+  }
+
+  @Test
+  void getColor() {
+    Mpolyline mpolyline = setUpMpolyline();
+    assertEquals(mpolyline.getColor(), Color.BLACK);
   }
 }

@@ -38,7 +38,7 @@ public enum Model {
   private Tool selectedTool;
   private ModelCanvas modelCanvas;
 
-  private Model() {
+  Model() {
     observers = new ArrayList<>();
     setSelectedColor(Color.RED);
     setupModel();

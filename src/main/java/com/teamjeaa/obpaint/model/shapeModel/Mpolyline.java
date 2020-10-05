@@ -2,6 +2,7 @@ package com.teamjeaa.obpaint.model.shapeModel;
 
 import com.teamjeaa.obpaint.view.DrawVisitor;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,13 +19,23 @@ import java.util.List;
 public final class Mpolyline implements Mshape {
   private final List<Mpoint> mPoints;
 
+  private final Color color;
+
+  /** Color of this Polyline
+   * @return The color of the polyline as java.awt color */
+  public Color getColor() {
+    return color;
+  }
+
   /**
    * Constructor to create a Polyline
    *
    * @param mPoints List of points to create polyline from
+   * @param color The color of this Polyline
    */
-  public Mpolyline(List<Mpoint> mPoints) {
+  public Mpolyline(List<Mpoint> mPoints, Color color) {
     this.mPoints = mPoints;
+    this.color = color;
   }
 
   /**
@@ -117,6 +128,6 @@ public final class Mpolyline implements Mshape {
     for (Mpoint mpoint : mPoints) {
       newPolyline.add(new Mpoint(mpoint.getX() + x, mpoint.getY() + y));
     }
-    return new Mpolyline(newPolyline);
+    return new Mpolyline(newPolyline, Color.BLACK);
   }
 }

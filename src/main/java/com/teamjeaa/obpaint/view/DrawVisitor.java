@@ -30,5 +30,10 @@ public interface DrawVisitor {
    */
   void visitMpolyogon(Mpolygon mshape);
 
+  /**
+   * The method to implement what should happen when visiting a Mpolyline
+   *
+   * @param mpolyline The Mpolyline to visit
+   */
   void visitMpolyline(Mpolyline mpolyline);
 }
