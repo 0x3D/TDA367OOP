@@ -2,6 +2,7 @@ package com.teamjeaa.obpaint.controller;
 
 import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.toolModel.ConcreteCircleTool;
+import com.teamjeaa.obpaint.model.toolModel.ConcretePencil;
 import com.teamjeaa.obpaint.model.toolModel.ConcreteRectangleTool;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -61,6 +62,11 @@ public class ToolController implements Initializable {
 
               backend.setSelectedColor(awtColor);
             });
+  }
+  @FXML
+  private void onPencilButton(ActionEvent event) {
+    System.out.println("Pencil");
+    backend.setSelectedTool(new ConcretePencil());
   }
 
   @FXML
