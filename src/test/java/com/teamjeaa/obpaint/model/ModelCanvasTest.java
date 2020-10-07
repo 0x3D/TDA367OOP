@@ -53,6 +53,37 @@ public final class ModelCanvasTest {
   @Test
   public void findShapeAt() {
     // TODO: Implement
+    int x = 19;
+    int y = 19;
+    ShapeFactory shapeFactory = new ConcreteShapeFactory();
+    Mshape shapeToFind = shapeFactory.createRectangle(10,10,20,20,Color.ORANGE);
+    ModelCanvas modelCanvas = new ModelCanvas();
+    modelCanvas.addToRender(shapeToFind);
+   assertEquals(shapeToFind,modelCanvas.findShapeAt(x,y));
+  }
+
+  @Test
+  public void findCircleAt() {
+    // TODO: Implement
+    int x = 55;
+    int y = 55;
+    ShapeFactory shapeFactory = new ConcreteShapeFactory();
+    Mshape shapeToFind = shapeFactory.createCircle(10,50,50,Color.ORANGE);
+    ModelCanvas modelCanvas = new ModelCanvas();
+    modelCanvas.addToRender(shapeToFind);
+    assertEquals(shapeToFind,modelCanvas.findShapeAt(x,y));
+  }
+
+  @Test
+  public void findPolyLineAt() {
+    // TODO: Implement
+    int x = 11;
+    int y = 49;
+    ShapeFactory shapeFactory = new ConcreteShapeFactory();
+    Mshape shapeToFind = shapeFactory.createLine(10,10,50,50, Color.ORANGE);
+    ModelCanvas modelCanvas = new ModelCanvas();
+    modelCanvas.addToRender(shapeToFind);
+    assertEquals(shapeToFind,modelCanvas.findShapeAt(x,y));
   }
 
   @Test

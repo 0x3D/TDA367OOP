@@ -53,12 +53,12 @@ public final class ModelCanvas {
    * @return - The shape at the point (x,y)
    * @throws IllegalArgumentException If Shape is not in list
    */
-  public Mshape findShapeAt(double x, double y) throws IllegalArgumentException {
+  public Mshape findShapeAt(int x, int y) throws IllegalArgumentException {
     for (Mshape shape : shapes) {
       Mpoint pos = shape.getPosition();
-      if (Double.compare(pos.getX(), x) == 0 && Double.compare(pos.getY(), y) == 0) {
+      if (pos.getX() <= x  && x <= pos.getX() + shape.getWidth() &&
+      pos.getY() <= y &&  y <=pos.getY() + shape.getHeight())
         return shape;
-      }
     }
     throw new IllegalArgumentException("Shape not found in list, ModelCanvas");
   }
