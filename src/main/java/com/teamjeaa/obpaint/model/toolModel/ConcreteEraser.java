@@ -7,7 +7,7 @@ import com.teamjeaa.obpaint.model.shapeModel.Mshape;
  *
  * @author Axel H
  */
-public class ConcreteEraser implements Tool {
+public final class ConcreteEraser implements Tool {
   /**
    * Size of the eraser. Final because we want to create a new eraser everytime we change the size
    */

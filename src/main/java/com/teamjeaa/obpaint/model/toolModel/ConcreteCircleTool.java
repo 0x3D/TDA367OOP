@@ -12,7 +12,7 @@ import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
  *
  * @author Axel H
  */
-public class ConcreteCircleTool implements Tool {
+public final class ConcreteCircleTool implements Tool {
   /** center of the circle */
   Mpoint startPoint;
 

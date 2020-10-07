@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
  * @author Jonas N
  * @since 0.1-SNAPSHOT
  */
-public class ToolController implements Initializable {
+public final class ToolController implements Initializable {
 
   private final Model backend = Model.INSTANCE;
   @FXML private ColorPicker cp;

@@ -9,7 +9,7 @@ import com.teamjeaa.obpaint.model.shapeModel.Mshape;
  *
  * @author Axel H
  */
-public class ConcreteBrush implements Tool {
+public final class ConcreteBrush implements Tool {
 
   /** Constructor for our brush */
   public ConcreteBrush() {}

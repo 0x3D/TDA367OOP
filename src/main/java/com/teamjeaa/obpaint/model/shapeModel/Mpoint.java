@@ -13,7 +13,7 @@ import java.util.Objects;
  * @author Erik R
  * @since 0.1-SNAPSHOT
  */
-public class Mpoint implements Cloneable {
+public final class Mpoint implements Cloneable {
   private final int x;
   private final int y;
   private final int z;

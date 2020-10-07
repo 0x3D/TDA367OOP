@@ -8,7 +8,7 @@ import java.util.Scanner;
  *
  * @author Axel H
  */
-public class ConcreteToolFactory implements ToolFactory {
+public final class ConcreteToolFactory implements ToolFactory {
 
   /**
    * creating the pencil its public because of the //TODO

@@ -8,7 +8,7 @@ import com.teamjeaa.obpaint.model.shapeModel.Mshape;
  *
  * @author Jonas N
  */
-public class ConcreteMoveTool implements Tool {
+public final class ConcreteMoveTool implements Tool {
   /**
    * Start use method is used for our mouseMethods
    *

@@ -9,7 +9,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class MpolylineTest {
+public final class MpolylineTest {
 
   private Mpolyline setUpMpolyline() {
     List<Mpoint> mPoints = new ArrayList<>();

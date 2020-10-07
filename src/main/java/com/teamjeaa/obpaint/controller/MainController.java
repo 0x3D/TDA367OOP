@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
  * @author Jonas N
  * @since 0.1-SNAPSHOT
  */
-public class MainController implements Initializable {
+public final class MainController implements Initializable {
 
   private @FXML AnchorPane mainPane;
   private @FXML ToggleButton darkModeToggle;

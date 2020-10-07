@@ -10,7 +10,7 @@ import java.io.IOException;
  *
  * @author Jonas N
  */
-public class MainView extends AnchorPane {
+public final class MainView extends AnchorPane {
   /** Constructor for our view that holds all the logic to load the FXML file */
   public MainView() {
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/mainView.fxml"));

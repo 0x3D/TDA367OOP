@@ -10,7 +10,7 @@ import java.util.ArrayList;
  *
  * @author Axel H
  */
-public class ConcretePencil implements Tool {
+public final class ConcretePencil implements Tool {
   private double x;
   private double y;
 

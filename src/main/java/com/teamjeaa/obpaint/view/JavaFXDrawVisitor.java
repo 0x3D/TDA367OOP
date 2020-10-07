@@ -21,7 +21,7 @@ import javafx.scene.shape.Polyline;
  * @author Erik R
  * @since 0.1-SNAPSHOT
  */
-public class JavaFXDrawVisitor implements DrawVisitor {
+public final class JavaFXDrawVisitor implements DrawVisitor {
   private final BorderPane rootBorderPane;
 
   /** @param rootBorderPane Borderpane to add the JavaFX shape to */

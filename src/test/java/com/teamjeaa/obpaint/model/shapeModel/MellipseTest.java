@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.awt.*;
 
 
-public class MellipseTest {
+public final class MellipseTest {
   private final ConcreteShapeFactory concreteShapeFactory = new ConcreteShapeFactory();
 
   public Mshape createCircle() {

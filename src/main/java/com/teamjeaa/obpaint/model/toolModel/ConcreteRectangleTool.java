@@ -12,7 +12,7 @@ import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
  *
  * @author Erik R
  */
-public class ConcreteRectangleTool implements Tool {
+public final class ConcreteRectangleTool implements Tool {
   private Mpoint firstVertice;
 
   /**

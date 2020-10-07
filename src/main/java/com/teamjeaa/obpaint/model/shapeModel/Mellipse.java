@@ -14,7 +14,7 @@ import java.awt.*;
  * @author Erik R
  * @since 0.1-SNAPSHOT
  */
-public class Mellipse implements Mshape {
+public final class Mellipse implements Mshape {
   // Center of ellipse
   private final Mpoint centerPoint;
 

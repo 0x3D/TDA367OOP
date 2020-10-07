@@ -9,7 +9,7 @@ import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ModelCanvasTest {
+public final class ModelCanvasTest {
   @Test
   public void addToModel() {
     // Shape shape = new Rectangle();

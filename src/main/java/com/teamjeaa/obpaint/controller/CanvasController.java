@@ -22,7 +22,7 @@ import java.util.ResourceBundle;
  * @author Jonas N
  * @since 0.1-SNAPSHOT
  */
-public class CanvasController implements Initializable, SelectedToolObserver {
+public final class CanvasController implements Initializable, SelectedToolObserver {
   private @FXML BorderPane rootBorderPane;
   private Model backend;
   private Tool selectedTool;

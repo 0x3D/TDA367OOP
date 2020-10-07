@@ -13,7 +13,7 @@ import java.util.List;
  * @author Erik R
  * @since 0.1 SNAPSHOT
  */
-public class ModelCanvas {
+public final class ModelCanvas {
 
   // TODO: Add ? extends
   private final List<Mshape> shapes;

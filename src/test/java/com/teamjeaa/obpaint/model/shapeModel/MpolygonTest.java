@@ -7,7 +7,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MpolygonTest {
+public final class MpolygonTest {
 
   @Test
   public void testGetPosition() {

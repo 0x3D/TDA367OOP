@@ -24,7 +24,7 @@ import java.util.List;
  * @see Color
  * @since 0.1-SNAPSHOT
  */
-public class ConcreteShapeFactory implements ShapeFactory {
+public final class ConcreteShapeFactory implements ShapeFactory {
 
   @Override
   public Mshape createCircle(int radius, int x, int y, Color color) {

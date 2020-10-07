@@ -15,7 +15,7 @@ import java.util.List;
  * @author Erik R
  * @since 0.1-SNAPSHOT
  */
-public class Mpolygon implements Mshape {
+public final class Mpolygon implements Mshape {
   private final List<Mpoint> points;
   private final Color color;
 
