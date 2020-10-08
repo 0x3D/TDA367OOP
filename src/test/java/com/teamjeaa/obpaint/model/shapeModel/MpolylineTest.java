@@ -67,4 +67,15 @@ public final class MpolylineTest {
     Mpolyline mpolyline = setUpMpolyline();
     assertEquals(mpolyline.getColor(), Color.BLACK);
   }
+
+
+  @Test
+  void isPointMemberOfShape() {
+    int x = 10;
+    int y = 10;
+
+    //Mpolyline line =
+
+
+  }
 }
