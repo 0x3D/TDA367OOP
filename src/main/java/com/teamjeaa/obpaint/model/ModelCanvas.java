@@ -4,6 +4,7 @@ import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -69,6 +70,7 @@ public final class ModelCanvas {
    * @return - A list of the created shapes
    */
   public List<Mshape> getShapes() {
-    return shapes;
+    //Unmodifiable list so that any that uses the models list can't change it
+    return Collections.unmodifiableList(shapes);
   }
 }

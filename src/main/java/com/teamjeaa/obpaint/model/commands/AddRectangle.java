@@ -8,6 +8,7 @@ import java.awt.*;
 
 /**
  * AddMshape TODO
+ * TODO: Better name here, add rectangle strange name
  */
 public class AddRectangle implements Command {
 
