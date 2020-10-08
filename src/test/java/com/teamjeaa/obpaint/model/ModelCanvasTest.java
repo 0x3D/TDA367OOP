@@ -19,7 +19,7 @@ public final class ModelCanvasTest {
     modelCanvas.addToRender(shape);
 
     // This will check if got added to list since default position p is (0,0)
-    assertEquals(modelCanvas.findShapeAt(2-10,2-10 ), shape);
+    assertEquals(modelCanvas.findShapeAt(2,2 ), shape);
   }
 
   @Test
