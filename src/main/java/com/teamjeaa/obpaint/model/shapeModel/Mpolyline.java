@@ -133,19 +133,23 @@ public final class Mpolyline implements Mshape {
 
   @Override
   public boolean isPointMemberOfShape(int x, int y) {
+    //TODO Add (thickness of the line)/2 to get the right acceptance
+    int acceptance = 5;
+
+    if ((   x < (getMinPosition().getX()-acceptance) || x > (getMaxPosition().getX())+acceptance) &&
+            y < (getMinPosition().getY()-acceptance) || y > (getMaxPosition().getY())+acceptance) {
+      return false;
+    }
+
     for (int i = 0; i < mPoints.size() - 1; i++) {
       Mpoint point1 = mPoints.get(i);
       Mpoint point2 = mPoints.get(i + 1);
 
-      if ((   x < getMinPosition().getX() || x > getMaxPosition().getX()) &&
-              y < getMinPosition().getY() || y > getMaxPosition().getY()) {
-        return false;
-      }
-
-      if (distance(point1, point2, x,y) < 5) {
+      if (distance(point1, point2, x,y) < acceptance) {
         return true;
       }
     }
+
     return false;
   }
 
