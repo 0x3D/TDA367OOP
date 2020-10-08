@@ -77,8 +77,8 @@ public final class ModelCanvasTest {
   @Test
   public void findPolyLineAt() {
     // TODO: Implement
-    int x = 11;
-    int y = 49;
+    int x = 49;
+    int y =30;
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
     Mshape shapeToFind = shapeFactory.createLine(10,10,50,50, Color.ORANGE);
     ModelCanvas modelCanvas = new ModelCanvas();
