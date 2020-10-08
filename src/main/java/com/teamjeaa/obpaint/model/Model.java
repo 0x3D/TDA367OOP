@@ -114,4 +114,5 @@ public enum Model {
   public List<Mshape> getCanvasShapes() {
     return modelCanvas.getShapes();
   }
+
 }

@@ -1,5 +1,6 @@
 package com.teamjeaa.obpaint.view;
 
+import com.teamjeaa.obpaint.controller.ObjectListController;
 import com.teamjeaa.obpaint.model.shapeModel.Mellipse;
 import com.teamjeaa.obpaint.model.shapeModel.Mpolygon;
 import com.teamjeaa.obpaint.model.shapeModel.Mpolyline;
@@ -24,6 +25,7 @@ import javafx.scene.shape.Polyline;
 public final class JavaFXDrawVisitor implements DrawVisitor {
   private final BorderPane rootBorderPane;
 
+
   /** @param rootBorderPane Borderpane to add the JavaFX shape to */
   public JavaFXDrawVisitor(BorderPane rootBorderPane) {
     this.rootBorderPane = rootBorderPane;
@@ -45,6 +47,7 @@ public final class JavaFXDrawVisitor implements DrawVisitor {
             mellipse.getColor().getBlue() / 255.0,
             mellipse.getColor().getAlpha() / 255.0));
     rootBorderPane.getChildren().add(ellipse);
+    ObjectListController.objectFlowPane.getChildren().add(new ObjectListItemView("FuckOf"));
   }
 
   /** {@inheritDoc} This provides the JavaFX implementation of visitMpolygon */
@@ -61,6 +64,7 @@ public final class JavaFXDrawVisitor implements DrawVisitor {
             mpolygon.getColor().getBlue() / 255.0,
             mpolygon.getColor().getAlpha() / 255.0));
     rootBorderPane.getChildren().add(polygon);
+
   }
 
 
@@ -78,5 +82,6 @@ public final class JavaFXDrawVisitor implements DrawVisitor {
                     mpolyline.getColor().getBlue() / 255.0,
                     mpolyline.getColor().getAlpha() / 255.0));
     rootBorderPane.getChildren().add(polyline);
+
   }
 }

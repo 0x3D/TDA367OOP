@@ -7,10 +7,13 @@ The tool pane
 -->
 
 <?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="toolView" prefHeight="400.0" prefWidth="150.0" style="-fx-background-color: rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamjeaa.obpaint.controller.ToolController">
     <children>
@@ -60,5 +63,11 @@ The tool pane
                 </ImageView>
             </graphic>
         </ToggleButton>
+      <Slider layoutX="19.0" layoutY="292.0" prefHeight="13.0" prefWidth="112.0" />
+      <TextField layoutX="19.0" layoutY="256.0" prefHeight="31.0" prefWidth="112.0" promptText="Size (OBS! No decimals)">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </TextField>
     </children>
 </AnchorPane>

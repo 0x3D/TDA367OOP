@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,6 +23,9 @@ public final class MainController implements Initializable {
 
   private @FXML AnchorPane mainPane;
   private @FXML ToggleButton darkModeToggle;
+  //private @FXML FlowPane objectFlowPane;
+  //private @FXML AnchorPane objectListRoot;
+
 
   /**
    * This method initializes the controller for MainView
@@ -30,7 +34,9 @@ public final class MainController implements Initializable {
    * @param resources - The resources used to localize the root object
    */
   @Override
-  public void initialize(URL location, ResourceBundle resources) {}
+  public void initialize(URL location, ResourceBundle resources) {
+
+  }
 
   @FXML
   private void onClose() {
