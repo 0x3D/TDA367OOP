@@ -89,19 +89,21 @@ public final class Mpolygon implements Mshape {
   @Override
   public Mshape translate(int x, int y) {
     List<Mpoint> newPosition = new ArrayList<>();
-    for(Mpoint mpoint: this.getPoints()){
-      newPosition.add(new Mpoint(mpoint.getX()+x ,mpoint.getY()+y));
+    for (Mpoint mpoint : this.getPoints()) {
+      newPosition.add(new Mpoint(mpoint.getX() + x, mpoint.getY() + y));
     }
-    return new Mpolygon(newPosition,this.getColor());
+    return new Mpolygon(newPosition, this.getColor());
   }
 
   @Override
   public boolean isPointMemberOfShape(int x, int y) {
+    return (x >= getMinPosition().getX() && x <= getMaxPosition().getX())
+        && (y >= getMinPosition().getY() && y <= getMaxPosition().getY());
   }
 
   /** @return All the points of the Polygon */
   public List<Mpoint> getPoints() {
-    //don't expose list
+    // don't expose list
     return Collections.unmodifiableList(points);
   }
 }
