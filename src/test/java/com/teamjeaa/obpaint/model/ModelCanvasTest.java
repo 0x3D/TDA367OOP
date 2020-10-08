@@ -63,6 +63,19 @@ public final class ModelCanvasTest {
   }
 
   @Test
+  public void testFindShapeAtException() throws IllegalArgumentException{
+    int x = 22;
+    int y = 22;
+    ShapeFactory shapeFactory = new ConcreteShapeFactory();
+    Mshape shapeToFind = shapeFactory.createRectangle(10,10,20,20,Color.ORANGE);
+    ModelCanvas modelCanvas = new ModelCanvas();
+    modelCanvas.addToRender(shapeToFind);
+    Exception exception = assertThrows(IllegalArgumentException.class,()-> modelCanvas.findShapeAt(x,y));
+    String exceptionMessage = "Shape not found in list";
+    assertTrue(exception.getMessage().contains(exceptionMessage));
+  }
+
+  @Test
   public void findCircleAt() {
     // TODO: Implement
     int x = 55;
