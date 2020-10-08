@@ -92,6 +92,12 @@ public final class Mpolygon implements Mshape {
 
   //@Override
   public boolean isPointMemberOfShape(int x, int y) {
+    for( Mpoint p : points){
+      if((x >= getMinPosition().getX() && x <= getMaxPosition().getX())
+          && (y >= getMinPosition().getY() && y <= getMaxPosition().getY())){
+        return true;
+      }
+    }
     return false;
   }
 

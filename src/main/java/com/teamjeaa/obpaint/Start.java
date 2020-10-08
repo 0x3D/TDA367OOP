@@ -37,6 +37,8 @@ public final class Start extends Application {
     setupScene(primaryStage);
   }
 
+
+
   private void setupScene(Stage primaryStage) {
     Parent root = new MainView();
 
