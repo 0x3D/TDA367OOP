@@ -87,4 +87,9 @@ public final class Mellipse implements Mshape {
   public Mshape translate(int x, int y) {
     return new Mellipse(new Mpoint(this.getSemiAxesA()+x,this.getSemiAxesB() + y), this.semiAxesA, this.semiAxesB, this.color);
   }
+
+  @Override
+  public boolean isPointMemberOfShape(int x, int y) {
+    return false;
+  }
 }

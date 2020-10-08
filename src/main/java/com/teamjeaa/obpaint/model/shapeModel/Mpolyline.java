@@ -130,4 +130,42 @@ public final class Mpolyline implements Mshape {
     }
     return new Mpolyline(newPolyline, Color.BLACK);
   }
+
+  @Override
+  public boolean isPointMemberOfShape(int x, int y) {
+    for (int i = 0; i < mPoints.size() - 1; i++) {
+      Mpoint point1 = mPoints.get(i);
+      Mpoint point2 = mPoints.get(i + 1);
+
+      if ((   x < getMinPosition().getX() || x > getMaxPosition().getX()) &&
+              y < getMinPosition().getY() || y > getMaxPosition().getY()) {
+        return false;
+      }
+
+      if (distance(point1, point2, x,y) < 5) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+
+  /**
+   * https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line
+   */
+  private int distance(Mpoint point1, Mpoint point2, int x, int y) {
+    int distance;
+    double numerator;
+    double denominator;
+    int y1 = point1.getY();
+    int x1 = point1.getX();
+    int y2 = point2.getY();
+    int x2 = point2.getX();
+
+    numerator = Math.abs((y2-y1)*x - (x2-x1)*y + x2*y1 - y2*x1);
+    denominator = Math.sqrt(Math.pow((y2-y1), 2) + Math.pow(x2-x1, 2));
+    distance = (int) Math.round(numerator / denominator);
+
+    return distance;
+  }
 }

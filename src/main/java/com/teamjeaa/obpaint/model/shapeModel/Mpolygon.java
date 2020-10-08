@@ -90,6 +90,11 @@ public final class Mpolygon implements Mshape {
     return null;
   }
 
+  //@Override
+  public boolean isPointMemberOfShape(int x, int y) {
+    return false;
+  }
+
   /** @return All the points of the Polygon */
   public List<Mpoint> getPoints() {
     // this has to duplicate list and points! TODO: implement

@@ -12,6 +12,9 @@
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/target/JavaDocs" />
   </component>
+  <component name="JavadocGenerationManager">
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/javadoc" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>

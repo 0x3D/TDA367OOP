@@ -39,4 +39,16 @@ public interface Mshape {
    * @return A new Mshape at the given point
    */
   Mshape translate(int x, int y);
+
+
+  /**
+   * Method tests if a given point is a member of a shape's set of points
+   *
+   * @param x - int x point to check
+   * @param y - int y point to check
+   * @return - boolean true if point is member of shape
+   */
+  boolean isPointMemberOfShape(int x, int y);
+
+
 }
