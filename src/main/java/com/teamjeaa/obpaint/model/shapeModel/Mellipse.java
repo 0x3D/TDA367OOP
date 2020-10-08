@@ -42,9 +42,10 @@ public final class Mellipse implements Mshape {
 
   /**
    * Getter for the Mpoint in the center of ellipse
+   *
    * @return centerPoint, a Mpoint which is the middle of the ellipse
    */
-  public Mpoint getCenterPoint(){
+  public Mpoint getCenterPoint() {
     return this.centerPoint.clone();
   }
 
@@ -55,7 +56,7 @@ public final class Mellipse implements Mshape {
 
   @Override
   public Mpoint getPosition() {
-    return new Mpoint(centerPoint.getX()-semiAxesB, centerPoint.getY()-semiAxesA);
+    return new Mpoint(centerPoint.getX() - semiAxesB, centerPoint.getY() - semiAxesA);
   }
 
   @Override
@@ -85,11 +86,21 @@ public final class Mellipse implements Mshape {
 
   @Override
   public Mshape translate(int x, int y) {
-    return new Mellipse(new Mpoint(this.getSemiAxesA()+x,this.getSemiAxesB() + y), this.semiAxesA, this.semiAxesB, this.color);
+    return new Mellipse(
+        new Mpoint(this.getSemiAxesA() + x, this.getSemiAxesB() + y),
+        this.semiAxesA,
+        this.semiAxesB,
+        this.color);
   }
 
+  /** Provides test for the Ellipse. Checks the given points in the ellipse's equation
+   * If the equation is <=1 then the given point is inside the region bounded by the ellipse
+   * {@inheritDoc}
+   */
   @Override
   public boolean isPointMemberOfShape(int x, int y) {
-    return false;
+    return (Math.pow(x - this.getCenterPoint().getX(), 2) / Math.pow(this.getSemiAxesA(), 2)
+            + Math.pow(y - getCenterPoint().getY(), 2) / Math.pow(getSemiAxesB(), 2)
+        <= 1);
   }
 }

@@ -1,9 +1,10 @@
 package com.teamjeaa.obpaint.model.shapeModel;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.awt.*;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public final class MellipseTest {
@@ -14,6 +15,7 @@ public final class MellipseTest {
     return concreteShapeFactory.createCircle(10, 15, 20, Color.BLACK);
   }
 
+  //
   @Test
   public void testCircleFactory() {
     Mshape c = createCircle();
@@ -38,5 +40,14 @@ public final class MellipseTest {
     c = c.translate(5, 40);
     assertEquals(5, c.getPosition().getX());
     assertEquals(40, c.getPosition().getY());
+  }
+
+  @Test
+  void isPointMemberOfShape() {
+    Mshape mellipse = new Mellipse(new Mpoint(10,10),10,10,Color.black);
+    assertTrue(mellipse.isPointMemberOfShape(10,10));
+    assertFalse(mellipse.isPointMemberOfShape(21,10));
+    assertFalse(mellipse.isPointMemberOfShape(20,20));
+
   }
 }
