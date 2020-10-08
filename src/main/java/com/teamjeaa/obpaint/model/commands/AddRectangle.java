@@ -8,6 +8,7 @@ import java.awt.*;
 
 /**
  * AddMshape TODO
+ * TODO: Better name here, add rectangle strange name
  */
 public class AddRectangle implements Command {
 
@@ -18,14 +19,13 @@ public class AddRectangle implements Command {
     private final Color color;
     private final ModelCanvas modelCanvas;
 
-    public AddRectangle(int x1, int y1, int x2, int y2, Color color, ModelCanvas modelCanvas,
-                        ModelCanvas modelCanvas1) {
+    public AddRectangle(int x1, int y1, int x2, int y2, Color color, ModelCanvas modelCanvas) {
         this.x1 = x1;
         this.y1 = y1;
         this.x2 = x2;
         this.y2 = y2;
         this.color = color;
-        this.modelCanvas = modelCanvas1;
+        this.modelCanvas = modelCanvas;
     }
 
 
