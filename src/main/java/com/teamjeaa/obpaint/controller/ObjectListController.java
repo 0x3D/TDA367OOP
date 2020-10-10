@@ -17,7 +17,7 @@ public class ObjectListController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        updateList();
+       // updateList();
     }
 
     @FXML

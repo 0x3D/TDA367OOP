@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!--
 The area to paint on
 @author Jonas N
 @since 0.1 SNAPSHOT
 -->
 
-
 <?import javafx.scene.layout.BorderPane?>
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:id="rootBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-            minWidth="-Infinity" prefHeight="600.0" prefWidth="580.0"
-            style="-fx-border-color: #000000; -fx-background-color: white;" fx:controller="com.teamjeaa.obpaint.controller.CanvasController"
-            xmlns="http://javafx.com/javafx/11.0.1"/>
+
+
+<BorderPane fx:id="rootBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="580.0" style="-fx-border-color: #000000;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamjeaa.obpaint.controller.CanvasController" />
