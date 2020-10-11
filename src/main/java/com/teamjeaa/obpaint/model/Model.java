@@ -68,6 +68,10 @@ public enum Model {
     modelCanvas.addToRender(s);
   }
 
+  public Mshape returnShapeToRemove (int x, int y) {
+    return modelCanvas.findShapeAt(x,y);
+  }
+
   /** @return the selected tool */
   public Tool getSelectedTool() {
     return selectedTool;

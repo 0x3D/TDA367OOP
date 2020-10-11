@@ -14,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -101,4 +102,15 @@ public final class CanvasController implements Initializable, SelectedToolObserv
     backend.addToRender(s);
   }
 
+  /*region Description
+  private void removeObject (Mshape mshape) {
+    rootBorderPane.setOnScroll(
+            scrollEvent -> {
+              backend.removeMshape(mshape,(int)scrollEvent.getDeltaX(),(int)scrollEvent.getDeltaY());
+              scrollEvent.consume();
+              System.out.println(scrollEvent.getDeltaX() + "   " + scrollEvent.getDeltaY());
+            });
+
+  }
+  */
 }
