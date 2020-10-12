@@ -2,7 +2,7 @@ package com.teamjeaa.obpaint.model.shapeModel;
 
 import com.teamjeaa.obpaint.view.DrawVisitor;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * The models implementation of an ellipse

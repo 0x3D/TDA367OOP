@@ -27,18 +27,12 @@ import java.util.ResourceBundle;
 public final class ToolController implements Initializable {
   private final Model backend = Model.INSTANCE;
   private CanvasController canvasController;
-  @FXML
-  private ColorPicker cp;
-  @FXML
-  private ToggleButton pencilButton;
-  @FXML
-  private ToggleButton brushButton;
-  @FXML
-  private ToggleButton eraserButton;
-  @FXML
-  private ToggleButton circleButton;
-  @FXML
-  private ToggleButton rectangleButton;
+  @FXML private ColorPicker cp;
+  @FXML private ToggleButton pencilButton;
+  @FXML private ToggleButton brushButton;
+  @FXML private ToggleButton eraserButton;
+  @FXML private ToggleButton circleButton;
+  @FXML private ToggleButton rectangleButton;
   private BorderPane canvasPane;
   private Command command;
   private int x;
@@ -47,7 +41,7 @@ public final class ToolController implements Initializable {
   /**
    * This method initializes the controller for ToolView
    *
-   * @param location  - The location used to resolve relative paths for the root object
+   * @param location - The location used to resolve relative paths for the root object
    * @param resources - The resources used to localize the root object
    */
   @Override
@@ -60,17 +54,17 @@ public final class ToolController implements Initializable {
     rectangleButton.setToggleGroup(toolButtons);
 
     cp.valueProperty()
-            .addListener(
-                    (ObservableValue<? extends Color> observable, Color oldValue, Color newValue) -> {
-                      java.awt.Color awtColor =
-                              new java.awt.Color(
-                                      (float) newValue.getRed(),
-                                      (float) newValue.getGreen(),
-                                      (float) newValue.getBlue(),
-                                      (float) newValue.getOpacity());
+        .addListener(
+            (ObservableValue<? extends Color> observable, Color oldValue, Color newValue) -> {
+              java.awt.Color awtColor =
+                  new java.awt.Color(
+                      (float) newValue.getRed(),
+                      (float) newValue.getGreen(),
+                      (float) newValue.getBlue(),
+                      (float) newValue.getOpacity());
 
-                      backend.setSelectedColor(awtColor);
-                    });
+              backend.setSelectedColor(awtColor);
+            });
   }
 
   void setCanvasController(CanvasController canvasController) {
@@ -80,25 +74,6 @@ public final class ToolController implements Initializable {
 
   @FXML
   void onPencilButton(ActionEvent event) {
-    System.out.println("Pencil");
-    canvasPane.setOnMouseClicked(null);
-    canvasPane.setOnMousePressed(
-            mouseEvent -> {
-              x = (int) mouseEvent.getX();
-              y = (int) mouseEvent.getY();
-            }
-    );
-    canvasPane.setOnMouseReleased(
-            mouseEvent -> {
-              command = new AddLine(x, y, (int) mouseEvent.getX(), (int) mouseEvent.getY(),
-                      getAWTColor(cp.getValue()));
-              command.execute();
-            }
-    );
-  }
-
-  @FXML
-  private void onLineButton(ActionEvent event) {
     System.out.println("Selected line tool");
     canvasPane.setOnMouseClicked(null);
     canvasPane.setOnMousePressed(
@@ -119,16 +94,17 @@ public final class ToolController implements Initializable {
             });
   }
 
+
   @FXML
   void onEraserButton(ActionEvent event) {
     System.out.println("Eraser");
     canvasPane.setOnMousePressed(null);
     canvasPane.setOnMouseReleased(null);
     canvasPane.setOnMouseClicked(
-            mouseEvent -> {
-              command = new AddEraser((int) mouseEvent.getX(), (int) mouseEvent.getY());
-              command.execute();
-            });
+        mouseEvent -> {
+          command = new AddEraser((int) mouseEvent.getX(), (int) mouseEvent.getY());
+          command.execute();
+        });
   }
 
   @FXML
@@ -136,30 +112,30 @@ public final class ToolController implements Initializable {
     System.out.println("Selecting Circle");
     canvasPane.setOnMouseClicked(null);
     canvasPane.setOnMousePressed(
-            mouseEvent -> {
-              x = (int) mouseEvent.getX();
-              y = (int) mouseEvent.getY();
-            });
+        mouseEvent -> {
+          x = (int) mouseEvent.getX();
+          y = (int) mouseEvent.getY();
+        });
     canvasPane.setOnMouseReleased(
-            mouseEvent -> {
-              int dia =
-                      (int)
-                              Math.sqrt(
-                                      Math.pow(x - mouseEvent.getX(), 2) + Math.pow(y - mouseEvent.getY(), 2));
-              int centerX = (int) (x + mouseEvent.getX()) / 2;
-              int centerY = (int) (y + mouseEvent.getY()) / 2;
-              // Math
-              command = new AddCircle(dia / 2, centerX, centerY, getAWTColor(cp.getValue()));
-              command.execute();
-            });
+        mouseEvent -> {
+          int dia =
+              (int)
+                  Math.sqrt(
+                      Math.pow(x - mouseEvent.getX(), 2) + Math.pow(y - mouseEvent.getY(), 2));
+          int centerX = (int) (x + mouseEvent.getX()) / 2;
+          int centerY = (int) (y + mouseEvent.getY()) / 2;
+          // Math
+          command = new AddCircle(dia / 2, centerX, centerY, getAWTColor(cp.getValue()));
+          command.execute();
+        });
   }
 
   private java.awt.Color getAWTColor(javafx.scene.paint.Color javafxColor) {
     return new java.awt.Color(
-            (float) javafxColor.getRed(),
-            (float) javafxColor.getGreen(),
-            (float) javafxColor.getBlue(),
-            (float) javafxColor.getOpacity());
+        (float) javafxColor.getRed(),
+        (float) javafxColor.getGreen(),
+        (float) javafxColor.getBlue(),
+        (float) javafxColor.getOpacity());
   }
 
   @FXML
@@ -167,20 +143,20 @@ public final class ToolController implements Initializable {
     System.out.println("Selecting Rectangle");
     canvasPane.setOnMouseClicked(null);
     canvasPane.setOnMousePressed(
-            mouseEvent -> {
-              x = (int) mouseEvent.getX();
-              y = (int) mouseEvent.getY();
-            });
+        mouseEvent -> {
+          x = (int) mouseEvent.getX();
+          y = (int) mouseEvent.getY();
+        });
     canvasPane.setOnMouseReleased(
-            mouseEvent -> {
-              command =
-                      new AddRectangle(
-                              x,
-                              y,
-                              (int) mouseEvent.getX(),
-                              (int) mouseEvent.getY(),
-                              getAWTColor(cp.getValue()));
-              command.execute();
-            });
+        mouseEvent -> {
+          command =
+              new AddRectangle(
+                  x,
+                  y,
+                  (int) mouseEvent.getX(),
+                  (int) mouseEvent.getY(),
+                  getAWTColor(cp.getValue()));
+          command.execute();
+        });
   }
 }
