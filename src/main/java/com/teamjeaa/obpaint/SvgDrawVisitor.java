@@ -6,10 +6,10 @@ import com.teamjeaa.obpaint.model.shapeModel.Mpolygon;
 import com.teamjeaa.obpaint.model.shapeModel.Mpolyline;
 import com.teamjeaa.obpaint.view.DrawVisitor;
 
-final class SvgDrawVisitor implements DrawVisitor {
+public final class SvgDrawVisitor implements DrawVisitor {
   private final StringBuilder stringBuilder;
 
-  SvgDrawVisitor(StringBuilder stringBuilder) {
+  public SvgDrawVisitor(StringBuilder stringBuilder) {
     this.stringBuilder = stringBuilder;
   }
 
