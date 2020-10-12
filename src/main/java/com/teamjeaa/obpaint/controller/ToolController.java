@@ -1,10 +1,7 @@
 package com.teamjeaa.obpaint.controller;
 
 import com.teamjeaa.obpaint.model.Model;
-import com.teamjeaa.obpaint.model.commands.AddCircle;
-import com.teamjeaa.obpaint.model.commands.AddEraser;
-import com.teamjeaa.obpaint.model.commands.AddRectangle;
-import com.teamjeaa.obpaint.model.commands.Command;
+import com.teamjeaa.obpaint.model.commands.*;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -78,6 +75,20 @@ public final class ToolController implements Initializable {
   @FXML
   void onPencilButton(ActionEvent event) {
     System.out.println("Pencil");
+    canvasPane.setOnMouseClicked(null);
+    canvasPane.setOnMousePressed(
+            mouseEvent -> {
+                x =(int) mouseEvent.getX();
+                y = (int) mouseEvent.getY();
+            }
+    );
+    canvasPane.setOnMouseReleased(
+            mouseEvent -> {
+                command = new AddLine(x,y,(int)mouseEvent.getX(),(int)mouseEvent.getY(),
+                        getAWTcolor(cp.getValue()));
+                command.execute();
+            }
+    );
   }
 
   @FXML

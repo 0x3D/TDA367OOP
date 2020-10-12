@@ -63,6 +63,11 @@ public final class MainController implements Initializable {
       mainPane.setStyle("-fx-background-color: rgb(244,244,244)");
     }
   }
+  @FXML
+  private void backToTemplates(){
+    startPagePane.setVisible(true);
+    startPagePane.toFront();
+  }
 
   @FXML
   private void onBlancTemplate() {
