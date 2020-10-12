@@ -22,6 +22,7 @@ import java.util.ResourceBundle;
  */
 public final class CanvasController implements Initializable {
   private @FXML BorderPane rootBorderPane;
+  private MainController parentController;
 
   private Model backend;
   private JavaFXDrawVisitor javaFXDrawVisitor;
@@ -45,6 +46,12 @@ public final class CanvasController implements Initializable {
         };
     animationTimer.start();
   }
+  public void setParentController (MainController mainController) {
+    parentController = mainController;
+  }
+   BorderPane getCanvasPane() {
+    return rootBorderPane;
+   }
 
   private void render() {
     rootBorderPane.getChildren().clear();

@@ -1,13 +1,19 @@
 package com.teamjeaa.obpaint.controller;
 
 import com.teamjeaa.obpaint.model.Model;
+
+import com.teamjeaa.obpaint.model.commands.AddEraser;
+import com.teamjeaa.obpaint.model.commands.Command;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+
+import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 
 import java.net.URL;
@@ -23,7 +29,7 @@ import java.util.ResourceBundle;
  * @since 0.1-SNAPSHOT
  */
 public final class ToolController implements Initializable {
-
+    private CanvasController canvasController;
   private final Model backend = Model.INSTANCE;
   @FXML private ColorPicker cp;
   @FXML private ToggleButton pencilButton;
@@ -31,6 +37,8 @@ public final class ToolController implements Initializable {
   @FXML private ToggleButton eraserButton;
   @FXML private ToggleButton circleButton;
   @FXML private ToggleButton rectangleButton;
+  private BorderPane canvasPane;
+  private  Command command;
 
   /**
    * This method initializes the controller for ToolView
@@ -60,15 +68,23 @@ public final class ToolController implements Initializable {
               backend.setSelectedColor(awtColor);
             });
   }
+
+  public void setCanvasController (CanvasController canvasController) {
+      this.canvasController = canvasController;
+      this.canvasPane = canvasController.getCanvasPane();
+  }
   @FXML
-  private void onPencilButton(ActionEvent event) {
+   void onPencilButton(ActionEvent event) {
     System.out.println("Pencil");
 
   }
 
   @FXML
-  private void onEraserButton(ActionEvent event) {
+   void onEraserButton(ActionEvent  event) {
     System.out.println("Eraser");
+    canvasPane.setOnMouseClicked(mouseEvent -> {
+        command = new AddEraser((int)mouseEvent.getX(), (int)mouseEvent.getY());
+    });
   }
 
   @FXML
@@ -80,4 +96,6 @@ public final class ToolController implements Initializable {
   private void onRectangleButton(ActionEvent event) {
 
   }
+
+
 }
