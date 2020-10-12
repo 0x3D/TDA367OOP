@@ -95,6 +95,8 @@ public final class Mpolygon implements Mshape {
     return new Mpolygon(newPosition, this.getColor());
   }
 
+
+
   @Override
   public boolean isPointMemberOfShape(int x, int y) {
     return (x >= getMinPosition().getX() && x <= getMaxPosition().getX())

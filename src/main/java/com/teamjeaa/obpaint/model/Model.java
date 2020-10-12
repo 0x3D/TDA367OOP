@@ -29,23 +29,11 @@ public enum Model {
   private ModelCanvas modelCanvas;
 
   Model() {
-    setSelectedColor(Color.RED);
-    setupModel();
-  }
-
-  /** @return Returns the JavaAWT Color that is selected from Controller. */
-  // TODO Clone
-  public static Color getSelectedColor() {
-    return color;
-  }
-
-  /** @param color Java AWT Color */
-  public void setSelectedColor(Color color) {
-    Model.color = color;
-  }
-
-  private void setupModel() {
     modelCanvas = new ModelCanvas();
+  }
+
+  public Mshape findShapeAtPoint(int x, int y) {
+      return modelCanvas.findShapeAt(x, y);
   }
 
   /**

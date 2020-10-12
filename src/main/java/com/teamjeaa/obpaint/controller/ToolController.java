@@ -33,6 +33,7 @@ public final class ToolController implements Initializable {
   @FXML private ToggleButton eraserButton;
   @FXML private ToggleButton circleButton;
   @FXML private ToggleButton rectangleButton;
+  @FXML private ToggleButton moveButton;
   private BorderPane canvasPane;
   private Command command;
   private int x;
@@ -52,19 +53,7 @@ public final class ToolController implements Initializable {
     eraserButton.setToggleGroup(toolButtons);
     circleButton.setToggleGroup(toolButtons);
     rectangleButton.setToggleGroup(toolButtons);
-
-    cp.valueProperty()
-        .addListener(
-            (ObservableValue<? extends Color> observable, Color oldValue, Color newValue) -> {
-              java.awt.Color awtColor =
-                  new java.awt.Color(
-                      (float) newValue.getRed(),
-                      (float) newValue.getGreen(),
-                      (float) newValue.getBlue(),
-                      (float) newValue.getOpacity());
-
-              backend.setSelectedColor(awtColor);
-            });
+    moveButton.setToggleGroup(toolButtons);
   }
 
   void setCanvasController(CanvasController canvasController) {
@@ -159,4 +148,23 @@ public final class ToolController implements Initializable {
           command.execute();
         });
   }
+
+
+  @FXML
+  private void onMoveButton(ActionEvent event) {
+      canvasPane.setOnMouseClicked(null);
+      canvasPane.setOnMousePressed(
+              mouseEvent -> {
+                  x = (int) mouseEvent.getX();
+                  y = (int) mouseEvent.getY();
+              });
+
+      canvasPane.setOnMouseReleased(
+              mouseEvent -> {
+                  command = new Move(x, y, (int) mouseEvent.getX(),(int) mouseEvent.getY());
+                  command.execute();
+              });
+  }
+
+
 }

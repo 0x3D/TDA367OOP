@@ -31,7 +31,7 @@ The tool pane
             <graphic>
                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../images/baseline_brush_black_18dp.png" />
+                        <Image url="@../images/line.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -40,7 +40,7 @@ The tool pane
             <graphic>
                 <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../images/rubber.jpeg" />
+                        <Image url="@../images/rubber.png" />
                     </image>
                 </ImageView>
             </graphic>
@@ -69,5 +69,14 @@ The tool pane
             <Font size="9.0" />
          </font>
       </TextField>
+      <ToggleButton fx:id="moveButton" layoutX="97.0" layoutY="56.0" mnemonicParsing="false" onAction="#onMoveButton" prefHeight="25.0" prefWidth="25.0">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/move.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </ToggleButton>
     </children>
 </AnchorPane>
