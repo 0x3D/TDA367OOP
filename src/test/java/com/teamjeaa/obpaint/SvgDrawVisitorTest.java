@@ -1,33 +1,50 @@
 package com.teamjeaa.obpaint;
 
+import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
+import com.teamjeaa.obpaint.model.shapeModel.Mshape;
+import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 import org.junit.jupiter.api.Test;
+
+import java.awt.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SvgDrawVisitorTest {
 
   @Test
   void visitMellipse() {
 
-    // StringBuilder sb = new StringBuilder();
-    // SvgDrawVisitor svgDrawVisitor = new SvgDrawVisitor(sb);
-    // Mellipse mellipse = new Mellipse(
-    //        new Mpoint(200,80),100,50, Color.BLACK
-    // );
-    // svgDrawVisitor.visitMellipse(mellipse);
-    // assertEquals("<ellipse cx=\"200\" cy=\"80\" rx=\"100\" ry=\"50\"
-    // style=\"fill:yellow;stroke:purple;stroke-width:2\" />", sb.toString());
+    StringBuilder sb = new StringBuilder();
+    SvgDrawVisitor svgDrawVisitor = new SvgDrawVisitor(sb);
+    ShapeFactory shapeFactory = new ConcreteShapeFactory();
+    Mshape mellipse = shapeFactory.createCircle(100, 80, 80, Color.PINK);
+
+    mellipse.acceptDrawVisitor(svgDrawVisitor);
+    assertEquals(
+        "<ellipse cx=\"80\" cy=\"80\" rx=\"100\" ry=\"100\" style=\"fill:rgb(255,175,175)\" />",
+        sb.toString());
   }
 
   @Test
   void visitMpolyogon() {
-    /*    StringBuilder sb = new StringBuilder();
+    StringBuilder sb = new StringBuilder();
+    SvgDrawVisitor svgDrawVisitor = new SvgDrawVisitor(sb);
+    ShapeFactory shapeFactory = new ConcreteShapeFactory();
+    Mshape mRectangle = shapeFactory.createRectangle(80, 80, 300, 300, Color.PINK);
+    mRectangle.acceptDrawVisitor(svgDrawVisitor);
     assertEquals(
-        "  <polygon fill=\"red\" stroke=\"blue\" stroke-width=\"10\" "
-            + "            points=\"350,75  379,161 469,161 397,215"
-            + "                    423,301 350,250 277,301 303,215"
-            + "                    231,161 321,161\" />",
-        sb.toString());*/
+        "<polygon points=\"80,80 300,80 300,300 80,300\" style=\"fill:rgb(255,175,175)\" />",
+        sb.toString());
   }
 
   @Test
-  void visitMpolyline() {}
+  void visitMpolyline() {
+    StringBuilder sb = new StringBuilder();
+    SvgDrawVisitor svgDrawVisitor = new SvgDrawVisitor(sb);
+    ShapeFactory shapeFactory = new ConcreteShapeFactory();
+    Mshape mRectangle = shapeFactory.createLine(0, 0, 300, 300, Color.PINK);
+    mRectangle.acceptDrawVisitor(svgDrawVisitor);
+    assertEquals(
+        "<polyline points=\"0,0 300,300\" style=\"stroke:rgb(255,175,175)\" />", sb.toString());
+  }
 }

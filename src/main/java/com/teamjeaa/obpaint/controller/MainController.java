@@ -1,5 +1,9 @@
 package com.teamjeaa.obpaint.controller;
 
+import com.teamjeaa.obpaint.SvgDrawVisitor;
+import com.teamjeaa.obpaint.model.Model;
+import com.teamjeaa.obpaint.model.shapeModel.Mshape;
+import com.teamjeaa.obpaint.view.DrawVisitor;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -7,7 +11,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.*;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
 
 /**
@@ -52,7 +58,33 @@ public final class MainController implements Initializable {
 
   @FXML
   private void onClose() {
+    onSave();
     Platform.exit();
+  }
+
+  private void onSave() {
+    //TODO: Move behaviour to new class
+    StringBuilder sb = new StringBuilder();
+    DrawVisitor drawVisitor = new SvgDrawVisitor(sb);
+    sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n");
+    sb.append("<svg width=\"")
+        .append(800)
+        .append("\" height=\"")
+        .append(800)
+        .append("\" xmlns=\"http://www.w3.org/2000/svg\">\n");
+    for(Mshape mshape: Model .INSTANCE.getCanvasShapes()){
+      mshape.acceptDrawVisitor(drawVisitor);
+    }
+    sb.append("\n").append("</svg>");
+    try {
+      PrintWriter writer = new PrintWriter("output.svg", StandardCharsets.UTF_8);
+      writer.print(sb.toString());
+      writer.flush();
+      writer.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+
   }
 
   @FXML
@@ -63,8 +95,9 @@ public final class MainController implements Initializable {
       mainPane.setStyle("-fx-background-color: rgb(244,244,244)");
     }
   }
+
   @FXML
-  private void backToTemplates(){
+  private void backToTemplates() {
     startPagePane.setVisible(true);
     startPagePane.toFront();
   }
