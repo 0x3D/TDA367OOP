@@ -2,6 +2,8 @@ package com.teamjeaa.obpaint.model.shapeModel;
 
 import com.teamjeaa.obpaint.view.DrawVisitor;
 
+import java.awt.*;
+
 /**
  * This is the common interface of the shapes in our model *
  *
@@ -24,6 +26,7 @@ public interface Mshape {
 
   /** @return Height of the Mshape */
   int getHeight();
+  Color getColor();
 
   /**
    * Part of the visitor pattern Accept a visitor to the Mshape to be able to draw model

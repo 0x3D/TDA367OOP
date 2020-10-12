@@ -6,15 +6,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
+import java.awt.*;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class ObjectListItemView extends AnchorPane {
 
-  private final String name;
-  private @FXML Label objectLabel;
-  private MainController mainController;
+  //private final String name;
+  private @FXML
+  Label objectLabel;
+  private @FXML
+  AnchorPane itemPane;
+  private final int xPos;
+  private final int yPos;
+  private final Color color;
 
-  public ObjectListItemView(MainController mainController,String name) {
+  public ObjectListItemView(int xPos, int yPos, Color color) {
+
+
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/objectListItemView.fxml"));
     fxmlLoader.setRoot(this);
     fxmlLoader.setController(this);
@@ -23,12 +32,24 @@ public class ObjectListItemView extends AnchorPane {
     } catch (IOException exception) {
       throw new RuntimeException(exception);
     }
-    this.mainController = mainController;
-    this.name = name;
+    this.xPos = xPos;
+    this.yPos = yPos;
+    this.color = color;
+
     setLabelName();
+    setColorBackground();
   }
 
   public void setLabelName() {
-    objectLabel.setText(name);
+    objectLabel.setText("X=" + xPos + " Y=" + yPos);
   }
+
+  public void setColorBackground() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("-fx-background-color: rgb(").append(color.getRed()).append(",").append(color.getGreen()).append(",").
+            append(color.getBlue()).append(");").append("-fx-border-color: grey");
+    itemPane.setStyle(sb.toString() );
+
+  }
+
 }
