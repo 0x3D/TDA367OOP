@@ -134,7 +134,8 @@ public final class Mpolyline implements Mshape {
     for (Mpoint mpoint : mPoints) {
       newPolyline.add(new Mpoint(mpoint.getX() + x, mpoint.getY() + y));
     }
-    return new Mpolyline(newPolyline, Color.BLACK);
+    //TODO: New color not old reference
+    return new Mpolyline(newPolyline, color);
   }
 
   @Override
