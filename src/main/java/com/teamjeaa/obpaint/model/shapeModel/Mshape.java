@@ -36,11 +36,10 @@ public interface Mshape {
   void acceptDrawVisitor(DrawVisitor drawVisitor);
 
   /**
-   * Translate the shape from the top left corner. New coordinates is (Top Left X + x, Top Left Y +
-   * y)
+   * Translate all points by a delta
    *
-   * @param x - int new x pos
-   * @param y - int new y pos
+   * @param x - amount to move in x direction
+   * @param y - amount to move in y direction
    * @return A new Mshape at the given point
    */
   Mshape translate(int x, int y);

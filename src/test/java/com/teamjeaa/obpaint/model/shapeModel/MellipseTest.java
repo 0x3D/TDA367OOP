@@ -37,8 +37,8 @@ public final class MellipseTest {
   public void testMove() {
     Mshape c = createCircle();
     c = c.translate(5, 40);
-    assertEquals(5, c.getPosition().getX());
-    assertEquals(40, c.getPosition().getY());
+    assertEquals(10, c.getPosition().getX());
+    assertEquals(50, c.getPosition().getY());
   }
 
   @Test
@@ -47,5 +47,12 @@ public final class MellipseTest {
     assertTrue(mellipse.isPointMemberOfShape(10, 10));
     assertFalse(mellipse.isPointMemberOfShape(21, 10));
     assertFalse(mellipse.isPointMemberOfShape(20, 20));
+  }
+
+  @Test
+  void getPosition() {
+    Mshape circle = createCircle();
+    assertEquals(5,circle.getPosition().getX());
+    assertEquals(10,circle.getPosition().getY());
   }
 }
