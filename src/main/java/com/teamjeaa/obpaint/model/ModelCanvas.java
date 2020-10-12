@@ -43,10 +43,8 @@ public final class ModelCanvas {
    * @param y - TODO
    */
   public void removeFromRender(Mshape mshape) {
-      this.shapes.remove((mshape));
+    this.shapes.remove((mshape));
   }
-
-
 
   /**
    * Finds the shape at a specific point (x,y).
@@ -57,9 +55,15 @@ public final class ModelCanvas {
    * @throws IllegalArgumentException If Shape is not in list
    */
   public Mshape findShapeAt(int x, int y) throws IllegalArgumentException {
+    // TODO: search for better soloution
+    Collections.reverse(shapes);
     for (Mshape shape : shapes) {
-      if (shape.isPointMemberOfShape(x, y)) return shape;
+      if (shape.isPointMemberOfShape(x, y)) {
+        Collections.reverse(shapes);
+        return shape;
+      }
     }
+    Collections.reverse(shapes);
     throw new IllegalArgumentException("Shape not found in list, ModelCanvas");
   }
 

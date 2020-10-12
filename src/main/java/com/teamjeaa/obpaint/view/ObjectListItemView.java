@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class ObjectListItemView extends AnchorPane {
 
-  private String name;
+  private final String name;
   private @FXML Label objectLabel;
 
   public ObjectListItemView(String name) {

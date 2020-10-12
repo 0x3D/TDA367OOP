@@ -1,16 +1,15 @@
 package com.teamjeaa.obpaint.model.commands;
 
+import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.ModelCanvas;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 class AddCircleTest {
 
-  ModelCanvas modelCanvas = new ModelCanvas();
 
   @Test
   void executeTest() {
@@ -18,10 +17,9 @@ class AddCircleTest {
     int y = 10;
     int radius = 5;
 
-    Command command = new AddCircle(radius, x, y, Color.ORANGE, modelCanvas);
-    Exception exception =
-        assertThrows(IllegalArgumentException.class, () -> modelCanvas.findShapeAt(x, y));
+    Command command = new AddCircle(radius, x, y, Color.ORANGE);
+    assertEquals(0,Model.INSTANCE.getCanvasShapes().size());
     command.execute();
-    assertDoesNotThrow(() -> modelCanvas.findShapeAt(13, 13));
+    assertEquals(1,Model.INSTANCE.getCanvasShapes().size());
   }
 }

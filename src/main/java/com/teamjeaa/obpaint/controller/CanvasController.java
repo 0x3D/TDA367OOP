@@ -46,12 +46,14 @@ public final class CanvasController implements Initializable {
         };
     animationTimer.start();
   }
-  public void setParentController (MainController mainController) {
+
+  public void setParentController(MainController mainController) {
     parentController = mainController;
   }
-   BorderPane getCanvasPane() {
+
+  BorderPane getCanvasPane() {
     return rootBorderPane;
-   }
+  }
 
   private void render() {
     rootBorderPane.getChildren().clear();

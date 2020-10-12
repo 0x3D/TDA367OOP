@@ -6,7 +6,6 @@ import com.teamjeaa.obpaint.controller.ToolController;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -58,10 +57,10 @@ public enum Model {
     modelCanvas.addToRender(s);
   }
 
-  public void removeFromRenderByPoint(int x,int y) {
+  public void removeFromRenderByPoint(int x, int y) {
     try {
-      modelCanvas.removeFromRender(modelCanvas.findShapeAt(x,y));
-    }catch (IllegalArgumentException e){
+      modelCanvas.removeFromRender(modelCanvas.findShapeAt(x, y));
+    } catch (IllegalArgumentException e) {
       System.out.println("Found no Shape to Remove");
     }
   }
@@ -70,5 +69,4 @@ public enum Model {
   public List<Mshape> getCanvasShapes() {
     return modelCanvas.getShapes();
   }
-
 }

@@ -1,18 +1,17 @@
 package com.teamjeaa.obpaint.controller;
 
 import com.teamjeaa.obpaint.model.Model;
-
+import com.teamjeaa.obpaint.model.commands.AddCircle;
 import com.teamjeaa.obpaint.model.commands.AddEraser;
+import com.teamjeaa.obpaint.model.commands.AddRectangle;
 import com.teamjeaa.obpaint.model.commands.Command;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
-
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 
@@ -29,8 +28,8 @@ import java.util.ResourceBundle;
  * @since 0.1-SNAPSHOT
  */
 public final class ToolController implements Initializable {
-    private CanvasController canvasController;
   private final Model backend = Model.INSTANCE;
+  private CanvasController canvasController;
   @FXML private ColorPicker cp;
   @FXML private ToggleButton pencilButton;
   @FXML private ToggleButton brushButton;
@@ -38,7 +37,9 @@ public final class ToolController implements Initializable {
   @FXML private ToggleButton circleButton;
   @FXML private ToggleButton rectangleButton;
   private BorderPane canvasPane;
-  private  Command command;
+  private Command command;
+  private int x;
+  private int y;
 
   /**
    * This method initializes the controller for ToolView
@@ -69,33 +70,78 @@ public final class ToolController implements Initializable {
             });
   }
 
-  public void setCanvasController (CanvasController canvasController) {
-      this.canvasController = canvasController;
-      this.canvasPane = canvasController.getCanvasPane();
+  public void setCanvasController(CanvasController canvasController) {
+    this.canvasController = canvasController;
+    this.canvasPane = canvasController.getCanvasPane();
   }
+
   @FXML
-   void onPencilButton(ActionEvent event) {
+  void onPencilButton(ActionEvent event) {
     System.out.println("Pencil");
-
   }
 
   @FXML
-   void onEraserButton(ActionEvent  event) {
+  void onEraserButton(ActionEvent event) {
     System.out.println("Eraser");
-    canvasPane.setOnMouseClicked(mouseEvent -> {
-        command = new AddEraser((int)mouseEvent.getX(), (int)mouseEvent.getY());
-    });
+    canvasPane.setOnMousePressed(null);
+    canvasPane.setOnMouseReleased(null);
+    canvasPane.setOnMouseClicked(
+        mouseEvent -> {
+          command = new AddEraser((int) mouseEvent.getX(), (int) mouseEvent.getY());
+          command.execute();
+        });
   }
 
   @FXML
   private void onCircleButton(ActionEvent event) {
+    System.out.println("Selecting Circle");
+    canvasPane.setOnMouseClicked(null);
+    canvasPane.setOnMousePressed(
+        mouseEvent -> {
+          x = (int) mouseEvent.getX();
+          y = (int) mouseEvent.getY();
+        });
+    canvasPane.setOnMouseReleased(
+        mouseEvent -> {
+          int dia =
+              (int)
+                  Math.sqrt(
+                      Math.pow(x - mouseEvent.getX(), 2) + Math.pow(y - mouseEvent.getY(), 2));
+          int centerX = (int) (x + mouseEvent.getX()) / 2;
+          int centerY = (int) (y + mouseEvent.getY()) / 2;
+          // Math
+          command = new AddCircle(dia / 2, centerX, centerY, getAWTcolor(cp.getValue()));
+          command.execute();
+        });
+  }
 
+  private java.awt.Color getAWTcolor(javafx.scene.paint.Color javafxColor) {
+    return new java.awt.Color(
+            (float)javafxColor.getRed() ,
+            (float)javafxColor.getGreen() ,
+            (float)javafxColor.getBlue() ,
+            (float)javafxColor.getOpacity() );
   }
 
   @FXML
   private void onRectangleButton(ActionEvent event) {
-
+    System.out.println("Selecting Rectangle");
+    canvasPane.setOnMouseClicked(null);
+    canvasPane.setOnMousePressed(
+        mouseEvent -> {
+          x = (int) mouseEvent.getX();
+          y = (int) mouseEvent.getY();
+        });
+    canvasPane.setOnMouseReleased(
+        mouseEvent -> {
+          command =
+              new AddRectangle(
+                  x,
+                  y,
+                  (int) mouseEvent.getX(),
+                  (int) mouseEvent.getY(),
+                  getAWTcolor(cp.getValue()));
+          command.execute();
+        });
   }
-
-
 }

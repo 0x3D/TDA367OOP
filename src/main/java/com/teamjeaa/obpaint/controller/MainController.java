@@ -1,6 +1,5 @@
 package com.teamjeaa.obpaint.controller;
 
-import com.teamjeaa.obpaint.model.Model;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,27 +21,16 @@ import java.util.ResourceBundle;
  */
 public final class MainController implements Initializable {
 
-
-    private @FXML
-    AnchorPane mainPane;
-    private @FXML
-    ToggleButton darkModeToggle;
-    private @FXML
-    AnchorPane startPagePane;
-    private @FXML
-    AnchorPane canvasViewRoot;
-    private @FXML
-    Button blancTemplateButton;
-    private @FXML
-    Button blackTemplateButton;
-    private @FXML
-    Button redTemplateButton;
-    private @FXML
-    Button limeTemplateButton;
-    @FXML
-    private ToolController toolViewController;
-    @FXML
-    private CanvasController canvasViewController;
+  private @FXML AnchorPane mainPane;
+  private @FXML ToggleButton darkModeToggle;
+  private @FXML AnchorPane startPagePane;
+  private @FXML AnchorPane canvasViewRoot;
+  private @FXML Button blancTemplateButton;
+  private @FXML Button blackTemplateButton;
+  private @FXML Button redTemplateButton;
+  private @FXML Button limeTemplateButton;
+  @FXML private ToolController toolViewController;
+  @FXML private CanvasController canvasViewController;
 
   @FXML
   private void initializeStartPage() {
@@ -50,18 +38,17 @@ public final class MainController implements Initializable {
     startPagePane.setStyle("-fx-background-color: white");
   }
 
-    /**
-     * This method initializes the controller for MainView
-     *
-     * @param location  - The location used to resolve relative paths for the root object
-     * @param resources - The resources used to localize the root object
-     */
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        initializeStartPage();
-        toolViewController.setCanvasController(canvasViewController);
-    }
-
+  /**
+   * This method initializes the controller for MainView
+   *
+   * @param location - The location used to resolve relative paths for the root object
+   * @param resources - The resources used to localize the root object
+   */
+  @Override
+  public void initialize(URL location, ResourceBundle resources) {
+    initializeStartPage();
+    toolViewController.setCanvasController(canvasViewController);
+  }
 
   @FXML
   private void onClose() {
