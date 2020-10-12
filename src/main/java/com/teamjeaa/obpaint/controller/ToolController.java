@@ -1,10 +1,7 @@
 package com.teamjeaa.obpaint.controller;
 
 import com.teamjeaa.obpaint.model.Model;
-import com.teamjeaa.obpaint.model.commands.AddCircle;
-import com.teamjeaa.obpaint.model.commands.AddEraser;
-import com.teamjeaa.obpaint.model.commands.AddRectangle;
-import com.teamjeaa.obpaint.model.commands.Command;
+import com.teamjeaa.obpaint.model.commands.*;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -70,7 +67,7 @@ public final class ToolController implements Initializable {
             });
   }
 
-  public void setCanvasController(CanvasController canvasController) {
+  void setCanvasController(CanvasController canvasController) {
     this.canvasController = canvasController;
     this.canvasPane = canvasController.getCanvasPane();
   }
@@ -78,6 +75,28 @@ public final class ToolController implements Initializable {
   @FXML
   void onPencilButton(ActionEvent event) {
     System.out.println("Pencil");
+  }
+
+  @FXML
+  private void onLineButton(ActionEvent event) {
+    System.out.println("Selected line tool");
+    canvasPane.setOnMouseClicked(null);
+    canvasPane.setOnMousePressed(
+        mouseEvent -> {
+          this.x = (int) mouseEvent.getX();
+          this.y = (int) mouseEvent.getY();
+        });
+    canvasPane.setOnMouseReleased(
+        mouseEvent -> {
+          this.command =
+              new AddLine(
+                  x,
+                  y,
+                  (int) mouseEvent.getX(),
+                  (int) mouseEvent.getY(),
+                  getAWTColor(cp.getValue()));
+          command.execute();
+        });
   }
 
   @FXML
@@ -110,17 +129,17 @@ public final class ToolController implements Initializable {
           int centerX = (int) (x + mouseEvent.getX()) / 2;
           int centerY = (int) (y + mouseEvent.getY()) / 2;
           // Math
-          command = new AddCircle(dia / 2, centerX, centerY, getAWTcolor(cp.getValue()));
+          command = new AddCircle(dia / 2, centerX, centerY, getAWTColor(cp.getValue()));
           command.execute();
         });
   }
 
-  private java.awt.Color getAWTcolor(javafx.scene.paint.Color javafxColor) {
+  private java.awt.Color getAWTColor(javafx.scene.paint.Color javafxColor) {
     return new java.awt.Color(
-            (float)javafxColor.getRed() ,
-            (float)javafxColor.getGreen() ,
-            (float)javafxColor.getBlue() ,
-            (float)javafxColor.getOpacity() );
+        (float) javafxColor.getRed(),
+        (float) javafxColor.getGreen(),
+        (float) javafxColor.getBlue(),
+        (float) javafxColor.getOpacity());
   }
 
   @FXML
@@ -140,7 +159,7 @@ public final class ToolController implements Initializable {
                   y,
                   (int) mouseEvent.getX(),
                   (int) mouseEvent.getY(),
-                  getAWTcolor(cp.getValue()));
+                  getAWTColor(cp.getValue()));
           command.execute();
         });
   }
