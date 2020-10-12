@@ -12,20 +12,18 @@ import java.util.ResourceBundle;
 
 public class ObjectListController implements Initializable {
 
-    public static  @FXML
-    FlowPane objectFlowPane;
+  public static @FXML FlowPane objectFlowPane;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-       // updateList();
+  @Override
+  public void initialize(URL url, ResourceBundle resourceBundle) {
+    // updateList();
+  }
+
+  @FXML
+  public void updateList() {
+    objectFlowPane.getChildren().clear();
+    for (Mshape mshapes : Model.INSTANCE.getCanvasShapes()) {
+      objectFlowPane.getChildren().add(new ObjectListItemView(mshapes.getClass().getName()));
     }
-
-    @FXML
-    public void updateList() {
-        objectFlowPane.getChildren().clear();
-        for (Mshape mshapes : Model.INSTANCE.getCanvasShapes()) {
-            objectFlowPane.getChildren().add(new ObjectListItemView(mshapes.getClass().getName()));
-        }
-    }
-
+  }
 }

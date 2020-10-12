@@ -36,7 +36,6 @@ public interface ShapeFactory {
    */
   Mshape createRectangle(int x1, int y1, int x2, int y2, Color color);
 
-
   /**
    * Method used by factory to create a Rectangle.
    *
@@ -47,7 +46,7 @@ public interface ShapeFactory {
    * @param color is the color of the line
    * @return returns instance of a Mpolygon.
    */
-  Mshape createLine ( int x1, int y1, int x2, int y2, Color color);
+  Mshape createLine(int x1, int y1, int x2, int y2, Color color);
 
   // Shape createCircle(int x1, int y1, int radius);
 

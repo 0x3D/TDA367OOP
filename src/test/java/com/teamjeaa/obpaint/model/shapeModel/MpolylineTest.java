@@ -11,19 +11,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public final class MpolylineTest {
 
-
   /*
-  *
-  * |
-  * |
-  * |
-  *  \
-  *   \
-  *    \
-  *
-  *
-  *
-  */
+   *
+   * |
+   * |
+   * |
+   *  \
+   *   \
+   *    \
+   *
+   *
+   *
+   */
   private Mpolyline setUpMpolyline() {
     List<Mpoint> mPoints = new ArrayList<>();
     mPoints.add(new Mpoint(0, 0));
@@ -32,7 +31,6 @@ public final class MpolylineTest {
     mPoints.add(new Mpoint(0, 100));
     return new Mpolyline(mPoints, Color.BLACK);
   }
-
 
   @Test
   void getPosition() {
@@ -82,11 +80,10 @@ public final class MpolylineTest {
     assertEquals(mpolyline.getColor(), Color.BLACK);
   }
 
-
   @Test
   void isPointMemberOfShape() {
-    int x = 11; //Offset 1
-    int y = 102; //Offset 2
+    int x = 11; // Offset 1
+    int y = 102; // Offset 2
     Mpolyline line = setUpMpolyline();
     assertTrue(line.isPointMemberOfShape(x, y));
   }

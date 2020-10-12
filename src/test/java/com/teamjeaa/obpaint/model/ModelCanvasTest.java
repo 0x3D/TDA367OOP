@@ -19,7 +19,7 @@ public final class ModelCanvasTest {
     modelCanvas.addToRender(shape);
 
     // This will check if got added to list since default position p is (0,0)
-    assertEquals(modelCanvas.findShapeAt(2,2 ), shape);
+    assertEquals(modelCanvas.findShapeAt(2, 2), shape);
   }
 
   @Test
@@ -35,7 +35,8 @@ public final class ModelCanvasTest {
     // Removing,
     modelCanvas.removeFromRender(shape);
 
-    Exception exception = assertThrows(IllegalArgumentException.class,()-> modelCanvas.findShapeAt(0, 0));
+    Exception exception =
+        assertThrows(IllegalArgumentException.class, () -> modelCanvas.findShapeAt(0, 0));
     String expectedMessage = "Shape not found in list";
     assertTrue(exception.getMessage().contains(expectedMessage));
   }
@@ -56,21 +57,22 @@ public final class ModelCanvasTest {
     int x = 19;
     int y = 19;
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
-    Mshape shapeToFind = shapeFactory.createRectangle(10,10,20,20,Color.ORANGE);
+    Mshape shapeToFind = shapeFactory.createRectangle(10, 10, 20, 20, Color.ORANGE);
     ModelCanvas modelCanvas = new ModelCanvas();
     modelCanvas.addToRender(shapeToFind);
-   assertEquals(shapeToFind,modelCanvas.findShapeAt(x,y));
+    assertEquals(shapeToFind, modelCanvas.findShapeAt(x, y));
   }
 
   @Test
-  public void testFindShapeAtException() throws IllegalArgumentException{
+  public void testFindShapeAtException() throws IllegalArgumentException {
     int x = 22;
     int y = 22;
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
-    Mshape shapeToFind = shapeFactory.createRectangle(10,10,20,20,Color.ORANGE);
+    Mshape shapeToFind = shapeFactory.createRectangle(10, 10, 20, 20, Color.ORANGE);
     ModelCanvas modelCanvas = new ModelCanvas();
     modelCanvas.addToRender(shapeToFind);
-    Exception exception = assertThrows(IllegalArgumentException.class,()-> modelCanvas.findShapeAt(x,y));
+    Exception exception =
+        assertThrows(IllegalArgumentException.class, () -> modelCanvas.findShapeAt(x, y));
     String exceptionMessage = "Shape not found in list";
     assertTrue(exception.getMessage().contains(exceptionMessage));
   }
@@ -81,22 +83,22 @@ public final class ModelCanvasTest {
     int x = 55;
     int y = 55;
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
-    Mshape shapeToFind = shapeFactory.createCircle(10,50,50,Color.ORANGE);
+    Mshape shapeToFind = shapeFactory.createCircle(10, 50, 50, Color.ORANGE);
     ModelCanvas modelCanvas = new ModelCanvas();
     modelCanvas.addToRender(shapeToFind);
-    assertEquals(shapeToFind,modelCanvas.findShapeAt(x,y));
+    assertEquals(shapeToFind, modelCanvas.findShapeAt(x, y));
   }
 
   @Test
   public void findPolyLineAt() {
     // TODO: Implement
     int x = 49;
-    int y =47;
+    int y = 47;
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
-    Mshape shapeToFind = shapeFactory.createLine(10,10,50,50, Color.ORANGE);
+    Mshape shapeToFind = shapeFactory.createLine(10, 10, 50, 50, Color.ORANGE);
     ModelCanvas modelCanvas = new ModelCanvas();
     modelCanvas.addToRender(shapeToFind);
-    assertEquals(shapeToFind,modelCanvas.findShapeAt(x,y));
+    assertEquals(shapeToFind, modelCanvas.findShapeAt(x, y));
   }
 
   @Test

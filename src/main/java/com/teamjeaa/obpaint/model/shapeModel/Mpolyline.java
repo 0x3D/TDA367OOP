@@ -21,12 +21,6 @@ public final class Mpolyline implements Mshape {
 
   private final Color color;
 
-  /** Color of this Polyline
-   * @return The color of the polyline as java.awt color */
-  public Color getColor() {
-    return color;
-  }
-
   /**
    * Constructor to create a Polyline
    *
@@ -36,6 +30,15 @@ public final class Mpolyline implements Mshape {
   public Mpolyline(List<Mpoint> mPoints, Color color) {
     this.mPoints = mPoints;
     this.color = color;
+  }
+
+  /**
+   * Color of this Polyline
+   *
+   * @return The color of the polyline as java.awt color
+   */
+  public Color getColor() {
+    return color;
   }
 
   /**
@@ -109,8 +112,11 @@ public final class Mpolyline implements Mshape {
     drawVisitor.visitMpolyline(this);
   }
 
-  /** Return list of all the points that make up polyline
-   * @return All the points of the Polyline */
+  /**
+   * Return list of all the points that make up polyline
+   *
+   * @return All the points of the Polyline
+   */
   public List<Mpoint> getPoints() {
     // this has to duplicate list and points! TODO: implement
     return mPoints;
@@ -133,11 +139,12 @@ public final class Mpolyline implements Mshape {
 
   @Override
   public boolean isPointMemberOfShape(int x, int y) {
-    //TODO Add (thickness of the line)/2 to get the right acceptance
+    // TODO Add (thickness of the line)/2 to get the right acceptance
     int acceptance = 5;
 
-    if ((   x < (getMinPosition().getX()-acceptance) || x > (getMaxPosition().getX())+acceptance) &&
-            y < (getMinPosition().getY()-acceptance) || y > (getMaxPosition().getY())+acceptance) {
+    if ((x < (getMinPosition().getX() - acceptance) || x > (getMaxPosition().getX()) + acceptance)
+            && y < (getMinPosition().getY() - acceptance)
+        || y > (getMaxPosition().getY()) + acceptance) {
       return false;
     }
 
@@ -145,7 +152,7 @@ public final class Mpolyline implements Mshape {
       Mpoint point1 = mPoints.get(i);
       Mpoint point2 = mPoints.get(i + 1);
 
-      if (distance(point1, point2, x,y) < acceptance) {
+      if (distance(point1, point2, x, y) < acceptance) {
         return true;
       }
     }
@@ -153,10 +160,7 @@ public final class Mpolyline implements Mshape {
     return false;
   }
 
-
-  /**
-   * https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line
-   */
+  /** https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line */
   private int distance(Mpoint point1, Mpoint point2, int x, int y) {
     int distance;
     double numerator;
@@ -166,8 +170,8 @@ public final class Mpolyline implements Mshape {
     int y2 = point2.getY();
     int x2 = point2.getX();
 
-    numerator = Math.abs((y2-y1)*x - (x2-x1)*y + x2*y1 - y2*x1);
-    denominator = Math.sqrt(Math.pow((y2-y1), 2) + Math.pow(x2-x1, 2));
+    numerator = Math.abs((y2 - y1) * x - (x2 - x1) * y + x2 * y1 - y2 * x1);
+    denominator = Math.sqrt(Math.pow((y2 - y1), 2) + Math.pow(x2 - x1, 2));
     distance = (int) Math.round(numerator / denominator);
 
     return distance;

@@ -93,9 +93,9 @@ public final class Mellipse implements Mshape {
         this.color);
   }
 
-  /** Provides test for the Ellipse. Checks the given points in the ellipse's equation
-   * If the equation is <=1 then the given point is inside the region bounded by the ellipse
-   * {@inheritDoc}
+  /**
+   * Provides test for the Ellipse. Checks the given points in the ellipse's equation If the
+   * equation is <=1 then the given point is inside the region bounded by the ellipse {@inheritDoc}
    */
   @Override
   public boolean isPointMemberOfShape(int x, int y) {

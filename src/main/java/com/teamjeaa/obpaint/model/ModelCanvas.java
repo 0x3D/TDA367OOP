@@ -1,6 +1,5 @@
 package com.teamjeaa.obpaint.model;
 
-import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 
 import java.util.ArrayList;
@@ -57,7 +56,8 @@ public final class ModelCanvas {
   public Mshape findShapeAt(int x, int y) throws IllegalArgumentException {
     for (Mshape shape : shapes) {
       if (shape.isPointMemberOfShape(x, y)) return shape;
-    } throw new IllegalArgumentException("Shape not found in list, ModelCanvas");
+    }
+    throw new IllegalArgumentException("Shape not found in list, ModelCanvas");
   }
 
   /**
@@ -66,7 +66,7 @@ public final class ModelCanvas {
    * @return - A list of the created shapes
    */
   public List<Mshape> getShapes() {
-    //Unmodifiable list so that any that uses the models list can't change it
+    // Unmodifiable list so that any that uses the models list can't change it
     return Collections.unmodifiableList(shapes);
   }
 }

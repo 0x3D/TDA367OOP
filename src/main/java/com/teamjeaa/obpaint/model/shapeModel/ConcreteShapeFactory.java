@@ -1,8 +1,5 @@
 package com.teamjeaa.obpaint.model.shapeModel;
 
-import com.teamjeaa.obpaint.model.toolModel.ConcreteCircleTool;
-import com.teamjeaa.obpaint.model.toolModel.ConcreteRectangleTool;
-
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,8 +12,6 @@ import java.util.List;
  * might be added. Uses ShapeFactory Interface.
  *
  * @author Axel H
- * @see ConcreteCircleTool
- * @see ConcreteRectangleTool
  * @see Mellipse
  * @see Mpoint
  * @see Mpolygon
@@ -44,9 +39,8 @@ public final class ConcreteShapeFactory implements ShapeFactory {
   @Override
   public Mshape createLine(int x1, int y1, int x2, int y2, Color color) {
     List<Mpoint> mpointList = new ArrayList<>();
-    mpointList.add(new Mpoint(x1,y1));
-    mpointList.add(new Mpoint(x2,y2));
-    return new Mpolyline(mpointList,color);
+    mpointList.add(new Mpoint(x1, y1));
+    mpointList.add(new Mpoint(x2, y2));
+    return new Mpolyline(mpointList, color);
   }
-
 }

@@ -6,7 +6,6 @@ import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
 public final class MellipseTest {
   private final ConcreteShapeFactory concreteShapeFactory = new ConcreteShapeFactory();
 
@@ -44,10 +43,9 @@ public final class MellipseTest {
 
   @Test
   void isPointMemberOfShape() {
-    Mshape mellipse = new Mellipse(new Mpoint(10,10),10,10,Color.black);
-    assertTrue(mellipse.isPointMemberOfShape(10,10));
-    assertFalse(mellipse.isPointMemberOfShape(21,10));
-    assertFalse(mellipse.isPointMemberOfShape(20,20));
-
+    Mshape mellipse = new Mellipse(new Mpoint(10, 10), 10, 10, Color.black);
+    assertTrue(mellipse.isPointMemberOfShape(10, 10));
+    assertFalse(mellipse.isPointMemberOfShape(21, 10));
+    assertFalse(mellipse.isPointMemberOfShape(20, 20));
   }
 }

@@ -33,13 +33,14 @@ public interface Mshape {
   void acceptDrawVisitor(DrawVisitor drawVisitor);
 
   /**
-   * Translate the shape from the top left corner. New coordinates is (Top Left X + x, Top Left Y + y)
+   * Translate the shape from the top left corner. New coordinates is (Top Left X + x, Top Left Y +
+   * y)
+   *
    * @param x - int new x pos
    * @param y - int new y pos
    * @return A new Mshape at the given point
    */
   Mshape translate(int x, int y);
-
 
   /**
    * Method tests if a given point is a member of a shape's set of points
@@ -49,6 +50,4 @@ public interface Mshape {
    * @return - boolean true if point is member of shape
    */
   boolean isPointMemberOfShape(int x, int y);
-
-
 }

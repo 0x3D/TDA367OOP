@@ -6,9 +6,7 @@ import javafx.application.Platform;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.util.ResourceBundle;
 
@@ -39,8 +37,6 @@ public final class Start extends Application {
     setupScene(primaryStage);
   }
 
-
-
   private void setupScene(Stage primaryStage) {
     Parent root = new MainView("/fxml/mainView.fxml");
 
@@ -62,8 +58,5 @@ public final class Start extends Application {
     primaryStage.setMinHeight(680);
     primaryStage.setMinWidth(900);
     primaryStage.show();
-
-
-
   }
 }

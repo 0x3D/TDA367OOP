@@ -1,23 +1,12 @@
 package com.teamjeaa.obpaint.controller;
 
 import com.teamjeaa.obpaint.model.Model;
-import com.teamjeaa.obpaint.model.SelectedToolObserver;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
-import com.teamjeaa.obpaint.model.toolModel.Tool;
 import com.teamjeaa.obpaint.view.JavaFXDrawVisitor;
-import com.teamjeaa.obpaint.view.MainView;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -31,13 +20,10 @@ import java.util.ResourceBundle;
  * @author Jonas N
  * @since 0.1-SNAPSHOT
  */
-public final class CanvasController implements Initializable, SelectedToolObserver {
+public final class CanvasController implements Initializable {
   private @FXML BorderPane rootBorderPane;
 
-
-
   private Model backend;
-  private Tool selectedTool;
   private JavaFXDrawVisitor javaFXDrawVisitor;
 
   /**
@@ -49,8 +35,6 @@ public final class CanvasController implements Initializable, SelectedToolObserv
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     backend = Model.INSTANCE;
-    selectedTool = backend.getSelectedTool();
-    backend.addObserver(this);
     initMouseActions();
     javaFXDrawVisitor = new JavaFXDrawVisitor(rootBorderPane);
     AnimationTimer animationTimer =
@@ -71,21 +55,11 @@ public final class CanvasController implements Initializable, SelectedToolObserv
     }
   }
 
-  /**
-   * Used by the model through Observer interface to notify all observers that the selected tool has
-   * changed
-   */
-  @Override
-  public void selectedToolHasChanged() {
-    selectedTool = backend.getSelectedTool();
-  }
-
   private void initMouseActions() {
     //    rootBorderPane.setOnMouseClicked(
     //      mouseEvent -> initialMouseClick(mouseEvent.getX(), mouseEvent.getY()));
     rootBorderPane.setOnMousePressed(
         mouseEvent -> {
-          selectedTool.startUse(mouseEvent.getX(), mouseEvent.getY());
           mouseEvent.consume();
           System.out.println(mouseEvent.getX() + " " + mouseEvent.getY());
         });
@@ -98,8 +72,7 @@ public final class CanvasController implements Initializable, SelectedToolObserv
 
   private void stopUse(Double x, Double y) {
     System.out.println(x + " " + y);
-    Mshape s = selectedTool.stopUse(x, y);
-    backend.addToRender(s);
+    // backend.addToRender(s);
   }
 
   /*region Description
