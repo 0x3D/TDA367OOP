@@ -20,9 +20,10 @@ class AddEraserTest {
         command1.execute();
 
         Command removeCommand = new AddEraser(x,y);
+        int size=Model.INSTANCE.getCanvasShapes().size();
         removeCommand.execute();
 
-        assertEquals(1, Model.INSTANCE.getCanvasShapes().size());
+        assertEquals(size-1, Model.INSTANCE.getCanvasShapes().size());
     }
 }
 

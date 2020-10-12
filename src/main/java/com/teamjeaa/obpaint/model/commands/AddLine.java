@@ -1,7 +1,6 @@
 package com.teamjeaa.obpaint.model.commands;
 
 import com.teamjeaa.obpaint.model.Model;
-import com.teamjeaa.obpaint.model.ModelCanvas;
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 
@@ -14,7 +13,6 @@ public class AddLine implements Command {
   private final int x2;
   private final int y2;
   private final Color color;
-
 
   public AddLine(int x1, int y1, int x2, int y2, Color color) {
     this.x1 = x1;

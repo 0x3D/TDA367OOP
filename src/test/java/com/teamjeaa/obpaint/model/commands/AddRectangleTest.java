@@ -20,8 +20,9 @@ class AddRectangleTest {
         int y2 = 10;
         Command command = new AddRectangle(x, y, x2, y2, Color.ORANGE);
         //Exception exception = assertThrows(IllegalArgumentException.class, () -> modelCanvas.findShapeAt(0, 0));
+        int size=Model.INSTANCE.getCanvasShapes().size();
         command.execute();
-        assertEquals(1,Model.INSTANCE.getCanvasShapes().size());
+        assertEquals(size+1,Model.INSTANCE.getCanvasShapes().size());
     }
 }
 

@@ -18,8 +18,8 @@ class AddCircleTest {
     int radius = 5;
 
     Command command = new AddCircle(radius, x, y, Color.ORANGE);
-    assertEquals(0,Model.INSTANCE.getCanvasShapes().size());
+    int size=Model.INSTANCE.getCanvasShapes().size();
     command.execute();
-    assertEquals(1,Model.INSTANCE.getCanvasShapes().size());
+    assertEquals(size+1,Model.INSTANCE.getCanvasShapes().size());
   }
 }
