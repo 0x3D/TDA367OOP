@@ -7,22 +7,27 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.FlowPane;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ObjectListController implements Initializable {
+  private MainController parentController;
 
-  public static @FXML FlowPane objectFlowPane;
+  public @FXML FlowPane objectFlowPane;
 
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
-    // updateList();
+
   }
 
   @FXML
   public void updateList() {
     objectFlowPane.getChildren().clear();
     for (Mshape mshapes : Model.INSTANCE.getCanvasShapes()) {
-      objectFlowPane.getChildren().add(new ObjectListItemView(mshapes.getClass().getName()));
+      System.out.println(mshapes.getClass().getName());
+      objectFlowPane.getChildren().add(new ObjectListItemView(parentController,"Hej"));
     }
   }
 }

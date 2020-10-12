@@ -37,6 +37,7 @@ public final class MainController implements Initializable {
   private @FXML Button limeTemplateButton;
   @FXML private ToolController toolViewController;
   @FXML private CanvasController canvasViewController;
+  @FXML private ObjectListController objectListController;
 
   @FXML
   private void initializeStartPage() {
@@ -54,6 +55,7 @@ public final class MainController implements Initializable {
   public void initialize(URL location, ResourceBundle resources) {
     initializeStartPage();
     toolViewController.setCanvasController(canvasViewController);
+    canvasViewController.setObjectListController(objectListController);
   }
 
   @FXML
@@ -94,6 +96,7 @@ public final class MainController implements Initializable {
     } else {
       mainPane.setStyle("-fx-background-color: rgb(244,244,244)");
     }
+    objectListController.updateList();
   }
 
   @FXML

@@ -22,8 +22,7 @@ import java.util.ResourceBundle;
  */
 public final class CanvasController implements Initializable {
   private @FXML BorderPane rootBorderPane;
-  private MainController parentController;
-
+  private ObjectListController objectListController;
   private Model backend;
   private JavaFXDrawVisitor javaFXDrawVisitor;
 
@@ -47,9 +46,7 @@ public final class CanvasController implements Initializable {
     animationTimer.start();
   }
 
-  public void setParentController(MainController mainController) {
-    parentController = mainController;
-  }
+
 
   BorderPane getCanvasPane() {
     return rootBorderPane;
@@ -57,7 +54,7 @@ public final class CanvasController implements Initializable {
 
   private void render() {
     rootBorderPane.getChildren().clear();
-
+    objectListController.updateList();
     for (Mshape s : backend.getCanvasShapes()) {
       // It wants the old one to be removed if already is a child.
       s.acceptDrawVisitor(javaFXDrawVisitor);
@@ -82,6 +79,10 @@ public final class CanvasController implements Initializable {
   private void stopUse(Double x, Double y) {
     System.out.println(x + " " + y);
     // backend.addToRender(s);
+  }
+
+  public void setObjectListController(ObjectListController objectListController) {
+    this.objectListController = objectListController;
   }
 
   /*region Description
