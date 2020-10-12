@@ -33,7 +33,7 @@ import java.util.ResourceBundle;
  */
 public final class CanvasController implements Initializable, SelectedToolObserver {
   private @FXML BorderPane rootBorderPane;
-
+  private MainController parentController;
 
 
   private Model backend;
@@ -61,6 +61,12 @@ public final class CanvasController implements Initializable, SelectedToolObserv
         };
     animationTimer.start();
   }
+  public void setParentController (MainController mainController) {
+    parentController = mainController;
+  }
+   BorderPane getCanvasPane() {
+    return rootBorderPane;
+   }
 
   private void render() {
     rootBorderPane.getChildren().clear();

@@ -40,11 +40,14 @@ public final class ModelCanvas {
   /**
    * Removes a shape from the list with objects created by the user
    *
-   * @param shape - The object to be removed from the list
+   * @param x - TODO
+   * @param y - TODO
    */
-  public void removeFromRender(Mshape shape) {
-    this.shapes.remove(shape);
+  public void removeFromRender(Mshape mshape) {
+      this.shapes.remove((mshape));
   }
+
+
 
   /**
    * Finds the shape at a specific point (x,y).

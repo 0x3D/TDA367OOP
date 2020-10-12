@@ -8,12 +8,11 @@ import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 public class AddEraser implements Command {
     private final int x;
     private final int y;
-    private final ModelCanvas modelCanvas;
 
-    public AddEraser(int x, int y, ModelCanvas modelCanvas) {
+
+    public AddEraser(int x, int y) {
         this.x = x;
         this.y = y;
-        this.modelCanvas = modelCanvas;
     }
 
 
@@ -23,6 +22,6 @@ public class AddEraser implements Command {
      */
     @Override
     public void execute() {
-        modelCanvas.removeFromRender(Model.INSTANCE.returnShapeToRemove(x,y));
+        Model.INSTANCE.removeFromRenderByPoint(x,y);
     }
 }

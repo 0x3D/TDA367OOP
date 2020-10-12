@@ -68,8 +68,12 @@ public enum Model {
     modelCanvas.addToRender(s);
   }
 
-  public Mshape returnShapeToRemove (int x, int y) {
-    return modelCanvas.findShapeAt(x,y);
+  public void removeFromRenderByPoint(int x,int y) {
+    try {
+      modelCanvas.removeFromRender(modelCanvas.findShapeAt(x,y));
+    }catch (IllegalArgumentException e){
+      System.out.println("Found no Shape to Remove");
+    }
   }
 
   /** @return the selected tool */

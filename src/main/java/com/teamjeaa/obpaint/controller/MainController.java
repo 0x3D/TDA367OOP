@@ -1,5 +1,6 @@
 package com.teamjeaa.obpaint.controller;
 
+import com.teamjeaa.obpaint.model.Model;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,6 +41,10 @@ public final class MainController implements Initializable {
     Button redTemplateButton;
     private @FXML
     Button limeTemplateButton;
+    @FXML
+    private ToolController toolViewController;
+    @FXML
+    private CanvasController canvasViewController;
 
     //private @FXML FlowPane objectFlowPane;
     //private @FXML AnchorPane objectListRoot;
@@ -54,6 +59,7 @@ public final class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         initializeStartPage();
+        toolViewController.setCanvasController(canvasViewController);
     }
 
     @FXML
@@ -81,16 +87,19 @@ public final class MainController implements Initializable {
         canvasViewRoot.setStyle("-fx-background-color: White");
         startPagePane.setVisible(false);
     }
+
     @FXML
     private void onBlackTemplate() {
         canvasViewRoot.setStyle("-fx-background-color: Black");
         startPagePane.setVisible(false);
     }
+
     @FXML
     private void onRedTemplate() {
         canvasViewRoot.setStyle("-fx-background-color: red");
         startPagePane.setVisible(false);
     }
+
     @FXML
     private void onLimeTemplate() {
         canvasViewRoot.setStyle("-fx-background-color: Lime");
