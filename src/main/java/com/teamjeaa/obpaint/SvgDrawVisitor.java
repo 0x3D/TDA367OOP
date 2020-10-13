@@ -1,6 +1,7 @@
 package com.teamjeaa.obpaint;
 
 import com.teamjeaa.obpaint.model.shapeModel.Mellipse;
+import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 import com.teamjeaa.obpaint.model.shapeModel.Mpolygon;
 import com.teamjeaa.obpaint.model.shapeModel.Mpolyline;
@@ -24,14 +25,18 @@ public final class SvgDrawVisitor implements DrawVisitor {
     stringBuilder.append("\" ry=\"");
     stringBuilder.append(mellipse.getSemiAxesB());
     stringBuilder.append("\" style=\"fill:rgb(");
-    stringBuilder
-        .append(mellipse.getColor().getRed())
-        .append(",")
-        .append(mellipse.getColor().getGreen())
-        .append(",")
-        .append(mellipse.getColor().getBlue())
-        .append(")");
+    addMshapeColor(mellipse); 
     stringBuilder.append("\" />");
+  }
+
+  private void  addMshapeColor(Mshape mshape){
+    stringBuilder
+        .append(mshape.getColor().getRed())
+        .append(",")
+        .append(mshape.getColor().getGreen())
+        .append(",")
+        .append(mshape.getColor().getBlue())
+        .append(")");
   }
 
   @Override
@@ -42,13 +47,7 @@ public final class SvgDrawVisitor implements DrawVisitor {
     }
     stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(" "));
     stringBuilder.append("\" style=\"fill:rgb(");
-    stringBuilder
-        .append(mshape.getColor().getRed())
-        .append(",")
-        .append(mshape.getColor().getGreen())
-        .append(",")
-        .append(mshape.getColor().getBlue())
-        .append(")");
+    addMshapeColor(mshape);
     stringBuilder.append("\" />");
   }
 
@@ -60,13 +59,7 @@ public final class SvgDrawVisitor implements DrawVisitor {
     }
     stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(" "));
     stringBuilder.append("\" style=\"stroke:rgb(");
-    stringBuilder
-        .append(mpolyline.getColor().getRed())
-        .append(",")
-        .append(mpolyline.getColor().getGreen())
-        .append(",")
-        .append(mpolyline.getColor().getBlue())
-        .append(")");
+    addMshapeColor(mpolyline);
     stringBuilder.append("\" />");
   }
 }
