@@ -1,11 +1,11 @@
 package com.teamjeaa.obpaint.view;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.control.ScrollPane;
 
 import java.io.IOException;
 
-public class ObjectListView extends AnchorPane {
+public class ObjectListView extends ScrollPane {
 
     public ObjectListView() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/objectListView.fxml"));
