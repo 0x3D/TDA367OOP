@@ -1,6 +1,7 @@
 package com.teamjeaa.obpaint.model.shapeModel;
 
 import java.awt.*;
+import java.util.List;
 
 /**
  * Interface that holds the methods for creating the Shapes *
@@ -48,9 +49,14 @@ public interface ShapeFactory {
    */
   Mshape createLine(int x1, int y1, int x2, int y2, Color color);
 
-  // Shape createCircle(int x1, int y1, int radius);
 
-  // Shape createRectangle(int x1, int y1, int x2, int y2);
-
-  // Shape createTriangle(double x1, double y1, double x2, double y2, double x3, double y3);
+  /**
+   *
+   * Method used by factory to create a Polyline.
+   *
+   * @param points - the points for the line
+   * @param color - color of the line
+   * @return - an Mshape
+   */
+  Mshape createPolyline(List<Mpoint> points, Color color);
 }

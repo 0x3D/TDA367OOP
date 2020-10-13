@@ -43,4 +43,9 @@ public final class ConcreteShapeFactory implements ShapeFactory {
     mpointList.add(new Mpoint(x2, y2));
     return new Mpolyline(mpointList, color);
   }
+
+  @Override
+  public Mshape createPolyline(List<Mpoint> points, Color color) {
+    return new Mpolyline(points, color);
+  }
 }

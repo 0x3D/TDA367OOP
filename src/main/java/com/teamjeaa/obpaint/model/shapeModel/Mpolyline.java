@@ -5,6 +5,7 @@ import com.teamjeaa.obpaint.view.DrawVisitor;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * This class provides Polyline, a polygon which has 2 unconnected corners.
@@ -159,6 +160,21 @@ public final class Mpolyline implements Mshape {
     }
 
     return false;
+  }
+
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Mpolyline mpolyline = (Mpolyline) o;
+    return mPoints.equals(mpolyline.mPoints) &&
+            getColor().equals(mpolyline.getColor());
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(mPoints, getColor());
   }
 
   /** https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line */

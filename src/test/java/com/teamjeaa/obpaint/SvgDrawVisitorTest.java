@@ -21,7 +21,7 @@ class SvgDrawVisitorTest {
 
     mellipse.acceptDrawVisitor(svgDrawVisitor);
     assertEquals(
-        "<ellipse cx=\"80\" cy=\"80\" rx=\"100\" ry=\"100\" style=\"fill:rgb(255,175,175)\" />",
+        "<ellipse cx=\"80\" cy=\"80\" rx=\"100\" ry=\"100\" style=\"fill:rgb(255,175,175)\"/>\n",
         sb.toString());
   }
 
@@ -33,7 +33,7 @@ class SvgDrawVisitorTest {
     Mshape mRectangle = shapeFactory.createRectangle(80, 80, 300, 300, Color.PINK);
     mRectangle.acceptDrawVisitor(svgDrawVisitor);
     assertEquals(
-        "<polygon points=\"80,80 300,80 300,300 80,300\" style=\"fill:rgb(255,175,175)\" />",
+        "<polygon points=\"80,80 300,80 300,300 80,300\" style=\"fill:rgb(255,175,175)\"/>\n",
         sb.toString());
   }
 
@@ -45,6 +45,6 @@ class SvgDrawVisitorTest {
     Mshape mRectangle = shapeFactory.createLine(0, 0, 300, 300, Color.PINK);
     mRectangle.acceptDrawVisitor(svgDrawVisitor);
     assertEquals(
-        "<polyline points=\"0,0 300,300\" style=\"stroke:rgb(255,175,175)\" />", sb.toString());
+        "<polyline points=\"0,0 300,300\" style=\"stroke:rgb(255,175,175)\"/>\n", sb.toString());
   }
 }

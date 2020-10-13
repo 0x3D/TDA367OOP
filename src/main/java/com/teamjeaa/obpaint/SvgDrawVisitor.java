@@ -25,8 +25,8 @@ public final class SvgDrawVisitor implements DrawVisitor {
     stringBuilder.append("\" ry=\"");
     stringBuilder.append(mellipse.getSemiAxesB());
     stringBuilder.append("\" style=\"fill:rgb(");
-    addMshapeColor(mellipse); 
-    stringBuilder.append("\" />");
+    addMshapeColor(mellipse);
+    stringBuilder.append("\"/>\n");
   }
 
   private void  addMshapeColor(Mshape mshape){
@@ -48,7 +48,7 @@ public final class SvgDrawVisitor implements DrawVisitor {
     stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(" "));
     stringBuilder.append("\" style=\"fill:rgb(");
     addMshapeColor(mshape);
-    stringBuilder.append("\" />");
+    stringBuilder.append("\"/>\n");
   }
 
   @Override
@@ -60,6 +60,6 @@ public final class SvgDrawVisitor implements DrawVisitor {
     stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(" "));
     stringBuilder.append("\" style=\"stroke:rgb(");
     addMshapeColor(mpolyline);
-    stringBuilder.append("\" />");
+    stringBuilder.append("\"/>\n");
   }
 }

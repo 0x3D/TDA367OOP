@@ -88,7 +88,6 @@ public final class MainController implements Initializable {
     } catch (IOException e) {
       e.printStackTrace();
     }
-
   }
 
   @FXML

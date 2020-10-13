@@ -3,6 +3,7 @@ package com.teamjeaa.obpaint.model.shapeModel;
 import com.teamjeaa.obpaint.view.DrawVisitor;
 
 import java.awt.Color;
+import java.util.Objects;
 
 /**
  * The models implementation of an ellipse
@@ -91,6 +92,22 @@ public final class Mellipse implements Mshape {
         this.semiAxesA,
         this.semiAxesB,
         this.color);
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Mellipse mellipse = (Mellipse) o;
+    return getSemiAxesA() == mellipse.getSemiAxesA() &&
+            getSemiAxesB() == mellipse.getSemiAxesB() &&
+            getCenterPoint().equals(mellipse.getCenterPoint()) &&
+            getColor().equals(mellipse.getColor());
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getCenterPoint(), getSemiAxesA(), getSemiAxesB(), getColor());
   }
 
   /**
