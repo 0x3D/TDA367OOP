@@ -2,7 +2,7 @@ package com.teamjeaa.obpaint.controller;
 
 import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.commands.*;
-import javafx.beans.value.ObservableValue;
+import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -10,9 +10,9 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
-
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -61,10 +61,40 @@ public final class ToolController implements Initializable {
     this.canvasPane = canvasController.getCanvasPane();
   }
 
+  private void resetCanvasMouseEventHandlers() {
+      canvasPane.setOnMouseClicked(null);
+      canvasPane.setOnMousePressed(null);
+      canvasPane.setOnMouseReleased(null);
+      canvasPane.setOnMousePressed(null);
+      canvasPane.setOnMouseReleased(null);
+      canvasPane.setOnMouseDragged(null);
+  }
+
+      List<Mpoint> points = new ArrayList<>();
   @FXML
   void onPencilButton(ActionEvent event) {
+      System.out.println("Selected Pencil tool");
+      resetCanvasMouseEventHandlers();
+
+      canvasPane.setOnMouseDragged(
+              mouseEvent -> {
+                  points.add(new Mpoint( (int) mouseEvent.getX(), (int) mouseEvent.getY()));
+              }
+      );
+      canvasPane.setOnMouseReleased(
+              mouseEvent -> {
+                  points.add(new Mpoint((int) mouseEvent.getX(), (int) mouseEvent.getY()));
+                  command = new Pencil(points, getAWTColor(cp.getValue()), 1);
+                  command.execute();
+                  points = new ArrayList<Mpoint>();
+              }
+      );
+  }
+
+  @FXML
+  void onLineButton(ActionEvent event) {
     System.out.println("Selected line tool");
-    canvasPane.setOnMouseClicked(null);
+    resetCanvasMouseEventHandlers();
     canvasPane.setOnMousePressed(
             mouseEvent -> {
               this.x = (int) mouseEvent.getX();
@@ -87,8 +117,7 @@ public final class ToolController implements Initializable {
   @FXML
   void onEraserButton(ActionEvent event) {
     System.out.println("Eraser");
-    canvasPane.setOnMousePressed(null);
-    canvasPane.setOnMouseReleased(null);
+    resetCanvasMouseEventHandlers();
     canvasPane.setOnMouseClicked(
         mouseEvent -> {
           command = new AddEraser((int) mouseEvent.getX(), (int) mouseEvent.getY());
@@ -99,7 +128,7 @@ public final class ToolController implements Initializable {
   @FXML
   private void onCircleButton(ActionEvent event) {
     System.out.println("Selecting Circle");
-    canvasPane.setOnMouseClicked(null);
+    resetCanvasMouseEventHandlers();
     canvasPane.setOnMousePressed(
         mouseEvent -> {
           x = (int) mouseEvent.getX();
@@ -130,7 +159,7 @@ public final class ToolController implements Initializable {
   @FXML
   private void onRectangleButton(ActionEvent event) {
     System.out.println("Selecting Rectangle");
-    canvasPane.setOnMouseClicked(null);
+    resetCanvasMouseEventHandlers();
     canvasPane.setOnMousePressed(
         mouseEvent -> {
           x = (int) mouseEvent.getX();
@@ -152,7 +181,7 @@ public final class ToolController implements Initializable {
 
   @FXML
   private void onMoveButton(ActionEvent event) {
-      canvasPane.setOnMouseClicked(null);
+      resetCanvasMouseEventHandlers();
       canvasPane.setOnMousePressed(
               mouseEvent -> {
                   x = (int) mouseEvent.getX();
@@ -165,6 +194,4 @@ public final class ToolController implements Initializable {
                   command.execute();
               });
   }
-
-
 }
