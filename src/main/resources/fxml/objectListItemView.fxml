@@ -4,9 +4,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root fx:id="itemPane" prefHeight="24.0" prefWidth="143.0" style="-fx-border-color: black; -fx-border-width: 3;" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="itemPane" onMouseClicked="#onClickedListItem" onMousePressed="#onClickedListItem" prefHeight="24.0" prefWidth="143.0" style="-fx-border-color: black; -fx-border-width: 3;" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="objectLabel" layoutX="37.0" layoutY="3.0" text="Object">
+      <Label fx:id="objectLabel" layoutX="50.0" layoutY="6.0" text="Object">
          <font>
             <Font name="Arial Bold" size="14.0" />
          </font></Label>

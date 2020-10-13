@@ -26,8 +26,10 @@ public class ObjectListController implements Initializable {
   public void updateList() {
     objectFlowPane.getChildren().clear();
     for (Mshape mshapes : Model.INSTANCE.getCanvasShapes()) {
-      objectFlowPane.getChildren().add(new ObjectListItemView(mshapes.getPosition().getX(),
-              mshapes.getPosition().getY(), mshapes.getColor()));
+      objectFlowPane.getChildren().add(new ObjectListItemView(mshapes,parentController));
     }
+  }
+  public void setParentController (MainController mainController){
+    this.parentController = mainController;
   }
 }

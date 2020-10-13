@@ -25,8 +25,6 @@ public class Move implements Command {
         try {
             Mshape shapeToMove = Model.INSTANCE.findShapeAtPoint(mouseDownX,mouseDownY);
             model.removeFromRenderByPoint(mouseDownX,mouseDownY);
-            int shapeToMoveX = shapeToMove.getPosition().getX();
-            int shapeToMoveY = shapeToMove.getPosition().getY();
             int mouseDeltaX = mouseUpX - mouseDownX;
             int mouseDeltaY = mouseUpY - mouseDownY;
             model.addToRender(shapeToMove.translate(mouseDeltaX,mouseDeltaY));

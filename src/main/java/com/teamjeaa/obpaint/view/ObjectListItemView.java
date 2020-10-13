@@ -1,6 +1,8 @@
 package com.teamjeaa.obpaint.view;
 
 import com.teamjeaa.obpaint.controller.MainController;
+import com.teamjeaa.obpaint.controller.ShapeInfoController;
+import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -18,11 +20,11 @@ public class ObjectListItemView extends AnchorPane {
   Label objectLabel;
   private @FXML
   AnchorPane itemPane;
-  private final int xPos;
-  private final int yPos;
-  private final Color color;
 
-  public ObjectListItemView(int xPos, int yPos, Color color) {
+  private final Mshape mshape;
+  private final MainController parentController;
+
+  public ObjectListItemView(Mshape mshape, MainController mainController) {
 
 
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/objectListItemView.fxml"));
@@ -33,23 +35,29 @@ public class ObjectListItemView extends AnchorPane {
     } catch (IOException exception) {
       throw new RuntimeException(exception);
     }
-    this.xPos = xPos;
-    this.yPos = yPos;
-    this.color = color;
+    this.mshape = mshape;
+    this.parentController = mainController;
 
     setLabelName();
     setColorBackground();
   }
 
   public void setLabelName() {
-    objectLabel.setText("X=" + xPos + " Y=" + yPos);
+    objectLabel.setText("X=" + mshape.getPosition().getX() + " Y=" + mshape.getPosition().getY());
   }
 
   public void setColorBackground() {
+    Color color = mshape.getColor();
     StringBuilder sb = new StringBuilder();
     sb.append("-fx-background-color: rgb(").append(color.getRed()).append(",").append(color.getGreen()).append(",").
             append(color.getBlue()).append(");").append("-fx-border-color: grey");
-    itemPane.setStyle(sb.toString() );
+    itemPane.setStyle(sb.toString());
   }
+
+  public void onClickedListItem () {
+    parentController.updateShapeInfo(mshape);
+    System.out.println(mshape.getPosition().getX());
+  }
+
 
 }

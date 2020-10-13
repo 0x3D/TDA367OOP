@@ -38,6 +38,7 @@ public final class MainController implements Initializable {
   @FXML private ToolController toolViewController;
   @FXML private CanvasController canvasViewController;
   @FXML private ObjectListController objectListController;
+  @FXML private ShapeInfoController shapeInfoViewController;
 
   @FXML
   private void initializeStartPage() {
@@ -56,6 +57,7 @@ public final class MainController implements Initializable {
     initializeStartPage();
     toolViewController.setCanvasController(canvasViewController);
     canvasViewController.setObjectListController(objectListController);
+    objectListController.setParentController(this);
   }
 
   @FXML
@@ -127,5 +129,9 @@ public final class MainController implements Initializable {
   private void onLimeTemplate() {
     canvasViewRoot.setStyle("-fx-background-color: Lime");
     startPagePane.setVisible(false);
+  }
+
+  public void updateShapeInfo(Mshape mshape) {
+    shapeInfoViewController.updateInfo(mshape);
   }
 }
