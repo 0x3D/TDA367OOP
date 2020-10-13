@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 
 import java.awt.*;
 import java.io.IOException;
@@ -49,7 +50,6 @@ public class ObjectListItemView extends AnchorPane {
     sb.append("-fx-background-color: rgb(").append(color.getRed()).append(",").append(color.getGreen()).append(",").
             append(color.getBlue()).append(");").append("-fx-border-color: grey");
     itemPane.setStyle(sb.toString() );
-
   }
 
 }
