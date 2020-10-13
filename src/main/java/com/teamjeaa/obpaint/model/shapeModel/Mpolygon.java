@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * This class provides polygon in our model
@@ -51,6 +52,19 @@ public final class Mpolygon implements Mshape {
       minY = Math.min(mpoint.getY(), minY);
     }
     return new Mpoint(minX, minY);
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Mpolygon mpolygon = (Mpolygon) o;
+    return getPoints().equals(mpolygon.getPoints()) && getColor().equals(mpolygon.getColor());
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(getPoints(), getColor());
   }
 
   /** @return the point in the lower right corner */
