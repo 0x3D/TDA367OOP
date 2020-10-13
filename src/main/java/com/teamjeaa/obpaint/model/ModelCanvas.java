@@ -38,9 +38,6 @@ public final class ModelCanvas {
 
   /**
    * Removes a shape from the list with objects created by the user
-   *
-   * @param x - TODO
-   * @param y - TODO
    */
   public void removeFromRender(Mshape mshape) {
     this.shapes.remove((mshape));
