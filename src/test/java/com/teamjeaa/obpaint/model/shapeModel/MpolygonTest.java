@@ -13,8 +13,8 @@ public final class MpolygonTest {
   @Test
   public void testGetPosition() {
     List<Mpoint> mpointList = new ArrayList<>();
-    mpointList.add(new MpointConcrete(0, 0));
-    mpointList.add(new MpointConcrete(1, 1));
+    mpointList.add(new Mpoint(0, 0));
+    mpointList.add(new Mpoint(1, 1));
     Mpolygon mpolygon = new Mpolygon(mpointList, Color.black);
     assertEquals(mpolygon.getPosition().getX(), 0);
     assertEquals(mpolygon.getPosition().getY(), 0);
@@ -23,8 +23,8 @@ public final class MpolygonTest {
   @Test
   public void testGetWidth() {
     List<Mpoint> mpointList = new ArrayList<>();
-    mpointList.add(new MpointConcrete(0, 0));
-    mpointList.add(new MpointConcrete(2, 2));
+    mpointList.add(new Mpoint(0, 0));
+    mpointList.add(new Mpoint(2, 2));
     Mpolygon mpolygon = new Mpolygon(mpointList, Color.black);
     assertEquals(mpolygon.getWidth(), 2);
   }
@@ -32,8 +32,8 @@ public final class MpolygonTest {
   @Test
   public void testGetHeight() {
     List<Mpoint> mpointList = new ArrayList<>();
-    mpointList.add(new MpointConcrete(0, 0));
-    mpointList.add(new MpointConcrete(2, 3));
+    mpointList.add(new Mpoint(0, 0));
+    mpointList.add(new Mpoint(2, 3));
     Mpolygon mpolygon = new Mpolygon(mpointList, Color.black);
     assertEquals(mpolygon.getHeight(), 3);
   }

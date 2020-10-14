@@ -25,17 +25,17 @@ public final class MpolylineTest {
    */
   private Mpolyline setUpMpolyline() {
     List<Mpoint> mPoints = new ArrayList<>();
-    mPoints.add(new MpointConcrete(0, 0));
-    mPoints.add(new MpointConcrete(0, 10));
-    mPoints.add(new MpointConcrete(10, 100));
-    mPoints.add(new MpointConcrete(0, 100));
+    mPoints.add(new Mpoint(0, 0));
+    mPoints.add(new Mpoint(0, 10));
+    mPoints.add(new Mpoint(10, 100));
+    mPoints.add(new Mpoint(0, 100));
     return new Mpolyline(mPoints, Color.BLACK);
   }
 
   @Test
   void getPosition() {
     Mpolyline mpolyline = setUpMpolyline();
-    assertEquals(new MpointConcrete(0, 0), mpolyline.getPosition());
+    assertEquals(new Mpoint(0, 0), mpolyline.getPosition());
   }
 
   @Test
@@ -67,10 +67,10 @@ public final class MpolylineTest {
   void getPoints() {
     Mpolyline mpolyline = setUpMpolyline();
     List<Mpoint> mPoints = new ArrayList<>();
-    mPoints.add(new MpointConcrete(0, 0));
-    mPoints.add(new MpointConcrete(0, 10));
-    mPoints.add(new MpointConcrete(10, 100));
-    mPoints.add(new MpointConcrete(0, 100));
+    mPoints.add(new Mpoint(0, 0));
+    mPoints.add(new Mpoint(0, 10));
+    mPoints.add(new Mpoint(10, 100));
+    mPoints.add(new Mpoint(0, 100));
     assertTrue(mpolyline.getPoints().containsAll(mPoints));
   }
 

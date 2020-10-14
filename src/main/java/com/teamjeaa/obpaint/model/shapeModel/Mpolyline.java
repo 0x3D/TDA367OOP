@@ -65,7 +65,7 @@ public final class Mpolyline implements Mshape {
         y = mpoint.getY();
       }
     }
-    return new MpointConcrete(x, y);
+    return new Mpoint(x, y);
   }
 
   private Mpoint getMinPosition() {
@@ -82,7 +82,7 @@ public final class Mpolyline implements Mshape {
         y = mpoint.getY();
       }
     }
-    return new MpointConcrete(x, y);
+    return new Mpoint(x, y);
   }
 
   /**
@@ -133,7 +133,7 @@ public final class Mpolyline implements Mshape {
   public Mshape translate(int x, int y) {
     List<Mpoint> newPolyline = new ArrayList<>();
     for (Mpoint mpoint : mPoints) {
-      newPolyline.add(new MpointConcrete(mpoint.getX() + x, mpoint.getY() + y));
+      newPolyline.add(new Mpoint(mpoint.getX() + x, mpoint.getY() + y));
     }
     // TODO: New color not old reference
     return new Mpolyline(newPolyline, color);

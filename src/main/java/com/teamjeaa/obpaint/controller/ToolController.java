@@ -3,7 +3,6 @@ package com.teamjeaa.obpaint.controller;
 import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.commands.*;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
-import com.teamjeaa.obpaint.model.shapeModel.MpointConcrete;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -80,10 +79,10 @@ public final class ToolController implements Initializable {
 
     canvasPane.setOnMouseDragged(
         mouseEvent ->
-            points.add(new MpointConcrete((int) mouseEvent.getX(), (int) mouseEvent.getY())));
+            points.add(new Mpoint((int) mouseEvent.getX(), (int) mouseEvent.getY())));
     canvasPane.setOnMouseReleased(
         mouseEvent -> {
-          points.add(new MpointConcrete((int) mouseEvent.getX(), (int) mouseEvent.getY()));
+          points.add(new Mpoint((int) mouseEvent.getX(), (int) mouseEvent.getY()));
           command = new Pencil(points, getAWTColor(cp.getValue()), 1);
           command.execute();
           points = new ArrayList<>();

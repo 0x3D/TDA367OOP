@@ -51,7 +51,7 @@ public final class Mpolygon implements Mshape {
       minX = Math.min(mpoint.getX(), minX);
       minY = Math.min(mpoint.getY(), minY);
     }
-    return new MpointConcrete(minX, minY);
+    return new Mpoint(minX, minY);
   }
 
   @Override
@@ -76,7 +76,7 @@ public final class Mpolygon implements Mshape {
       maxX = Math.max(mpoint.getX(), maxX);
       maxY = Math.max(mpoint.getY(), maxY);
     }
-    return new MpointConcrete(maxX, maxY);
+    return new Mpoint(maxX, maxY);
   }
 
   /** @return The width of the rectangle around the polygon */
@@ -104,7 +104,7 @@ public final class Mpolygon implements Mshape {
   public Mshape translate(int x, int y) {
     List<Mpoint> newPosition = new ArrayList<>();
     for (Mpoint mpoint : this.getPoints()) {
-      newPosition.add(new MpointConcrete(mpoint.getX() + x, mpoint.getY() + y));
+      newPosition.add(new Mpoint(mpoint.getX() + x, mpoint.getY() + y));
     }
     return new Mpolygon(newPosition, this.getColor());
   }

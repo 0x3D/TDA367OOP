@@ -57,7 +57,7 @@ public final class Mellipse implements Mshape {
 
   @Override
   public Mpoint getPosition() {
-    return new MpointConcrete(centerPoint.getX() - semiAxesA, centerPoint.getY() - semiAxesB);
+    return new Mpoint(centerPoint.getX() - semiAxesA, centerPoint.getY() - semiAxesB);
   }
 
   @Override
@@ -88,7 +88,7 @@ public final class Mellipse implements Mshape {
   @Override
   public Mshape translate(int x, int y) {
     return new Mellipse(
-        new MpointConcrete(centerPoint.getX() + x, centerPoint.getY() + y),
+        new Mpoint(centerPoint.getX() + x, centerPoint.getY() + y),
         this.semiAxesA,
         this.semiAxesB,
         this.color);
