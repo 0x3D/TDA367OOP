@@ -78,8 +78,7 @@ public final class ToolController implements Initializable {
     resetCanvasMouseEventHandlers();
 
     canvasPane.setOnMouseDragged(
-        mouseEvent ->
-            points.add(new Mpoint((int) mouseEvent.getX(), (int) mouseEvent.getY())));
+        mouseEvent -> points.add(new Mpoint((int) mouseEvent.getX(), (int) mouseEvent.getY())));
     canvasPane.setOnMouseReleased(
         mouseEvent -> {
           points.add(new Mpoint((int) mouseEvent.getX(), (int) mouseEvent.getY()));

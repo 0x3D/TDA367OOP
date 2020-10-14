@@ -38,19 +38,16 @@ public final class Mpoint implements Cloneable {
   }
 
   /** @return The x coordinate of the point */
-
   public int getX() {
     return x;
   }
 
   /** @return The y coordinate of the point */
-
   public int getY() {
     return y;
   }
 
   /** @return This could be a third dimension to do buffering */
-
   public int getZ() {
     return z;
   }
