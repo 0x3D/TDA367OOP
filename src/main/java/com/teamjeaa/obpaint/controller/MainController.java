@@ -11,7 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.ResourceBundle;
@@ -31,10 +32,14 @@ public final class MainController implements Initializable {
   private @FXML ToggleButton darkModeToggle;
   private @FXML AnchorPane startPagePane;
   private @FXML AnchorPane canvasViewRoot;
+
+  // TODO: Remove or give usage
   private @FXML Button blancTemplateButton;
   private @FXML Button blackTemplateButton;
   private @FXML Button redTemplateButton;
   private @FXML Button limeTemplateButton;
+
+  // TODO: Remove or give usage
   @FXML private ToolController toolViewController;
   @FXML private CanvasController canvasViewController;
   @FXML private ObjectListController objectListController;
@@ -67,7 +72,7 @@ public final class MainController implements Initializable {
   }
 
   private void onSave() {
-    //TODO: Move behaviour to new class
+    // TODO: Move behaviour to new class
     StringBuilder sb = new StringBuilder();
     DrawVisitor drawVisitor = new SvgDrawVisitor(sb);
     sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n");
@@ -76,7 +81,7 @@ public final class MainController implements Initializable {
         .append("\" height=\"")
         .append(800)
         .append("\" xmlns=\"http://www.w3.org/2000/svg\">\n");
-    for(Mshape mshape: Model .INSTANCE.getCanvasShapes()){
+    for (Mshape mshape : Model.INSTANCE.getCanvasShapes()) {
       mshape.acceptDrawVisitor(drawVisitor);
     }
     sb.append("\n").append("</svg>");

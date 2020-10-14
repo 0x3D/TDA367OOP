@@ -36,11 +36,9 @@ public final class ModelCanvas {
     this.shapes.add(shape);
   }
 
-  /**
-   * Removes a shape from the list with objects created by the user
-   */
+  /** Removes a shape from the list with objects created by the user */
   public void removeFromRender(Mshape mshape) {
-    this.shapes.remove((mshape));
+    this.shapes.remove(mshape);
   }
 
   /**

@@ -42,9 +42,9 @@ public class SvgParser {
       if (line.contains("ellipse")) {
         mshapeList.add(createEllipse(line));
       } else if (line.contains("polygon")) {
-
+        // TODO: Implement polygon creation
       } else if (line.contains("polyline")) {
-
+        // TODO: Implement Polyline creation
       }
     }
   }
@@ -75,6 +75,7 @@ public class SvgParser {
       }
     }
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
+    // TODO: make this create an ellipse instead of circle
     return shapeFactory.createCircle(rx, xPos, yPos, new Color(r, g, b));
   }
 

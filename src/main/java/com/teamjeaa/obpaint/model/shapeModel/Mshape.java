@@ -26,6 +26,7 @@ public interface Mshape {
 
   /** @return Height of the Mshape */
   int getHeight();
+
   Color getColor();
 
   /**

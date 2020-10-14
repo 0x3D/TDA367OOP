@@ -1,10 +1,6 @@
 package com.teamjeaa.obpaint;
 
-import com.teamjeaa.obpaint.model.shapeModel.Mellipse;
-import com.teamjeaa.obpaint.model.shapeModel.Mshape;
-import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
-import com.teamjeaa.obpaint.model.shapeModel.Mpolygon;
-import com.teamjeaa.obpaint.model.shapeModel.Mpolyline;
+import com.teamjeaa.obpaint.model.shapeModel.*;
 import com.teamjeaa.obpaint.view.DrawVisitor;
 
 public final class SvgDrawVisitor implements DrawVisitor {
@@ -29,7 +25,7 @@ public final class SvgDrawVisitor implements DrawVisitor {
     stringBuilder.append("\"/>\n");
   }
 
-  private void  addMshapeColor(Mshape mshape){
+  private void addMshapeColor(Mshape mshape) {
     stringBuilder
         .append(mshape.getColor().getRed())
         .append(",")

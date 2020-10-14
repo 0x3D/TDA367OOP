@@ -2,7 +2,7 @@ package com.teamjeaa.obpaint.model.shapeModel;
 
 import com.teamjeaa.obpaint.view.DrawVisitor;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.Objects;
 
 /**
@@ -57,7 +57,7 @@ public final class Mellipse implements Mshape {
 
   @Override
   public Mpoint getPosition() {
-    return new Mpoint(centerPoint.getX() - semiAxesA, centerPoint.getY() - semiAxesB);
+    return new MpointConcrete(centerPoint.getX() - semiAxesA, centerPoint.getY() - semiAxesB);
   }
 
   @Override
@@ -88,7 +88,7 @@ public final class Mellipse implements Mshape {
   @Override
   public Mshape translate(int x, int y) {
     return new Mellipse(
-        new Mpoint(centerPoint.getX() + x, centerPoint.getY() + y),
+        new MpointConcrete(centerPoint.getX() + x, centerPoint.getY() + y),
         this.semiAxesA,
         this.semiAxesB,
         this.color);
@@ -99,10 +99,10 @@ public final class Mellipse implements Mshape {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Mellipse mellipse = (Mellipse) o;
-    return getSemiAxesA() == mellipse.getSemiAxesA() &&
-            getSemiAxesB() == mellipse.getSemiAxesB() &&
-            getCenterPoint().equals(mellipse.getCenterPoint()) &&
-            getColor().equals(mellipse.getColor());
+    return getSemiAxesA() == mellipse.getSemiAxesA()
+        && getSemiAxesB() == mellipse.getSemiAxesB()
+        && getCenterPoint().equals(mellipse.getCenterPoint())
+        && getColor().equals(mellipse.getColor());
   }
 
   @Override
@@ -116,8 +116,8 @@ public final class Mellipse implements Mshape {
    */
   @Override
   public boolean isPointMemberOfShape(int x, int y) {
-    return (Math.pow(x - this.getCenterPoint().getX(), 2) / Math.pow(this.getSemiAxesA(), 2)
+    return Math.pow(x - this.getCenterPoint().getX(), 2) / Math.pow(this.getSemiAxesA(), 2)
             + Math.pow(y - getCenterPoint().getY(), 2) / Math.pow(getSemiAxesB(), 2)
-        <= 1);
+        <= 1;
   }
 }

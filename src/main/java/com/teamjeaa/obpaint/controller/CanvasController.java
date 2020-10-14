@@ -46,8 +46,6 @@ public final class CanvasController implements Initializable {
     animationTimer.start();
   }
 
-
-
   BorderPane getCanvasPane() {
     return rootBorderPane;
   }

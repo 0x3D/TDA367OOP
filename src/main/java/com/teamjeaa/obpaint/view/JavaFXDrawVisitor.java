@@ -4,7 +4,6 @@ import com.teamjeaa.obpaint.model.shapeModel.Mellipse;
 import com.teamjeaa.obpaint.model.shapeModel.Mpolygon;
 import com.teamjeaa.obpaint.model.shapeModel.Mpolyline;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Polyline;

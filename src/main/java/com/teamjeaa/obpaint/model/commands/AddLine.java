@@ -20,7 +20,6 @@ public class AddLine implements Command {
     this.x2 = x2;
     this.y2 = y2;
     this.color = color;
-
   }
 
   /**

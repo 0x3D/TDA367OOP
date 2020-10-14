@@ -49,9 +49,7 @@ public interface ShapeFactory {
    */
   Mshape createLine(int x1, int y1, int x2, int y2, Color color);
 
-
   /**
-   *
    * Method used by factory to create a Polyline.
    *
    * @param points - the points for the line

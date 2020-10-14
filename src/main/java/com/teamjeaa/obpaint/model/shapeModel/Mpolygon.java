@@ -2,7 +2,7 @@ package com.teamjeaa.obpaint.model.shapeModel;
 
 import com.teamjeaa.obpaint.view.DrawVisitor;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -51,7 +51,7 @@ public final class Mpolygon implements Mshape {
       minX = Math.min(mpoint.getX(), minX);
       minY = Math.min(mpoint.getY(), minY);
     }
-    return new Mpoint(minX, minY);
+    return new MpointConcrete(minX, minY);
   }
 
   @Override
@@ -76,7 +76,7 @@ public final class Mpolygon implements Mshape {
       maxX = Math.max(mpoint.getX(), maxX);
       maxY = Math.max(mpoint.getY(), maxY);
     }
-    return new Mpoint(maxX, maxY);
+    return new MpointConcrete(maxX, maxY);
   }
 
   /** @return The width of the rectangle around the polygon */
@@ -104,17 +104,17 @@ public final class Mpolygon implements Mshape {
   public Mshape translate(int x, int y) {
     List<Mpoint> newPosition = new ArrayList<>();
     for (Mpoint mpoint : this.getPoints()) {
-      newPosition.add(new Mpoint(mpoint.getX() + x, mpoint.getY() + y));
+      newPosition.add(new MpointConcrete(mpoint.getX() + x, mpoint.getY() + y));
     }
     return new Mpolygon(newPosition, this.getColor());
   }
 
-
-
   @Override
   public boolean isPointMemberOfShape(int x, int y) {
-    return (x >= getMinPosition().getX() && x <= getMaxPosition().getX())
-        && (y >= getMinPosition().getY() && y <= getMaxPosition().getY());
+    return x >= getMinPosition().getX()
+        && x <= getMaxPosition().getX()
+        && y >= getMinPosition().getY()
+        && y <= getMaxPosition().getY();
   }
 
   /** @return All the points of the Polygon */

@@ -1,15 +1,13 @@
 package com.teamjeaa.obpaint.model.commands;
 
 import com.teamjeaa.obpaint.model.Model;
-import com.teamjeaa.obpaint.model.ModelCanvas;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class AddCircleTest {
-
 
   @Test
   void executeTest() {
@@ -18,8 +16,8 @@ class AddCircleTest {
     int radius = 5;
 
     Command command = new AddCircle(radius, x, y, Color.ORANGE);
-    int size=Model.INSTANCE.getCanvasShapes().size();
+    int size = Model.INSTANCE.getCanvasShapes().size();
     command.execute();
-    assertEquals(size+1,Model.INSTANCE.getCanvasShapes().size());
+    assertEquals(size + 1, Model.INSTANCE.getCanvasShapes().size());
   }
 }

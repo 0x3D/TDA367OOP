@@ -1,56 +1,14 @@
 package com.teamjeaa.obpaint.model.shapeModel;
 
-import java.util.Objects;
-
-/**
- * Class that represents a point in the model
- *
- * <p>Responsibility Represent a point <br>
- * Used by ConcreteShapeFactory, Mellipse, Mpolygon, Mshape, ConcreteCircleTool, MpointTest
- * ConcreteRectangleTool, ModelCanvas, JavaFXDrawVisitor <br>
- * Uses java.util.Objects
- *
- * @author Erik R
- * @since 0.1-SNAPSHOT
- */
-public final class Mpoint implements Cloneable {
-  private final int x;
-  private final int y;
-  private final int z;
-
-  /**
-   * @param x x coordinate of the point created
-   * @param y y coordinate of the point created
-   * @param z z coordinate of the point created
-   */
-  Mpoint(int x, int y, int z) {
-    this.x = x;
-    this.y = y;
-    this.z = z;
-  }
-
-  /**
-   * @param x x coordinate of the point created
-   * @param y y coordinate of the point created
-   */
-  public Mpoint(int x, int y) {
-    this(x, y, 0);
-  }
-
+public interface Mpoint extends Cloneable {
   /** @return The x coordinate of the point */
-  public int getX() {
-    return x;
-  }
+  int getX();
 
   /** @return The y coordinate of the point */
-  public int getY() {
-    return y;
-  }
+  int getY();
 
   /** @return This could be a third dimension to do buffering */
-  private int getZ() {
-    return z;
-  }
+  int getZ();
 
   /**
    * Method that checks if this object is the same as another object
@@ -59,27 +17,10 @@ public final class Mpoint implements Cloneable {
    * @return True if equal and false if unequal
    */
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Mpoint mPoint = (Mpoint) o;
-    return getX() == mPoint.getX() && getY() == mPoint.getY() && getZ() == mPoint.getZ();
-  }
+  boolean equals(Object o);
 
   @Override
-  public int hashCode() {
-    return Objects.hash(getX(), getY(), getZ());
-  }
+  int hashCode();
 
-  /** @return A copy of this point */
-  @Override
-  public Mpoint clone() {
-    final Mpoint clone;
-    try {
-      clone = (Mpoint) super.clone();
-    } catch (CloneNotSupportedException ex) {
-      throw new RuntimeException("superclass messed up", ex);
-    }
-    return clone;
-  }
+  Mpoint clone();
 }

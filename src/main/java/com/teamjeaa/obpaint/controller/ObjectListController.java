@@ -6,30 +6,26 @@ import com.teamjeaa.obpaint.view.ObjectListItemView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.FlowPane;
+
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class ObjectListController implements Initializable {
+  public @FXML FlowPane objectFlowPane;
   private MainController parentController;
 
-  public @FXML FlowPane objectFlowPane;
-
   @Override
-  public void initialize(URL url, ResourceBundle resourceBundle) {
-
-  }
+  public void initialize(URL url, ResourceBundle resourceBundle) {}
 
   @FXML
   public void updateList() {
     objectFlowPane.getChildren().clear();
     for (Mshape mshapes : Model.INSTANCE.getCanvasShapes()) {
-      objectFlowPane.getChildren().add(new ObjectListItemView(mshapes,parentController));
+      objectFlowPane.getChildren().add(new ObjectListItemView(mshapes, parentController));
     }
   }
-  public void setParentController (MainController mainController){
+
+  public void setParentController(MainController mainController) {
     this.parentController = mainController;
   }
 }

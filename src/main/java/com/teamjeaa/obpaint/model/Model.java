@@ -5,7 +5,6 @@ import com.teamjeaa.obpaint.controller.CanvasController;
 import com.teamjeaa.obpaint.controller.ToolController;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 
-import java.awt.*;
 import java.util.List;
 
 /**
@@ -18,22 +17,20 @@ import java.util.List;
  * @see CanvasController
  * @see Start
  * @see ToolController
- * @see Color
  * @see List
  * @since 0.1-SNAPSHOT
  */
 public enum Model {
   INSTANCE;
 
-  private static Color color;
-  private ModelCanvas modelCanvas;
+  private final ModelCanvas modelCanvas;
 
   Model() {
     modelCanvas = new ModelCanvas();
   }
 
   public Mshape findShapeAtPoint(int x, int y) {
-      return modelCanvas.findShapeAt(x, y);
+    return modelCanvas.findShapeAt(x, y);
   }
 
   /**

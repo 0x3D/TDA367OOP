@@ -2,7 +2,7 @@ package com.teamjeaa.obpaint.model.shapeModel;
 
 import com.teamjeaa.obpaint.view.DrawVisitor;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -65,7 +65,7 @@ public final class Mpolyline implements Mshape {
         y = mpoint.getY();
       }
     }
-    return new Mpoint(x, y);
+    return new MpointConcrete(x, y);
   }
 
   private Mpoint getMinPosition() {
@@ -82,7 +82,7 @@ public final class Mpolyline implements Mshape {
         y = mpoint.getY();
       }
     }
-    return new Mpoint(x, y);
+    return new MpointConcrete(x, y);
   }
 
   /**
@@ -133,9 +133,9 @@ public final class Mpolyline implements Mshape {
   public Mshape translate(int x, int y) {
     List<Mpoint> newPolyline = new ArrayList<>();
     for (Mpoint mpoint : mPoints) {
-      newPolyline.add(new Mpoint(mpoint.getX() + x, mpoint.getY() + y));
+      newPolyline.add(new MpointConcrete(mpoint.getX() + x, mpoint.getY() + y));
     }
-    //TODO: New color not old reference
+    // TODO: New color not old reference
     return new Mpolyline(newPolyline, color);
   }
 
@@ -162,14 +162,12 @@ public final class Mpolyline implements Mshape {
     return false;
   }
 
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Mpolyline mpolyline = (Mpolyline) o;
-    return mPoints.equals(mpolyline.mPoints) &&
-            getColor().equals(mpolyline.getColor());
+    return mPoints.equals(mpolyline.mPoints) && getColor().equals(mpolyline.getColor());
   }
 
   @Override
@@ -188,7 +186,7 @@ public final class Mpolyline implements Mshape {
     int x2 = point2.getX();
 
     numerator = Math.abs((y2 - y1) * x - (x2 - x1) * y + x2 * y1 - y2 * x1);
-    denominator = Math.sqrt(Math.pow((y2 - y1), 2) + Math.pow(x2 - x1, 2));
+    denominator = Math.sqrt(Math.pow(y2 - y1, 2) + Math.pow(x2 - x1, 2));
     distance = (int) Math.round(numerator / denominator);
 
     return distance;
