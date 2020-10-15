@@ -1,5 +1,6 @@
 package com.teamjeaa.obpaint;
 
+import com.teamjeaa.obpaint.server.ObPaintServer;
 import com.teamjeaa.obpaint.view.MainView;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -24,6 +25,9 @@ public final class Start extends Application {
    * @param args - args
    */
   public static void main(String[] args) {
+    Runnable server = new ObPaintServer();
+    Thread thread = new Thread(server);
+    thread.start();
     launch(args);
   }
 

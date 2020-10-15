@@ -39,7 +39,9 @@ public enum Model {
    * @param s some kind of Mshape.
    */
   public void addToRender(Mshape s) {
-    modelCanvas.addToRender(s);
+    synchronized ("ff") {
+      modelCanvas.addToRender(s);
+    }
   }
 
   public void removeFromRenderByPoint(int x, int y) {
@@ -52,6 +54,8 @@ public enum Model {
 
   /** @return Returns the list of Mshapes collected from modelCanvas. */
   public List<Mshape> getCanvasShapes() {
-    return modelCanvas.getShapes();
+    synchronized ("ff") {
+      return modelCanvas.getShapes();
+    }
   }
 }
