@@ -50,7 +50,7 @@ public final class ModelCanvas {
    * @throws IllegalArgumentException If Shape is not in list
    */
   public Mshape findShapeAt(int x, int y) throws IllegalArgumentException {
-    // TODO: search for better soloution
+    // TODO: search for better solution
     Collections.reverse(shapes);
     for (Mshape shape : shapes) {
       if (shape.isPointMemberOfShape(x, y)) {
