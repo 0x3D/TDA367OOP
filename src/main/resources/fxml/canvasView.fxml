@@ -9,4 +9,4 @@ The area to paint on
 <?import javafx.scene.layout.BorderPane?>
 
 
-<BorderPane fx:id="rootBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="580.0" style="-fx-border-color: #000000; -fx-overflow: hidden;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamjeaa.obpaint.controller.CanvasController" />
+<BorderPane fx:id="rootBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="645.0" prefWidth="592.0" style="-fx-border-color: #000000; -fx-overflow: hidden;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamjeaa.obpaint.controller.CanvasController" />

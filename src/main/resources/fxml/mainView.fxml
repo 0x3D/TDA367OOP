@@ -20,20 +20,29 @@ The main window of the application
 
 <fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="900.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamjeaa.obpaint.controller.MainController">
     <children>
+        <AnchorPane fx:id="hejPane" prefHeight="216.0" prefWidth="150.0" style="-fx-background-color: rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" AnchorPane.bottomAnchor="400.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="70.0">
+         <children>
+            <Label layoutX="15.0" layoutY="10.0" prefHeight="29.0" prefWidth="82.0" text="ObPaint">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="startPagePane" layoutX="-2.0" layoutY="-7.0" prefHeight="684.0" prefWidth="900.0">
          <children>
             <AnchorPane fx:id="startAnchorPane" prefHeight="684.0" prefWidth="900.0">
                <children>
-                  <AnchorPane prefHeight="600.0" prefWidth="129.0" style="-fx-background-color: lightblue;">
+                  <AnchorPane prefHeight="684.0" prefWidth="150.0" style="-fx-background-color: lightblue;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <Label layoutX="14.0" layoutY="14.0" text="ObPaint">
+                        <Label layoutX="15.0" layoutY="40.0" text="ObPaint">
                            <font>
                               <Font name="Microsoft New Tai Lue" size="24.0" />
                            </font>
                         </Label>
                      </children>
                   </AnchorPane>
-                  <Label layoutX="300.0" layoutY="14.0" text="Templates">
+                  <Label layoutX="300.0" layoutY="40.0" text="Templates">
                      <font>
                         <Font size="24.0" />
                      </font>
@@ -98,7 +107,7 @@ The main window of the application
             </AnchorPane>
          </children>
       </AnchorPane>
-        <AnchorPane fx:id="canvasViewRoot" layoutX="159.0" layoutY="70.0" prefHeight="545.0" prefWidth="553.0" AnchorPane.leftAnchor="159.0" AnchorPane.topAnchor="70.0">
+        <AnchorPane fx:id="canvasViewRoot" layoutX="145.0" layoutY="30.0" prefHeight="646.0" prefWidth="592.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="30.0">
             <children>
                 <fx:include fx:id="canvasView" source="canvasView.fxml" />
             </children>
@@ -106,7 +115,7 @@ The main window of the application
 
         <AnchorPane prefHeight="28.5" prefWidth="900.0">
             <children>
-                <MenuBar>
+                <MenuBar prefHeight="29.0" prefWidth="900.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
                     <menus>
                         <Menu mnemonicParsing="false" text="File">
                             <items>
@@ -140,17 +149,16 @@ The main window of the application
                 </MenuBar>
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="hejPane" layoutX="-2.0" layoutY="70.0" prefHeight="195.0" prefWidth="150.0" style="-fx-background-color: rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="70.0" />
-        <AnchorPane fx:id="toolViewRoot" layoutY="272.0" prefHeight="400.0" prefWidth="150.0" style="-fx-background-color: rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="2.0">
+        <AnchorPane fx:id="toolViewRoot" layoutY="272.0" prefHeight="400.0" prefWidth="150.0" style="-fx-background-color: rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
             <children>
                 <fx:include fx:id="toolView" source="toolView.fxml" />
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="752.0" layoutY="67.0" prefHeight="379.0" prefWidth="150.0" style="-fx-background-color: rgb(230,230,230) rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="67.0">
+        <AnchorPane layoutX="752.0" layoutY="30.0" prefHeight="416.0" prefWidth="160.0" style="-fx-background-color: rgb(230,230,230) rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
          <children>
             <fx:include fx:id="shapeInfoView" source="shapeInfoView.fxml" />
          </children></AnchorPane>
-        <AnchorPane layoutX="753.0" layoutY="455.0" prefHeight="216.0" prefWidth="143.0" style="-fx-background-color: rgb(230,230,230) rgb(230,230,230) rgb(230,230,230) rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
+        <AnchorPane layoutX="753.0" layoutY="455.0" prefHeight="216.0" prefWidth="143.0" style="-fx-background-color: rgb(230,230,230) rgb(230,230,230) rgb(230,230,230) rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <fx:include fx:id="objectList" source="objectListView.fxml" />
          </children>

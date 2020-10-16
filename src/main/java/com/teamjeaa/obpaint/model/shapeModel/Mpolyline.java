@@ -3,6 +3,8 @@ package com.teamjeaa.obpaint.model.shapeModel;
 import com.teamjeaa.obpaint.view.DrawVisitor;
 
 import java.awt.*;
+import java.io.IOException;
+import java.net.ServerSocket;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -176,7 +178,7 @@ public final class Mpolyline implements Mshape {
   }
 
   /** https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line */
-  private int distance(Mpoint point1, Mpoint point2, int x, int y) {
+  private int distance(Mpoint point1, Mpoint point2, int x, int y){
     int distance;
     double numerator;
     double denominator;
