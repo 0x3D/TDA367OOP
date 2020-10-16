@@ -144,23 +144,22 @@ public final class Mpolyline implements Mshape {
   @Override
   public boolean isPointMemberOfShape(int x, int y) {
     // TODO Add (thickness of the line)/2 to get the right acceptance
-    int acceptance = 5;
+    int acceptance = 7;
 
-    if ((x < (getMinPosition().getX() - acceptance) || x > (getMaxPosition().getX()) + acceptance)
-            && y < (getMinPosition().getY() - acceptance)
-        || y > (getMaxPosition().getY()) + acceptance) {
+    /*if (      (x < (getMinPosition().getX() - acceptance) || x > (getMaxPosition().getX()) + acceptance)
+            || (y < (getMinPosition().getY() - acceptance) || y > (getMaxPosition().getY()) + acceptance)) {
       return false;
-    }
+    }*/
 
     for (int i = 0; i < mPoints.size() - 1; i++) {
       Mpoint point1 = mPoints.get(i);
       Mpoint point2 = mPoints.get(i + 1);
 
       if (distance(point1, point2, x, y) < acceptance) {
+        //System.out.println(distance(point1,point2, x, y));
         return true;
       }
     }
-
     return false;
   }
 
@@ -180,16 +179,29 @@ public final class Mpolyline implements Mshape {
   /** https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line */
   private int distance(Mpoint point1, Mpoint point2, int x, int y){
     int distance;
-    double numerator;
-    double denominator;
-    int y1 = point1.getY();
-    int x1 = point1.getX();
-    int y2 = point2.getY();
-    int x2 = point2.getX();
+    Mpoint A = point1;
+    Mpoint C = point2;
+    Mpoint B = new Mpoint(x, y);
+    double angleA;
+    double angleC;
+    double angleB;
 
-    numerator = Math.abs((y2 - y1) * x - (x2 - x1) * y + x2 * y1 - y2 * x1);
-    denominator = Math.sqrt(Math.pow(y2 - y1, 2) + Math.pow(x2 - x1, 2));
-    distance = (int) Math.round(numerator / denominator);
+    //TODO använda skalärprodukt istället
+
+    double distanceAC = Math.sqrt(Math.pow(C.getX()-A.getX(), 2) + Math.pow(C.getY() - A.getY(), 2));
+    double distanceAB = Math.sqrt(Math.pow(B.getX()-A.getX(), 2) + Math.pow(B.getY() - A.getY(), 2));
+    double distanceBC = Math.sqrt(Math.pow(B.getX()-C.getX(), 2) + Math.pow(B.getY() - C.getY(), 2));
+
+    angleA = Math.acos((Math.pow(distanceAB, 2) + Math.pow(distanceAC, 2) - Math.pow(distanceBC, 2)) / (2 * distanceAB * distanceAC));
+    angleC = Math.acos((Math.pow(distanceBC, 2) + Math.pow(distanceAC, 2) - Math.pow(distanceAB, 2)) / (2 * distanceBC * distanceAC));
+    angleB = Math.PI - angleA - angleC;
+
+    distance = (int) Math.round(Math.sin(angleA) * distanceAB);
+
+    if (angleC >= Math.PI/4 || angleA >= Math.PI/4) {
+      distance = 99;
+      return distance;
+    }
 
     return distance;
   }
