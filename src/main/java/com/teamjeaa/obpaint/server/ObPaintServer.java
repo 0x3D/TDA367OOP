@@ -25,7 +25,7 @@ public class ObPaintServer implements Runnable {
         if (line != null) {
           String[] coordinates = line.split(",");
 
-          Model.INSTANCE.addToRender(shapeFactory.createCircle(Integer.parseInt(coordinates[0]), Integer.parseInt(coordinates[1]), Integer.parseInt(coordinates[2]),Color.BLACK));
+          Model.INSTANCE.addToRender(shapeFactory.createCircle(Integer.parseInt(coordinates[0]), Integer.parseInt(coordinates[1]), Integer.parseInt(coordinates[2]),Color.BLACK,"Circle"));
           System.out.println(line);
         }
       }
