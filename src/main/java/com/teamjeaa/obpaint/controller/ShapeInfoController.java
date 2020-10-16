@@ -1,5 +1,6 @@
 package com.teamjeaa.obpaint.controller;
 
+import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.commands.Command;
 import com.teamjeaa.obpaint.model.commands.Move;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
@@ -18,10 +19,11 @@ public class ShapeInfoController implements Initializable {
   private @FXML TextField xPosition;
   private @FXML TextField yPosition;
   private @FXML ColorPicker colorPicker;
+  private Mshape mshape;
 
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
-    addListeners();
+    colorPicker.setDisable(true);
   }
 
   public void updateInfo(Mshape mshape) {
@@ -33,6 +35,14 @@ public class ShapeInfoController implements Initializable {
             mshape.getColor().getGreen(),
             mshape.getColor().getBlue(),
             mshape.getColor().getAlpha() / 255f));
+    this.mshape = mshape;
+  }
+  @FXML
+  private void onMove () {
+   //Mshape shape =  Model.INSTANCE.findShapeAtPoint(Integer.parseInt(xPosition.getText()), Integer.parseInt(yPosition.getText()));
+    Command command = new Move(mshape.getPosition().getX(),mshape.getPosition().getY(),
+            Integer.parseInt(xPosition.getText()), Integer.parseInt(yPosition.getText()));
+    command.execute();
   }
 
   private void addListeners() {
