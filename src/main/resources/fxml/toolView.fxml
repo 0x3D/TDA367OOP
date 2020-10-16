@@ -14,13 +14,12 @@ The tool pane
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="toolView" prefHeight="650.0" prefWidth="150.0" style="-fx-background-color: rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamjeaa.obpaint.controller.ToolController">
+<AnchorPane fx:id="toolView" prefHeight="650.0" prefWidth="150.0" styleClass="WindowDecoration" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamjeaa.obpaint.controller.ToolController">
     <children>
-        <ColorPicker fx:id="cp" editable="true" layoutX="9.0" layoutY="556.0" prefHeight="70.0" prefWidth="133.0" style="-fx-background-color: transparent; -fx-border-color: grey;" />
+      <Line endX="95.0" layoutX="48.0" layoutY="156.0" startX="-40.0" stroke="#9e9999" />
         <ToggleButton fx:id="pencilButton" layoutX="13.0" layoutY="205.0" mnemonicParsing="false" onAction="#onPencilButton" prefHeight="35.0" prefWidth="35.0">
 
          <graphic>
@@ -32,16 +31,16 @@ The tool pane
          </graphic>
         </ToggleButton>
 
-        <ToggleButton fx:id="brushButton" layoutX="105.0" layoutY="358.0" mnemonicParsing="false" onAction="#onLineButton" prefHeight="35.0" prefWidth="35.0">
+      <ToggleButton fx:id="moveButton" layoutX="16.0" layoutY="279.0" mnemonicParsing="false" onAction="#onMoveButton" prefHeight="35.0" prefWidth="35.0">
 
          <graphic>
-                <ImageView fitHeight="21.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@../images/line.png" />
-                    </image>
-                </ImageView>
+            <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/move.png" />
+               </image>
+            </ImageView>
          </graphic>
-        </ToggleButton>
+      </ToggleButton>
 
         <ToggleButton fx:id="eraserButton" layoutX="61.0" layoutY="279.0" mnemonicParsing="false" onAction="#onEraserButton" prefHeight="35.0" prefWidth="35.0">
 
@@ -76,7 +75,16 @@ The tool pane
          </graphic>
         </ToggleButton>
 
-      <Slider layoutX="25.0" layoutY="514.0" prefHeight="13.0" prefWidth="112.0" />
+        <ToggleButton fx:id="brushButton" layoutX="105.0" layoutY="358.0" mnemonicParsing="false" onAction="#onLineButton" prefHeight="35.0" prefWidth="35.0">
+
+         <graphic>
+                <ImageView fitHeight="21.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/line.png" />
+                    </image>
+                </ImageView>
+         </graphic>
+        </ToggleButton>
       <TextField layoutX="19.0" layoutY="471.0" prefHeight="31.0" prefWidth="112.0" promptText="Size (OBS! No decimals)">
 
          <font>
@@ -84,16 +92,8 @@ The tool pane
          </font>
       </TextField>
 
-      <ToggleButton fx:id="moveButton" layoutX="16.0" layoutY="279.0" mnemonicParsing="false" onAction="#onMoveButton" prefHeight="35.0" prefWidth="35.0">
-
-         <graphic>
-            <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/move.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </ToggleButton>
+      <Slider layoutX="25.0" layoutY="514.0" prefHeight="13.0" prefWidth="112.0" />
+        <ColorPicker fx:id="cp" editable="true" layoutX="9.0" layoutY="556.0" prefHeight="70.0" prefWidth="133.0" styleClass="ColorSlider" />
 
       <Label layoutX="8.0" layoutY="186.0" text="Pencil">
          <font>
@@ -118,6 +118,5 @@ The tool pane
             <Font name="Courier New" size="16.0" />
          </font>
       </Label>
-      <Line endX="95.0" layoutX="48.0" layoutY="156.0" startX="-40.0" stroke="#9e9999" />
     </children>
 </AnchorPane>

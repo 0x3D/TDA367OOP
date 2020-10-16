@@ -19,7 +19,7 @@ The main window of the application
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="900.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamjeaa.obpaint.controller.MainController">
+<fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="900.0" stylesheets="@../css/main.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamjeaa.obpaint.controller.MainController">
     <children>
         <AnchorPane fx:id="messagePane" prefHeight="675.0" prefWidth="899.0">
             <children>
@@ -121,22 +121,22 @@ The main window of the application
                 </AnchorPane>
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="canvasViewRoot" layoutX="-1.0" layoutY="27.0" prefHeight="648.0" prefWidth="741.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="160.0" AnchorPane.topAnchor="27.0">
+        <AnchorPane fx:id="canvasViewRoot" layoutX="-1.0" layoutY="27.0" prefHeight="648.0" prefWidth="741.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="153.0" AnchorPane.rightAnchor="163.0" AnchorPane.topAnchor="33.0">
             <children>
                 <fx:include fx:id="canvasView" source="canvasView.fxml" AnchorPane.topAnchor="0.0" />
             </children>
         </AnchorPane>
-        <AnchorPane fx:id="toolViewRoot" layoutY="275.0" prefHeight="632.0" prefWidth="150.0" style="-fx-background-color: rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="32.0">
+        <AnchorPane fx:id="toolViewRoot" layoutY="275.0" prefHeight="632.0" prefWidth="150.0" styleClass="WindowDecoration" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="32.0">
             <children>
                 <fx:include fx:id="toolView" source="toolView.fxml" />
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="752.0" layoutY="30.0" prefHeight="416.0" prefWidth="160.0" style="-fx-background-color: rgb(230,230,230) rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+        <AnchorPane layoutX="752.0" layoutY="30.0" prefHeight="416.0" prefWidth="160.0" styleClass="WindowDecoration" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
             <children>
                 <fx:include fx:id="shapeInfoView" source="shapeInfoView.fxml" />
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="753.0" layoutY="455.0" prefHeight="216.0" prefWidth="160.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="459.0">
+        <AnchorPane layoutX="753.0" layoutY="455.0" prefHeight="216.0" prefWidth="160.0" styleClass="TransparentBackground" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="459.0">
             <children>
                 <fx:include fx:id="objectList" source="objectListView.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             </children>
@@ -144,7 +144,7 @@ The main window of the application
 
         <AnchorPane prefHeight="28.5" prefWidth="900.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <MenuBar layoutY="-4.0" prefHeight="29.0" prefWidth="899.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
+                <MenuBar layoutY="-4.0" prefHeight="29.0" prefWidth="899.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <menus>
                         <Menu mnemonicParsing="false" text="File">
                             <items>
