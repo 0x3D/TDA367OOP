@@ -15,7 +15,7 @@
       <Label layoutX="20.0" layoutY="101.0" text="X -Position" />
       <Label layoutX="22.0" layoutY="135.0" text="Y-Position" />
       <Label layoutX="24.0" layoutY="241.0" text="Color" />
-      <ColorPicker fx:id="colorPicker" accessibleRole="COMBO_BOX" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="15.0" layoutY="258.0" opacity="0.5" prefHeight="25.0" prefWidth="124.0" scaleShape="false">
+      <ColorPicker fx:id="colorPicker" accessibleRole="COMBO_BOX" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="15.0" layoutY="258.0" opacity="0.74" prefHeight="25.0" prefWidth="124.0" scaleShape="false">
          <cursor>
             <Cursor fx:constant="CROSSHAIR" />
          </cursor>
