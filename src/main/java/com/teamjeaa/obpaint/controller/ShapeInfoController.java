@@ -39,41 +39,12 @@ public class ShapeInfoController implements Initializable {
   }
   @FXML
   private void onMove () {
-   //Mshape shape =  Model.INSTANCE.findShapeAtPoint(Integer.parseInt(xPosition.getText()), Integer.parseInt(yPosition.getText()));
     Command command = new Move(mshape.getPosition().getX(),mshape.getPosition().getY(),
             Integer.parseInt(xPosition.getText()), Integer.parseInt(yPosition.getText()));
     command.execute();
   }
-
-  private void addListeners() {
-    xPosition
-        .textProperty()
-        .addListener(
-            (observable, oldValue, newValue) -> {
-              if (!xPosition.getText().isEmpty()) {
-                Command command =
-                    new Move(
-                        Integer.parseInt(oldValue),
-                        Integer.parseInt(yPosition.getText()),
-                        Integer.parseInt(newValue),
-                        Integer.parseInt(yPosition.getText()));
-                command.execute();
-              }
-            });
-
-    yPosition
-        .textProperty()
-        .addListener(
-            (observable, oldValue, newValue) -> {
-              if (!yPosition.getText().isEmpty()) {
-                Command command =
-                    new Move(
-                        Integer.parseInt(xPosition.getText()),
-                        Integer.parseInt(oldValue),
-                        Integer.parseInt(xPosition.getText()),
-                        Integer.parseInt(newValue));
-                command.execute();
-              }
-            });
+  @FXML
+  private void onDeleteButton() {
+    Model.INSTANCE.removeFromRender(mshape);
   }
 }

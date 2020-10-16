@@ -49,9 +49,19 @@ public enum Model {
       System.out.println("Found no Shape to Remove");
     }
   }
+  public void removeFromRender (Mshape mshape) {
+    try {
+      modelCanvas.removeFromRender(mshape);
+    } catch (IllegalArgumentException e) {
+      System.out.println("Found no Shape to Remove");
+    }
+  }
 
   /** @return Returns the list of Mshapes collected from modelCanvas. */
   public List<Mshape> getCanvasShapes() {
     return modelCanvas.getShapes();
+  }
+  public void removeAllShapes () {
+    modelCanvas.resetRenderList();
   }
 }

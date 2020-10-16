@@ -38,6 +38,7 @@ public final class MainController implements Initializable {
   private @FXML Button blackTemplateButton;
   private @FXML Button redTemplateButton;
   private @FXML Button limeTemplateButton;
+  private @FXML AnchorPane messagePane;
 
   // TODO: Remove or give usage
   @FXML private ToolController toolViewController;
@@ -137,5 +138,22 @@ public final class MainController implements Initializable {
 
   public void updateShapeInfo(Mshape mshape) {
     shapeInfoViewController.updateInfo(mshape);
+  }
+  @FXML
+  private void onRemoveAll(){
+    messagePane.setVisible(true);
+    messagePane.toFront();
+    messagePane.setStyle("-fx-background-color: darkgrey");
+  }
+  @FXML
+  private void onYesButton (){
+    Model.INSTANCE.removeAllShapes();
+    messagePane.toBack();
+    messagePane.setVisible(false);
+  }
+  @FXML private void onCancelButton (){
+    messagePane.toBack();
+    messagePane.setVisible(false);
+
   }
 }
