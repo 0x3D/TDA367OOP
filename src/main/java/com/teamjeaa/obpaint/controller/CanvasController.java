@@ -7,6 +7,9 @@ import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
+import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -44,6 +47,20 @@ public final class CanvasController implements Initializable {
           }
         };
     animationTimer.start();
+    fixClipping(rootBorderPane);
+  }
+
+
+  //JavaFX is stupid with Borders of panes, this method adds clipping
+   private void fixClipping(Region pane){
+    Rectangle clippingArea = new Rectangle();
+    
+    pane.setClip(clippingArea);
+
+    pane.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> {
+      clippingArea.setWidth(newValue.getWidth());
+      clippingArea.setHeight(newValue.getHeight());
+    });
   }
 
   BorderPane getCanvasPane() {
