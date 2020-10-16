@@ -108,7 +108,7 @@ public final class ToolController implements Initializable {
                   (int) mouseEvent.getX(),
                   (int) mouseEvent.getY(),
                   getAWTColor(cp.getValue()),
-                  "Line");
+                  "Straight line");
           command.execute();
         });
   }
