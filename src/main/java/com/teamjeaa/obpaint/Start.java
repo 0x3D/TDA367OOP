@@ -18,15 +18,16 @@ import java.util.ResourceBundle;
  * @since 0.1 SNAPSHOT
  */
 public final class Start extends Application {
+  private static final String XML_MAIN_VIEW = "/fxml/mainView.fxml";
 
   /**
    * Main method of the program
    *
    * @param args - args
    */
-  public static void main(String[] args) {
-    Runnable server = new ObPaintServer();
-    Thread thread = new Thread(server);
+  public static void main(final String[] args) {
+    final Runnable server = new ObPaintServer();
+    final Thread thread = new Thread(server);
     thread.start();
     launch(args);
   }
@@ -42,7 +43,7 @@ public final class Start extends Application {
   }
 
   private void setupScene(Stage primaryStage) {
-    Parent root = new MainView("/fxml/mainView.fxml");
+    Parent root = new MainView(XML_MAIN_VIEW);
 
     primaryStage.setOnCloseRequest(
         e -> {

@@ -6,6 +6,7 @@ import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 
 import java.awt.*;
 import java.io.IOException;
+import java.io.InterruptedIOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 
@@ -25,13 +26,18 @@ public class AddCircle implements Command {
 
   @Override
   public void execute() {
-    ShapeFactory shapeFactory = new ConcreteShapeFactory();
+    final ShapeFactory shapeFactory = new ConcreteShapeFactory();
     Model.INSTANCE.addToRender(shapeFactory.createCircle(radius, centerX, centerY, color));
     try {
-      var socket = new Socket("localhost", 1337);
+      var socket = new Socket("192.168.1.145", 1337);
+      socket.setSoTimeout(10);
       PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+//       out.printf("Circle: %d %d %10.8f", radius, centerX, centerY);
       out.println("" + radius +"," + centerX + "," + centerY);
-    } catch (IOException e) {
+    } catch (InterruptedIOException iioe){
+      System.err.println("Remote host timed out");
+    }
+    catch (IOException e) {
       e.printStackTrace();
     }
   }
