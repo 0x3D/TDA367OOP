@@ -136,7 +136,7 @@ The main window of the application
                 <fx:include fx:id="shapeInfoView" source="shapeInfoView.fxml" />
             </children>
         </AnchorPane>
-        <AnchorPane layoutX="753.0" layoutY="455.0" prefHeight="216.0" prefWidth="160.0" style="-fx-background-color: rgb(230,230,230); -fx-background-insets: 5; -fx-effect: dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169,169,169), 10, 0, 0, 0)dropshadow(three-pass-box, purple, 10, 0, 0, 0);" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="459.0">
+        <AnchorPane layoutX="753.0" layoutY="455.0" prefHeight="216.0" prefWidth="160.0" style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="459.0">
             <children>
                 <fx:include fx:id="objectList" source="objectListView.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
             </children>
