@@ -18,6 +18,7 @@ public class ObjectListItemView extends AnchorPane {
   private @FXML Label objectLabel;
   private @FXML AnchorPane itemPane;
 
+
   public ObjectListItemView(Mshape mshape, MainController mainController) {
 
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/objectListItemView.fxml"));
@@ -31,12 +32,18 @@ public class ObjectListItemView extends AnchorPane {
     this.mshape = mshape;
     this.parentController = mainController;
 
-    setLabelName();
     setColorBackground();
+    setLabelName();
   }
 
   public void setLabelName() {
-    objectLabel.setText("X=" + mshape.getPosition().getX() + " Y=" + mshape.getPosition().getY());
+    //objectLabel.setText("X=" + mshape.getPosition().getX() + " Y=" + mshape.getPosition().getY());
+    double colorIntensity;
+    colorIntensity = intensity(mshape.getColor());
+    if (colorIntensity < 0.5) {
+      objectLabel.setStyle("-fx-text-fill: #FFF");
+    }
+    objectLabel.setText(mshape.getName());
   }
 
   public void setColorBackground() {
@@ -53,9 +60,20 @@ public class ObjectListItemView extends AnchorPane {
     itemPane.setStyle(sb.toString());
   }
 
+  private double intensity(Color color) {
+    double intensity;
+    double r = color.getRed();
+    double g = color.getGreen();
+    double b = color.getRed();
+
+    intensity = (r + g + b) / (255 * 3);
+
+    return intensity;
+  }
+
   // TODO: implement button to click this
   public void onClickedListItem() {
     parentController.updateShapeInfo(mshape);
-    System.out.println(mshape.getPosition().getX());
+    //System.out.println(mshape.getPosition().getX());
   }
 }

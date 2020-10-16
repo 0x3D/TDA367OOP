@@ -13,8 +13,8 @@ class AddEraserTest {
   void executeTest() {
     int x = 15;
     int y = 15;
-    Command command = new AddRectangle(90, 90, 95, 95, Color.GRAY);
-    Command command1 = new AddRectangle(10, 10, 20, 20, Color.ORANGE);
+    Command command = new AddRectangle(90, 90, 95, 95, Color.GRAY, "test");
+    Command command1 = new AddRectangle(10, 10, 20, 20, Color.ORANGE, "test");
     command.execute();
     command1.execute();
 

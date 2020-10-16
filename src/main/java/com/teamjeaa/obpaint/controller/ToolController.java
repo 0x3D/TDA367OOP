@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.BorderPane;
@@ -36,6 +37,7 @@ public final class ToolController implements Initializable {
   @FXML private ToggleButton circleButton;
   @FXML private ToggleButton rectangleButton;
   @FXML private ToggleButton moveButton;
+  @FXML private Slider strokeSizeSlider;
   private BorderPane canvasPane;
   private Command command;
   private int x;
@@ -82,7 +84,7 @@ public final class ToolController implements Initializable {
     canvasPane.setOnMouseReleased(
         mouseEvent -> {
           points.add(new Mpoint((int) mouseEvent.getX(), (int) mouseEvent.getY()));
-          command = new Pencil(points, getAWTColor(cp.getValue()), 1);
+          command = new Pencil(points, getAWTColor(cp.getValue()), "Drawn line");
           command.execute();
           points = new ArrayList<>();
         });
@@ -105,7 +107,8 @@ public final class ToolController implements Initializable {
                   y,
                   (int) mouseEvent.getX(),
                   (int) mouseEvent.getY(),
-                  getAWTColor(cp.getValue()));
+                  getAWTColor(cp.getValue()),
+                  "Straight line");
           command.execute();
         });
   }
@@ -139,7 +142,7 @@ public final class ToolController implements Initializable {
           int centerX = (int) (x + mouseEvent.getX()) / 2;
           int centerY = (int) (y + mouseEvent.getY()) / 2;
           // Math
-          command = new AddCircle(dia / 2, centerX, centerY, getAWTColor(cp.getValue()));
+          command = new AddCircle(dia / 2, centerX, centerY, getAWTColor(cp.getValue()), "Circle");
           command.execute();
         });
   }
@@ -169,7 +172,8 @@ public final class ToolController implements Initializable {
                   y,
                   (int) mouseEvent.getX(),
                   (int) mouseEvent.getY(),
-                  getAWTColor(cp.getValue()));
+                  getAWTColor(cp.getValue()),
+            "Rectangle");
           command.execute();
         });
   }

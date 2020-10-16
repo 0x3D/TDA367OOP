@@ -21,7 +21,7 @@ public interface ShapeFactory {
    * @param y y value on screen.
    * @return returns new instance of the Mellipse (circle) class.
    */
-  Mshape createCircle(int radius, int x, int y, Color color);
+  Mshape createCircle(int radius, int x, int y, Color color, String name);
 
   // TODO: cant be same have to handle
 
@@ -35,7 +35,7 @@ public interface ShapeFactory {
    * @param color is the color of the rectangle
    * @return returns instance of a Mpolygon.
    */
-  Mshape createRectangle(int x1, int y1, int x2, int y2, Color color);
+  Mshape createRectangle(int x1, int y1, int x2, int y2, Color color, String name);
 
   /**
    * Method used by factory to create a Rectangle.
@@ -47,7 +47,7 @@ public interface ShapeFactory {
    * @param color is the color of the line
    * @return returns instance of a Mpolygon.
    */
-  Mshape createLine(int x1, int y1, int x2, int y2, Color color);
+  Mshape createLine(int x1, int y1, int x2, int y2, Color color, String name);
 
   /**
    * Method used by factory to create a Polyline.
@@ -56,5 +56,5 @@ public interface ShapeFactory {
    * @param color - color of the line
    * @return - an Mshape
    */
-  Mshape createPolyline(List<Mpoint> points, Color color);
+  Mshape createPolyline(List<Mpoint> points, Color color, String name);
 }

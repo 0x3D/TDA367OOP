@@ -38,6 +38,7 @@ public final class MainController implements Initializable {
   private @FXML Button blackTemplateButton;
   private @FXML Button redTemplateButton;
   private @FXML Button limeTemplateButton;
+  private @FXML AnchorPane messagePane;
 
   // TODO: Remove or give usage
   @FXML private ToolController toolViewController;
@@ -113,29 +114,46 @@ public final class MainController implements Initializable {
 
   @FXML
   private void onBlancTemplate() {
-    canvasViewRoot.setStyle("-fx-background-color: White");
+    canvasViewController.getCanvasPane().setStyle("-fx-background-color: White");
     startPagePane.setVisible(false);
   }
 
   @FXML
   private void onBlackTemplate() {
-    canvasViewRoot.setStyle("-fx-background-color: Black");
+    canvasViewController.getCanvasPane().setStyle("-fx-background-color: Black");
     startPagePane.setVisible(false);
   }
 
   @FXML
   private void onRedTemplate() {
-    canvasViewRoot.setStyle("-fx-background-color: red");
+    canvasViewController.getCanvasPane().setStyle("-fx-background-color: red");
     startPagePane.setVisible(false);
   }
 
   @FXML
   private void onLimeTemplate() {
-    canvasViewRoot.setStyle("-fx-background-color: Lime");
+    canvasViewController.getCanvasPane().setStyle("-fx-background-color: Lime");
     startPagePane.setVisible(false);
   }
 
   public void updateShapeInfo(Mshape mshape) {
     shapeInfoViewController.updateInfo(mshape);
+  }
+  @FXML
+  private void onRemoveAll(){
+    messagePane.setVisible(true);
+    messagePane.toFront();
+    messagePane.setStyle("-fx-background-color: darkgrey");
+  }
+  @FXML
+  private void onYesButton (){
+    Model.INSTANCE.removeAllShapes();
+    messagePane.toBack();
+    messagePane.setVisible(false);
+  }
+  @FXML private void onCancelButton (){
+    messagePane.toBack();
+    messagePane.setVisible(false);
+
   }
 }

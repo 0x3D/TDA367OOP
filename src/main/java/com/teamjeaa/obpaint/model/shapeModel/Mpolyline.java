@@ -23,6 +23,7 @@ public final class Mpolyline implements Mshape {
   private final List<Mpoint> mPoints;
 
   private final Color color;
+  private final String name;
 
   /**
    * Constructor to create a Polyline
@@ -30,9 +31,10 @@ public final class Mpolyline implements Mshape {
    * @param mPoints List of points to create polyline from
    * @param color The color of this Polyline
    */
-  public Mpolyline(List<Mpoint> mPoints, Color color) {
+  public Mpolyline(List<Mpoint> mPoints, Color color, String name) {
     this.mPoints = mPoints;
     this.color = color;
+    this.name = name;
   }
 
   /**
@@ -43,6 +45,12 @@ public final class Mpolyline implements Mshape {
   public Color getColor() {
     return color;
   }
+
+  @Override
+  public String getName() {
+    return name;
+  }
+
 
   /**
    * Function to get the upper left corner not necessarily on the shape
@@ -138,7 +146,7 @@ public final class Mpolyline implements Mshape {
       newPolyline.add(new Mpoint(mpoint.getX() + x, mpoint.getY() + y));
     }
     // TODO: New color not old reference
-    return new Mpolyline(newPolyline, color);
+    return new Mpolyline(newPolyline, color, name);
   }
 
   @Override

@@ -71,4 +71,7 @@ public final class ModelCanvas {
     // Unmodifiable list so that any that uses the models list can't change it
     return Collections.unmodifiableList(shapes);
   }
+  void resetRenderList () {
+    shapes.clear();
+  }
 }

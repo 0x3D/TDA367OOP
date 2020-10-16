@@ -2,9 +2,8 @@
 
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.FlowPane?>
-
-<ScrollPane fx:id="listView" hbarPolicy="NEVER" prefHeight="216.0" prefWidth="159.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamjeaa.obpaint.controller.ObjectListController">
-   <content>
-      <FlowPane fx:id="objectFlowPane" prefHeight="213.0" prefWidth="160.0" />
-   </content>
+<ScrollPane xmlns:fx="http://javafx.com/fxml/1" fx:id="listView" hbarPolicy="NEVER" prefWidth="159.0"
+            styleClass="WindowDecoration" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/11.0.1"
+            fx:controller="com.teamjeaa.obpaint.controller.ObjectListController">
+    <FlowPane fx:id="objectFlowPane" prefHeight="213.0" prefWidth="160.0" vgap="1.0"/>
 </ScrollPane>

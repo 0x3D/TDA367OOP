@@ -16,18 +16,20 @@ public class AddCircle implements Command {
   private final int centerX;
   private final int centerY;
   private final Color color;
+  private final String name;
 
-  public AddCircle(int radius, int centerX, int centerY, Color color) {
+  public AddCircle(int radius, int centerX, int centerY, Color color, String name) {
     this.radius = radius;
     this.centerX = centerX;
     this.centerY = centerY;
     this.color = color;
+    this.name = name;
   }
 
   @Override
   public void execute() {
     final ShapeFactory shapeFactory = new ConcreteShapeFactory();
-    Model.INSTANCE.addToRender(shapeFactory.createCircle(radius, centerX, centerY, color));
+    Model.INSTANCE.addToRender(shapeFactory.createCircle(radius, centerX, centerY, color,name));
     try {
       var socket = new Socket("192.168.1.145", 1337);
       socket.setSoTimeout(10);
