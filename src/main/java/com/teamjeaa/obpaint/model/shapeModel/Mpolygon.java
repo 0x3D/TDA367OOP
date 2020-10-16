@@ -21,19 +21,26 @@ import java.util.Objects;
 public final class Mpolygon implements Mshape {
   private final List<Mpoint> points;
   private final Color color;
+  private final String name;
 
   /**
    * @param points A list of Mpoints which makes up the polygon
    * @param color The color of the polygon
    */
-  Mpolygon(List<Mpoint> points, Color color) {
+  Mpolygon(List<Mpoint> points, Color color, String name) {
     // TODO: This should make a new list
     this.points = points;
     this.color = color;
+    this.name = name;
   }
 
   public Color getColor() {
     return color;
+  }
+
+  @Override
+  public String getName() {
+    return name;
   }
 
   /** @return the point in the upper left corner, not necessarily on the figure */
@@ -106,7 +113,7 @@ public final class Mpolygon implements Mshape {
     for (Mpoint mpoint : this.getPoints()) {
       newPosition.add(new Mpoint(mpoint.getX() + x, mpoint.getY() + y));
     }
-    return new Mpolygon(newPosition, this.getColor());
+    return new Mpolygon(newPosition, this.getColor(), this.name);
   }
 
   @Override

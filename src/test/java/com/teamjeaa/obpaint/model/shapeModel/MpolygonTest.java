@@ -15,7 +15,7 @@ public final class MpolygonTest {
     List<Mpoint> mpointList = new ArrayList<>();
     mpointList.add(new Mpoint(0, 0));
     mpointList.add(new Mpoint(1, 1));
-    Mpolygon mpolygon = new Mpolygon(mpointList, Color.black);
+    Mpolygon mpolygon = new Mpolygon(mpointList, Color.black, "test");
     assertEquals(mpolygon.getPosition().getX(), 0);
     assertEquals(mpolygon.getPosition().getY(), 0);
   }
@@ -25,7 +25,7 @@ public final class MpolygonTest {
     List<Mpoint> mpointList = new ArrayList<>();
     mpointList.add(new Mpoint(0, 0));
     mpointList.add(new Mpoint(2, 2));
-    Mpolygon mpolygon = new Mpolygon(mpointList, Color.black);
+    Mpolygon mpolygon = new Mpolygon(mpointList, Color.black,"test");
     assertEquals(mpolygon.getWidth(), 2);
   }
 
@@ -34,7 +34,7 @@ public final class MpolygonTest {
     List<Mpoint> mpointList = new ArrayList<>();
     mpointList.add(new Mpoint(0, 0));
     mpointList.add(new Mpoint(2, 3));
-    Mpolygon mpolygon = new Mpolygon(mpointList, Color.black);
+    Mpolygon mpolygon = new Mpolygon(mpointList, Color.black, "test");
     assertEquals(mpolygon.getHeight(), 3);
   }
 }

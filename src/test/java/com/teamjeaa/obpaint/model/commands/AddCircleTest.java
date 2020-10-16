@@ -15,7 +15,7 @@ class AddCircleTest {
     int y = 10;
     int radius = 5;
 
-    Command command = new AddCircle(radius, x, y, Color.ORANGE);
+    Command command = new AddCircle(radius, x, y, Color.ORANGE, "test");
     int size = Model.INSTANCE.getCanvasShapes().size();
     command.execute();
     assertEquals(size + 1, Model.INSTANCE.getCanvasShapes().size());

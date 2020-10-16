@@ -23,7 +23,7 @@ class SvgParserTest {
   void createEllipse() {
     SvgParser svgParser = new SvgParser();
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
-    Mshape toBeEqual = shapeFactory.createCircle(281, 296, 325, new Color(179, 102, 26));
+    Mshape toBeEqual = shapeFactory.createCircle(281, 296, 325, new Color(179, 102, 26), "test");
     Mshape mshapeFromSVG =
         svgParser.createEllipse(
             "<ellipse cx=\"296\" cy=\"325\" rx=\"281\" ry=\"281\" style=\"fill:rgb(179,102,26)\"/>");

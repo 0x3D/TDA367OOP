@@ -28,17 +28,20 @@ public final class Mellipse implements Mshape {
   // Color
   private final Color color;
 
+  private final String name;
+
   /**
    * @param centerPoint The point in the center of the Ellipse
    * @param semiAxesA The axis of the ellipse in the x direction
    * @param semiAxesB The axis of the ellipse ion the y direction
    * @param color The color the ellipse created
    */
-  Mellipse(Mpoint centerPoint, int semiAxesA, int semiAxesB, Color color) {
+  Mellipse(Mpoint centerPoint, int semiAxesA, int semiAxesB, Color color, String name) {
     this.centerPoint = centerPoint;
     this.semiAxesA = semiAxesA;
     this.semiAxesB = semiAxesB;
     this.color = color;
+    this.name = name;
   }
 
   /**
@@ -53,6 +56,11 @@ public final class Mellipse implements Mshape {
   /** @return The color of this Ellipse */
   public Color getColor() {
     return color; // TODO: create a new color instead of giving object reference
+  }
+
+  @Override
+  public String getName() {
+    return name;
   }
 
   @Override
@@ -91,7 +99,8 @@ public final class Mellipse implements Mshape {
         new Mpoint(centerPoint.getX() + x, centerPoint.getY() + y),
         this.semiAxesA,
         this.semiAxesB,
-        this.color);
+        this.color,
+        this.name);
   }
 
   @Override

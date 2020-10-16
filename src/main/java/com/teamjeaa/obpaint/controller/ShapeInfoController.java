@@ -43,8 +43,10 @@ public class ShapeInfoController implements Initializable {
             Integer.parseInt(xPosition.getText()), Integer.parseInt(yPosition.getText()));
     command.execute();
   }
+
   @FXML
   private void onDeleteButton() {
     Model.INSTANCE.removeFromRender(mshape);
   }
+
 }

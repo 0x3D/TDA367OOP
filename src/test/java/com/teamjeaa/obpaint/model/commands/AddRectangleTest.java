@@ -17,7 +17,7 @@ class AddRectangleTest {
     int y = 0;
     int x2 = 10;
     int y2 = 10;
-    Command command = new AddRectangle(x, y, x2, y2, Color.ORANGE);
+    Command command = new AddRectangle(x, y, x2, y2, Color.ORANGE, "test");
     // Exception exception = assertThrows(IllegalArgumentException.class, () ->
     // modelCanvas.findShapeAt(0, 0));
     int size = Model.INSTANCE.getCanvasShapes().size();

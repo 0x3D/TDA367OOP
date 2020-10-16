@@ -114,25 +114,25 @@ public final class MainController implements Initializable {
 
   @FXML
   private void onBlancTemplate() {
-    canvasViewRoot.setStyle("-fx-background-color: White");
+    canvasViewController.getCanvasPane().setStyle("-fx-background-color: White");
     startPagePane.setVisible(false);
   }
 
   @FXML
   private void onBlackTemplate() {
-    canvasViewRoot.setStyle("-fx-background-color: Black");
+    canvasViewController.getCanvasPane().setStyle("-fx-background-color: Black");
     startPagePane.setVisible(false);
   }
 
   @FXML
   private void onRedTemplate() {
-    canvasViewRoot.setStyle("-fx-background-color: red");
+    canvasViewController.getCanvasPane().setStyle("-fx-background-color: red");
     startPagePane.setVisible(false);
   }
 
   @FXML
   private void onLimeTemplate() {
-    canvasViewRoot.setStyle("-fx-background-color: Lime");
+    canvasViewController.getCanvasPane().setStyle("-fx-background-color: Lime");
     startPagePane.setVisible(false);
   }
 

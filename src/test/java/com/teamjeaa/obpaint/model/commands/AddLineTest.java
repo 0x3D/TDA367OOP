@@ -15,7 +15,7 @@ class AddLineTest {
     int y = 0;
     int x2 = 10;
     int y2 = 10;
-    Command command = new AddLine(x, y, x2, y2, Color.ORANGE);
+    Command command = new AddLine(x, y, x2, y2, Color.ORANGE, "test");
     int size = Model.INSTANCE.getCanvasShapes().size();
     command.execute();
     assertEquals(size + 1, Model.INSTANCE.getCanvasShapes().size());
