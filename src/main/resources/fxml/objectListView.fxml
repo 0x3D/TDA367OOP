@@ -3,8 +3,8 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.FlowPane?>
 
-<ScrollPane fx:id="listView" hbarPolicy="NEVER" prefHeight="214.0" prefWidth="145.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamjeaa.obpaint.controller.ObjectListController">
+<ScrollPane fx:id="listView" hbarPolicy="NEVER" prefHeight="216.0" prefWidth="159.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamjeaa.obpaint.controller.ObjectListController">
    <content>
-      <FlowPane fx:id="objectFlowPane" prefHeight="212.0" prefWidth="124.0" />
+      <FlowPane fx:id="objectFlowPane" prefHeight="213.0" prefWidth="160.0" />
    </content>
 </ScrollPane>
