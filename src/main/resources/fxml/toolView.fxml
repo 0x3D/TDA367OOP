@@ -64,8 +64,8 @@ The tool pane
                 </ImageView>
          </graphic>
         </ToggleButton>
-      <Slider layoutX="19.0" layoutY="292.0" prefHeight="13.0" prefWidth="112.0" />
-      <TextField layoutX="19.0" layoutY="256.0" prefHeight="31.0" prefWidth="112.0" promptText="Size (OBS! No decimals)">
+      <Slider fx:id="strokeSizeSlider" layoutX="19.0" layoutY="276.0" majorTickUnit="5.0" max="30.0" min="1.0" prefHeight="13.0" prefWidth="112.0" showTickMarks="true" snapToTicks="true" value="15.0" />
+      <TextField layoutX="19.0" layoutY="239.0" prefHeight="31.0" prefWidth="112.0" promptText="Size (OBS! No decimals)">
          <font>
             <Font size="9.0" />
          </font>

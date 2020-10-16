@@ -15,7 +15,7 @@ public class MoveTest {
   @Test
   void excecuteTest() {
     ShapeFactory sp = new ConcreteShapeFactory();
-    Mshape mshape = sp.createRectangle(0, 0, 10, 10, Color.WHITE);
+    Mshape mshape = sp.createRectangle(0, 0, 10, 10, Color.WHITE, "test");
     Model.INSTANCE.addToRender(mshape);
     int x = 0;
     int x1 = 40;

@@ -11,7 +11,7 @@ public final class MellipseTest {
 
   public Mshape createCircle() {
     // Circle r = 10, y = 20, x = 15
-    return concreteShapeFactory.createCircle(10, 15, 20, Color.BLACK);
+    return concreteShapeFactory.createCircle(10, 15, 20, Color.BLACK, "Circle");
   }
 
   //
@@ -43,7 +43,7 @@ public final class MellipseTest {
 
   @Test
   void isPointMemberOfShape() {
-    Mshape mellipse = new Mellipse(new Mpoint(10, 10), 10, 10, Color.black);
+    Mshape mellipse = new Mellipse(new Mpoint(10, 10), 10, 10, Color.black, "test");
     assertTrue(mellipse.isPointMemberOfShape(10, 10));
     assertFalse(mellipse.isPointMemberOfShape(21, 10));
     assertFalse(mellipse.isPointMemberOfShape(20, 20));
