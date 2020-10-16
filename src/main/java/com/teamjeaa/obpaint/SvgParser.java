@@ -76,7 +76,7 @@ public class SvgParser {
     }
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
     // TODO: make this create an ellipse instead of circle
-    return shapeFactory.createCircle(rx, xPos, yPos, new Color(r, g, b));
+    return shapeFactory.createCircle(rx, xPos, yPos, new Color(r, g, b), "Circle");
   }
 
   private int extractNumber(String toReplaceIn) {

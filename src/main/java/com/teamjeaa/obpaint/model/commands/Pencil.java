@@ -13,20 +13,20 @@ import java.util.List;
 public final class Pencil implements Command {
     private final List<Mpoint> points;
     private final Color color;
-    private final int strokeSize;
+    private final String name;
 
 
-    public Pencil(List<Mpoint> points, Color color, int strokeSize) {
+    public Pencil(List<Mpoint> points, Color color, String name) {
         this.points = points;
         this.color = color;
-        this.strokeSize = strokeSize;
+        this.name = name;
     }
 
     @Override
     public void execute() {
         ShapeFactory shapeFactory = new ConcreteShapeFactory();
         removeDuplicatePoints(points);
-        Model.INSTANCE.addToRender(shapeFactory.createPolyline(points, color));
+        Model.INSTANCE.addToRender(shapeFactory.createPolyline(points, color, name));
     }
 
     private void removeDuplicatePoints(List<Mpoint> points) {

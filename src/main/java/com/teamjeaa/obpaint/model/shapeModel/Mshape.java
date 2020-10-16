@@ -18,6 +18,7 @@ import java.awt.*;
  * @see Mpolygon
  */
 public interface Mshape {
+
   /** @return Position of the Mshape as a Mpoint */
   Mpoint getPosition();
 
@@ -27,7 +28,11 @@ public interface Mshape {
   /** @return Height of the Mshape */
   int getHeight();
 
+  /** @return Color of the Mshape */
   Color getColor();
+
+  /** @return name of the Mshape */
+  String getName();
 
   /**
    * Part of the visitor pattern Accept a visitor to the Mshape to be able to draw model

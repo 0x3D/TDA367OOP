@@ -38,7 +38,6 @@ public final class CanvasController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     backend = Model.INSTANCE;
-    initMouseActions();
     javaFXDrawVisitor = new JavaFXDrawVisitor(rootBorderPane);
     AnimationTimer animationTimer =
         new AnimationTimer() {
@@ -76,39 +75,8 @@ public final class CanvasController implements Initializable {
     }
   }
 
-  private void initMouseActions() {
-    //    rootBorderPane.setOnMouseClicked(
-    //      mouseEvent -> initialMouseClick(mouseEvent.getX(), mouseEvent.getY()));
-    rootBorderPane.setOnMousePressed(
-        mouseEvent -> {
-          mouseEvent.consume();
-          System.out.println(mouseEvent.getX() + " " + mouseEvent.getY());
-        });
-    rootBorderPane.setOnMouseReleased(mouseEvent -> stopUse(mouseEvent.getX(), mouseEvent.getY()));
-  }
-
-  //  private void initialMouseClick(Double x, Double y) {
-  //    Mshape s = selectedTool.initialMouseClick(x, y);
-  //  }
-
-  private void stopUse(Double x, Double y) {
-    System.out.println(x + " " + y);
-    // backend.addToRender(s);
-  }
-
   public void setObjectListController(ObjectListController objectListController) {
     this.objectListController = objectListController;
   }
 
-  /*region Description
-  private void removeObject (Mshape mshape) {
-    rootBorderPane.setOnScroll(
-            scrollEvent -> {
-              backend.removeMshape(mshape,(int)scrollEvent.getDeltaX(),(int)scrollEvent.getDeltaY());
-              scrollEvent.consume();
-              System.out.println(scrollEvent.getDeltaX() + "   " + scrollEvent.getDeltaY());
-            });
-
-  }
-  */
 }
