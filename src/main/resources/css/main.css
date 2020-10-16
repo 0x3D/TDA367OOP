@@ -1,3 +1,7 @@
+/*
+* Css file to style the program
+* Author: Erik R
+*/
 .WindowDecoration {
     -fx-background-color: rgb(230, 230, 230);
     -fx-background-insets: 5;
@@ -17,12 +21,23 @@
     -fx-overflow: hidden;
 }
 
-.BorderOnListItem {
-    -fx-border-color: black;
-    -fx-border-width: 3;
-}
 
 .ColorSlider {
     -fx-background-color: transparent;
     -fx-border-color: grey;
+}
+
+.object-list-item-view {
+    -fx-border-width: 1px;
+    -fx-border-color: #999999;
+    -fx-border-radius: 1px;
+    -fx-background-radius: 1px;
+}
+
+.object-list-item-view:hover {
+    -fx-background-color: derive(-fx-background, -20%);
+}
+
+.object-list-item-view:pressed {
+    -fx-background-color: derive(-fx-background, 20%);
 }
