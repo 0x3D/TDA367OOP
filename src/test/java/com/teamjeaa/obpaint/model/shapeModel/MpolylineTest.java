@@ -1,8 +1,8 @@
 package com.teamjeaa.obpaint.model.shapeModel;
 
+import com.teamjeaa.obpaint.model.Color;
 import org.junit.jupiter.api.Test;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +29,7 @@ public final class MpolylineTest {
     mPoints.add(new Mpoint(0, 10));
     mPoints.add(new Mpoint(10, 100));
     mPoints.add(new Mpoint(0, 100));
-    return new Mpolyline(mPoints, Color.BLACK, "test");
+    return new Mpolyline(mPoints, new Color(255, 175, 175), "test");
   }
 
   @Test
@@ -77,7 +77,7 @@ public final class MpolylineTest {
   @Test
   void getColor() {
     Mpolyline mpolyline = setUpMpolyline();
-    assertEquals(mpolyline.getColor(), Color.BLACK);
+    assertEquals(mpolyline.getColor(), new Color(255, 175, 175));
   }
 
   @Test

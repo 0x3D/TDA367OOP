@@ -1,5 +1,6 @@
 package com.teamjeaa.obpaint.view;
 
+import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.shapeModel.Mellipse;
 import com.teamjeaa.obpaint.model.shapeModel.Mpolygon;
 import com.teamjeaa.obpaint.model.shapeModel.Mpolyline;
@@ -28,12 +29,12 @@ public final class JavaFXDrawVisitor implements DrawVisitor {
     this.rootBorderPane = rootBorderPane;
   }
 
-  private javafx.scene.paint.Color AWTColorToJavaFX(java.awt.Color awtColor) {
+  private javafx.scene.paint.Color colorToJavaFXColor(Color color) {
     return new javafx.scene.paint.Color(
-        awtColor.getRed() / 255.0,
-        awtColor.getGreen() / 255.0,
-        awtColor.getBlue() / 255.0,
-        awtColor.getAlpha() / 255.0);
+        color.getRed() / 256.0,
+        color.getGreen() / 256.0,
+        color.getBlue() / 256.0,
+        color.getAlpha() / 100.0);
   }
 
   /** {@inheritDoc} This provides the JavaFX implementation of visitMellipse */
@@ -45,7 +46,7 @@ public final class JavaFXDrawVisitor implements DrawVisitor {
             mellipse.getCenterPoint().getY(),
             mellipse.getSemiAxesA(),
             mellipse.getSemiAxesB());
-    ellipse.setFill(AWTColorToJavaFX(mellipse.getColor()));
+    ellipse.setFill(colorToJavaFXColor(mellipse.getColor()));
     rootBorderPane.getChildren().add(ellipse);
     //    ObjectListController.objectFlowPane.getChildren().add(new ObjectListItemView("FuckOf"));
   }
@@ -63,7 +64,7 @@ public final class JavaFXDrawVisitor implements DrawVisitor {
                     .getPoints()
                     .addAll( // TODO: This and visitMpolyline refactor
                         (double) mpoint.getX(), (double) mpoint.getY()));
-    polygon.setFill(AWTColorToJavaFX(mpolygon.getColor()));
+    polygon.setFill(colorToJavaFXColor(mpolygon.getColor()));
     rootBorderPane.getChildren().add(polygon);
   }
 
@@ -75,7 +76,7 @@ public final class JavaFXDrawVisitor implements DrawVisitor {
         .getPoints()
         .forEach(
             mpoint -> polyline.getPoints().addAll((double) mpoint.getX(), (double) mpoint.getY()));
-    polyline.setStroke(AWTColorToJavaFX(mpolyline.getColor()));
+    polyline.setStroke(colorToJavaFXColor(mpolyline.getColor()));
     rootBorderPane.getChildren().add(polyline);
   }
 }

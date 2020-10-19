@@ -1,8 +1,8 @@
 package com.teamjeaa.obpaint.model.shapeModel;
 
+import com.teamjeaa.obpaint.model.Color;
 import org.junit.jupiter.api.Test;
 
-import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -11,7 +11,7 @@ public final class MellipseTest {
 
   public Mshape createCircle() {
     // Circle r = 10, y = 20, x = 15
-    return concreteShapeFactory.createCircle(10, 15, 20, Color.BLACK, "Circle");
+    return concreteShapeFactory.createCircle(10, 15, 20, new Color(255, 175, 175), "Circle");
   }
 
   //
@@ -43,7 +43,7 @@ public final class MellipseTest {
 
   @Test
   void isPointMemberOfShape() {
-    Mshape mellipse = new Mellipse(new Mpoint(10, 10), 10, 10, Color.black, "test");
+    Mshape mellipse = new Mellipse(new Mpoint(10, 10), 10, 10, new Color(255, 175, 175), "test");
     assertTrue(mellipse.isPointMemberOfShape(10, 10));
     assertFalse(mellipse.isPointMemberOfShape(21, 10));
     assertFalse(mellipse.isPointMemberOfShape(20, 20));
