@@ -9,6 +9,7 @@ public enum ObPaintClient {
   INSTANCE;
 
   private PrintWriter out;
+  private Socket socket;
   private boolean connected=false;
 
   public void sendCircle(int radius,int centerX,int centerY){
@@ -18,7 +19,7 @@ public enum ObPaintClient {
 
   public void connect(String ip, int port) {
     try {
-      var socket = new Socket(ip, port);
+      socket = new Socket(ip, port);
       out = new PrintWriter(socket.getOutputStream(), true);
       //       out.printf("Circle: %d %d %10.8f", radius, centerX, centerY);
       connected=true;
