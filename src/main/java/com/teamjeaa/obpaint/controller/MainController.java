@@ -179,4 +179,8 @@ public final class MainController implements Initializable {
     ipTF.setVisible(false);
     connectButton.setVisible(false);
   }
+  @FXML private void onConnectButton (){
+    portTF.getText();
+    ipTF.getText();
+  }
 }
