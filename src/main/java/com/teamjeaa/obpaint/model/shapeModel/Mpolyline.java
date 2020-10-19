@@ -3,8 +3,6 @@ package com.teamjeaa.obpaint.model.shapeModel;
 import com.teamjeaa.obpaint.view.DrawVisitor;
 
 import java.awt.*;
-import java.io.IOException;
-import java.net.ServerSocket;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
