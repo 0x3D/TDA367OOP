@@ -1,5 +1,6 @@
 package com.teamjeaa.obpaint.server;
 
+import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
@@ -25,7 +26,7 @@ public class ObPaintServer implements Runnable {
         if (line != null) {
           String[] coordinates = line.split(",");
 
-          Model.INSTANCE.addToRender(shapeFactory.createCircle(Integer.parseInt(coordinates[0]), Integer.parseInt(coordinates[1]), Integer.parseInt(coordinates[2]),Color.BLACK,"Circle"));
+          Model.INSTANCE.addToRender(shapeFactory.createCircle(Integer.parseInt(coordinates[0]), Integer.parseInt(coordinates[1]), Integer.parseInt(coordinates[2]),new Color(100,100,100),"Circle"));
           System.out.println(line);
         }
       }

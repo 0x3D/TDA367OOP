@@ -3,6 +3,7 @@ package com.teamjeaa.obpaint.controller;
 import com.teamjeaa.obpaint.SvgDrawVisitor;
 import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
+import com.teamjeaa.obpaint.server.ObPaintClient;
 import com.teamjeaa.obpaint.view.DrawVisitor;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -180,6 +181,7 @@ public final class MainController implements Initializable {
     connectButton.setVisible(false);
   }
   @FXML private void onConnectButton (){
+    ObPaintClient.INSTANCE.connect(ipTF.getText(),1337);
     portTF.getText();
     ipTF.getText();
   }
