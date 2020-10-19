@@ -153,7 +153,7 @@ public final class ToolController implements Initializable {
             (int) (javafxColor.getRed() * 256),
             (int) (javafxColor.getGreen() * 256),
             (int) (javafxColor.getBlue() * 256),
-            (int) (javafxColor.getOpacity() * 100));
+            (int) (javafxColor.getOpacity() * 256));
   }
 
   @FXML

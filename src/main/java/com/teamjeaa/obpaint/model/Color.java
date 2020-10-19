@@ -24,7 +24,7 @@ public final class Color {
         this.red = red;
         this.green = green;
         this.blue = blue;
-        this.opacity = 100;
+        this.opacity = 255;
     }
 
     public int getRed() {

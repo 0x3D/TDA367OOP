@@ -34,7 +34,7 @@ public final class JavaFXDrawVisitor implements DrawVisitor {
         color.getRed() / 256.0,
         color.getGreen() / 256.0,
         color.getBlue() / 256.0,
-        color.getAlpha() / 100.0);
+        color.getAlpha() / 256.0);
   }
 
   /** {@inheritDoc} This provides the JavaFX implementation of visitMellipse */
