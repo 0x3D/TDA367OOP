@@ -1,10 +1,11 @@
 package com.teamjeaa.obpaint.model.commands;
 
+import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 
-import java.awt.*;
+
 
 public final class AddLine implements Command {
 

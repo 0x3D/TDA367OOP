@@ -1,10 +1,9 @@
 package com.teamjeaa.obpaint.model.commands;
 
+import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
-
-import java.awt.*;
 
 /** AddMshape TODO TODO: Better name here, add rectangle strange name */
 public final class AddRectangle implements Command {

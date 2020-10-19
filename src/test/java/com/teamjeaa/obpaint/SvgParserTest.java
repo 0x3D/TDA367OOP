@@ -1,11 +1,12 @@
 package com.teamjeaa.obpaint;
 
+import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 import org.junit.jupiter.api.Test;
 
-import java.awt.*;
+
 import java.io.File;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

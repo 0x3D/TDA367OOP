@@ -2,7 +2,7 @@ package com.teamjeaa.obpaint.model.shapeModel;
 
 import com.teamjeaa.obpaint.view.DrawVisitor;
 
-import java.awt.*;
+import com.teamjeaa.obpaint.model.Color;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
