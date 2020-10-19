@@ -1,5 +1,11 @@
 package com.teamjeaa.obpaint.model;
 
+/**
+ * Simple color class for the model
+ *
+ * @author Jonas N
+ * @since 0.2-SNAPSHOT
+ */
 public final class Color {
     private final int red;
     private final int green;
@@ -13,11 +19,12 @@ public final class Color {
         this.blue = blue;
         this.opacity = opacity;
     }
+
     public Color(int red, int green, int blue) {
         this.red = red;
         this.green = green;
         this.blue = blue;
-        this.opacity = 255;
+        this.opacity = 100;
     }
 
     public int getRed() {
