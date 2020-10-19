@@ -7,7 +7,6 @@ import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public final class Pencil implements Command {
