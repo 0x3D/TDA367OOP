@@ -2,12 +2,12 @@ package com.teamjeaa.obpaint.controller;
 
 import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
+import com.teamjeaa.obpaint.view.DrawVisitor;
 import com.teamjeaa.obpaint.view.JavaFXDrawVisitor;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.Rectangle;
 
@@ -27,7 +27,6 @@ public final class CanvasController implements Initializable {
   private @FXML BorderPane rootBorderPane;
   private ObjectListController objectListController;
   private Model backend;
-  private JavaFXDrawVisitor javaFXDrawVisitor;
 
   /**
    * This method initializes the controller for CanvasView
@@ -38,11 +37,11 @@ public final class CanvasController implements Initializable {
   @Override
   public void initialize(URL location, ResourceBundle resources) {
     backend = Model.INSTANCE;
-    javaFXDrawVisitor = new JavaFXDrawVisitor(rootBorderPane);
+    JavaFXDrawVisitor javaFXDrawVisitor = new JavaFXDrawVisitor(rootBorderPane);
     AnimationTimer animationTimer =
         new AnimationTimer() {
           public void handle(long now) {
-            render();
+            render(javaFXDrawVisitor);
           }
         };
     animationTimer.start();
@@ -66,12 +65,12 @@ public final class CanvasController implements Initializable {
     return rootBorderPane;
   }
 
-  private void render() {
+  private void render(DrawVisitor drawVisitor) {
     rootBorderPane.getChildren().clear();
     objectListController.updateList();
     for (Mshape s : backend.getCanvasShapes()) {
       // It wants the old one to be removed if already is a child.
-      s.acceptDrawVisitor(javaFXDrawVisitor);
+      s.acceptDrawVisitor(drawVisitor);
     }
   }
 
