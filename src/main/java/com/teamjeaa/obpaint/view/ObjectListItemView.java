@@ -4,9 +4,11 @@ import com.teamjeaa.obpaint.controller.MainController;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
+import javax.swing.text.html.ImageView;
 import java.awt.*;
 import java.io.IOException;
 
@@ -46,18 +48,22 @@ public class ObjectListItemView extends AnchorPane {
     objectLabel.setText(mshape.getName());
   }
 
-  public void setColorBackground() {
+  private String colorConverter (Mshape mshape) {
     Color color = mshape.getColor();
     StringBuilder sb = new StringBuilder();
     sb.append("-fx-background-color: rgb(")
-        .append(color.getRed())
-        .append(",")
-        .append(color.getGreen())
-        .append(",")
-        .append(color.getBlue())
-        .append(");")
-        .append("-fx-border-color: grey");
-    itemPane.setStyle(sb.toString());
+            .append(color.getRed())
+            .append(",")
+            .append(color.getGreen())
+            .append(",")
+            .append(color.getBlue())
+            .append(");");
+            //.append("-fx-border-color: grey");
+    return sb.toString();
+  }
+
+  public void setColorBackground() {
+    itemPane.setStyle(colorConverter(mshape));
   }
 
   private double intensity(Color color) {
@@ -72,8 +78,8 @@ public class ObjectListItemView extends AnchorPane {
   }
 
   // TODO: implement button to click this
+  @FXML
   public void onClickedListItem() {
     parentController.updateShapeInfo(mshape);
-    //System.out.println(mshape.getPosition().getX());
   }
 }

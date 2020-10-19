@@ -7,7 +7,7 @@ import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 import java.awt.*;
 
 /** AddMshape TODO TODO: Better name here, add rectangle strange name */
-public class AddRectangle implements Command {
+public final class AddRectangle implements Command {
 
   private final int x1;
   private final int y1;

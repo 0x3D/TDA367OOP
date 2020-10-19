@@ -6,7 +6,7 @@ import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 
 import java.awt.*;
 
-public class AddLine implements Command {
+public final class AddLine implements Command {
 
   private final int x1;
   private final int y1;
