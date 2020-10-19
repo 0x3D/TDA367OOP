@@ -1,12 +1,13 @@
 package com.teamjeaa.obpaint.model.commands;
 
+import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 import org.junit.jupiter.api.Test;
 
-import java.awt.*;
+
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -15,7 +16,7 @@ public class MoveTest {
   @Test
   void excecuteTest() {
     ShapeFactory sp = new ConcreteShapeFactory();
-    Mshape mshape = sp.createRectangle(0, 0, 10, 10, Color.WHITE, "test");
+    Mshape mshape = sp.createRectangle(0, 0, 10, 10, new Color(255, 175, 175), "test");
     Model.INSTANCE.addToRender(mshape);
     int x = 0;
     int x1 = 40;

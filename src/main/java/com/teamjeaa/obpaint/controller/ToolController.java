@@ -1,5 +1,6 @@
 package com.teamjeaa.obpaint.controller;
 
+import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.commands.*;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
@@ -84,7 +85,7 @@ public final class ToolController implements Initializable {
     canvasPane.setOnMouseReleased(
         mouseEvent -> {
           points.add(new Mpoint((int) mouseEvent.getX(), (int) mouseEvent.getY()));
-          command = new Pencil(points, getAWTColor(cp.getValue()), "Drawn line");
+          command = new Pencil(points, convertToModelColor(cp.getValue()), "Drawn line");
           command.execute();
           points = new ArrayList<>();
         });
@@ -107,7 +108,7 @@ public final class ToolController implements Initializable {
                   y,
                   (int) mouseEvent.getX(),
                   (int) mouseEvent.getY(),
-                  getAWTColor(cp.getValue()),
+                  convertToModelColor(cp.getValue()),
                   "Straight line");
           command.execute();
         });
@@ -142,17 +143,17 @@ public final class ToolController implements Initializable {
           int centerX = (int) (x + mouseEvent.getX()) / 2;
           int centerY = (int) (y + mouseEvent.getY()) / 2;
           // Math
-          command = new AddCircle(dia / 2, centerX, centerY, getAWTColor(cp.getValue()), "Circle");
+          command = new AddCircle(dia / 2, centerX, centerY, convertToModelColor(cp.getValue()), "Circle");
           command.execute();
         });
   }
 
-  private java.awt.Color getAWTColor(javafx.scene.paint.Color javafxColor) {
-    return new java.awt.Color(
-        (float) javafxColor.getRed(),
-        (float) javafxColor.getGreen(),
-        (float) javafxColor.getBlue(),
-        (float) javafxColor.getOpacity());
+  private Color convertToModelColor(javafx.scene.paint.Color javafxColor) {
+    return new Color(
+            (int) (javafxColor.getRed() * 256),
+            (int) (javafxColor.getGreen() * 256),
+            (int) (javafxColor.getBlue() * 256),
+            (int) (javafxColor.getOpacity() * 100));
   }
 
   @FXML
@@ -172,7 +173,7 @@ public final class ToolController implements Initializable {
                   y,
                   (int) mouseEvent.getX(),
                   (int) mouseEvent.getY(),
-                  getAWTColor(cp.getValue()),
+                  convertToModelColor(cp.getValue()),
             "Rectangle");
           command.execute();
         });

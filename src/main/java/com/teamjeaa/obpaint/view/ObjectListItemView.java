@@ -1,6 +1,7 @@
 package com.teamjeaa.obpaint.view;
 
 import com.teamjeaa.obpaint.controller.MainController;
+import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
 import javax.swing.text.html.ImageView;
-import java.awt.*;
+
 import java.io.IOException;
 
 public class ObjectListItemView extends AnchorPane {

@@ -1,6 +1,7 @@
 package com.teamjeaa.obpaint.model.shapeModel;
 
-import java.awt.*;
+import com.teamjeaa.obpaint.model.Color;
+
 import java.util.List;
 
 /**
