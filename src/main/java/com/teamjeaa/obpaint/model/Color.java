@@ -7,6 +7,9 @@ package com.teamjeaa.obpaint.model;
  * @since 0.2-SNAPSHOT
  */
 public final class Color {
+    /**
+     * Color range
+     */
     private final int red;
     private final int green;
     private final int blue;
