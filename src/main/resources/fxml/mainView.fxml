@@ -148,7 +148,7 @@ The main window of the application
          <Button mnemonicParsing="false" onAction="#onCloseServerPane" text="Close" />
          <TextField fx:id="portTF" layoutX="37.0" layoutY="47.0" prefHeight="25.0" prefWidth="45.0" promptText="port" />
          <TextField fx:id="ipTF" layoutX="37.0" layoutY="88.0" prefHeight="25.0" prefWidth="86.0" promptText="ip-adress" />
-         <Button fx:id="connectButton" layoutX="56.0" layoutY="145.0" mnemonicParsing="false" text="Connect" />
+         <Button fx:id="connectButton" layoutX="56.0" layoutY="145.0" mnemonicParsing="false" onAction="#onConnectButton" text="Connect" />
       </children>
    </AnchorPane>
 </fx:root>
