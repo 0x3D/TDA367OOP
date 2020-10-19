@@ -2,7 +2,7 @@ package com.teamjeaa.obpaint.model.commands;
 
 import com.teamjeaa.obpaint.model.Model;
 
-public class AddEraser implements Command {
+public final class AddEraser implements Command {
   private final int x;
   private final int y;
 

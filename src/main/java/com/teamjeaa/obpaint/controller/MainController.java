@@ -8,6 +8,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 
@@ -39,6 +40,10 @@ public final class MainController implements Initializable {
   private @FXML Button redTemplateButton;
   private @FXML Button limeTemplateButton;
   private @FXML AnchorPane messagePane;
+  private @FXML AnchorPane serverPane;
+  private @FXML TextField portTF;
+  private @FXML TextField ipTF;
+  private @FXML Button connectButton;
 
   // TODO: Remove or give usage
   @FXML private ToolController toolViewController;
@@ -50,6 +55,7 @@ public final class MainController implements Initializable {
   private void initializeStartPage() {
     startPagePane.toFront();
     startPagePane.setStyle("-fx-background-color: white");
+    serverPane.toBack();
   }
 
   /**
@@ -64,6 +70,9 @@ public final class MainController implements Initializable {
     toolViewController.setCanvasController(canvasViewController);
     canvasViewController.setObjectListController(objectListController);
     objectListController.setParentController(this);
+    portTF.setVisible(false);
+    ipTF.setVisible(false);
+    connectButton.setVisible(false);
   }
 
   @FXML
@@ -155,5 +164,19 @@ public final class MainController implements Initializable {
     messagePane.toBack();
     messagePane.setVisible(false);
 
+  }
+  @FXML private void onServerButton (){
+    serverPane.setStyle("-fx-background-color: darkgrey");
+    serverPane.toFront();
+    portTF.setVisible(true);
+    ipTF.setVisible(true);
+    connectButton.setVisible(true);
+  }
+  @FXML private void onCloseServerPane (){
+    serverPane.toBack();
+    serverPane.setStyle("-fx-background-color: transparent");
+    portTF.setVisible(false);
+    ipTF.setVisible(false);
+    connectButton.setVisible(false);
   }
 }

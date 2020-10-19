@@ -6,7 +6,7 @@ import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 
 import java.awt.*;
 
-public class AddCircle implements Command {
+public final class AddCircle implements Command {
 
   private final int radius;
   private final int centerX;
