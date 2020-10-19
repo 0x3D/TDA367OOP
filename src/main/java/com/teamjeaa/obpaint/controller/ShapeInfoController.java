@@ -34,7 +34,7 @@ public class ShapeInfoController implements Initializable {
             mshape.getColor().getRed(),
             mshape.getColor().getGreen(),
             mshape.getColor().getBlue(),
-            mshape.getColor().getAlpha() / 255f));
+            mshape.getColor().getAlpha() / 256f));
     this.mshape = mshape;
   }
   @FXML
