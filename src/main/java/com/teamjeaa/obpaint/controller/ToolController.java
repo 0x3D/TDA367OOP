@@ -150,10 +150,10 @@ public final class ToolController implements Initializable {
 
   private Color convertToModelColor(javafx.scene.paint.Color javafxColor) {
     return new Color(
-            (int) (javafxColor.getRed() * 256),
-            (int) (javafxColor.getGreen() * 256),
-            (int) (javafxColor.getBlue() * 256),
-            (int) (javafxColor.getOpacity() * 256));
+            (int) (javafxColor.getRed() * 255),
+            (int) (javafxColor.getGreen() * 255),
+            (int) (javafxColor.getBlue() * 255),
+            (int) (javafxColor.getOpacity() * 255));
   }
 
   @FXML

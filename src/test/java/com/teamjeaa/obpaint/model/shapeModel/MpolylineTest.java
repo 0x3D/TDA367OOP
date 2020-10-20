@@ -82,8 +82,8 @@ public final class MpolylineTest {
 
   @Test
   void isPointMemberOfShape() {
-    int x = 11; // Offset 1
-    int y = 102; // Offset 2
+    int x = 9; // Offset 1
+    int y = 99; // Offset 2
     Mpolyline line = setUpMpolyline();
     assertTrue(line.isPointMemberOfShape(x, y));
   }

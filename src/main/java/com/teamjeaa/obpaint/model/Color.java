@@ -1,5 +1,7 @@
 package com.teamjeaa.obpaint.model;
 
+import java.util.Objects;
+
 /**
  * Simple color class for the model
  *
@@ -7,6 +9,9 @@ package com.teamjeaa.obpaint.model;
  * @since 0.2-SNAPSHOT
  */
 public final class Color {
+    /**
+     * Color range
+     */
     private final int red;
     private final int green;
     private final int blue;
@@ -18,6 +23,7 @@ public final class Color {
         this.green = green;
         this.blue = blue;
         this.opacity = opacity;
+        validateValues();
     }
 
     public Color(int red, int green, int blue) {
@@ -25,6 +31,17 @@ public final class Color {
         this.green = green;
         this.blue = blue;
         this.opacity = 255;
+        validateValues();
+    }
+
+
+    private void validateValues() throws IllegalArgumentException {
+        if (red > 255 || red < 0 ||
+            green > 255 || green < 0 ||
+            blue > 255 || blue < 0 ||
+            opacity > 255 || opacity < 0) {
+            throw new IllegalArgumentException("Color not in the range 0-255" + ": " + "r: " + red + ", g: " + green + ", b: " + blue + ", opacity: " + opacity);
+        }
     }
 
     public int getRed() {
@@ -43,5 +60,19 @@ public final class Color {
         return opacity;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Color color = (Color) o;
+        return red == color.red &&
+                green == color.green &&
+                blue == color.blue &&
+                opacity == color.opacity;
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(red, green, blue, opacity);
+    }
 }
