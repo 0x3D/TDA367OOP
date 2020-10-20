@@ -75,4 +75,9 @@ public final class Color {
     public int hashCode() {
         return Objects.hash(red, green, blue, opacity);
     }
+
+    @Override
+    public String toString() {
+        return red + "," + green + "," + blue + "," + opacity;
+    }
 }

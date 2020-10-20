@@ -15,9 +15,10 @@ import java.util.Scanner;
 public final class ObPaintServer implements Runnable {
 
 
-  private void addCircle(int radius, int x, int y, Color color, String name){
+  private void addCircle(int radius, int centerX, int centerY, Color color, String name){
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
-    shapeFactory.createCircle(radius, x, y,color,name);
+    Model.INSTANCE.addToRender(shapeFactory.createCircle(radius, centerX, centerY,color,name));
+
   }
 
 
@@ -31,17 +32,30 @@ public final class ObPaintServer implements Runnable {
         Scanner in = new Scanner(socket.getInputStream());
         String line = in.nextLine();
         if (line != null) {
-          String[] coordinates = line.split(",");
-          addCircle(Integer.parseInt(coordinates[0]),
-                  Integer.parseInt(coordinates[1]),
-                  Integer.parseInt(coordinates[2]),
-                  new Color(100,100,100,20),
-                  "Circle");
-          System.out.println(line);
+          handleInput(line);
+
         }
       }
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  private void handleInput(String line) {
+    String[] coordinates = line.split(",");
+    if(line.contains("Circle")){
+      parseCircle(coordinates);
+    }
+
+    System.out.println(line);
+  }
+
+  private void parseCircle(String[] line) {
+    addCircle(Integer.parseInt(line[1]),
+            Integer.parseInt(line[2]),
+            Integer.parseInt(line[3]),
+            new Color(Integer.parseInt(line[4]),Integer.parseInt(line[5]),
+                    Integer.parseInt(line[6]),Integer.parseInt(line[7])),
+            line[8]);
   }
 }

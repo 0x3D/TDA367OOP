@@ -29,7 +29,7 @@ public final class AddCircle implements Command {
     final ShapeFactory shapeFactory = new ConcreteShapeFactory();
     Model.INSTANCE.addToRender(shapeFactory.createCircle(radius, centerX, centerY, color, name));
     if (ObPaintClient.INSTANCE.isConnected()) {
-      ObPaintClient.INSTANCE.sendCircle(radius, centerX, centerY);
+      ObPaintClient.INSTANCE.sendCircle(radius, centerX, centerY,color,name);
     }
   }
 }
