@@ -1,12 +1,14 @@
 package com.teamjeaa.obpaint.server;
 
 import com.teamjeaa.obpaint.model.Color;
+import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 
 import java.io.IOException;
 import java.io.InterruptedIOException;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.List;
 
 public enum ObPaintClient {
   INSTANCE;
@@ -60,5 +62,18 @@ public enum ObPaintClient {
 
   public void sendMove(int originX, int originY, int destinationX, int destinationY) {
     sendMessage("Move," + originX + "," + originY + "," + destinationX + "," + destinationY);
+  }
+
+  public void sendPencilStroke(List<Mpoint> points, Color color, String name) {
+    StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append("Pencil,").append("{,");
+    for(Mpoint mpoint:points){
+      stringBuilder.append(mpoint.getX()).append(",");
+      stringBuilder.append(mpoint.getY()).append(",");
+    }
+    stringBuilder.append("},");
+    stringBuilder.append(color).append(",");
+    stringBuilder.append(name);
+    sendMessage(stringBuilder.toString());
   }
 }

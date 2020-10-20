@@ -5,6 +5,7 @@ import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
+import com.teamjeaa.obpaint.server.ObPaintClient;
 
 
 import java.util.ArrayList;
@@ -27,6 +28,9 @@ public final class Pencil implements Command {
         ShapeFactory shapeFactory = new ConcreteShapeFactory();
         removeDuplicatePoints(points);
         Model.INSTANCE.addToRender(shapeFactory.createPolyline(points, color, name));
+        if (ObPaintClient.INSTANCE.isConnected()) {
+            ObPaintClient.INSTANCE.sendPencilStroke(points,color,name);
+        }
     }
 
     private void removeDuplicatePoints(List<Mpoint> points) {
