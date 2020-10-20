@@ -62,19 +62,24 @@ public final class ObPaintServer implements Runnable {
 
   private void parsePencil(String[] coordinates) {
     final List<Mpoint> mPoints = new ArrayList<>();
+    //First tokens are Pencil and {
     int i = 2;
 
+    //Add all points to our new list
     while (!coordinates[i + 2].contains("}")) {
       mPoints.add(
           new Mpoint(Integer.parseInt(coordinates[i]), Integer.parseInt(coordinates[i + 1])));
       i = i + 2;
     }
+    //If this token is found at plus 2 we have one more
     if (coordinates[i + 2].contains("}")) {
       coordinates[i + 1] = coordinates[i + 1].replaceAll("([^\\d]|[A-Z]|[\"])", "");
       mPoints.add(
           new Mpoint(Integer.parseInt(coordinates[i]), Integer.parseInt(coordinates[i + 1])));
       i = i + 2;
     }
+
+    //add newly created shape
     final ShapeFactory shapeFactory = new ConcreteShapeFactory();
     Model.INSTANCE.addToRender(
         shapeFactory.createPolyline(
