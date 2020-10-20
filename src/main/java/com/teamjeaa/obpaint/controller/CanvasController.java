@@ -7,9 +7,11 @@ import com.teamjeaa.obpaint.view.JavaFXDrawVisitor;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -48,37 +50,47 @@ public final class CanvasController implements Initializable {
     fixClipping(rootBorderPane);
   }
 
-  // JavaFX is stupid with Borders of panes, this method adds clipping
-  private void fixClipping(Region pane) {
-    Rectangle clippingArea = new Rectangle();
 
+  //JavaFX is stupid with Borders of panes, this method adds clipping
+   private void fixClipping(Region pane){
+    Rectangle clippingArea = new Rectangle();
+    
     pane.setClip(clippingArea);
 
-    pane.layoutBoundsProperty()
-        .addListener(
-            (observable, oldValue, newValue) -> {
-              clippingArea.setWidth(newValue.getWidth());
-              clippingArea.setHeight(newValue.getHeight());
-            });
+    pane.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> {
+      clippingArea.setWidth(newValue.getWidth());
+      clippingArea.setHeight(newValue.getHeight());
+    });
   }
 
   BorderPane getCanvasPane() {
     return rootBorderPane;
   }
 
-  private void render(DrawVisitor drawVisitor) {
-    objectListController.updateList();
 
-    // Rerender entire list
+  public Node ghost;
+
+  private void render(DrawVisitor drawVisitor) {
     rootBorderPane.getChildren().clear();
-    synchronized ("Server") {
-      for (Mshape s : backend.getCanvasShapes()) {
-        s.acceptDrawVisitor(drawVisitor);
-      }
+    objectListController.updateList();
+    for (Mshape s : backend.getCanvasShapes()) {
+      // It wants the old one to be removed if already is a child.
+      s.acceptDrawVisitor(drawVisitor);
+    }
+    if (ghost != null) {
+        rootBorderPane.getChildren().add(ghost);
     }
   }
 
-  public void setObjectListController(ObjectListController objectListController) {
+    public void setGhost(Node ghost) {
+        this.ghost = ghost;
+    }
+
+    public void setObjectListController(ObjectListController objectListController) {
     this.objectListController = objectListController;
   }
+
+    public void clearGhost() {
+      this.ghost = null;
+    }
 }
