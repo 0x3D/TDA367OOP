@@ -16,12 +16,12 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.*;
 import javafx.scene.layout.BorderPane;
-<<<<<<< HEAD
+
 import javafx.scene.paint.Paint;
-=======
+
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
->>>>>>> 2795e1a18d6bafe8a114d684be5c833bcfafb2ff
+
 
 import javax.accessibility.AccessibleKeyBinding;
 import java.net.URL;
