@@ -42,3 +42,36 @@
 }
 .ObjectListItem{
 }
+
+.aboutBackground{
+    -fx-background-color: rgb(230, 230, 230);
+}
+.aboutDarkScreen{
+    -fx-background-color: rgba(0, 0, 0, 0.75);
+}
+.aboutTextTitle{
+    -fx-font-family: "Comic Sans MS";
+    -fx-font-size: 32px;
+}
+.aboutText{
+    -fx-font-family: "Courier New";
+    -fx-font-size: 14;
+    -fx-wrap-text: true;
+    -fx-text-alignment: LEFT;
+}
+.aboutCloseButton{
+    -fx-background-color: rgb(230,230,230);
+}
+.aboutCloseButton:hover{
+    -fx-background-color: rgb(240,128,128);
+}
+/*.aboutCloseButton:pressed {
+    -fx-background-color: rgb(240,128,128);
+    -fx-font-weight: 700;
+}
+ */
+.aboutAuthor{
+    -fx-font-family: "Courier New";
+    -fx-font-size: 14;
+    -fx-text-alignment: LEFT;
+}

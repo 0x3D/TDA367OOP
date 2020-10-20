@@ -6,12 +6,15 @@ import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.server.ObPaintClient;
 import com.teamjeaa.obpaint.view.DrawVisitor;
 import javafx.application.Platform;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -46,6 +49,7 @@ public final class MainController implements Initializable {
   private @FXML TextField portTF;
   private @FXML TextField ipTF;
   private @FXML Button connectButton;
+  private @FXML AnchorPane aboutPage;
 
   // TODO: Remove or give usage
   @FXML private ToolController toolViewController;
@@ -184,5 +188,19 @@ public final class MainController implements Initializable {
     ObPaintClient.INSTANCE.connect(ipTF.getText(),1337);
     portTF.getText();
     ipTF.getText();
+  }
+  @FXML
+  private void blockMouse(Event event){
+    event.consume();
+  }
+  @FXML
+  private void openAbout(){
+    aboutPage.setVisible(true);
+    aboutPage.toFront();
+  }
+  @FXML
+  private void closeAbout(){
+    aboutPage.setVisible(false);
+    aboutPage.toBack();
   }
 }
