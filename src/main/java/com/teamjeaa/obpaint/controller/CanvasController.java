@@ -48,17 +48,18 @@ public final class CanvasController implements Initializable {
     fixClipping(rootBorderPane);
   }
 
-
-  //JavaFX is stupid with Borders of panes, this method adds clipping
-   private void fixClipping(Region pane){
+  // JavaFX is stupid with Borders of panes, this method adds clipping
+  private void fixClipping(Region pane) {
     Rectangle clippingArea = new Rectangle();
-    
+
     pane.setClip(clippingArea);
 
-    pane.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> {
-      clippingArea.setWidth(newValue.getWidth());
-      clippingArea.setHeight(newValue.getHeight());
-    });
+    pane.layoutBoundsProperty()
+        .addListener(
+            (observable, oldValue, newValue) -> {
+              clippingArea.setWidth(newValue.getWidth());
+              clippingArea.setHeight(newValue.getHeight());
+            });
   }
 
   BorderPane getCanvasPane() {
@@ -66,16 +67,18 @@ public final class CanvasController implements Initializable {
   }
 
   private void render(DrawVisitor drawVisitor) {
-    rootBorderPane.getChildren().clear();
     objectListController.updateList();
-    for (Mshape s : backend.getCanvasShapes()) {
-      // It wants the old one to be removed if already is a child.
-      s.acceptDrawVisitor(drawVisitor);
+
+    // Rerender entire list
+    rootBorderPane.getChildren().clear();
+    synchronized ("Server") {
+      for (Mshape s : backend.getCanvasShapes()) {
+        s.acceptDrawVisitor(drawVisitor);
+      }
     }
   }
 
   public void setObjectListController(ObjectListController objectListController) {
     this.objectListController = objectListController;
   }
-
 }

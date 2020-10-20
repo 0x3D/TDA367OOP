@@ -47,7 +47,9 @@ public enum Model {
    * @param s some kind of Mshape.
    */
   public void addToRender(Mshape s) {
-    modelCanvas.addToRender(s);
+    synchronized ("Server") {
+      modelCanvas.addToRender(s);
+    }
   }
 
   public void addToCommandList(Command command){
@@ -79,7 +81,10 @@ public enum Model {
 
   /** @return Returns the list of Mshapes collected from modelCanvas. */
   public List<Mshape> getCanvasShapes() {
-    return modelCanvas.getShapes();
+    //TODO: Lockable object
+    synchronized ("Server") {
+      return modelCanvas.getShapes();
+    }
   }
   public void removeAllShapes () {
     modelCanvas.resetRenderList();

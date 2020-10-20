@@ -6,6 +6,7 @@ import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
+import com.teamjeaa.obpaint.server.ObPaintClient;
 
 
 import java.util.ArrayList;
@@ -31,6 +32,9 @@ public final class Pencil implements Command {
         pencil = shapeFactory.createPolyline(points, color, name);
         Model.INSTANCE.addToRender(pencil);
         Model.INSTANCE.addToCommandList(this);
+        if (ObPaintClient.INSTANCE.isConnected()) {
+            ObPaintClient.INSTANCE.sendPencilStroke(points,color,name);
+        }
     }
 
     @Override

@@ -18,6 +18,8 @@ The main window of the application
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.input.KeyCodeCombination?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.RadialGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
@@ -43,61 +45,77 @@ The main window of the application
                     <Image url="@../images/logo.png" />
                 </ImageView>
                 <Line endX="95.0" layoutX="47.0" layoutY="163.0" startX="-40.0" stroke="#9e9999" />
-                <Label layoutX="4.0" layoutY="189.0" prefHeight="125.0" prefWidth="126.0" text="Welcome to ObPaint" textAlignment="CENTER" wrapText="true">
+                <Label layoutX="4.0" layoutY="138.0" prefHeight="125.0" prefWidth="126.0" text="Welcome to ObPaint!" textAlignment="CENTER" wrapText="true">
                     <font>
-                        <Font name="Courier New" size="12.0" />
+                        <Font name="Courier New" size="14.0" />
                     </font>
                 </Label>
+            <Line endX="95.0" layoutX="47.0" layoutY="250.0" startX="-40.0" stroke="#9e9999" />
+            <Label layoutX="14.0" layoutY="230.0" prefHeight="125.0" prefWidth="126.0" text="Please select template to begin" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Courier New" size="12.0" />
+               </font>
+            </Label>
             </AnchorPane>
-            <Label layoutX="371.0" layoutY="21.0" text="Templates">
+            <Label layoutX="447.0" layoutY="18.0" text="Templates" textAlignment="JUSTIFY">
                 <font>
-                    <Font size="24.0" />
+                    <Font size="30.0" />
                 </font>
             </Label>
-            <Button fx:id="blancTemplateButton" layoutX="156.0" layoutY="79.0" mnemonicParsing="false" onAction="#onBlancTemplate" prefHeight="152.0" prefWidth="109.0">
+         <Line endX="170.0" layoutY="65.0" startX="905.0" AnchorPane.leftAnchor="153.5" AnchorPane.rightAnchor="0.5">
+            <stroke>
+               <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+                  <stops>
+                     <Stop color="BLACK" />
+                     <Stop color="WHITE" offset="1.0" />
+                  </stops>
+               </RadialGradient>
+            </stroke>
+         </Line>
+            <Button fx:id="blancTemplateButton" layoutX="250.0" layoutY="180.0" mnemonicParsing="false" onAction="#onBlancTemplate" prefHeight="152.0" prefWidth="109.0">
                 <graphic>
                     <ImageView fitHeight="158.0" fitWidth="173.0" pickOnBounds="true" preserveRatio="true">
                         <Image url="@../images/BlancTemplate.PNG" />
                     </ImageView>
                 </graphic>
             </Button>
-            <Button fx:id="blackTemplateButton" layoutX="430.0" layoutY="78.0" mnemonicParsing="false" onAction="#onBlackTemplate" prefHeight="152.0" prefWidth="109.0">
+            <Button fx:id="blackTemplateButton" layoutX="609.0" layoutY="180.0" mnemonicParsing="false" onAction="#onBlackTemplate" prefHeight="152.0" prefWidth="109.0">
                 <graphic>
                     <ImageView fitHeight="158.0" fitWidth="173.0" pickOnBounds="true" preserveRatio="true">
                         <Image url="@../images/BlackTemplate.PNG" />
                     </ImageView>
                 </graphic>
             </Button>
-            <Button fx:id="redTemplateButton" layoutX="156.0" layoutY="336.0" mnemonicParsing="false" onAction="#onRedTemplate" prefHeight="152.0" prefWidth="109.0">
+            <Button fx:id="redTemplateButton" layoutX="250.0" layoutY="400.0" mnemonicParsing="false" onAction="#onRedTemplate" prefHeight="152.0" prefWidth="109.0">
                 <graphic>
                     <ImageView fitHeight="158.0" fitWidth="173.0" pickOnBounds="true" preserveRatio="true">
                         <Image url="@../images/RedTemplate.PNG" />
                     </ImageView>
                 </graphic>
             </Button>
-            <Button fx:id="limeTemplateButton" layoutX="426.0" layoutY="335.0" mnemonicParsing="false" onAction="#onLimeTemplate" prefHeight="152.0" prefWidth="109.0">
+            <Button fx:id="limeTemplateButton" layoutX="609.0" layoutY="400.0" mnemonicParsing="false" onAction="#onLimeTemplate" prefHeight="152.0" prefWidth="109.0">
                 <graphic>
                     <ImageView fitHeight="158.0" fitWidth="173.0" pickOnBounds="true" preserveRatio="true">
                         <Image url="@../images/LimeTemplate.PNG" />
                     </ImageView>
                 </graphic>
             </Button>
-            <Label layoutX="229.0" layoutY="49.0" text="Blanc">
+            <Label layoutX="241.0" layoutY="150.0" text="Blanc">
                 <font>
                     <Font size="18.0" />
                 </font>
             </Label>
-            <Label layoutX="503.0" layoutY="49.0" text="Black">
+            <Label layoutX="600.0" layoutY="150.0" text="Black">
                 <font>
                     <Font size="18.0" />
                 </font>
             </Label>
-            <Label layoutX="225.0" layoutY="300.0" text="Red">
+            <Label layoutX="241.0" layoutY="370.0" text="Red">
                 <font>
                     <Font size="18.0" />
                 </font>
             </Label>
-            <Label layoutX="487.0" layoutY="300.0" text="Lime">
+            <Label layoutX="600.0" layoutY="370.0" text="Lime">
                 <font>
                     <Font size="18.0" />
                 </font>
@@ -113,7 +131,7 @@ The main window of the application
     <AnchorPane layoutX="752.0" layoutY="30.0" prefHeight="416.0" prefWidth="160.0" styleClass="WindowDecoration" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
         <fx:include fx:id="shapeInfoView" source="shapeInfoView.fxml" />
     </AnchorPane>
-    <AnchorPane layoutX="753.0" layoutY="455.0" prefHeight="216.0" prefWidth="160.0" styleClass="TransparentBackground" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="459.0">
+    <AnchorPane layoutX="753.0" layoutY="455.0" prefHeight="216.0" prefWidth="155.0" styleClass="TransparentBackground" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="459.0">
         <fx:include fx:id="objectList" source="objectListView.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
     </AnchorPane>
 

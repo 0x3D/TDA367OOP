@@ -3,12 +3,12 @@ package com.teamjeaa.obpaint.controller;
 import com.teamjeaa.obpaint.SvgDrawVisitor;
 import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
+import com.teamjeaa.obpaint.server.ObPaintClient;
 import com.teamjeaa.obpaint.view.DrawVisitor;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
@@ -113,7 +113,6 @@ public final class MainController implements Initializable {
     } else {
       mainPane.setStyle("-fx-background-color: rgb(244,244,244)");
     }
-    objectListController.updateList();
   }
 
   @FXML
@@ -186,6 +185,7 @@ public final class MainController implements Initializable {
 
 
   @FXML private void onConnectButton (){
+    ObPaintClient.INSTANCE.connect(ipTF.getText(),1337);
     portTF.getText();
     ipTF.getText();
   }

@@ -54,7 +54,7 @@ public final class SvgDrawVisitor implements DrawVisitor {
       stringBuilder.append(mpoint.getX()).append(",").append(mpoint.getY()).append(" ");
     }
     stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(" "));
-    stringBuilder.append("\" style=\"stroke:rgb(");
+    stringBuilder.append("\" style=\"fill:none; stroke:rgb(");
     addMshapeColor(mpolyline);
     stringBuilder.append("\"/>\n");
   }

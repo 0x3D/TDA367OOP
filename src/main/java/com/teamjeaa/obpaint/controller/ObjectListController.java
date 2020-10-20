@@ -20,8 +20,11 @@ public class ObjectListController implements Initializable {
   @FXML
   public void updateList() {
     objectFlowPane.getChildren().clear();
-    for (Mshape mshapes : Model.INSTANCE.getCanvasShapes()) {
-      objectFlowPane.getChildren().add(new ObjectListItemView(mshapes, parentController));
+    //TODO: Lockable object
+    synchronized ("Server") {
+      for (Mshape mshapes : Model.INSTANCE.getCanvasShapes()) {
+        objectFlowPane.getChildren().add(new ObjectListItemView(mshapes, parentController));
+      }
     }
   }
 

@@ -5,6 +5,7 @@ import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
+import com.teamjeaa.obpaint.server.ObPaintClient;
 
 
 
@@ -27,10 +28,13 @@ public final class AddCircle implements Command {
 
   @Override
   public void execute() {
-    ShapeFactory shapeFactory = new ConcreteShapeFactory();
+    final ShapeFactory shapeFactory = new ConcreteShapeFactory();
     circle = shapeFactory.createCircle(radius, centerX, centerY, color, name);
     Model.INSTANCE.addToRender(circle);
     Model.INSTANCE.addToCommandList(this);
+      if (ObPaintClient.INSTANCE.isConnected()) {
+          ObPaintClient.INSTANCE.sendCircle(radius, centerX, centerY,color,name);
+      }
   }
 
   @Override

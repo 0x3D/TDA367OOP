@@ -5,7 +5,9 @@ import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
@@ -17,9 +19,11 @@ public class ObjectListItemView extends AnchorPane {
 
   private final Mshape mshape;
   private final MainController parentController;
+  private boolean isSelected = false;
   // private final String name;
   private @FXML Label objectLabel;
   private @FXML AnchorPane itemPane;
+  private @FXML AnchorPane hoverPane;
 
 
   public ObjectListItemView(Mshape mshape, MainController mainController) {
@@ -34,19 +38,22 @@ public class ObjectListItemView extends AnchorPane {
     }
     this.mshape = mshape;
     this.parentController = mainController;
-
     setColorBackground();
     setLabelName();
   }
 
   public void setLabelName() {
     //objectLabel.setText("X=" + mshape.getPosition().getX() + " Y=" + mshape.getPosition().getY());
+    /*
     double colorIntensity;
     colorIntensity = intensity(mshape.getColor());
     if (colorIntensity < 0.5) {
       objectLabel.setStyle("-fx-text-fill: #FFF");
     }
+
+     */
     objectLabel.setText(mshape.getName());
+    objectLabel.setAlignment(Pos.CENTER_LEFT);
   }
 
   private String colorConverter (Mshape mshape) {
@@ -64,7 +71,7 @@ public class ObjectListItemView extends AnchorPane {
   }
 
   public void setColorBackground() {
-    itemPane.setStyle(colorConverter(mshape));
+    hoverPane.setStyle(colorConverter(mshape));
   }
 
   private double intensity(Color color) {
