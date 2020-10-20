@@ -45,9 +45,16 @@ public final class ObPaintServer implements Runnable {
     String[] coordinates = line.split(",");
     if(line.contains("Circle")){
       parseCircle(coordinates);
+    } else if(line.contains("Remove")){
+      parseRemove(coordinates);
     }
 
     System.out.println(line);
+  }
+
+  private void parseRemove(String[] coordinates) {
+    Model.INSTANCE.removeFromRenderByPoint(Integer.parseInt(coordinates[1]),
+            Integer.parseInt(coordinates[2]));
   }
 
   private void parseCircle(String[] line) {

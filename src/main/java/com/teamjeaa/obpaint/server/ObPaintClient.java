@@ -46,4 +46,8 @@ public enum ObPaintClient {
   public boolean isConnected() {
     return connected;
   }
+
+  public void removeShapeAt(int x, int y) {
+    sendMessage("Remove," + x + "," + y);
+  }
 }

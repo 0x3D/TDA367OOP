@@ -1,6 +1,7 @@
 package com.teamjeaa.obpaint.model.commands;
 
 import com.teamjeaa.obpaint.model.Model;
+import com.teamjeaa.obpaint.server.ObPaintClient;
 
 public final class AddEraser implements Command {
   private final int x;
@@ -18,5 +19,8 @@ public final class AddEraser implements Command {
   @Override
   public void execute() {
     Model.INSTANCE.removeFromRenderByPoint(x, y);
+    if (ObPaintClient.INSTANCE.isConnected()) {
+      ObPaintClient.INSTANCE.removeShapeAt(x,y);
+    }
   }
 }
