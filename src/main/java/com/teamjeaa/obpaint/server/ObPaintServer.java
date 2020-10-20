@@ -14,26 +14,22 @@ import java.util.Scanner;
 
 public final class ObPaintServer implements Runnable {
 
-
-  private void addCircle(int radius, int centerX, int centerY, Color color, String name){
+  private void addCircle(int radius, int centerX, int centerY, Color color, String name) {
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
-    Model.INSTANCE.addToRender(shapeFactory.createCircle(radius, centerX, centerY,color,name));
-
+    Model.INSTANCE.addToRender(shapeFactory.createCircle(radius, centerX, centerY, color, name));
   }
-
 
   @Override
   public void run() {
     Socket socket = null;
     try {
       var listener = new ServerSocket(1337);
-      while(true){
+      while (true) {
         socket = listener.accept();
         Scanner in = new Scanner(socket.getInputStream());
         String line = in.nextLine();
         if (line != null) {
           handleInput(line);
-
         }
       }
     } catch (IOException e) {
@@ -43,26 +39,48 @@ public final class ObPaintServer implements Runnable {
 
   private void handleInput(String line) {
     String[] coordinates = line.split(",");
-    if(line.contains("Circle")){
+    if (line.contains("Circle")) {
       parseCircle(coordinates);
-    } else if(line.contains("Remove")){
+    } else if (line.contains("Remove")) {
       parseRemove(coordinates);
+    } else if (line.contains("Line")) {
+      parseLine(coordinates);
     }
 
     System.out.println(line);
   }
 
+  private void parseLine(String[] coordinates) {
+    ShapeFactory shapeFactory = new ConcreteShapeFactory();
+    Model.INSTANCE.addToRender(
+        shapeFactory.createLine(
+            Integer.parseInt(coordinates[1]),
+            Integer.parseInt(coordinates[2]),
+            Integer.parseInt(coordinates[3]),
+            Integer.parseInt(coordinates[4]),
+            new Color(
+                Integer.parseInt(coordinates[5]),
+                Integer.parseInt(coordinates[6]),
+                Integer.parseInt(coordinates[7]),
+                Integer.parseInt(coordinates[8])),
+            coordinates[9]));
+  }
+
   private void parseRemove(String[] coordinates) {
-    Model.INSTANCE.removeFromRenderByPoint(Integer.parseInt(coordinates[1]),
-            Integer.parseInt(coordinates[2]));
+    Model.INSTANCE.removeFromRenderByPoint(
+        Integer.parseInt(coordinates[1]), Integer.parseInt(coordinates[2]));
   }
 
   private void parseCircle(String[] line) {
-    addCircle(Integer.parseInt(line[1]),
-            Integer.parseInt(line[2]),
-            Integer.parseInt(line[3]),
-            new Color(Integer.parseInt(line[4]),Integer.parseInt(line[5]),
-                    Integer.parseInt(line[6]),Integer.parseInt(line[7])),
-            line[8]);
+    addCircle(
+        Integer.parseInt(line[1]),
+        Integer.parseInt(line[2]),
+        Integer.parseInt(line[3]),
+        new Color(
+            Integer.parseInt(line[4]),
+            Integer.parseInt(line[5]),
+            Integer.parseInt(line[6]),
+            Integer.parseInt(line[7])),
+        line[8]);
   }
 }

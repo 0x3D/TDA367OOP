@@ -50,4 +50,8 @@ public enum ObPaintClient {
   public void removeShapeAt(int x, int y) {
     sendMessage("Remove," + x + "," + y);
   }
+
+  public void sendLine(int x1, int y1, int x2, int y2, Color color, String name) {
+    sendMessage("Line," + x1 + "," +y1 +"," + x2 + "," + y2 + "," + color + "," + name);
+  }
 }
