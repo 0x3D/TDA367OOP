@@ -4,6 +4,7 @@ import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
+import com.teamjeaa.obpaint.server.ObPaintClient;
 
 /** AddMshape TODO TODO: Better name here, add rectangle strange name */
 public final class AddRectangle implements Command {
@@ -29,5 +30,8 @@ public final class AddRectangle implements Command {
   public void execute() {
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
     Model.INSTANCE.addToRender(shapeFactory.createRectangle(x1, y1, x2, y2, color, name));
+    if (ObPaintClient.INSTANCE.isConnected()) {
+      ObPaintClient.INSTANCE.sendRectangle(x1,y1,x2,y2,color,name);
+    }
   }
 }

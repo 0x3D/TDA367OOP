@@ -15,7 +15,7 @@ public enum ObPaintClient {
   private String ip;
   private int port;
 
-  private void sendMessage(String s){
+  private void sendMessage(String s) {
     try {
       var socket = new Socket(ip, port);
       PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
@@ -29,12 +29,11 @@ public enum ObPaintClient {
       e.printStackTrace();
       connected = false;
     }
-
   }
 
   public void sendCircle(int radius, int centerX, int centerY, Color color, String name) {
-      sendMessage("Circle," + radius + "," + centerX + "," + centerY + "," +
-              color.toString() + "," + name);
+    sendMessage(
+        "Circle," + radius + "," + centerX + "," + centerY + "," + color.toString() + "," + name);
   }
 
   public void connect(String ip, int port) {
@@ -52,6 +51,14 @@ public enum ObPaintClient {
   }
 
   public void sendLine(int x1, int y1, int x2, int y2, Color color, String name) {
-    sendMessage("Line," + x1 + "," +y1 +"," + x2 + "," + y2 + "," + color + "," + name);
+    sendMessage("Line," + x1 + "," + y1 + "," + x2 + "," + y2 + "," + color + "," + name);
+  }
+
+  public void sendRectangle(int x1, int y1, int x2, int y2, Color color, String name) {
+    sendMessage("Rectangle," + x1 + "," + y1 + "," + x2 + "," + y2 + "," + color + "," + name);
+  }
+
+  public void sendMove(int originX, int originY, int destinationX, int destinationY) {
+    sendMessage("Move," + originX + "," + originY + "," + destinationX + "," + destinationY);
   }
 }

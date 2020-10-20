@@ -3,6 +3,7 @@ package com.teamjeaa.obpaint.server;
 import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
+import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 
 import java.awt.*;
@@ -45,9 +46,39 @@ public final class ObPaintServer implements Runnable {
       parseRemove(coordinates);
     } else if (line.contains("Line")) {
       parseLine(coordinates);
+    } else if (line.contains("Rectangle")){
+      parseRectangle(coordinates);
+    } else if (line.contains("Move")){
+      parseMove(coordinates);
     }
 
     System.out.println(line);
+  }
+
+  private void parseMove(String[] coordinates) {
+    Mshape shapeToMove = Model.INSTANCE.findShapeAtPoint(Integer.parseInt(coordinates[1]),
+            Integer.parseInt(coordinates[2]));
+    Model.INSTANCE.removeFromRenderByPoint(Integer.parseInt(coordinates[1]),
+            Integer.parseInt(coordinates[2]));
+    final int deltaX = Integer.parseInt(coordinates[3])- Integer.parseInt(coordinates[1]);
+    final int deltaY = Integer.parseInt(coordinates[4])- Integer.parseInt(coordinates[2]);
+    Model.INSTANCE.addToRender(shapeToMove.translate(deltaX, deltaY));
+  }
+
+  private void parseRectangle(String[] coordinates) {
+    ShapeFactory shapeFactory = new ConcreteShapeFactory();
+    Model.INSTANCE.addToRender(
+            shapeFactory.createRectangle(
+                    Integer.parseInt(coordinates[1]),
+                    Integer.parseInt(coordinates[2]),
+                    Integer.parseInt(coordinates[3]),
+                    Integer.parseInt(coordinates[4]),
+                    new Color(
+                            Integer.parseInt(coordinates[5]),
+                            Integer.parseInt(coordinates[6]),
+                            Integer.parseInt(coordinates[7]),
+                            Integer.parseInt(coordinates[8])),
+                    coordinates[9]));
   }
 
   private void parseLine(String[] coordinates) {

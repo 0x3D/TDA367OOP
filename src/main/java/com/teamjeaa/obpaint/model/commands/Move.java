@@ -2,6 +2,7 @@ package com.teamjeaa.obpaint.model.commands;
 
 import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
+import com.teamjeaa.obpaint.server.ObPaintClient;
 
 public final class Move implements Command {
 
@@ -25,6 +26,9 @@ public final class Move implements Command {
       int mouseDeltaX = mouseUpX - mouseDownX;
       int mouseDeltaY = mouseUpY - mouseDownY;
       Model.INSTANCE.addToRender(shapeToMove.translate(mouseDeltaX, mouseDeltaY));
+      if (ObPaintClient.INSTANCE.isConnected()) {
+        ObPaintClient.INSTANCE.sendMove(mouseDownX,mouseDownY,mouseUpX,mouseUpY);
+      }
     } catch (IllegalArgumentException e) {
       System.out.println("Found no object to move");
     }
