@@ -49,13 +49,10 @@ public final class Pencil implements Command {
             Mpoint point1 = points.get(i);
             Mpoint point2 = points.get(i + 1);
 
-            if (point1.getX() == point2.getX() && point1.getY() == point2.getY()) {
-                removeIds.add(i);
+            if (point1.equals(point2)) {
+                points.remove(i);
+                i = 0;
             }
-        }
-
-        for (Integer removeId : removeIds) {
-            points.remove(removeId.intValue());
         }
     }
 }
