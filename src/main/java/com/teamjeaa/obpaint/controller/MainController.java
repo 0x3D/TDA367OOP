@@ -10,7 +10,6 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
@@ -83,11 +82,11 @@ public final class MainController implements Initializable {
 
   @FXML
   private void onClose() {
-    onSave();
     Platform.exit();
   }
 
-  private void onSave() {
+
+  @FXML  private void onSave() {
     // TODO: Move behaviour to new class
     StringBuilder sb = new StringBuilder();
     DrawVisitor drawVisitor = new SvgDrawVisitor(sb);
@@ -183,7 +182,12 @@ public final class MainController implements Initializable {
     portTF.setVisible(false);
     ipTF.setVisible(false);
     connectButton.setVisible(false);
-  }
+    }
+    @FXML private void onUndoButton(){
+    Model.INSTANCE.undo();
+    }
+
+
   @FXML private void onConnectButton (){
     ObPaintClient.INSTANCE.connect(ipTF.getText(),1337);
     portTF.getText();

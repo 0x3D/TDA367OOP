@@ -48,7 +48,7 @@ public final class JavaFXDrawVisitor implements DrawVisitor {
             mellipse.getSemiAxesB());
     ellipse.setFill(colorToJavaFXColor(mellipse.getColor()));
     rootBorderPane.getChildren().add(ellipse);
-    //    ObjectListController.objectFlowPane.getChildren().add(new ObjectListItemView("FuckOf"));
+    //    ObObjectListControllerjectListController.objectFlowPane.getChildren().add(new ObjectListItemView("FuckOf"));
   }
 
   /** {@inheritDoc} This provides the JavaFX implementation of visitMpolygon */

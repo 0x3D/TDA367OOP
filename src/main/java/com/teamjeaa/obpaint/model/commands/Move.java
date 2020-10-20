@@ -10,6 +10,12 @@ public final class Move implements Command {
   private final int mouseDownY;
   private final int mouseUpX;
   private final int mouseUpY;
+  private Mshape shapeToMove;
+
+  private int newValX;
+  private int newValY;
+
+
 
   public Move(int mouseDownX, int mouseDownY, int mouseUpX, int mouseUpY) {
     this.mouseDownX = mouseDownX;
@@ -21,16 +27,26 @@ public final class Move implements Command {
   @Override
   public void execute() {
     try {
-      Mshape shapeToMove = Model.INSTANCE.findShapeAtPoint(mouseDownX, mouseDownY);
-      Model.INSTANCE.removeFromRenderByPoint(mouseDownX, mouseDownY);
+      shapeToMove = Model.INSTANCE.findShapeAtPoint(mouseDownX, mouseDownY);
+      Model.INSTANCE.removeFromRender(shapeToMove);
       int mouseDeltaX = mouseUpX - mouseDownX;
       int mouseDeltaY = mouseUpY - mouseDownY;
       Model.INSTANCE.addToRender(shapeToMove.translate(mouseDeltaX, mouseDeltaY));
+      Model.INSTANCE.addToCommandList(this);
       if (ObPaintClient.INSTANCE.isConnected()) {
         ObPaintClient.INSTANCE.sendMove(mouseDownX,mouseDownY,mouseUpX,mouseUpY);
       }
     } catch (IllegalArgumentException e) {
       System.out.println("Found no object to move");
     }
+  }
+
+  @Override
+  public void undo() {
+    shapeToMove = Model.INSTANCE.findShapeAtPoint(mouseUpX,mouseUpY);
+    Model.INSTANCE.removeFromRender(shapeToMove);
+    int mouseDeltaX = mouseUpX - mouseDownX;
+    int mouseDeltaY = mouseUpY - mouseDownY;
+    Model.INSTANCE.addToRender(shapeToMove.translate(-(mouseDeltaX),-(mouseDeltaY)));
   }
 }

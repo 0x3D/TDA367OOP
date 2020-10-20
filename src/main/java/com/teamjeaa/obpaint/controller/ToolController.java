@@ -1,18 +1,29 @@
 package com.teamjeaa.obpaint.controller;
 
+import com.teamjeaa.obpaint.controller.ControllerModel.MoveVisualisator;
+import com.teamjeaa.obpaint.controller.ControllerModel.RectangleVisualisator;
+import com.teamjeaa.obpaint.controller.ControllerModel.ToolVisualisator;
 import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.commands.*;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 import javafx.event.ActionEvent;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Slider;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.*;
 import javafx.scene.layout.BorderPane;
 
+import javafx.scene.paint.Paint;
+
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+
+
+import javax.accessibility.AccessibleKeyBinding;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,11 +49,12 @@ public final class ToolController implements Initializable {
   @FXML private ToggleButton circleButton;
   @FXML private ToggleButton rectangleButton;
   @FXML private ToggleButton moveButton;
-  @FXML private Slider strokeSizeSlider;
-  private BorderPane canvasPane;
+  private Pane canvasPane;
   private Command command;
   private int x;
   private int y;
+
+  private ToolVisualisator toolVisualisator;
 
   /**
    * This method initializes the controller for ToolView
@@ -160,11 +172,19 @@ public final class ToolController implements Initializable {
   private void onRectangleButton(ActionEvent event) {
     System.out.println("Selecting Rectangle");
     resetCanvasMouseEventHandlers();
+    toolVisualisator = new RectangleVisualisator(canvasController);
+
     canvasPane.setOnMousePressed(
         mouseEvent -> {
           x = (int) mouseEvent.getX();
           y = (int) mouseEvent.getY();
+          toolVisualisator.initiateVisualisation(x, y);
         });
+
+    canvasPane.setOnMouseDragged( e -> {
+        toolVisualisator.updateVisualisation((int) e.getX(), (int) e.getY());
+    });
+
     canvasPane.setOnMouseReleased(
         mouseEvent -> {
           command =
@@ -176,22 +196,33 @@ public final class ToolController implements Initializable {
                   convertToModelColor(cp.getValue()),
             "Rectangle");
           command.execute();
+          toolVisualisator.endVisualisation();
         });
   }
 
   @FXML
   private void onMoveButton(ActionEvent event) {
     resetCanvasMouseEventHandlers();
+    toolVisualisator = new MoveVisualisator(canvasController);
+
     canvasPane.setOnMousePressed(
         mouseEvent -> {
           x = (int) mouseEvent.getX();
           y = (int) mouseEvent.getY();
+          toolVisualisator.initiateVisualisation(x, y);
+
         });
+
+    canvasPane.setOnMouseDragged( e -> {
+        toolVisualisator.updateVisualisation((int) e.getX(), (int) e.getY());
+    });
 
     canvasPane.setOnMouseReleased(
         mouseEvent -> {
+            toolVisualisator.endVisualisation();
           command = new Move(x, y, (int) mouseEvent.getX(), (int) mouseEvent.getY());
           command.execute();
         });
   }
+
 }

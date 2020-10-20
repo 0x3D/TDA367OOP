@@ -8,4 +8,9 @@ public interface Command {
    * "com\teamjeaa\obpaint\model\commands"
    */
   void execute();
+
+
+  void undo();
+
+
 }

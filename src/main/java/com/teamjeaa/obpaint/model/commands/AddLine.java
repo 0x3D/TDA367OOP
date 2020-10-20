@@ -3,6 +3,7 @@ package com.teamjeaa.obpaint.model.commands;
 import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
+import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 import com.teamjeaa.obpaint.server.ObPaintClient;
 
@@ -14,6 +15,7 @@ public final class AddLine implements Command {
   private final int x2;
   private final int y2;
   private final Color color;
+  private Mshape line;
 
   private final String name;
 
@@ -33,9 +35,17 @@ public final class AddLine implements Command {
   @Override
   public void execute() {
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
-    Model.INSTANCE.addToRender(shapeFactory.createLine(x1, y1, x2, y2, color, name));
+    line = shapeFactory.createLine(x1, y1, x2, y2, color, name);
+    Model.INSTANCE.addToRender(line);
+    Model.INSTANCE.addToCommandList(this);
     if (ObPaintClient.INSTANCE.isConnected()) {
       ObPaintClient.INSTANCE.sendLine(x1,y1,x2,y2,color,name);
     }
+
+  }
+
+  @Override
+  public void undo() {
+    Model.INSTANCE.removeFromRender(line);
   }
 }
