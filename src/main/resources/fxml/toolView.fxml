@@ -6,108 +6,140 @@ The tool pane
 @since 0.1 SNAPSHOT
 -->
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:id="toolView" prefHeight="650.0" prefWidth="150.0"
-            styleClass="WindowDecoration" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/11.0.1"
-            fx:controller="com.teamjeaa.obpaint.controller.ToolController">
-    <Line endX="95.0" layoutX="48.0" layoutY="156.0" startX="-40.0" stroke="#9e9999"/>
-    <ToggleButton fx:id="pencilButton" layoutX="13.0" layoutY="205.0" mnemonicParsing="false"
-                  onAction="#onPencilButton" prefHeight="35.0" prefWidth="35.0">
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="toolView" prefHeight="650.0" prefWidth="150.0" styleClass="WindowDecoration" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamjeaa.obpaint.controller.ToolController">
+    <Line endX="95.0" layoutX="48.0" layoutY="156.0" startX="-40.0" stroke="#9e9999" />
+    <ToggleButton fx:id="pencilButton" layoutX="17.0" layoutY="205.0" onAction="#onPencilButton" prefHeight="35.0" prefWidth="45.0" text="_p" textFill="TRANSPARENT">
 
         <graphic>
             <ImageView fitHeight="27.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../images/baseline_edit_black_18dp.png"/>
+                <Image url="@../images/baseline_edit_black_18dp.png" />
             </ImageView>
         </graphic>
+      <tooltip>
+         <Tooltip text="Press Alt+P to chose" />
+      </tooltip>
+      <font>
+         <Font size="1.0" />
+      </font>
     </ToggleButton>
 
-    <ToggleButton fx:id="moveButton" layoutX="16.0" layoutY="279.0" mnemonicParsing="false" onAction="#onMoveButton"
-                  prefHeight="35.0" prefWidth="35.0">
+    <ToggleButton fx:id="moveButton" layoutX="16.0" layoutY="279.0" onAction="#onMoveButton" prefHeight="35.0" prefWidth="45.0" text="_m" textFill="TRANSPARENT">
 
         <graphic>
             <ImageView fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../images/move.png"/>
+                <Image url="@../images/move.png" />
             </ImageView>
         </graphic>
+      <tooltip>
+         <Tooltip text="Press Alt+M to chose" />
+      </tooltip>
+      <font>
+         <Font size="1.0" />
+      </font>
     </ToggleButton>
 
-    <ToggleButton fx:id="eraserButton" layoutX="61.0" layoutY="279.0" mnemonicParsing="false"
-                  onAction="#onEraserButton" prefHeight="35.0" prefWidth="35.0">
+    <ToggleButton fx:id="eraserButton" layoutX="73.0" layoutY="279.0" onAction="#onEraserButton" prefHeight="35.0" prefWidth="45.0" text="_e" textFill="TRANSPARENT">
 
         <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../images/rubber.png"/>
+                <Image url="@../images/rubber.png" />
             </ImageView>
         </graphic>
+      <tooltip>
+         <Tooltip text="Press Alt+E to chose" />
+      </tooltip>
+      <font>
+         <Font size="1.0" />
+      </font>
     </ToggleButton>
 
-    <ToggleButton fx:id="circleButton" layoutX="15.0" layoutY="358.0" mnemonicParsing="false"
-                  onAction="#onCircleButton" prefHeight="35.0" prefWidth="35.0">
+    <ToggleButton fx:id="circleButton" layoutX="15.0" layoutY="358.0" onAction="#onCircleButton" prefHeight="35.0" prefWidth="45.0" text="_c" textFill="TRANSPARENT">
 
         <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../images/circle-512.png"/>
+                <Image url="@../images/circle-512.png" />
             </ImageView>
         </graphic>
+      <tooltip>
+         <Tooltip text="Press Alt+C to chose" />
+      </tooltip>
+      <font>
+         <Font size="1.0" />
+      </font>
     </ToggleButton>
 
-    <ToggleButton fx:id="rectangleButton" layoutX="60.0" layoutY="358.0" mnemonicParsing="false"
-                  onAction="#onRectangleButton" prefHeight="35.0" prefWidth="35.0">
+    <ToggleButton fx:id="rectangleButton" layoutX="73.0" layoutY="358.0" onAction="#onRectangleButton" prefHeight="35.0" prefWidth="45.0" text="_r" textFill="TRANSPARENT">
 
         <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../images/button_shape_rectangle-512.png"/>
+                <Image url="@../images/button_shape_rectangle-512.png" />
             </ImageView>
         </graphic>
+      <tooltip>
+         <Tooltip text="Press Alt+R to chose" />
+      </tooltip>
+      <font>
+         <Font size="1.0" />
+      </font>
     </ToggleButton>
 
-    <ToggleButton fx:id="brushButton" layoutX="105.0" layoutY="358.0" mnemonicParsing="false"
-                  onAction="#onLineButton" prefHeight="35.0" prefWidth="35.0">
+    <ToggleButton fx:id="brushButton" layoutX="15.0" layoutY="405.0" onAction="#onLineButton" prefHeight="35.0" prefWidth="45.0" text="_l" textFill="TRANSPARENT">
 
         <graphic>
             <ImageView fitHeight="21.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="@../images/line.png"/>
+                <Image url="@../images/line.png" />
             </ImageView>
         </graphic>
+      <tooltip>
+         <Tooltip text="Press Alt+L to chose" />
+      </tooltip>
+      <font>
+         <Font size="1.0" />
+      </font>
     </ToggleButton>
-    <TextField layoutX="19.0" layoutY="471.0" prefHeight="31.0" prefWidth="112.0"
-               promptText="Size (OBS! No decimals)">
+    <TextField layoutX="19.0" layoutY="471.0" prefHeight="31.0" prefWidth="112.0" promptText="Size (OBS! No decimals)">
 
         <font>
-            <Font size="9.0"/>
+            <Font size="9.0" />
         </font>
     </TextField>
 
-    <Slider layoutX="25.0" layoutY="514.0" prefHeight="13.0" prefWidth="112.0"/>
-    <ColorPicker fx:id="cp" editable="true" layoutX="9.0" layoutY="556.0" prefHeight="70.0" prefWidth="133.0"
-                 styleClass="ColorSlider"/>
+    <Slider layoutX="25.0" layoutY="514.0" prefHeight="13.0" prefWidth="112.0" />
+    <ColorPicker fx:id="cp" editable="true" layoutX="9.0" layoutY="556.0" prefHeight="70.0" prefWidth="133.0" styleClass="ColorSlider" />
 
     <Label layoutX="8.0" layoutY="186.0" text="Pencil">
         <font>
-            <Font name="Courier New" size="16.0"/>
+            <Font name="Courier New" size="16.0" />
         </font>
     </Label>
     <Label layoutX="9.0" layoutY="254.0" text="Tools">
         <font>
-            <Font name="Courier New" size="16.0"/>
+            <Font name="Courier New" size="16.0" />
         </font>
     </Label>
     <Label layoutX="26.0" layoutY="92.0" prefHeight="31.0" prefWidth="91.0" text="ObPaint">
         <font>
-            <Font name="Comic Sans MS" size="24.0"/>
+            <Font name="Comic Sans MS" size="24.0" />
         </font>
     </Label>
-    <ImageView fitHeight="79.0" fitWidth="112.0" layoutX="19.0" layoutY="14.0" pickOnBounds="true"
-               preserveRatio="true">
-        <Image url="@../images/logo.png"/>
+    <ImageView fitHeight="79.0" fitWidth="112.0" layoutX="19.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../images/logo.png" />
     </ImageView>
-    <Label layoutX="19.0" layoutY="333.0" text="Shapes">
+    <Label layoutX="10.0" layoutY="331.0" text="Shapes">
         <font>
-            <Font name="Courier New" size="16.0"/>
+            <Font name="Courier New" size="16.0" />
         </font>
     </Label>
 </AnchorPane>
