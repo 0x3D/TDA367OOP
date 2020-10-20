@@ -24,6 +24,8 @@ public class ShapeInfoController implements Initializable {
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
     colorPicker.setDisable(true);
+    colorPicker.setOpacity(1.0);
+    colorPicker.getStyleClass().add("button");
   }
 
   public void updateInfo(Mshape mshape) {

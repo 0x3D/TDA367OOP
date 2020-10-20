@@ -27,17 +27,18 @@
     -fx-border-color: grey;
 }
 
-.object-list-item-view {
-    -fx-border-width: 2px;
-    -fx-border-color: #999999;
-    -fx-border-radius: 1px;
-    -fx-background-radius: 1px;
+.color-picker > .label:disabled {
+    -fx-opacity : 1.0;
 }
-
-.object-list-item-view:hover {
-    -fx-background-color: derive(-fx-background, -20%);
+.deleteButton {
+    -fx-background-color: rgb(240,128,128);
+    -fx-border-color: grey;
 }
-
-.object-list-item-view:pressed {
-    -fx-background-color: derive(-fx-background, 20%);
+.deleteButton:hover{
+    -fx-background-color: rgb(250,110,110);
+}
+.deleteButton:pressed{
+    -fx-background-color: red;
+}
+.ObjectListItem{
 }

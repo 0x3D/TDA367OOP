@@ -9,6 +9,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
@@ -113,7 +114,6 @@ public final class MainController implements Initializable {
     } else {
       mainPane.setStyle("-fx-background-color: rgb(244,244,244)");
     }
-    objectListController.updateList();
   }
 
   @FXML
