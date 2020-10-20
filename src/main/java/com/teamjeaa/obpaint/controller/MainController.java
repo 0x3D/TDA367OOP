@@ -8,6 +8,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
@@ -77,11 +78,11 @@ public final class MainController implements Initializable {
 
   @FXML
   private void onClose() {
-    onSave();
     Platform.exit();
   }
 
-  private void onSave() {
+
+  @FXML  private void onSave() {
     // TODO: Move behaviour to new class
     StringBuilder sb = new StringBuilder();
     DrawVisitor drawVisitor = new SvgDrawVisitor(sb);
@@ -178,7 +179,12 @@ public final class MainController implements Initializable {
     portTF.setVisible(false);
     ipTF.setVisible(false);
     connectButton.setVisible(false);
-  }
+    }
+    @FXML private void onUndoButton(){
+    Model.INSTANCE.undo();
+    }
+
+
   @FXML private void onConnectButton (){
     portTF.getText();
     ipTF.getText();
