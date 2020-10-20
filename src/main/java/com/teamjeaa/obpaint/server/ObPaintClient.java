@@ -15,13 +15,13 @@ public enum ObPaintClient {
   private String ip;
   private int port;
 
-  public void sendCircle(int radius, int centerX, int centerY) {
+  private void sendMessage(String s){
     try {
       socket = new Socket(ip, port);
       out = new PrintWriter(socket.getOutputStream(), true);
       //       out.printf("Circle: %d %d %10.8f", radius, centerX, centerY);
       connected = true;
-      out.println("" + radius + "," + centerX + "," + centerY);
+      out.println(s);
     } catch (InterruptedIOException interruptedIOException) {
       System.err.println("Remote host timed out");
       connected = false;
@@ -29,6 +29,11 @@ public enum ObPaintClient {
       e.printStackTrace();
       connected = false;
     }
+
+  }
+
+  public void sendCircle(int radius, int centerX, int centerY) {
+      sendMessage("" + radius + "," + centerX + "," + centerY);
   }
 
   public void connect(String ip, int port) {
