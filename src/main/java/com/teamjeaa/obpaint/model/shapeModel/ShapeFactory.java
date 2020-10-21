@@ -24,7 +24,6 @@ public interface ShapeFactory {
    */
   Mshape createCircle(int radius, int x, int y, Color color, String name);
 
-  // TODO: cant be same have to handle
 
   /**
    * Method used by factory to create a Rectangle.

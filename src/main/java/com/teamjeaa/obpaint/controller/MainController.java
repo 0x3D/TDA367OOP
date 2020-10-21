@@ -50,6 +50,7 @@ public final class MainController implements Initializable {
   private @FXML Button connectButton;
   private @FXML AnchorPane aboutPage;
 
+
   // TODO: Remove or give usage
   @FXML private ToolController toolViewController;
   @FXML private CanvasController canvasViewController;

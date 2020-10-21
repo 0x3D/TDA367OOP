@@ -16,7 +16,7 @@ import java.util.List;
  */
 public final class ModelCanvas {
 
-  // TODO: Add ? extends
+  // Can't use generics because read and write out of list
   private final List<Mshape> shapes;
 
   private ModelCanvas(List<Mshape> shapes) {
@@ -51,7 +51,7 @@ public final class ModelCanvas {
    * @throws IllegalArgumentException If Shape is not in list
    */
   public Mshape findShapeAt(int x, int y) throws IllegalArgumentException {
-    // TODO: search for better solution
+    // Maybe not optimal solution
     Collections.reverse(shapes);
     for (Mshape shape : shapes) {
       if (shape.isPointMemberOfShape(x, y)) {

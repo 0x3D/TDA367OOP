@@ -20,9 +20,13 @@ public final class AddEraser implements Command {
    */
   @Override
   public void execute() {
-    removedShape = Model.INSTANCE.findShapeAtPoint(x,y);
-    Model.INSTANCE.removeFromRenderByPoint(x, y);
-    Model.INSTANCE.addToCommandList(this);
+    try {
+      removedShape = Model.INSTANCE.findShapeAtPoint(x,y);
+      Model.INSTANCE.removeFromRenderByPoint(x, y);
+      Model.INSTANCE.addToCommandList(this);
+    } catch (IllegalArgumentException e){
+      System.out.println("Found no object to remove");
+    }
     if (ObPaintClient.INSTANCE.isConnected()) {
       ObPaintClient.INSTANCE.removeShapeAt(x,y);
     }

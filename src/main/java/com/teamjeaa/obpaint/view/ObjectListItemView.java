@@ -85,7 +85,7 @@ public class ObjectListItemView extends AnchorPane {
     return intensity;
   }
 
-  // TODO: implement button to click this
+  //This is used but IntelliJ doesn't recognise because of JavaFX FXML
   @FXML
   public void onClickedListItem() {
     parentController.updateShapeInfo(mshape);

@@ -53,7 +53,6 @@ public final class ModelCanvasTest {
 
   @Test
   public void findShapeAt() {
-    // TODO: Implement
     int x = 19;
     int y = 19;
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
@@ -79,7 +78,6 @@ public final class ModelCanvasTest {
 
   @Test
   public void findCircleAt() {
-    // TODO: Implement
     int x = 55;
     int y = 55;
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
@@ -91,7 +89,6 @@ public final class ModelCanvasTest {
 
   @Test
   public void findPolyLineAt() {
-    // TODO: Implement
     int x = 49;
     int y = 47;
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
