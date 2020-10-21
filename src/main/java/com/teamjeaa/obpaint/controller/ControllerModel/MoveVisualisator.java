@@ -17,7 +17,6 @@ public class MoveVisualisator implements ToolVisualisator {
 
     @Override
     public void updateVisualisation(int x, int y) {
-
     }
 
     @Override

@@ -1,27 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<fx:root id="itemPane" fx:id="itemPane" onMouseClicked="#onClickedListItem" onMousePressed="#onClickedListItem" prefHeight="36.0" prefWidth="163.0" styleClass="ObjectListItem" stylesheets="@../css/main.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-    <Label fx:id="objectLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="7.0" layoutY="6.0" prefHeight="24.0" prefWidth="75.0" text="Object" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="81.0">
+<fx:root id="itemPane" fx:id="itemPane" onMouseClicked="#onClickedListItem" onMousePressed="#onClickedListItem" prefHeight="36.0" prefWidth="163.0" styleClass="TransparentBackground" stylesheets="@../css/main.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <Label fx:id="objectLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="4.0" layoutY="4.0" prefHeight="41.0" prefWidth="107.0" styleClass="ShapeInfo" text="Stright Line" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
 
         <font>
             <Font name="Arial Bold Italic" size="13.0" />
         </font>
-      <tooltip>
-         <Tooltip text="Click here to open" />
-      </tooltip>
     </Label>
-   <AnchorPane id="hoverPane" fx:id="hoverPane" layoutX="119.0" layoutY="7.0" prefHeight="24.0" prefWidth="30.0" />
-   <Label layoutX="89.0" layoutY="11.0" text="Color">
+   <AnchorPane id="hoverPane" fx:id="hoverPane" layoutX="112.0" layoutY="16.0" prefHeight="16.0" prefWidth="30.0" AnchorPane.bottomAnchor="2.0" />
+   <Label fx:id="colorLabel" layoutX="109.0" layoutY="6.0" styleClass="ShapeInfo" text="Color" AnchorPane.topAnchor="1.0">
       <font>
          <Font name="System Italic" size="10.0" />
       </font>
    </Label>
-   <Line endX="160.0" />
-   <Line endX="160.0" endY="36.0" startY="36.0" />
+   <Line endX="160.0" AnchorPane.topAnchor="0.0" />
+   <Line endX="160.0" endY="36.0" startY="36.0" AnchorPane.bottomAnchor="0.0" />
 </fx:root>

@@ -29,7 +29,7 @@ public final class MpolylineTest {
     mPoints.add(new Mpoint(0, 10));
     mPoints.add(new Mpoint(10, 100));
     mPoints.add(new Mpoint(0, 100));
-    return new Mpolyline(mPoints, new Color(255, 175, 175), "test");
+    return new Mpolyline(mPoints, new Color(255, 175, 175), "test",1);
   }
 
   @Test

@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ColorPicker;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 
@@ -41,10 +42,12 @@ public final class ToolController implements Initializable {
   @FXML private ToggleButton circleButton;
   @FXML private ToggleButton rectangleButton;
   @FXML private ToggleButton moveButton;
+  @FXML private TextField widthTextField;
   private Pane canvasPane;
   private Command command;
   private int x;
   private int y;
+  private final static int START_UP_STROKE_SIZE = 1;
 
   private ToolVisualisator toolVisualisator;
 
@@ -63,6 +66,7 @@ public final class ToolController implements Initializable {
     circleButton.setToggleGroup(toolButtons);
     rectangleButton.setToggleGroup(toolButtons);
     moveButton.setToggleGroup(toolButtons);
+    widthTextField.setText(String.valueOf(START_UP_STROKE_SIZE));
   }
 
   void setCanvasController(CanvasController canvasController) {
@@ -89,7 +93,7 @@ public final class ToolController implements Initializable {
     canvasPane.setOnMouseReleased(
         mouseEvent -> {
           points.add(new Mpoint((int) mouseEvent.getX(), (int) mouseEvent.getY()));
-          command = new Pencil(points, convertToModelColor(cp.getValue()), "Drawn line");
+          command = new Pencil(points, convertToModelColor(cp.getValue()), "Drawn line",Integer.parseInt(widthTextField.getText()));
           command.execute();
           points = new ArrayList<>();
         });
@@ -113,7 +117,7 @@ public final class ToolController implements Initializable {
                   (int) mouseEvent.getX(),
                   (int) mouseEvent.getY(),
                   convertToModelColor(cp.getValue()),
-                  "Straight line");
+                  "Straight line", Integer.parseInt(widthTextField.getText()));
           command.execute();
         });
   }
@@ -124,7 +128,7 @@ public final class ToolController implements Initializable {
     resetCanvasMouseEventHandlers();
     canvasPane.setOnMouseClicked(
         mouseEvent -> {
-          command = new AddEraser((int) mouseEvent.getX(), (int) mouseEvent.getY());
+          command = new Eraser((int) mouseEvent.getX(), (int) mouseEvent.getY());
           command.execute();
         });
   }
