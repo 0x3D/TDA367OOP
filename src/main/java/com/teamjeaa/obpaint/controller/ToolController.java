@@ -8,22 +8,15 @@ import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.commands.*;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 import javafx.event.ActionEvent;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.input.*;
-import javafx.scene.layout.BorderPane;
-
-import javafx.scene.paint.Paint;
 
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 
 
-import javax.accessibility.AccessibleKeyBinding;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -132,7 +125,7 @@ public final class ToolController implements Initializable {
     resetCanvasMouseEventHandlers();
     canvasPane.setOnMouseClicked(
         mouseEvent -> {
-          command = new AddEraser((int) mouseEvent.getX(), (int) mouseEvent.getY());
+          command = new Eraser((int) mouseEvent.getX(), (int) mouseEvent.getY());
           command.execute();
         });
   }

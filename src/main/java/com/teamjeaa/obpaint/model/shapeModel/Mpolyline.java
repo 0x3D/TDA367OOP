@@ -33,6 +33,7 @@ public final class Mpolyline implements Mshape {
     this.mPoints = mPoints;
     this.color = color;
     this.name = name;
+
   }
 
   /**
