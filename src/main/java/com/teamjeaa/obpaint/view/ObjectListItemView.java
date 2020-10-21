@@ -11,6 +11,13 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
+/**
+ * ObjectListItemView is a class that represent the item that is added on the objectListViews FlowPane.
+ * extended by javafx AnchorPane
+ *
+ * @author Axel H
+ * @since SNAPSHOT 0.3.
+ */
 public final class ObjectListItemView extends AnchorPane {
 
   private static final String FXML_OBJECT_LIST_ITEM_VIEW_FXML = "/fxml/objectListItemView.fxml";
@@ -20,12 +27,25 @@ public final class ObjectListItemView extends AnchorPane {
   private final MainController parentController;
 
 
-  //IntelliJ cant recognize that these are used
-  private @FXML Label objectLabel;
-  private @FXML AnchorPane itemPane;
-  private @FXML AnchorPane hoverPane;
+  /**
+   * IntelliJ cant recognize that these are used
+   * But...they are
+   */
 
+  private @FXML
+  Label objectLabel;
+  private @FXML
+  AnchorPane itemPane;
+  private @FXML
+  AnchorPane hoverPane;
 
+  /**
+   * Constructor for the Item
+   *
+   * @param mshape         we need to get the info about the shape
+   * @param mainController is the controller we sending. Needed in javafx because all visual things in javafx
+   *                       needs a controller
+   */
   public ObjectListItemView(Mshape mshape, MainController mainController) {
 
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(FXML_OBJECT_LIST_ITEM_VIEW_FXML));
@@ -42,12 +62,21 @@ public final class ObjectListItemView extends AnchorPane {
     setLabelName();
   }
 
+  /**
+   * sets the nameof the mshape to the label on the listItem
+   */
   private void setLabelName() {
     objectLabel.setText(mshape.getName());
     objectLabel.setAlignment(Pos.CENTER_LEFT);
   }
 
-  private String colorConverter (Mshape mshape) {
+  /**
+   * Converts the Color to javafx color
+   *
+   * @param mshape holds the color of the shape
+   * @return a string of the color info
+   */
+  private String colorConverter(Mshape mshape) {
     Color color = mshape.getColor();
     return "-fx-background-color: rgb(" +
             color.getRed() +
@@ -58,11 +87,17 @@ public final class ObjectListItemView extends AnchorPane {
             ");";
   }
 
+  /**
+   * Sets the backround of the pane to the color that the MShape is holding
+   */
   private void setColorBackground() {
     hoverPane.setStyle(colorConverter(mshape));
   }
 
-  //This is used but IntelliJ doesn't recognise because of JavaFX FXML
+  /**
+   * this is what is called if you press on a listItem
+   * This is used but IntelliJ doesn't recognise because of JavaFX FXML
+   */
   @FXML
   private void onClickedListItem() {
     parentController.updateShapeInfo(mshape);
