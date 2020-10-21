@@ -30,8 +30,8 @@ import java.util.ResourceBundle;
  */
 public final class ToolController implements Initializable {
   private static final int START_UP_STROKE_SIZE = 1;
-  List<Mpoint> points = new ArrayList<>();
-  private CanvasController canvasController;
+  private static final int JAVAFX_MODEL_COLOR_CONSTANT = 255;
+
   @FXML private ColorPicker cp;
   @FXML private ToggleButton pencilButton;
   @FXML private ToggleButton brushButton;
@@ -40,6 +40,9 @@ public final class ToolController implements Initializable {
   @FXML private ToggleButton rectangleButton;
   @FXML private ToggleButton moveButton;
   @FXML private TextField widthTextField;
+
+  List<Mpoint> points = new ArrayList<>();
+  private CanvasController canvasController;
   private Pane canvasPane;
   private Command command;
   private int x;
@@ -190,10 +193,10 @@ public final class ToolController implements Initializable {
 
   private Color convertToModelColor(javafx.scene.paint.Color javafxColor) {
     return new Color(
-        (int) (javafxColor.getRed() * 255),
-        (int) (javafxColor.getGreen() * 255),
-        (int) (javafxColor.getBlue() * 255),
-        (int) (javafxColor.getOpacity() * 255));
+        (int) (javafxColor.getRed() * JAVAFX_MODEL_COLOR_CONSTANT),
+        (int) (javafxColor.getGreen() * JAVAFX_MODEL_COLOR_CONSTANT),
+        (int) (javafxColor.getBlue() * JAVAFX_MODEL_COLOR_CONSTANT),
+        (int) (javafxColor.getOpacity() * JAVAFX_MODEL_COLOR_CONSTANT));
   }
 
   @FXML
