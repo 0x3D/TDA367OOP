@@ -26,7 +26,7 @@ public final class Move implements Command {
    * @param mouseDownX X-position of shape to move
    * @param mouseDownY Y-position of shape to move
    * @param mouseUpX X-position where shape should be moved
-   * @param mouseUpY Y-position where shapen should be moved.
+   * @param mouseUpY Y-position where shape should be moved.
    */
   public Move(int mouseDownX, int mouseDownY, int mouseUpX, int mouseUpY) {
     this.mouseDownX = mouseDownX;
@@ -35,6 +35,10 @@ public final class Move implements Command {
     this.mouseUpY = mouseUpY;
   }
 
+  /**
+   * Execute command by moving object at mouseDownX and mouseDownY coordinates to mouseUpX and mouseUpY
+   * coordinates. Saves shape to move to be able to undo.
+   */
   @Override
   public void execute() {
     try {
@@ -52,6 +56,9 @@ public final class Move implements Command {
     }
   }
 
+  /**
+   * Executes undo command by moving object back to previous location.
+   */
   @Override
   public void undo() {
     shapeToMove = Model.INSTANCE.findShapeAtPoint(mouseUpX,mouseUpY);
