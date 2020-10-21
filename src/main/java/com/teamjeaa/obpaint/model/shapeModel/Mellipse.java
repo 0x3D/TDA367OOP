@@ -55,7 +55,8 @@ public final class Mellipse implements Mshape {
 
   /** @return The color of this Ellipse */
   public Color getColor() {
-    return color; // TODO: create a new color instead of giving object reference
+    //Color is immutable
+    return color;
   }
 
   @Override

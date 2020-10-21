@@ -27,7 +27,7 @@ public final class AddRectangle implements Command {
     this.name = name;
   }
 
-  /** TODO */
+
   @Override
   public void execute() {
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
