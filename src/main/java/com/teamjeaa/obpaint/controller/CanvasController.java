@@ -51,6 +51,10 @@ public final class CanvasController implements Initializable {
     fixClipping(rootBorderPane);
   }
 
+  /**
+   * fixClipping method makes that you cant paint outside the "borderPane" /"region"
+   * @param pane is the regian we limits
+   */
   // JavaFX is stupid with Borders of panes, this method adds clipping
   private void fixClipping(Region pane) {
     Rectangle clippingArea = new Rectangle();
@@ -65,10 +69,18 @@ public final class CanvasController implements Initializable {
             });
   }
 
+  /**
+   * getter for our canvasPane that is a BorderPane
+   * @return rootBorderPane
+   */
   BorderPane getCanvasPane() {
     return rootBorderPane;
   }
 
+  /**
+   * The render method is the  one thats render all our visualisations on the rootBorderPane
+   * @param drawVisitor translates our own shapes to javaFx visualisations
+   */
   private void render(DrawVisitor drawVisitor) {
     rootBorderPane.getChildren().clear();
     objectListController.updateList();
@@ -81,14 +93,27 @@ public final class CanvasController implements Initializable {
     }
   }
 
+  /**
+   * setter gor ghost
+   * @param ghost is the object that visualise our "forms" before they adds on the rootBorderPane
+   */
   public void setGhost(Node ghost) {
     this.ghost = ghost;
   }
 
+  /**
+   * setObjectListController is the method that sets the objectlistcontroller
+   * here in the canvasPane.
+   * Needed because of JavaFx controller need to be specified in all diffrent FXML files
+   * @param objectListController is the controller
+   */
   public void setObjectListController(ObjectListController objectListController) {
     this.objectListController = objectListController;
   }
 
+  /**
+   * Cleares the ghost from the visualisation
+   */
   public void clearGhost() {
     this.ghost = null;
   }
