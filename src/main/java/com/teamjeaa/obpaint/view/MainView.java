@@ -25,7 +25,7 @@ public final class MainView extends AnchorPane {
       if ( SWEDISHSELECTED) {
         resourceBundle = ResourceBundle.getBundle("obPaint_sv");
       }else{
-         resourceBundle = ResourceBundle.getBundle("obPaint");
+         resourceBundle = ResourceBundle.getBundle("obPaint_en");
       }
       fxmlLoader.setResources(resourceBundle);
       fxmlLoader.load();
