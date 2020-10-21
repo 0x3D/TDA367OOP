@@ -1,12 +1,12 @@
-package com.teamjeaa.obpaint.controller.ControllerModel;
+package com.teamjeaa.obpaint.controller.controllerModel;
 
 
 import com.teamjeaa.obpaint.controller.CanvasController;
 
-public class MoveVisualisator implements ToolVisualisator {
+public class MoveVisualiser implements ToolVisualiser {
     private final CanvasController controller;
 
-    public MoveVisualisator(CanvasController controller) {
+    public MoveVisualiser(CanvasController controller) {
         this.controller = controller;
     }
 

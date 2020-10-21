@@ -23,7 +23,7 @@ public final class ObPaintServer implements Runnable {
 
   @Override
   public void run() {
-    Socket socket = null;
+    Socket socket;
     try {
       var listener = new ServerSocket(1337);
       while (true) {
