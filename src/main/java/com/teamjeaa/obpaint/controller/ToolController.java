@@ -2,6 +2,7 @@ package com.teamjeaa.obpaint.controller;
 
 import com.teamjeaa.obpaint.controller.controllerModel.*;
 import com.teamjeaa.obpaint.model.Color;
+import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.commands.*;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 
@@ -12,7 +13,9 @@ import javafx.scene.control.ColorPicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
+
 import javafx.scene.layout.Pane;
+
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -29,9 +32,8 @@ import java.util.ResourceBundle;
  * @since 0.1-SNAPSHOT
  */
 public final class ToolController implements Initializable {
-  private static final int START_UP_STROKE_SIZE = 1;
   private static final int JAVAFX_MODEL_COLOR_CONSTANT = 255;
-
+  private final static int START_UP_STROKE_SIZE = 3;
   @FXML private ColorPicker cp;
   @FXML private ToggleButton pencilButton;
   @FXML private ToggleButton brushButton;
@@ -73,6 +75,7 @@ public final class ToolController implements Initializable {
   }
 
   private void resetCanvasMouseEventHandlers() {
+    //unfortunately this is the only way to reset all mouseevent-handlers...
     canvasPane.setOnMouseClicked(null);
     canvasPane.setOnMousePressed(null);
     canvasPane.setOnMouseReleased(null);
@@ -99,6 +102,7 @@ public final class ToolController implements Initializable {
           points.add(new Mpoint((int) mouseEvent.getX(), (int) mouseEvent.getY()));
           toolVisualiser.updateVisualisation((int) mouseEvent.getX(), (int) mouseEvent.getY());
         });
+
 
     canvasPane.setOnMouseReleased(
         mouseEvent -> {

@@ -22,7 +22,7 @@ public final class Mpolyline implements Mshape {
 
   private final Color color;
   private final String name;
-  private final int strokeWidth;
+  private int strokeWidth;
 
   /**
    * Constructor to create a Polyline
@@ -155,7 +155,7 @@ public final class Mpolyline implements Mshape {
 
   @Override
   public boolean isPointMemberOfShape(int x, int y) {
-    int acceptance = this.strokeWidth/2 + 7;
+    double acceptance = 10 + this.strokeWidth/2.0;
 
     /*if (      (x < (getMinPosition().getX() - acceptance) || x > (getMaxPosition().getX()) + acceptance)
             || (y < (getMinPosition().getY() - acceptance) || y > (getMaxPosition().getY()) + acceptance)) {
@@ -166,7 +166,7 @@ public final class Mpolyline implements Mshape {
       Mpoint point1 = mPoints.get(i);
       Mpoint point2 = mPoints.get(i + 1);
 
-      if (distance(point1, point2, x, y) < acceptance) {
+      if (distance(point1, point2, x, y) <= acceptance) {
         return true;
       }
     }
@@ -187,26 +187,70 @@ public final class Mpolyline implements Mshape {
   }
 
   /** https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line */
-  private int distance(Mpoint A, Mpoint C, int x, int y){
-    int distance;
+  private double distance(Mpoint point1, Mpoint point2, int x, int y) {
+    double distance;
+    Mpoint A = point1;
+    Mpoint C = point2;
     Mpoint B = new Mpoint(x, y);
     double angleA;
     double angleC;
+    double angleB;
 
-    //TODO använda skalärprodukt istället
+    // TODO använda skalärprodukt istället
 
-    double distanceAC = Math.sqrt(Math.pow(C.getX()-A.getX(), 2) + Math.pow(C.getY() - A.getY(), 2));
-    double distanceAB = Math.sqrt(Math.pow(B.getX()-A.getX(), 2) + Math.pow(B.getY() - A.getY(), 2));
-    double distanceBC = Math.sqrt(Math.pow(B.getX()-C.getX(), 2) + Math.pow(B.getY() - C.getY(), 2));
+    double distanceAC = Math.sqrt(Math.pow(C.getX() - A.getX(), 2) + Math.pow(C.getY() - A.getY(), 2));
+    double distanceAB = Math.sqrt(Math.pow(B.getX() - A.getX(), 2) + Math.pow(B.getY() - A.getY(), 2));
+    double distanceBC = Math.sqrt(Math.pow(B.getX() - C.getX(), 2) + Math.pow(B.getY() - C.getY(), 2));
 
     angleA = Math.acos((Math.pow(distanceAB, 2) + Math.pow(distanceAC, 2) - Math.pow(distanceBC, 2)) / (2 * distanceAB * distanceAC));
     angleC = Math.acos((Math.pow(distanceBC, 2) + Math.pow(distanceAC, 2) - Math.pow(distanceAB, 2)) / (2 * distanceBC * distanceAC));
+    angleB = Math.PI - angleA - angleC;
 
-    distance = (int) Math.round(Math.sin(angleA) * distanceAB);
+    distance = Math.sin(angleA) * distanceAB;
 
-    if (angleC >= Math.PI/4 || angleA >= Math.PI/4) {
-      distance = 99;
+    if (angleC >= Math.PI / 4 || angleA >= Math.PI / 4) {
+      distance = 999.9;
       return distance;
+    }
+
+    return distance;
+  }
+
+  private double distanceWithDotProduct(Mpoint point1, Mpoint point2, int x, int y) {
+    double distance;
+    Mpoint mousePoint = new Mpoint(x, y);
+
+    // vector between point1 and mousePoint
+    Mpoint vectorP1MP =
+        new Mpoint(Math.abs(mousePoint.getX() - point1.getX()), Math.abs(mousePoint.getY() - point1.getY()));
+
+    // vector between point1 and point2
+    Mpoint vectorP1P2 = new Mpoint(Math.abs(point2.getX() - point1.getX()), Math.abs(point2.getY() - point1.getY()));
+
+    double lengthP1MP = Math.sqrt(Math.pow(vectorP1MP.getX(), 2) + Math.pow(vectorP1MP.getY(), 2));
+    double lengthP1P2 = Math.sqrt(Math.pow(vectorP1P2.getX(), 2) + Math.pow(vectorP1P2.getY(), 2));
+
+    // dotproduct A * B
+    double dotP1MP_P1P2 = vectorP1MP.getX() * vectorP1P2.getX() + vectorP1MP.getY() * vectorP1P2.getY();
+
+    double cosAlpha = dotP1MP_P1P2 / (lengthP1MP * lengthP1P2);
+    double angleAlpha = Math.acos(cosAlpha);
+
+    Mpoint vectorP2P1 = new Mpoint(Math.abs(point1.getX() - point2.getX()), Math.abs(point1.getY() - point2.getY()));
+    Mpoint vectorP2MP = new Mpoint(Math.abs(mousePoint.getX() - point2.getX()), Math.abs(mousePoint.getY() - point2.getY()));
+
+    double lengthP2P1 = Math.sqrt(Math.pow(vectorP2P1.getX(), 2) + Math.pow(vectorP2P1.getY(), 2));
+    double lenghtP2MP = Math.sqrt(Math.pow(vectorP2MP.getX(), 2) + Math.pow(vectorP2MP.getY(), 2));
+
+    double dotP2MP_P2P1 = vectorP2MP.getX() * vectorP2P1.getX() + vectorP2MP.getY() * vectorP2P1.getY();
+
+    double cosBeta = dotP2MP_P2P1 / (lenghtP2MP * lengthP2P1);
+    double angleBeta = Math.acos(cosBeta);
+
+    if (angleAlpha <= (Math.PI / 4) && angleBeta <= (Math.PI / 4)) {
+      distance = Math.sin(angleAlpha) * lengthP1MP;
+    } else {
+      distance = 999.9;
     }
 
     return distance;
