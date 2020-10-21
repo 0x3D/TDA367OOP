@@ -8,8 +8,6 @@ import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 import com.teamjeaa.obpaint.server.ObPaintClient;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 public final class Pencil implements Command {
@@ -17,7 +15,7 @@ public final class Pencil implements Command {
     private final Color color;
     private final String name;
     private Mshape pencil;
-    private int strokeWidth;
+    private final int strokeWidth;
 
 
     public Pencil(List<Mpoint> points, Color color, String name, int strokeWidth) {
@@ -30,12 +28,13 @@ public final class Pencil implements Command {
     @Override
     public void execute() {
         ShapeFactory shapeFactory = new ConcreteShapeFactory();
-        removeDuplicatePoints(points);
-        pencil = shapeFactory.createPolyline(points, color, name,strokeWidth);
+        //removeDuplicatePoints(points);
+        removeUnnecessaryPoints(points);
+        pencil = shapeFactory.createPolyline(points, color, name, strokeWidth);
         Model.INSTANCE.addToRender(pencil);
         Model.INSTANCE.addToCommandList(this);
         if (ObPaintClient.INSTANCE.isConnected()) {
-            ObPaintClient.INSTANCE.sendPencilStroke(points,color,name,strokeWidth);
+            ObPaintClient.INSTANCE.sendPencilStroke(points,color,name, strokeWidth);
         }
     }
 
@@ -44,16 +43,14 @@ public final class Pencil implements Command {
         Model.INSTANCE.removeFromRender(pencil);
     }
 
-    private void removeDuplicatePoints(List<Mpoint> points) {
-        List<Integer> removeIds = new ArrayList<>();
-
+    private void removeUnnecessaryPoints(List<Mpoint> points) {
         for (int i = 0; i < points.size() - 1; i++) {
             Mpoint point1 = points.get(i);
             Mpoint point2 = points.get(i + 1);
 
-            if (point1.equals(point2)) {
+            if (Math.abs(point1.getX()-point2.getX()) < 8 && Math.abs(point1.getY()-point2.getY()) < 8) {
                 points.remove(i);
-                i = 0;
+                i--;
             }
         }
     }

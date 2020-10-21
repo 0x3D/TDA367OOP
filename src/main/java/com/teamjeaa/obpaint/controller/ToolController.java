@@ -46,8 +46,7 @@ public final class ToolController implements Initializable {
   private Command command;
   private int x;
   private int y;
-  private final static int START_UP_STROKE_SIZE = 1;
-
+  private final static int START_UP_STROKE_SIZE = 3;
   private ToolVisualisator toolVisualisator;
 
   /**
@@ -74,6 +73,7 @@ public final class ToolController implements Initializable {
   }
 
   private void resetCanvasMouseEventHandlers() {
+    //unfortunately this is the only way to reset all mouseevent-handlers...
     canvasPane.setOnMouseClicked(null);
     canvasPane.setOnMousePressed(null);
     canvasPane.setOnMouseReleased(null);
