@@ -14,6 +14,7 @@ public final class AddEraser implements Command {
     this.y = y;
   }
 
+
   /**
    * executeMethod that will execute our Commands tha tare defined in the Command package,
    * "com\teamjeaa\obpaint\model\commands"
