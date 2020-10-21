@@ -1,6 +1,7 @@
 package com.teamjeaa.obpaint.controller;
 
 import com.teamjeaa.obpaint.SvgDrawVisitor;
+import com.teamjeaa.obpaint.SvgParser;
 import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.server.ObPaintClient;
@@ -14,10 +15,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -214,6 +217,15 @@ public final class MainController implements Initializable {
   }
   @FXML
   private void openFile() {
-    
+    SvgParser svgParser = new SvgParser();
+    //TODO: Open file here
+    File testFile = new File("input.svg");
+    svgParser.OpenFile(testFile);
+    svgParser.parseFile();
+    List<Mshape> openedShapes = svgParser.getMshapeList();
+    Model.INSTANCE.removeAllShapes();
+    for(Mshape mshape: openedShapes){
+      Model.INSTANCE.addToRender(mshape);
+    }
   }
 }
