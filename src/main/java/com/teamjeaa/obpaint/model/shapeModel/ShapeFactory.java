@@ -47,7 +47,7 @@ public interface ShapeFactory {
    * @param color is the color of the line
    * @return returns instance of a Mpolygon.
    */
-  Mshape createLine(int x1, int y1, int x2, int y2, Color color, String name);
+  Mshape createLine(int x1, int y1, int x2, int y2, Color color, String name, int strokeSize);
 
   /**
    * Method used by factory to create a Polyline.
@@ -56,5 +56,5 @@ public interface ShapeFactory {
    * @param color - color of the line
    * @return - an Mshape
    */
-  Mshape createPolyline(List<Mpoint> points, Color color, String name);
+  Mshape createPolyline(List<Mpoint> points, Color color, String name, int strokeSize);
 }

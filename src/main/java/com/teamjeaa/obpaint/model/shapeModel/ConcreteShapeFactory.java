@@ -39,15 +39,15 @@ public final class ConcreteShapeFactory implements ShapeFactory {
   }
 
   @Override
-  public Mshape createLine(int x1, int y1, int x2, int y2, Color color, String name) {
+  public Mshape createLine(int x1, int y1, int x2, int y2, Color color, String name,int strokeWidth) {
     List<Mpoint> mpointList = new ArrayList<>();
     mpointList.add(new Mpoint(x1, y1));
     mpointList.add(new Mpoint(x2, y2));
-    return new Mpolyline(mpointList, color, name);
+    return new Mpolyline(mpointList, color, name,strokeWidth);
   }
 
   @Override
-  public Mshape createPolyline(List<Mpoint> points, Color color, String name) {
-    return new Mpolyline(points, color, name);
+  public Mshape createPolyline(List<Mpoint> points, Color color, String name, int strokeWidth) {
+    return new Mpolyline(points, color, name, strokeWidth);
   }
 }

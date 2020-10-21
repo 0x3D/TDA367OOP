@@ -1,8 +1,6 @@
 package com.teamjeaa.obpaint.controller;
-
-import com.teamjeaa.obpaint.model.Model;
-import com.teamjeaa.obpaint.model.commands.AddEraser;
 import com.teamjeaa.obpaint.model.commands.Command;
+import com.teamjeaa.obpaint.model.commands.Eraser;
 import com.teamjeaa.obpaint.model.commands.Move;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import javafx.fxml.FXML;
@@ -49,7 +47,7 @@ public class ShapeInfoController implements Initializable {
 
   @FXML
   private void onDeleteButton() {
-    Command command = new AddEraser(
+    Command command = new Eraser(
             mshape.getPosition().getX()+ (mshape.getWidth()/2),
             mshape.getPosition().getY() + (mshape.getHeight()/2));
     command.execute();

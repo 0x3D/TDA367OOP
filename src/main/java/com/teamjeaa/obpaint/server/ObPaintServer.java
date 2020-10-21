@@ -89,7 +89,7 @@ public final class ObPaintServer implements Runnable {
                 Integer.parseInt(coordinates[i + 2]),
                 Integer.parseInt(coordinates[i + 3]),
                 Integer.parseInt(coordinates[i + 4])),
-            coordinates[i + 5]));
+            coordinates[i + 5],Integer.parseInt(coordinates[i + 6])));
   }
 
   private void parseMove(String[] coordinates) {
@@ -132,7 +132,7 @@ public final class ObPaintServer implements Runnable {
                 Integer.parseInt(coordinates[6]),
                 Integer.parseInt(coordinates[7]),
                 Integer.parseInt(coordinates[8])),
-            coordinates[9]));
+            coordinates[9], Integer.parseInt(coordinates[10])));
   }
 
   private void parseRemove(String[] coordinates) {

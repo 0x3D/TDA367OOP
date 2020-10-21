@@ -1,22 +1,17 @@
 package com.teamjeaa.obpaint.controller.ControllerModel;
 
-
 import com.teamjeaa.obpaint.controller.CanvasController;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.*;
-
+import javafx.scene.shape.Rectangle;
 
 public class RectangleVisualisator implements ToolVisualisator {
-    private final CanvasController controller;
+    private final CanvasController canvasController;
     private Rectangle rectangle;
-
-    private Shape s;
-
     private int initialX;
     private int initialY;
 
-    public RectangleVisualisator(CanvasController controller) {
-        this.controller = controller;
+    public RectangleVisualisator(CanvasController canvasController) {
+        this.canvasController = canvasController;
     }
 
     @Override
@@ -24,11 +19,10 @@ public class RectangleVisualisator implements ToolVisualisator {
         initialX = x;
         initialY = y;
         rectangle = new Rectangle();
-        rectangle.setFill(new Color(0.3,0.3,0.3,0.1));
+        rectangle.setFill(new Color(0.3,0.3,0.3,0.2));
         rectangle.setX(x);
         rectangle.setY(y);
-        //canvas.getChildren().add(rectangle);
-        controller.setGhost(rectangle);
+        canvasController.setGhost(rectangle);
     }
 
     @Override
@@ -54,6 +48,6 @@ public class RectangleVisualisator implements ToolVisualisator {
 
     @Override
     public void endVisualisation() {
-        controller.clearGhost();
+        canvasController.clearGhost();
     }
 }

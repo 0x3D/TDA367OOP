@@ -18,14 +18,16 @@ public final class AddLine implements Command {
   private Mshape line;
 
   private final String name;
+  private final int strokeWidth;
 
-  public AddLine(int x1, int y1, int x2, int y2, Color color, String name) {
+  public AddLine(int x1, int y1, int x2, int y2, Color color, String name,int strokeWidth) {
     this.x1 = x1;
     this.y1 = y1;
     this.x2 = x2;
     this.y2 = y2;
     this.color = color;
     this.name = name;
+    this.strokeWidth = strokeWidth;
   }
 
   /**
@@ -35,11 +37,11 @@ public final class AddLine implements Command {
   @Override
   public void execute() {
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
-    line = shapeFactory.createLine(x1, y1, x2, y2, color, name);
+    line = shapeFactory.createLine(x1, y1, x2, y2, color, name,strokeWidth);
     Model.INSTANCE.addToRender(line);
     Model.INSTANCE.addToCommandList(this);
     if (ObPaintClient.INSTANCE.isConnected()) {
-      ObPaintClient.INSTANCE.sendLine(x1,y1,x2,y2,color,name);
+      ObPaintClient.INSTANCE.sendLine(x1,y1,x2,y2,color,name,strokeWidth);
     }
 
   }

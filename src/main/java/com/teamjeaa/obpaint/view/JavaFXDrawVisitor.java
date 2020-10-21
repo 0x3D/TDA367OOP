@@ -77,6 +77,7 @@ public final class JavaFXDrawVisitor implements DrawVisitor {
         .forEach(
             mpoint -> polyline.getPoints().addAll((double) mpoint.getX(), (double) mpoint.getY()));
     polyline.setStroke(colorToJavaFXColor(mpolyline.getColor()));
+    polyline.setStrokeWidth(mpolyline.getStrokeWidth());
     rootBorderPane.getChildren().add(polyline);
   }
 }
