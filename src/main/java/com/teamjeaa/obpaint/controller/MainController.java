@@ -27,35 +27,59 @@ import java.util.ResourceBundle;
  * Initializable and is used by mainView.fxml
  *
  * @author Jonas N
- * @since 0.1-SNAPSHOT
+ * @since 0.3-SNAPSHOT
  */
 public final class MainController implements Initializable {
+  /**
+   * FXML instances that holds the object in SceneBuilder
+   */
+  private @FXML
+  AnchorPane mainPane;
+  private @FXML
+  ToggleButton darkModeToggle;
+  private @FXML
+  AnchorPane startPagePane;
+  private @FXML
+  AnchorPane canvasViewRoot;
+  private @FXML
+  Button blancTemplateButton;
+  private @FXML
+  Button blackTemplateButton;
+  private @FXML
+  Button redTemplateButton;
+  private @FXML
+  Button limeTemplateButton;
+  private @FXML
+  AnchorPane messagePane;
+  private @FXML
+  AnchorPane serverPane;
+  private @FXML
+  AnchorPane serverPaneChild;
+  private @FXML
+  TextField portTF;
+  private @FXML
+  TextField ipTF;
+  private @FXML
+  Button connectButton;
+  private @FXML
+  AnchorPane aboutPage;
 
-  private @FXML AnchorPane mainPane;
-  private @FXML ToggleButton darkModeToggle;
-  private @FXML AnchorPane startPagePane;
-  private @FXML AnchorPane canvasViewRoot;
+  /**
+   * Controllers that doesn't seems it's used, but it is. When you name a included FXML file in to an other FXML file.
+   * It's needed that the name is exactly like this, otherwise it wont work
+   */
+  @FXML
+  private ToolController toolViewController;
+  @FXML
+  private CanvasController canvasViewController;
+  @FXML
+  private ObjectListController objectListController;
+  @FXML
+  private ShapeInfoController shapeInfoViewController;
 
-  // TODO: Remove or give usage
-  private @FXML Button blancTemplateButton;
-  private @FXML Button blackTemplateButton;
-  private @FXML Button redTemplateButton;
-  private @FXML Button limeTemplateButton;
-  private @FXML AnchorPane messagePane;
-  private @FXML AnchorPane serverPane;
-  private @FXML AnchorPane serverPaneChild;
-  private @FXML TextField portTF;
-  private @FXML TextField ipTF;
-  private @FXML Button connectButton;
-  private @FXML AnchorPane aboutPage;
-
-
-  // TODO: Remove or give usage
-  @FXML private ToolController toolViewController;
-  @FXML private CanvasController canvasViewController;
-  @FXML private ObjectListController objectListController;
-  @FXML private ShapeInfoController shapeInfoViewController;
-
+  /**
+   * initialize the startpane of obPaint
+   */
   @FXML
   private void initializeStartPage() {
     startPagePane.toFront();
@@ -67,7 +91,7 @@ public final class MainController implements Initializable {
   /**
    * This method initializes the controller for MainView
    *
-   * @param location - The location used to resolve relative paths for the root object
+   * @param location  - The location used to resolve relative paths for the root object
    * @param resources - The resources used to localize the root object
    */
   @Override
@@ -83,22 +107,28 @@ public final class MainController implements Initializable {
     serverPaneChild.setVisible(false);
   }
 
+  /**
+   * MenuItem that use this method to close the program
+   */
   @FXML
   private void onClose() {
     Platform.exit();
   }
 
-
-  @FXML  private void onSave() {
+  /**
+   * MenuItem that uses this metohos to save a .svg file
+   */
+  @FXML
+  private void onSave() {
     // TODO: Move behaviour to new class
     StringBuilder sb = new StringBuilder();
     DrawVisitor drawVisitor = new SvgDrawVisitor(sb);
     sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n");
     sb.append("<svg width=\"")
-        .append(800)
-        .append("\" height=\"")
-        .append(800)
-        .append("\" xmlns=\"http://www.w3.org/2000/svg\">\n");
+            .append(800)
+            .append("\" height=\"")
+            .append(800)
+            .append("\" xmlns=\"http://www.w3.org/2000/svg\">\n");
     for (Mshape mshape : Model.INSTANCE.getCanvasShapes()) {
       mshape.acceptDrawVisitor(drawVisitor);
     }
@@ -113,6 +143,9 @@ public final class MainController implements Initializable {
     }
   }
 
+  /**
+   * Puts darkmode on in obPaint so the progam gets a darker look.
+   */
   @FXML
   private void darkModeOn() {
     if (darkModeToggle.isSelected()) {
@@ -122,57 +155,105 @@ public final class MainController implements Initializable {
     }
   }
 
+  /**
+   * Gets you back to the templatePane so you can chose a new template if wanted
+   */
   @FXML
   private void backToTemplates() {
     startPagePane.setVisible(true);
     startPagePane.toFront();
   }
 
+  /**
+   * Blanc Theme
+   */
   @FXML
   private void onBlancTemplate() {
     canvasViewController.getCanvasPane().setStyle("-fx-background-color: White");
     startPagePane.setVisible(false);
   }
 
+  /**
+   * Black Theme
+   */
   @FXML
   private void onBlackTemplate() {
     canvasViewController.getCanvasPane().setStyle("-fx-background-color: Black");
     startPagePane.setVisible(false);
   }
 
+  /**
+   * Red Theme
+   */
   @FXML
   private void onRedTemplate() {
     canvasViewController.getCanvasPane().setStyle("-fx-background-color: red");
     startPagePane.setVisible(false);
   }
 
+  /**
+   * Lime Theme
+   */
   @FXML
   private void onLimeTemplate() {
     canvasViewController.getCanvasPane().setStyle("-fx-background-color: Lime");
     startPagePane.setVisible(false);
   }
 
+  /**
+   * Updates the shapeInfo on a clicked shape in the objectListView.
+   * ObjectListView holds a list on the object that are rendered on the rootBorderPane
+   *
+   * @param mshape - is the sape that the info is about
+   */
   public void updateShapeInfo(Mshape mshape) {
     shapeInfoViewController.updateInfo(mshape);
   }
+
+  /**
+   * removes all the shapes from the renderList
+   */
   @FXML
-  private void onRemoveAll(){
+  private void onRemoveAll() {
     messagePane.setVisible(true);
     messagePane.toFront();
     messagePane.setStyle("-fx-background-color: darkgrey");
   }
+
+  /**
+   * Is a yesButton. If you press yes you will remove all shapes
+   * WarningButton
+   */
   @FXML
-  private void onYesButton (){
+  private void onYesButton() {
     Model.INSTANCE.removeAllShapes();
     messagePane.toBack();
     messagePane.setVisible(false);
   }
-  @FXML private void onCancelButton (){
+
+  /**
+   * CancelButton that you can press if you regrett that you want to remove all shapes
+   */
+  @FXML
+  private void onCancelButton() {
     messagePane.toBack();
     messagePane.setVisible(false);
 
   }
-  @FXML private void onServerButton (){
+
+  /**
+   * Undos the last move
+   */
+  @FXML
+  private void onUndoButton() {
+    Model.INSTANCE.undo();
+  }
+
+  /**
+   * Serverbutton that opens a Pane there you can type in the information needed to collaborate with a friend
+   */
+  @FXML
+  private void onServerButton() {
     serverPane.toFront();
     serverPane.setVisible(true);
     serverPaneChild.setVisible(true);
@@ -180,40 +261,62 @@ public final class MainController implements Initializable {
     ipTF.setVisible(true);
     connectButton.setVisible(true);
   }
-  @FXML private void onCloseServerPane (){
+
+  /**
+   * Gets you back to the normal mainPane
+   */
+  @FXML
+  private void onCloseServerPane() {
     serverPane.toBack();
     serverPane.setVisible(false);
     serverPaneChild.setVisible(false);
     portTF.setVisible(false);
     ipTF.setVisible(false);
     connectButton.setVisible(false);
-    }
-    @FXML private void onUndoButton(){
-    Model.INSTANCE.undo();
-    }
+  }
 
-
-  @FXML private void onConnectButton (){
-    ObPaintClient.INSTANCE.connect(ipTF.getText(),1337);
+  /**
+   * Connects to the CollaborateServer
+   */
+  @FXML
+  private void onConnectButton() {
+    ObPaintClient.INSTANCE.connect(ipTF.getText(), 1337);
     portTF.getText();
     ipTF.getText();
   }
+
+  /**
+   * Blocks the mouse so you can click on a pane
+   *
+   * @param event - is a mouseClick event in javaFx
+   */
   @FXML
-  private void blockMouse(Event event){
+  private void blockMouse(Event event) {
     event.consume();
   }
+
+  /**
+   * opens the AboutPane
+   */
   @FXML
-  private void openAbout(){
+  private void openAbout() {
     aboutPage.setVisible(true);
     aboutPage.toFront();
   }
+
+  /**
+   * Closes the aboutPane
+   */
   @FXML
-  private void closeAbout(){
+  private void closeAbout() {
     aboutPage.setVisible(false);
     aboutPage.toBack();
   }
+
+  /**
+   * Opens a saved file
+   */
   @FXML
   private void openFile() {
-    
   }
 }

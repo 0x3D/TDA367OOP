@@ -4,6 +4,16 @@ import com.teamjeaa.obpaint.controller.CanvasController;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
+/**
+ * CircleVisualiser is a class thats holds the logic about the visualization
+ * when you creating a Line
+ *
+ * </p> We only use Javafx shapes to visualize this.
+ * Its implemented by ToolVisualiser
+ *
+ * @author Jonas N
+ * @since 0.3-SNAPSHOT
+ */
 public class LineVisualiser implements ToolVisualiser {
     private final CanvasController canvasController;
     private Line line;

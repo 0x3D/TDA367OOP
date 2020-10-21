@@ -4,23 +4,27 @@ import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.view.ObjectListItemView;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.layout.FlowPane;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class ObjectListController implements Initializable {
-  public @FXML FlowPane objectFlowPane;
+/**
+ * ObjectListController is a controller class for the shapeList
+ * Used by mainController
+ *
+ * @author Axel H
+ * @since 0.3-SNAPSHOT
+ */
+public class ObjectListController {
+  public @FXML
+  FlowPane objectFlowPane;
   private MainController parentController;
 
-  @Override
-  public void initialize(URL url, ResourceBundle resourceBundle) {}
-
+  /**
+   * updateList is a method that updates the list on the ObjectListView. If a shape is added to the rootBorderPane,
+   * then its updated in the ObjectlistView
+   */
   @FXML
   public void updateList() {
     objectFlowPane.getChildren().clear();
-    //TODO: Lockable object
     synchronized ("Server") {
       for (Mshape mshapes : Model.INSTANCE.getCanvasShapes()) {
         objectFlowPane.getChildren().add(new ObjectListItemView(mshapes, parentController));
@@ -28,6 +32,13 @@ public class ObjectListController implements Initializable {
     }
   }
 
+  /**
+   * SetParentController sets the maincontroller to this class so this method can be calles in mainController
+   * Its needed becuase we have a "singeview" javafx application that only can have one controller at the same time.
+   * We do this so we can separate theresponsibility to our  source code
+   *
+   * @param mainController is a mainController
+   */
   public void setParentController(MainController mainController) {
     this.parentController = mainController;
   }

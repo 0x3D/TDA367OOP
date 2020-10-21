@@ -4,7 +4,16 @@ import com.teamjeaa.obpaint.controller.CanvasController;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-
+/**
+ * CircleVisualiser is a class thats holds the logic about the visualization
+ * when you creating a Rectangle
+ *
+ * </p> We only use Javafx shapes to visualize this.
+ * Its implemented by ToolVisualiser
+ *
+ * @author Jonas N
+ * @since 0.3-SNAPSHOT
+ */
 public class RectangleVisualiser implements ToolVisualiser {
     private final CanvasController canvasController;
     private Rectangle rectangle;

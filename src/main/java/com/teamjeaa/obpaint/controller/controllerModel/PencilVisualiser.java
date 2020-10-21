@@ -5,7 +5,16 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Polyline;
 
 
-
+/**
+ * CircleVisualiser is a class thats holds the logic about the visualization
+ * when you creating a free line
+ *
+ * </p> We only use Javafx shapes to visualize this.
+ * Its implemented by ToolVisualiser
+ *
+ * @author Jonas N
+ * @since 0.3-SNAPSHOT
+ */
 public class PencilVisualiser implements ToolVisualiser {
 
     private final CanvasController canvasController;
