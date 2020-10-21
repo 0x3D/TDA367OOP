@@ -11,7 +11,6 @@ import javafx.scene.Node;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Region;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 
 import java.net.URL;
 import java.util.ResourceBundle;

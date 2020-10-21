@@ -1,8 +1,6 @@
 package com.teamjeaa.obpaint.controller;
 
-import com.teamjeaa.obpaint.controller.ControllerModel.MoveVisualisator;
-import com.teamjeaa.obpaint.controller.ControllerModel.RectangleVisualisator;
-import com.teamjeaa.obpaint.controller.ControllerModel.ToolVisualisator;
+import com.teamjeaa.obpaint.controller.ControllerModel.*;
 import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.commands.*;
@@ -88,15 +86,29 @@ public final class ToolController implements Initializable {
   void onPencilButton(ActionEvent event) {
     System.out.println("Selected Pencil tool");
     resetCanvasMouseEventHandlers();
+    toolVisualisator = new PencilVisualisator(canvasController);
+
+      canvasPane.setOnMousePressed(
+              mouseEvent -> {
+                  x = (int) mouseEvent.getX();
+                  y = (int) mouseEvent.getY();
+                  toolVisualisator.initiateVisualisation(x, y);
+              });
 
     canvasPane.setOnMouseDragged(
-        mouseEvent -> points.add(new Mpoint((int) mouseEvent.getX(), (int) mouseEvent.getY())));
+        mouseEvent -> {
+            points.add(new Mpoint((int) mouseEvent.getX(), (int) mouseEvent.getY()));
+            toolVisualisator.updateVisualisation((int) mouseEvent.getX(), (int) mouseEvent.getY());
+        });
+
+
     canvasPane.setOnMouseReleased(
         mouseEvent -> {
           points.add(new Mpoint((int) mouseEvent.getX(), (int) mouseEvent.getY()));
           command = new Pencil(points, convertToModelColor(cp.getValue()), "Drawn line",Integer.parseInt(widthTextField.getText()));
           command.execute();
           points = new ArrayList<>();
+          toolVisualisator.endVisualisation();
         });
   }
 
@@ -104,11 +116,19 @@ public final class ToolController implements Initializable {
   void onLineButton(ActionEvent event) {
     System.out.println("Selected line tool");
     resetCanvasMouseEventHandlers();
+    toolVisualisator = new LineVisualisator(canvasController);
+
     canvasPane.setOnMousePressed(
         mouseEvent -> {
           this.x = (int) mouseEvent.getX();
           this.y = (int) mouseEvent.getY();
+          toolVisualisator.initiateVisualisation(x, y);
         });
+
+      canvasPane.setOnMouseDragged( e -> {
+          toolVisualisator.updateVisualisation((int) e.getX(), (int) e.getY());
+      });
+
     canvasPane.setOnMouseReleased(
         mouseEvent -> {
           this.command =
@@ -120,6 +140,7 @@ public final class ToolController implements Initializable {
                   convertToModelColor(cp.getValue()),
                   "Straight line", Integer.parseInt(widthTextField.getText()));
           command.execute();
+          toolVisualisator.endVisualisation();
         });
   }
 
@@ -138,11 +159,19 @@ public final class ToolController implements Initializable {
   private void onCircleButton(ActionEvent event) {
     System.out.println("Selecting Circle");
     resetCanvasMouseEventHandlers();
+    toolVisualisator = new CircleVisualisator(canvasController);
+
     canvasPane.setOnMousePressed(
         mouseEvent -> {
           x = (int) mouseEvent.getX();
           y = (int) mouseEvent.getY();
+          toolVisualisator.initiateVisualisation(x, y);
         });
+
+      canvasPane.setOnMouseDragged( e -> {
+          toolVisualisator.updateVisualisation((int) e.getX(), (int) e.getY());
+      });
+
     canvasPane.setOnMouseReleased(
         mouseEvent -> {
           int dia =
@@ -154,6 +183,7 @@ public final class ToolController implements Initializable {
           // Math
           command = new AddCircle(dia / 2, centerX, centerY, convertToModelColor(cp.getValue()), "Circle");
           command.execute();
+          toolVisualisator.endVisualisation();
         });
   }
 
