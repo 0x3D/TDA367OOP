@@ -14,6 +14,7 @@ The main window of the application
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.input.KeyCodeCombination?>
@@ -25,6 +26,31 @@ The main window of the application
 <?import javafx.scene.text.Font?>
 
 <fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="900.0" stylesheets="@../css/main.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamjeaa.obpaint.controller.MainController">
+   <AnchorPane fx:id="serverPane" onMousePressed="#onCloseServerPane" prefHeight="675.0" prefWidth="899.0" styleClass="aboutDarkScreen" visible="false">
+      <children>
+         <AnchorPane fx:id="serverPaneChild" onMousePressed="#blockMouse" prefHeight="118.0" prefWidth="200.0" styleClass="aboutBackground" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+               <Button mnemonicParsing="false" onAction="#onCloseServerPane" styleClass="FontType" text="Close">
+                  <tooltip>
+                     <Tooltip styleClass="ToolTip" text="Close" />
+                  </tooltip>
+               </Button>
+               <TextField fx:id="portTF" layoutX="129.0" layoutY="38.0" prefHeight="25.0" prefWidth="45.0" promptText="port" styleClass="FontType" />
+               <TextField fx:id="ipTF" layoutX="26.0" layoutY="38.0" prefHeight="25.0" prefWidth="86.0" promptText="ip-adress" styleClass="FontType" />
+               <Button fx:id="connectButton" layoutX="118.0" layoutY="74.0" mnemonicParsing="false" onAction="#onConnectButton" styleClass="FontType" text="Connect">
+                  <tooltip>
+                     <Tooltip styleClass="ToolTip" text="Click here to open CollaboreteWindow" />
+                  </tooltip>
+               </Button>
+               <Label layoutX="121.0" layoutY="37.0" prefHeight="27.0" prefWidth="2.0" text=":">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+               </Label>
+            </children>
+         </AnchorPane>
+      </children>
+   </AnchorPane>
     <AnchorPane fx:id="messagePane" prefHeight="675.0" prefWidth="899.0" visible="false">
         <Label layoutX="165.0" layoutY="26.0" prefHeight="216.0" prefWidth="560.0" styleClass="FontType" text="Are you sure you want to remove everything?" wrapText="true">
             <font>
@@ -138,7 +164,7 @@ The main window of the application
     </AnchorPane>
 
     <AnchorPane prefHeight="28.5" prefWidth="900.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <MenuBar layoutY="-4.0" prefHeight="29.0" prefWidth="899.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <MenuBar layoutY="-4.0" prefHeight="29.0" prefWidth="899.0" styleClass="FontType" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <Menu mnemonicParsing="false" text="File">
                 <MenuItem mnemonicParsing="false" onAction="#onSave" text="Save">
                <accelerator>
@@ -151,6 +177,7 @@ The main window of the application
                </accelerator></MenuItem>
                 <SeparatorMenuItem mnemonicParsing="false" />
                 <MenuItem mnemonicParsing="false" onAction="#backToTemplates" text="Templates" />
+            <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open" />
             </Menu>
             <Menu mnemonicParsing="false" text="Edit">
                 <MenuItem mnemonicParsing="false" onAction="#onUndoButton" text="Undo">
@@ -171,16 +198,11 @@ The main window of the application
                 <MenuItem mnemonicParsing="false" onAction="#openAbout" text="About" />
             </Menu>
         </MenuBar>
-      <Button layoutX="820.0" mnemonicParsing="false" onAction="#onServerButton" styleClass="FontType" text="Collaborate" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0" />
+      <Button layoutX="820.0" mnemonicParsing="false" onAction="#onServerButton" styleClass="FontType" text="Collaborate" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+         <tooltip>
+            <Tooltip styleClass="ToolTip" text="Click Here to open Collaborate page" />
+         </tooltip></Button>
     </AnchorPane>
-   <AnchorPane fx:id="serverPane" layoutX="700.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <children>
-         <Button mnemonicParsing="false" onAction="#onCloseServerPane" styleClass="FontType" text="Close" />
-         <TextField fx:id="portTF" layoutX="37.0" layoutY="47.0" prefHeight="25.0" prefWidth="45.0" promptText="port" styleClass="FontType" />
-         <TextField fx:id="ipTF" layoutX="37.0" layoutY="88.0" prefHeight="25.0" prefWidth="86.0" promptText="ip-adress" styleClass="FontType" />
-         <Button fx:id="connectButton" layoutX="56.0" layoutY="145.0" mnemonicParsing="false" onAction="#onConnectButton" styleClass="FontType" text="Connect" />
-      </children>
-   </AnchorPane>
    <AnchorPane fx:id="aboutPage" onMouseClicked="#closeAbout" prefHeight="675.0" prefWidth="899.0" styleClass="aboutDarkScreen" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
          <AnchorPane layoutX="210.0" layoutY="107.0" onMouseClicked="#blockMouse" prefHeight="345.0" prefWidth="480.0" styleClass="aboutBackground" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">

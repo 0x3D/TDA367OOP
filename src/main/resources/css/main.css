@@ -51,6 +51,10 @@
 .aboutBackground{
     -fx-background-color: rgb(230, 230, 230);
 }
+.aboutBackground#serverPaneChild{
+    -fx-background-color: rgb(230, 230, 230);
+}
+
 .aboutDarkScreen{
     -fx-background-color: rgba(0, 0, 0, 0.75);
 }
@@ -103,3 +107,21 @@
 .FontType {
     -fx-font-family: "Courier New";
 }
+.FontType#xPosition {
+    -fx-font-size: 12;
+}
+.FontType#yPosition {
+    -fx-font-size: 12;
+}
+.FontType#widthTextField {
+    -fx-font-size: 18;
+    -fx-alignment: center;
+}
+.ToolTip {
+    -fx-font-family: "Courier New";
+    -fx-font-size: 12;
+}
+.ColaborateOpacaty{
+    -fx-opacity: 0.7;
+}
+

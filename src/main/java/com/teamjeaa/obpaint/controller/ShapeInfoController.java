@@ -1,7 +1,6 @@
 package com.teamjeaa.obpaint.controller;
-
-import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.commands.Command;
+import com.teamjeaa.obpaint.model.commands.Eraser;
 import com.teamjeaa.obpaint.model.commands.Move;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import javafx.fxml.FXML;
@@ -14,18 +13,18 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ShapeInfoController implements Initializable {
-  // TODO: Investigate if this is needed
-  ObjectListController objectListController;
+  private  static final String STYLE_CLASS_COLOR_PICKER = "button";
   private @FXML TextField xPosition;
   private @FXML TextField yPosition;
   private @FXML ColorPicker colorPicker;
   private Mshape mshape;
 
+
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
     colorPicker.setDisable(true);
     colorPicker.setOpacity(1.0);
-    colorPicker.getStyleClass().add("button");
+    colorPicker.getStyleClass().add(STYLE_CLASS_COLOR_PICKER);
   }
 
   public void updateInfo(Mshape mshape) {
@@ -48,7 +47,9 @@ public class ShapeInfoController implements Initializable {
 
   @FXML
   private void onDeleteButton() {
-    Model.INSTANCE.removeFromRender(mshape);
+    Command command = new Eraser(
+            mshape.getPosition().getX()+ (mshape.getWidth()/2),
+            mshape.getPosition().getY() + (mshape.getHeight()/2));
+    command.execute();
   }
-
 }

@@ -26,6 +26,8 @@ import java.util.ResourceBundle;
  */
 public final class CanvasController implements Initializable {
   private @FXML BorderPane rootBorderPane;
+
+  private Node ghost;
   private ObjectListController objectListController;
   private Model backend;
 
@@ -49,25 +51,23 @@ public final class CanvasController implements Initializable {
     fixClipping(rootBorderPane);
   }
 
-
-  //JavaFX is stupid with Borders of panes, this method adds clipping
-   private void fixClipping(Region pane){
+  // JavaFX is stupid with Borders of panes, this method adds clipping
+  private void fixClipping(Region pane) {
     Rectangle clippingArea = new Rectangle();
-    
+
     pane.setClip(clippingArea);
 
-    pane.layoutBoundsProperty().addListener((observable, oldValue, newValue) -> {
-      clippingArea.setWidth(newValue.getWidth());
-      clippingArea.setHeight(newValue.getHeight());
-    });
+    pane.layoutBoundsProperty()
+        .addListener(
+            (observable, oldValue, newValue) -> {
+              clippingArea.setWidth(newValue.getWidth());
+              clippingArea.setHeight(newValue.getHeight());
+            });
   }
 
   BorderPane getCanvasPane() {
     return rootBorderPane;
   }
-
-
-  public Node ghost;
 
   private void render(DrawVisitor drawVisitor) {
     rootBorderPane.getChildren().clear();
@@ -77,19 +77,19 @@ public final class CanvasController implements Initializable {
       s.acceptDrawVisitor(drawVisitor);
     }
     if (ghost != null) {
-        rootBorderPane.getChildren().add(ghost);
+      rootBorderPane.getChildren().add(ghost);
     }
   }
 
-    public void setGhost(Node ghost) {
-        this.ghost = ghost;
-    }
+  public void setGhost(Node ghost) {
+    this.ghost = ghost;
+  }
 
-    public void setObjectListController(ObjectListController objectListController) {
+  public void setObjectListController(ObjectListController objectListController) {
     this.objectListController = objectListController;
   }
 
-    public void clearGhost() {
-      this.ghost = null;
-    }
+  public void clearGhost() {
+    this.ghost = null;
+  }
 }

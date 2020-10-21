@@ -8,6 +8,8 @@ import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 import com.teamjeaa.obpaint.server.ObPaintClient;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 public final class Pencil implements Command {
@@ -18,12 +20,12 @@ public final class Pencil implements Command {
     private final int strokeWidth;
 
 
-    public Pencil(List<Mpoint> points, Color color, String name, int strokeWidth) {
-        this.points = points;
-        this.color = color;
-        this.name = name;
-        this.strokeWidth = strokeWidth;
-    }
+  public Pencil(List<Mpoint> points, Color color, String name, int strokeWidth) {
+    this.points = points;
+    this.color = color;
+    this.name = name;
+    this.strokeWidth = strokeWidth;
+  }
 
     @Override
     public void execute() {

@@ -6,14 +6,15 @@
 <?import javafx.scene.control.ColorPicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="379.0" prefWidth="150.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamjeaa.obpaint.controller.ShapeInfoController">
-    <TextField layoutX="102.0" layoutY="97.0" prefHeight="25.0" prefWidth="37.0" fx:id="xPosition" />
-    <TextField fx:id="yPosition" layoutX="102.0" layoutY="131.0" prefHeight="25.0" prefWidth="37.0" />
+    <TextField layoutX="102.0" layoutY="97.0" prefHeight="25.0" prefWidth="37.0" styleClass="FontType" fx:id="xPosition" />
+    <TextField fx:id="yPosition" layoutX="102.0" layoutY="131.0" prefHeight="25.0" prefWidth="37.0" styleClass="FontType" />
     <Label layoutX="11.0" layoutY="102.0" styleClass="ShapeInfo" text="X-Position" />
     <Label layoutX="10.0" layoutY="136.0" styleClass="ShapeInfo" text="Y-Position" />
-    <Label layoutX="24.0" layoutY="241.0" styleClass="ShapeInfo" text="Color" />
+    <Label layoutX="14.0" layoutY="237.0" styleClass="ShapeInfo" text="Color" />
     <ColorPicker fx:id="colorPicker" accessibleRole="COMBO_BOX" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="14.0" layoutY="257.0" prefHeight="26.0" prefWidth="123.0" scaleShape="false" styleClass="ShapeInfo">
         <cursor>
             <Cursor fx:constant="CROSSHAIR" />
@@ -22,6 +23,12 @@
             <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
         </opaqueInsets>
     </ColorPicker>
-    <Button layoutX="36.0" layoutY="164.0" mnemonicParsing="false" onAction="#onMove" styleClass="ShapeInfo" text="Move" />
-    <Button layoutX="13.0" layoutY="14.0" mnemonicParsing="false" onAction="#onDeleteButton" styleClass="deleteButton" text="Delete Shape" />
+    <Button layoutX="52.0" layoutY="170.0" mnemonicParsing="false" onAction="#onMove" styleClass="ShapeInfo" text="Move">
+      <tooltip>
+         <Tooltip styleClass="Tooltip" text="Click here to move selected shape to position chosen above" wrapText="true" />
+      </tooltip></Button>
+    <Button layoutX="13.0" layoutY="14.0" mnemonicParsing="false" onAction="#onDeleteButton" styleClass="deleteButton" text="Delete Shape">
+      <tooltip>
+         <Tooltip styleClass="ToolTip" text="Click here to delete this shape" />
+      </tooltip></Button>
 </AnchorPane>

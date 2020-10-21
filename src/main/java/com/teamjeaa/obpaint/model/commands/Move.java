@@ -12,10 +12,6 @@ public final class Move implements Command {
   private final int mouseUpY;
   private Mshape shapeToMove;
 
-  private int newValX;
-  private int newValY;
-
-
 
   public Move(int mouseDownX, int mouseDownY, int mouseUpX, int mouseUpY) {
     this.mouseDownX = mouseDownX;

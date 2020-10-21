@@ -1,6 +1,6 @@
-package com.teamjeaa.obpaint.controller.ControllerModel;
+package com.teamjeaa.obpaint.controller.controllerModel;
 
-public interface ToolVisualisator {
+public interface ToolVisualiser {
 
     void initiateVisualisation(int x, int y);
 
