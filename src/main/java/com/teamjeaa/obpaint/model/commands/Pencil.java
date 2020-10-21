@@ -43,7 +43,6 @@ public final class Pencil implements Command {
     }
 
     private void removeDuplicatePoints(List<Mpoint> points) {
-        List<Integer> removeIds = new ArrayList<>();
 
         for (int i = 0; i < points.size() - 1; i++) {
             Mpoint point1 = points.get(i);

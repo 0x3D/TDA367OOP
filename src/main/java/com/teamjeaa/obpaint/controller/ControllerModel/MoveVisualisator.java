@@ -2,7 +2,6 @@ package com.teamjeaa.obpaint.controller.ControllerModel;
 
 
 import com.teamjeaa.obpaint.controller.CanvasController;
-import javafx.scene.layout.Pane;
 
 public class MoveVisualisator implements ToolVisualisator {
     private final CanvasController controller;

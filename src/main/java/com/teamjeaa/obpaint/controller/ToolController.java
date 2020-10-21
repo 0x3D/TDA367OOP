@@ -8,22 +8,15 @@ import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.commands.*;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 import javafx.event.ActionEvent;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ColorPicker;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.input.*;
-import javafx.scene.layout.BorderPane;
-
-import javafx.scene.paint.Paint;
 
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 
 
-import javax.accessibility.AccessibleKeyBinding;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +32,6 @@ import java.util.ResourceBundle;
  * @since 0.1-SNAPSHOT
  */
 public final class ToolController implements Initializable {
-  private final Model backend = Model.INSTANCE;
   List<Mpoint> points = new ArrayList<>();
   private CanvasController canvasController;
   @FXML private ColorPicker cp;
@@ -88,7 +80,7 @@ public final class ToolController implements Initializable {
   }
 
   @FXML
-  void onPencilButton(ActionEvent event) {
+  void onPencilButton() {
     System.out.println("Selected Pencil tool");
     resetCanvasMouseEventHandlers();
 
@@ -127,7 +119,7 @@ public final class ToolController implements Initializable {
   }
 
   @FXML
-  void onEraserButton(ActionEvent event) {
+  void onEraserButton() {
     System.out.println("Eraser");
     resetCanvasMouseEventHandlers();
     canvasPane.setOnMouseClicked(
@@ -138,7 +130,7 @@ public final class ToolController implements Initializable {
   }
 
   @FXML
-  private void onCircleButton(ActionEvent event) {
+  private void onCircleButton() {
     System.out.println("Selecting Circle");
     resetCanvasMouseEventHandlers();
     canvasPane.setOnMousePressed(
@@ -169,7 +161,7 @@ public final class ToolController implements Initializable {
   }
 
   @FXML
-  private void onRectangleButton(ActionEvent event) {
+  private void onRectangleButton() {
     System.out.println("Selecting Rectangle");
     resetCanvasMouseEventHandlers();
     toolVisualisator = new RectangleVisualisator(canvasController);
@@ -201,7 +193,7 @@ public final class ToolController implements Initializable {
   }
 
   @FXML
-  private void onMoveButton(ActionEvent event) {
+  private void onMoveButton() {
     resetCanvasMouseEventHandlers();
     toolVisualisator = new MoveVisualisator(canvasController);
 
