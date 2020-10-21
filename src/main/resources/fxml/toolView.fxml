@@ -119,12 +119,12 @@ The tool pane
     </TextField>
     <ColorPicker fx:id="cp" editable="true" layoutX="9.0" layoutY="566.0" prefHeight="70.0" prefWidth="133.0" styleClass="ColorSlider" />
 
-    <Label layoutX="9.0" layoutY="164.0" text="Pencil">
+    <Label layoutX="9.0" layoutY="164.0" text="%key.Pencil">
         <font>
             <Font name="Courier New" size="16.0" />
         </font>
     </Label>
-    <Label layoutX="9.0" layoutY="244.0" text="Tools">
+    <Label layoutX="9.0" layoutY="244.0" text="%key.Tools">
         <font>
             <Font name="Courier New" size="16.0" />
         </font>
@@ -137,12 +137,12 @@ The tool pane
     <ImageView fitHeight="79.0" fitWidth="112.0" layoutX="19.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../images/logo.png" />
     </ImageView>
-    <Label layoutX="9.0" layoutY="324.0" text="Shapes">
+    <Label layoutX="9.0" layoutY="324.0" text="%key.Shapes">
         <font>
             <Font name="Courier New" size="16.0" />
         </font>
     </Label>
-   <Label layoutX="20.0" layoutY="457.0" text="Stroke size">
+   <Label layoutX="20.0" layoutY="457.0" text="%key.strokes">
       <font>
          <Font name="Courier New" size="16.0" />
       </font>
@@ -150,7 +150,7 @@ The tool pane
    <Line endX="95.0" layoutX="48.0" layoutY="239.0" startX="-40.0" stroke="#9e9999" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="6.5" />
    <Line endX="95.0" layoutX="47.0" layoutY="318.0" startX="-40.0" stroke="#9e9999" AnchorPane.leftAnchor="6.5" AnchorPane.rightAnchor="7.5" />
    <Line endX="95.0" layoutX="48.0" layoutY="446.0" startX="-40.0" stroke="#9e9999" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="6.5" />
-   <Label layoutX="43.0" layoutY="537.0" text="Color">
+   <Label layoutX="43.0" layoutY="537.0" text="%key.color">
       <font>
          <Font name="Courier New" size="16.0" />
       </font>

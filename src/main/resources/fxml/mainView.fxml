@@ -30,9 +30,9 @@ The main window of the application
       <children>
          <AnchorPane fx:id="serverPaneChild" onMousePressed="#blockMouse" prefHeight="118.0" prefWidth="200.0" styleClass="aboutBackground" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-               <Button mnemonicParsing="false" onAction="#onCloseServerPane" styleClass="FontType" text="Close">
+               <Button mnemonicParsing="false" onAction="#onCloseServerPane" styleClass="FontType" text="%key.Close">
                   <tooltip>
-                     <Tooltip styleClass="ToolTip" text="Close" />
+                     <Tooltip styleClass="ToolTip" text="%key.Close" />
                   </tooltip>
                </Button>
                <TextField fx:id="portTF" layoutX="129.0" layoutY="38.0" prefHeight="25.0" prefWidth="45.0" promptText="port" styleClass="FontType" />
@@ -52,18 +52,18 @@ The main window of the application
       </children>
    </AnchorPane>
     <AnchorPane fx:id="messagePane" prefHeight="675.0" prefWidth="899.0" visible="false">
-        <Label layoutX="165.0" layoutY="26.0" prefHeight="216.0" prefWidth="560.0" styleClass="FontType" text="Are you sure you want to remove everything?" wrapText="true">
+        <Label layoutX="165.0" layoutY="26.0" prefHeight="216.0" prefWidth="560.0" styleClass="FontType" text="%key.readyLabel" wrapText="true">
             <font>
                 <Font size="36.0" />
             </font>
         </Label>
-        <Button layoutX="527.0" layoutY="300.0" mnemonicParsing="false" onAction="#onCancelButton" prefHeight="60.0" prefWidth="94.0" styleClass="FontType" text="Cancel" />
-        <Button layoutX="245.0" layoutY="300.0" mnemonicParsing="false" onAction="#onYesButton" prefHeight="60.0" prefWidth="86.0" styleClass="FontType" text="Yes" />
+        <Button layoutX="527.0" layoutY="300.0" mnemonicParsing="false" onAction="#onCancelButton" prefHeight="60.0" prefWidth="94.0" styleClass="FontType" text="%key.Cancel" />
+        <Button layoutX="245.0" layoutY="300.0" mnemonicParsing="false" onAction="#onYesButton" prefHeight="60.0" prefWidth="86.0" styleClass="FontType" text="%key.Yes" />
     </AnchorPane>
     <AnchorPane fx:id="startPagePane" layoutX="-2.0" layoutY="-7.0" prefHeight="684.0" prefWidth="900.0">
         <AnchorPane fx:id="startAnchorPane" prefHeight="684.0" prefWidth="900.0">
             <AnchorPane prefHeight="684.0" prefWidth="150.0" style="-fx-background-color: rgb(230,230,230);" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                <Label layoutX="25.0" layoutY="99.0" prefHeight="31.0" prefWidth="91.0" text="ObPaint">
+                <Label layoutX="25.0" layoutY="99.0" prefHeight="31.0" prefWidth="91.0" text="%application.name">
                     <font>
                         <Font name="Comic Sans MS" size="24.0" />
                     </font>
@@ -72,19 +72,19 @@ The main window of the application
                     <Image url="@../images/logo.png" />
                 </ImageView>
                 <Line endX="95.0" layoutX="47.0" layoutY="163.0" startX="-40.0" stroke="#9e9999" />
-                <Label layoutX="4.0" layoutY="138.0" prefHeight="125.0" prefWidth="126.0" text="Welcome to ObPaint!" textAlignment="CENTER" wrapText="true">
+                <Label layoutX="4.0" layoutY="138.0" prefHeight="125.0" prefWidth="126.0" text="%key.welcome" textAlignment="CENTER" wrapText="true">
                     <font>
                         <Font name="Courier New" size="14.0" />
                     </font>
                 </Label>
             <Line endX="95.0" layoutX="47.0" layoutY="250.0" startX="-40.0" stroke="#9e9999" />
-            <Label layoutX="14.0" layoutY="230.0" prefHeight="125.0" prefWidth="126.0" text="Please select template to begin" textAlignment="CENTER" wrapText="true">
+            <Label layoutX="14.0" layoutY="230.0" prefHeight="125.0" prefWidth="126.0" text="%key.templateSelect" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Courier New" size="12.0" />
                </font>
             </Label>
             </AnchorPane>
-            <Label layoutX="447.0" layoutY="18.0" styleClass="FontType" text="Background" textAlignment="JUSTIFY">
+            <Label layoutX="447.0" layoutY="18.0" styleClass="FontType" text="%key.backgroundLabel" textAlignment="JUSTIFY">
                 <font>
                     <Font size="30.0" />
                 </font>
@@ -127,22 +127,22 @@ The main window of the application
                     </ImageView>
                 </graphic>
             </Button>
-            <Label layoutX="241.0" layoutY="150.0" styleClass="FontType" text="Blanc">
+            <Label layoutX="241.0" layoutY="150.0" styleClass="FontType" text="%key.blanc">
                 <font>
                     <Font size="18.0" />
                 </font>
             </Label>
-            <Label layoutX="600.0" layoutY="150.0" styleClass="FontType" text="Black">
+            <Label layoutX="600.0" layoutY="150.0" styleClass="FontType" text="%key.black">
                 <font>
                     <Font size="18.0" />
                 </font>
             </Label>
-            <Label layoutX="241.0" layoutY="370.0" styleClass="FontType" text="Red">
+            <Label layoutX="241.0" layoutY="370.0" styleClass="FontType" text="%key.red">
                 <font>
                     <Font size="18.0" />
                 </font>
             </Label>
-            <Label layoutX="600.0" layoutY="370.0" styleClass="FontType" text="Lime">
+            <Label layoutX="600.0" layoutY="370.0" styleClass="FontType" text="%key.lime">
                 <font>
                     <Font size="18.0" />
                 </font>
@@ -165,40 +165,40 @@ The main window of the application
 
     <AnchorPane prefHeight="28.5" prefWidth="900.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <MenuBar layoutY="-4.0" prefHeight="29.0" prefWidth="899.0" styleClass="FontType" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <Menu mnemonicParsing="false" text="File">
-                <MenuItem mnemonicParsing="false" onAction="#onSave" text="Save">
+            <Menu mnemonicParsing="false" text="%key.File">
+                <MenuItem mnemonicParsing="false" onAction="#onSave" text="%key.Save">
                <accelerator>
                   <KeyCodeCombination alt="UP" code="S" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
                </accelerator></MenuItem>
                 <SeparatorMenuItem mnemonicParsing="false" />
-                <MenuItem mnemonicParsing="false" onAction="#onClose" text="Close">
+                <MenuItem mnemonicParsing="false" onAction="#onClose" text="%key.Close">
                <accelerator>
                   <KeyCodeCombination alt="DOWN" code="Q" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
                </accelerator></MenuItem>
                 <SeparatorMenuItem mnemonicParsing="false" />
-                <MenuItem mnemonicParsing="false" onAction="#backToTemplates" text="Templates" />
-            <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open" />
+                <MenuItem mnemonicParsing="false" onAction="#backToTemplates" text="%key.Templates" />
+            <MenuItem mnemonicParsing="false" onAction="#openFile" text="%key.Open" />
             </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-                <MenuItem mnemonicParsing="false" onAction="#onUndoButton" text="Undo">
+            <Menu mnemonicParsing="false" text="%key.Edit">
+                <MenuItem mnemonicParsing="false" onAction="#onUndoButton" text="%key.Undo">
                <accelerator>
                   <KeyCodeCombination alt="UP" code="Z" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
                </accelerator></MenuItem>
                 <SeparatorMenuItem mnemonicParsing="false" />
-                <MenuItem mnemonicParsing="false" onAction="#onRemoveAll" text="Remove all" />
+                <MenuItem mnemonicParsing="false" onAction="#onRemoveAll" text="%key.Removeall" />
             </Menu>
-            <Menu mnemonicParsing="false" text="View">
+            <Menu mnemonicParsing="false" text="%key.View">
                 <MenuItem mnemonicParsing="false">
                     <graphic>
-                        <ToggleButton fx:id="darkModeToggle" mnemonicParsing="false" onAction="#darkModeOn" text="DarkMode" />
+                        <ToggleButton fx:id="darkModeToggle" mnemonicParsing="false" onAction="#darkModeOn" text="%key.DarkMode" />
                     </graphic>
                 </MenuItem>
             </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-                <MenuItem mnemonicParsing="false" onAction="#openAbout" text="About" />
+            <Menu mnemonicParsing="false" text="%key.Help">
+                <MenuItem mnemonicParsing="false" onAction="#openAbout" text="%key.About" />
             </Menu>
         </MenuBar>
-      <Button layoutX="820.0" mnemonicParsing="false" onAction="#onServerButton" styleClass="FontType" text="Collaborate" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
+      <Button layoutX="820.0" mnemonicParsing="false" onAction="#onServerButton" styleClass="FontType" text="%key.Collaborate" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="0.0">
          <tooltip>
             <Tooltip styleClass="ToolTip" text="Click Here to open Collaborate page" />
          </tooltip></Button>
