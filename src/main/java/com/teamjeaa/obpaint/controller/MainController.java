@@ -45,6 +45,7 @@ public final class MainController implements Initializable {
   private @FXML Button limeTemplateButton;
   private @FXML AnchorPane messagePane;
   private @FXML AnchorPane serverPane;
+  private @FXML AnchorPane serverPaneChild;
   private @FXML TextField portTF;
   private @FXML TextField ipTF;
   private @FXML Button connectButton;
@@ -61,6 +62,7 @@ public final class MainController implements Initializable {
   private void initializeStartPage() {
     startPagePane.toFront();
     startPagePane.setStyle("-fx-background-color: white");
+    serverPane.toBack();
     serverPane.toBack();
   }
 
@@ -79,6 +81,8 @@ public final class MainController implements Initializable {
     portTF.setVisible(false);
     ipTF.setVisible(false);
     connectButton.setVisible(false);
+    serverPane.setVisible(false);
+    serverPaneChild.setVisible(false);
   }
 
   @FXML
@@ -171,15 +175,17 @@ public final class MainController implements Initializable {
 
   }
   @FXML private void onServerButton (){
-    serverPane.setStyle("-fx-background-color: darkgrey");
     serverPane.toFront();
+    serverPane.setVisible(true);
+    serverPaneChild.setVisible(true);
     portTF.setVisible(true);
     ipTF.setVisible(true);
     connectButton.setVisible(true);
   }
   @FXML private void onCloseServerPane (){
     serverPane.toBack();
-    serverPane.setStyle("-fx-background-color: transparent");
+    serverPane.setVisible(false);
+    serverPaneChild.setVisible(false);
     portTF.setVisible(false);
     ipTF.setVisible(false);
     connectButton.setVisible(false);
@@ -207,5 +213,9 @@ public final class MainController implements Initializable {
   private void closeAbout(){
     aboutPage.setVisible(false);
     aboutPage.toBack();
+  }
+  @FXML
+  private void openFile() {
+    
   }
 }
