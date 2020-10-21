@@ -9,8 +9,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="379.0" prefWidth="150.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamjeaa.obpaint.controller.ShapeInfoController">
-    <TextField layoutX="102.0" layoutY="97.0" prefHeight="25.0" prefWidth="37.0" fx:id="xPosition" />
-    <TextField fx:id="yPosition" layoutX="102.0" layoutY="131.0" prefHeight="25.0" prefWidth="37.0" />
+    <TextField layoutX="102.0" layoutY="97.0" prefHeight="25.0" prefWidth="37.0" styleClass="FontType" fx:id="xPosition" />
+    <TextField fx:id="yPosition" layoutX="102.0" layoutY="131.0" prefHeight="25.0" prefWidth="37.0" styleClass="FontType" />
     <Label layoutX="11.0" layoutY="102.0" styleClass="ShapeInfo" text="X-Position" />
     <Label layoutX="10.0" layoutY="136.0" styleClass="ShapeInfo" text="Y-Position" />
     <Label layoutX="24.0" layoutY="241.0" styleClass="ShapeInfo" text="Color" />

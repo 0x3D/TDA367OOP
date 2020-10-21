@@ -14,21 +14,17 @@ public final class Eraser implements Command {
     this.y = y;
   }
 
-  /**
-   * executeMethod that will execute our Commands tha tare defined in the Command package,
-   * "com\teamjeaa\obpaint\model\commands"
-   */
   @Override
   public void execute() {
     try {
-      removedShape = Model.INSTANCE.findShapeAtPoint(x,y);
+      removedShape = Model.INSTANCE.findShapeAtPoint(x, y);
       Model.INSTANCE.removeFromRenderByPoint(x, y);
       Model.INSTANCE.addToCommandList(this);
-    } catch (IllegalArgumentException e){
+    } catch (IllegalArgumentException e) {
       System.out.println("Found no object to remove");
     }
     if (ObPaintClient.INSTANCE.isConnected()) {
-      ObPaintClient.INSTANCE.removeShapeAt(x,y);
+      ObPaintClient.INSTANCE.removeShapeAt(x, y);
     }
   }
 
@@ -37,3 +33,4 @@ public final class Eraser implements Command {
     Model.INSTANCE.addToRender(removedShape);
   }
 }
+
