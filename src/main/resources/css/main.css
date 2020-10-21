@@ -6,6 +6,7 @@
     -fx-background-color: rgb(230, 230, 230);
     -fx-background-insets: 5;
     -fx-effect: dropshadow(three-pass-box, rgb(169, 169, 169), 10, 0, 0, 0) dropshadow(three-pass-box, purple, 10, 0, 0, 0) dropshadow(three-pass-box, rgb(169, 169, 169), 10, 0, 0, 0) dropshadow(three-pass-box, purple, 10, 0, 0, 0);
+    -fx-font-size: 5px;
 }
 
 .TransparentBackground {
@@ -26,6 +27,9 @@
     -fx-background-color: transparent;
     -fx-border-color: grey;
 }
+.ColorSlider#cp {
+    -fx-font-size: 12px;
+}
 
 .color-picker > .label:disabled {
     -fx-opacity : 1.0;
@@ -33,14 +37,15 @@
 .deleteButton {
     -fx-background-color: rgb(240,128,128);
     -fx-border-color: grey;
+    -fx-font-family: "Courier New";
+    -fx-font-size: 14;
+    -fx-text-alignment: LEFT;
 }
 .deleteButton:hover{
     -fx-background-color: rgb(250,110,110);
 }
 .deleteButton:pressed{
     -fx-background-color: red;
-}
-.ObjectListItem{
 }
 
 .aboutBackground{
@@ -74,4 +79,27 @@
     -fx-font-family: "Courier New";
     -fx-font-size: 14;
     -fx-text-alignment: LEFT;
+}
+.ShapeInfo {
+    -fx-font-family: "Courier New";
+    -fx-font-size: 14;
+    -fx-text-alignment: LEFT;
+    -fx-padding: 2px;
+}
+
+
+.ShapeInfo#objectLabel {
+    -fx-font-family: "Courier New";
+    -fx-font-size: 12;
+    -fx-text-alignment: LEFT;
+
+
+}
+.ShapeInfo#colorLabel {
+    -fx-font-family: "Courier New";
+    -fx-font-size: 10;
+    -fx-text-alignment: LEFT;
+}
+.FontType {
+    -fx-font-family: "Courier New";
 }
