@@ -20,7 +20,6 @@ public enum ObPaintClient {
     try {
       var socket = new Socket(ip, port);
       PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-      //       out.printf("Circle: %d %d %10.8f", radius, centerX, centerY);
       connected = true;
       out.println(s);
     } catch (InterruptedIOException interruptedIOException) {
