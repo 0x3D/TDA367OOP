@@ -60,6 +60,9 @@ public class ShapeInfoController implements Initializable {
     this.mshape = mshape;
   }
 
+  /**
+   * onMove method is a method that is called when you press the moveButton
+   */
   @FXML
   private void onMove() {
     Command command = new Move(mshape.getPosition().getX(), mshape.getPosition().getY(),
@@ -67,6 +70,9 @@ public class ShapeInfoController implements Initializable {
     command.execute();
   }
 
+  /**
+   * onDeleteButton is the method that is called when you press the deleteButton
+   */
   @FXML
   private void onDeleteButton() {
     Command command = new Eraser(

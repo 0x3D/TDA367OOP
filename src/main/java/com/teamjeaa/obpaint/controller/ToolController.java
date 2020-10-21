@@ -74,6 +74,9 @@ public final class ToolController implements Initializable {
     this.canvasPane = canvasController.getCanvasPane();
   }
 
+  /**
+   * resets all the mouseEventsHandlers
+   */
   private void resetCanvasMouseEventHandlers() {
     //unfortunately this is the only way to reset all mouseevent-handlers...
     canvasPane.setOnMouseClicked(null);
@@ -84,6 +87,9 @@ public final class ToolController implements Initializable {
     canvasPane.setOnMouseDragged(null);
   }
 
+  /**
+   * onPencilButton is the method that is calls when we want to use the pencil
+   */
   @FXML
   void onPencilButton() {
     System.out.println("Selected Pencil tool");
@@ -119,6 +125,9 @@ public final class ToolController implements Initializable {
         });
   }
 
+  /**
+   * onLineButton is the method that is calls when we want to use the line
+   */
   @FXML
   void onLineButton(ActionEvent event) {
     System.out.println("Selected line tool");
@@ -150,7 +159,9 @@ public final class ToolController implements Initializable {
           toolVisualiser.endVisualisation();
         });
   }
-
+  /**
+   * onEraserButton is the method that is calls when we want to use the eraser
+   */
   @FXML
   void onEraserButton() {
     System.out.println("Eraser");
@@ -161,7 +172,9 @@ public final class ToolController implements Initializable {
           command.execute();
         });
   }
-
+  /**
+   * onCircleButton is the method that is calls when we want to use the circle
+   */
   @FXML
   private void onCircleButton() {
     System.out.println("Selecting Circle");
@@ -195,14 +208,9 @@ public final class ToolController implements Initializable {
         });
   }
 
-  private Color convertToModelColor(javafx.scene.paint.Color javafxColor) {
-    return new Color(
-        (int) (javafxColor.getRed() * JAVAFX_MODEL_COLOR_CONSTANT),
-        (int) (javafxColor.getGreen() * JAVAFX_MODEL_COLOR_CONSTANT),
-        (int) (javafxColor.getBlue() * JAVAFX_MODEL_COLOR_CONSTANT),
-        (int) (javafxColor.getOpacity() * JAVAFX_MODEL_COLOR_CONSTANT));
-  }
-
+  /**
+   * onRectangleButton is the method that is calls when we want to use the rectangle
+   */
   @FXML
   private void onRectangleButton() {
     System.out.println("Selecting Rectangle");
@@ -234,6 +242,9 @@ public final class ToolController implements Initializable {
         });
   }
 
+  /**
+   * onMoveButton is the method that is calls when we want to use the moveCommand
+   */
   @FXML
   private void onMoveButton() {
     resetCanvasMouseEventHandlers();
@@ -255,5 +266,18 @@ public final class ToolController implements Initializable {
           command = new Move(x, y, (int) mouseEvent.getX(), (int) mouseEvent.getY());
           command.execute();
         });
+  }
+
+  /**
+   * Convers our own ColorClass to javaFxColor
+   * @param javafxColor is he javaFxColor
+   * @return our own Color class
+   */
+  private Color convertToModelColor(javafx.scene.paint.Color javafxColor) {
+    return new Color(
+            (int) (javafxColor.getRed() * JAVAFX_MODEL_COLOR_CONSTANT),
+            (int) (javafxColor.getGreen() * JAVAFX_MODEL_COLOR_CONSTANT),
+            (int) (javafxColor.getBlue() * JAVAFX_MODEL_COLOR_CONSTANT),
+            (int) (javafxColor.getOpacity() * JAVAFX_MODEL_COLOR_CONSTANT));
   }
 }
