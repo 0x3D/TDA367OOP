@@ -95,7 +95,7 @@ public final class ModelCanvasTest {
     int x = 49;
     int y = 47;
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
-    Mshape shapeToFind = shapeFactory.createLine(10, 10, 50, 50, new Color(255, 175, 175), "Rectangle");
+    Mshape shapeToFind = shapeFactory.createLine(10, 10, 50, 50, new Color(255, 175, 175), "Rectangle",1);
     ModelCanvas modelCanvas = new ModelCanvas();
     modelCanvas.addToRender(shapeToFind);
     assertEquals(shapeToFind, modelCanvas.findShapeAt(x, y));

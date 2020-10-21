@@ -22,6 +22,7 @@ public final class Mpolyline implements Mshape {
 
   private final Color color;
   private final String name;
+  private int strokeWidth;
 
   /**
    * Constructor to create a Polyline
@@ -29,11 +30,11 @@ public final class Mpolyline implements Mshape {
    * @param mPoints List of points to create polyline from
    * @param color The color of this Polyline
    */
-  public Mpolyline(List<Mpoint> mPoints, Color color, String name) {
+  public Mpolyline(List<Mpoint> mPoints, Color color, String name, int strokeWidth) {
     this.mPoints = mPoints;
     this.color = color;
     this.name = name;
-
+    this.strokeWidth = strokeWidth;
   }
 
   /**
@@ -43,6 +44,10 @@ public final class Mpolyline implements Mshape {
    */
   public Color getColor() {
     return color;
+  }
+
+  public int getStrokeWidth() {
+    return strokeWidth;
   }
 
   @Override
@@ -145,13 +150,12 @@ public final class Mpolyline implements Mshape {
       newPolyline.add(new Mpoint(mpoint.getX() + x, mpoint.getY() + y));
     }
     // TODO: New color not old reference
-    return new Mpolyline(newPolyline, color, name);
+    return new Mpolyline(newPolyline, color, name,strokeWidth);
   }
 
   @Override
   public boolean isPointMemberOfShape(int x, int y) {
-    // TODO Add (thickness of the line)/2 to get the right acceptance
-    int acceptance = 7;
+    int acceptance = this.strokeWidth/2 + 7;
 
     /*if (      (x < (getMinPosition().getX() - acceptance) || x > (getMaxPosition().getX()) + acceptance)
             || (y < (getMinPosition().getY() - acceptance) || y > (getMaxPosition().getY()) + acceptance)) {

@@ -52,8 +52,8 @@ public enum ObPaintClient {
     sendMessage("Remove," + x + "," + y);
   }
 
-  public void sendLine(int x1, int y1, int x2, int y2, Color color, String name) {
-    sendMessage("Line," + x1 + "," + y1 + "," + x2 + "," + y2 + "," + color + "," + name);
+  public void sendLine(int x1, int y1, int x2, int y2, Color color, String name, int strokeWidth) {
+    sendMessage("Line," + x1 + "," + y1 + "," + x2 + "," + y2 + "," + color + "," + name + "," + strokeWidth);
   }
 
   public void sendRectangle(int x1, int y1, int x2, int y2, Color color, String name) {
@@ -64,7 +64,7 @@ public enum ObPaintClient {
     sendMessage("Move," + originX + "," + originY + "," + destinationX + "," + destinationY);
   }
 
-  public void sendPencilStroke(List<Mpoint> points, Color color, String name) {
+  public void sendPencilStroke(List<Mpoint> points, Color color, String name, int strokeWidth) {
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append("Pencil,").append("{,");
     for(Mpoint mpoint:points){
@@ -74,6 +74,8 @@ public enum ObPaintClient {
     stringBuilder.append("},");
     stringBuilder.append(color).append(",");
     stringBuilder.append(name);
+    stringBuilder.append(",").append(strokeWidth);
     sendMessage(stringBuilder.toString());
+
   }
 }
