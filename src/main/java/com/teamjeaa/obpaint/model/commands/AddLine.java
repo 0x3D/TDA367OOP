@@ -7,7 +7,17 @@ import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 import com.teamjeaa.obpaint.server.ObPaintClient;
 
-
+/**
+ * This class is responsible for executing command by adding a Mpolyline to program.
+ *  Also responsible for undoing the executed action.
+ *
+ *
+ * Used by ToolController
+ * Uses Color, Mshape, ShapeFactory, Model
+ *
+ * @author Axel H
+ * @since 0.3-SNAPSHOT
+ */
 public final class AddLine implements Command {
 
   private final int x1;
@@ -20,6 +30,16 @@ public final class AddLine implements Command {
   private final String name;
   private final int strokeWidth;
 
+  /**
+   * Constructor
+   * @param x1 Start X-value for Mpolyline
+   * @param y1 Start Y-value for Mpolyline
+   * @param x2 End X-value for Mpolyline
+   * @param y2 End Y-Value for Mpolyline
+   * @param color Color of Mpolyline
+   * @param name Name of Mpolyline
+   * @param strokeWidth width of Mpolyline
+   */
   public AddLine(int x1, int y1, int x2, int y2, Color color, String name,int strokeWidth) {
     this.x1 = x1;
     this.y1 = y1;
@@ -31,8 +51,9 @@ public final class AddLine implements Command {
   }
 
   /**
-   * executeMethod that will execute our Commands tha tare defined in the Command package,
-   * "com\teamjeaa\obpaint\model\commands"
+   * Will execute the command for creating a Mpolyline with initial values from command.
+   * It will also add command to list of command and if server is connected send message to client.
+   *
    */
   @Override
   public void execute() {
@@ -46,6 +67,10 @@ public final class AddLine implements Command {
 
   }
 
+  /**
+   * This method will undo the command. In this class it will remove the Mpolyline that
+   * was created in previous command.
+   */
   @Override
   public void undo() {
     Model.INSTANCE.removeFromRender(line);

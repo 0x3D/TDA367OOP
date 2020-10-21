@@ -4,6 +4,15 @@ import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.server.ObPaintClient;
 
+/**
+ * Command that executes command by moving desired object on canvas.
+ *
+ * Used by ToolController, ShapeInfoController
+ * Uses Mshape, Model
+ *
+ * @author Axel H
+ * @since 0.3-SNAPSHOT
+ */
 public final class Move implements Command {
 
   private final int mouseDownX;
@@ -12,7 +21,13 @@ public final class Move implements Command {
   private final int mouseUpY;
   private Mshape shapeToMove;
 
-
+  /**
+   * Constructor for move command
+   * @param mouseDownX X-position of shape to move
+   * @param mouseDownY Y-position of shape to move
+   * @param mouseUpX X-position where shape should be moved
+   * @param mouseUpY Y-position where shapen should be moved.
+   */
   public Move(int mouseDownX, int mouseDownY, int mouseUpX, int mouseUpY) {
     this.mouseDownX = mouseDownX;
     this.mouseDownY = mouseDownY;
