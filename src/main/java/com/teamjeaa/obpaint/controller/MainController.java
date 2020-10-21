@@ -269,7 +269,7 @@ public final class MainController implements Initializable {
     SvgParser svgParser = new SvgParser();
     // TODO: Open file here
     File testFile = new File("input.svg");
-    svgParser.OpenFile(testFile);
+    svgParser.openFile(testFile);
     svgParser.parseFile();
     List<Mshape> openedShapes = svgParser.getMshapeList();
     Model.INSTANCE.removeAllShapes();

@@ -16,7 +16,7 @@ class SvgParserTest {
   void openFile() {
     File input = new File("input.svg");
     SvgParser svgParser = new SvgParser();
-    svgParser.OpenFile(input);
+    svgParser.openFile(input);
   }
 
   @Test

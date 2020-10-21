@@ -13,15 +13,24 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Class to read a svg file and generate a list of MShapes from the file
+ * @author Erik R
+ * @since 0.2-SNAPSHOT
+ */
 public class SvgParser {
   private final List<String> fileInStrings = new ArrayList<>();
   private final List<Mshape> mshapeList = new ArrayList<>();
 
+  /** Get generated shapes
+   * @return shapes that are generated */
   public List<Mshape> getMshapeList() {
     return mshapeList;
   }
 
-  public void OpenFile(File input) {
+  /** Open a file to ready class to read
+   * @param input file to read */
+  public void openFile(File input) {
     try {
       Scanner reader = new Scanner(input);
       while (reader.hasNextLine()) {
@@ -34,6 +43,8 @@ public class SvgParser {
     }
   }
 
+  /** Go through file and generate all shapes
+   * */
   public void parseFile() {
     if (fileInStrings.isEmpty()) {
       throw new IllegalStateException("File not read no data to operate on");

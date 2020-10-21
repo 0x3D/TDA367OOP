@@ -1,13 +1,11 @@
 package com.teamjeaa.obpaint;
 
 import com.teamjeaa.obpaint.model.Color;
-import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 import com.teamjeaa.obpaint.view.DrawVisitor;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -60,7 +58,7 @@ public class SvgCommonTest {
     }
     SvgParser svgParser = new SvgParser();
     File testFile = new File("test.svg");
-    svgParser.OpenFile(testFile);
+    svgParser.openFile(testFile);
     svgParser.parseFile();
     List<Mshape> transferredShapes = svgParser.getMshapeList();
     assertEquals(originalShapes,transferredShapes);
