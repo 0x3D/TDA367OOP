@@ -9,6 +9,13 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.List;
 
+/**
+ * This singleton is used to connect to another computer, see if connected and
+ * send messages
+ *
+ * @author Erik R
+ * @since 0.2 SNAPSHOT
+ */
 public enum ObPaintClient {
   INSTANCE;
 

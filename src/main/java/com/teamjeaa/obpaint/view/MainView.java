@@ -14,6 +14,7 @@ import java.util.ResourceBundle;
  */
 public final class MainView extends AnchorPane {
   private static final boolean  SWEDISHSELECTED = true;
+
   /** Constructor for our view that holds all the logic to load the FXML file */
   public MainView(String fxmlFileName) {
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFileName));

@@ -11,9 +11,9 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-public class ObjectListItemView extends AnchorPane {
+public final class ObjectListItemView extends AnchorPane {
 
-  public static final String FXML_OBJECT_LIST_ITEM_VIEW_FXML = "/fxml/objectListItemView.fxml";
+  private static final String FXML_OBJECT_LIST_ITEM_VIEW_FXML = "/fxml/objectListItemView.fxml";
   private final Mshape mshape;
 
   //TODO: Never used in class but crashes program if removed
@@ -42,31 +42,29 @@ public class ObjectListItemView extends AnchorPane {
     setLabelName();
   }
 
-  public void setLabelName() {
+  private void setLabelName() {
     objectLabel.setText(mshape.getName());
     objectLabel.setAlignment(Pos.CENTER_LEFT);
   }
 
   private String colorConverter (Mshape mshape) {
     Color color = mshape.getColor();
-    StringBuilder sb = new StringBuilder();
-    sb.append("-fx-background-color: rgb(")
-            .append(color.getRed())
-            .append(",")
-            .append(color.getGreen())
-            .append(",")
-            .append(color.getBlue())
-            .append(");");
-    return sb.toString();
+    return "-fx-background-color: rgb(" +
+            color.getRed() +
+            "," +
+            color.getGreen() +
+            "," +
+            color.getBlue() +
+            ");";
   }
 
-  public void setColorBackground() {
+  private void setColorBackground() {
     hoverPane.setStyle(colorConverter(mshape));
   }
 
   //This is used but IntelliJ doesn't recognise because of JavaFX FXML
   @FXML
-  public void onClickedListItem() {
+  private void onClickedListItem() {
     parentController.updateShapeInfo(mshape);
   }
 

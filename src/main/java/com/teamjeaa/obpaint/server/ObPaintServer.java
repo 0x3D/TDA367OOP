@@ -14,6 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Server code. Receiver of all messages from other computers
+ *
+ * @author Erik R
+ * @since 0.2 SNAPSHOT
+ */
 public final class ObPaintServer implements Runnable {
 
   private void addCircle(int radius, int centerX, int centerY, Color color, String name) {
@@ -21,6 +27,7 @@ public final class ObPaintServer implements Runnable {
     Model.INSTANCE.addToRender(shapeFactory.createCircle(radius, centerX, centerY, color, name));
   }
 
+  /** This is the main code of the server.*/
   @Override
   public void run() {
     Socket socket;
