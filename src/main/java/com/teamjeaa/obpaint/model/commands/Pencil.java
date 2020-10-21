@@ -14,8 +14,8 @@ public final class Pencil implements Command {
   private final List<Mpoint> points;
   private final Color color;
   private final String name;
-  private Mshape pencil;
   private final int strokeWidth;
+  private Mshape pencil;
 
   public Pencil(List<Mpoint> points, Color color, String name, int strokeWidth) {
     this.points = points;
@@ -42,7 +42,6 @@ public final class Pencil implements Command {
   }
 
   private void removeDuplicatePoints(List<Mpoint> points) {
-
     for (int i = 0; i < points.size() - 1; i++) {
       Mpoint point1 = points.get(i);
       Mpoint point2 = points.get(i + 1);
