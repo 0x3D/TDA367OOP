@@ -50,5 +50,4 @@ public class ShapeInfoController implements Initializable {
   private void onDeleteButton() {
     Model.INSTANCE.removeFromRender(mshape);
   }
-
 }
