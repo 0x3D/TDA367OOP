@@ -19,6 +19,8 @@ import java.util.ResourceBundle;
  */
 public final class Start extends Application {
   private static final String XML_MAIN_VIEW = "/fxml/mainView.fxml";
+  public static final int SCENE_WIDTH = 900;
+  public static final int SCENE_HEIGHT = 680;
 
   /**
    * Main method of the program
@@ -58,10 +60,10 @@ public final class Start extends Application {
 
     ResourceBundle obPaintResourceBundle = ResourceBundle.getBundle("obPaint");
     primaryStage.setTitle(obPaintResourceBundle.getString("application.name"));
-    primaryStage.getIcons().add(new Image("images/logo.png"));
-    primaryStage.setScene(new Scene(root, 900, 675));
-    primaryStage.setMinHeight(680);
-    primaryStage.setMinWidth(900);
+    primaryStage.getIcons().add(new Image(obPaintResourceBundle.getString("application.logo.path")));
+    primaryStage.setScene(new Scene(root, SCENE_WIDTH, SCENE_HEIGHT));
+    primaryStage.setMinHeight(SCENE_HEIGHT);
+    primaryStage.setMinWidth(SCENE_WIDTH);
     primaryStage.show();
   }
 }

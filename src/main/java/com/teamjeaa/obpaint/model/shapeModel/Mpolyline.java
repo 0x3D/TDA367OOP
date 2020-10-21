@@ -22,7 +22,7 @@ public final class Mpolyline implements Mshape {
 
   private final Color color;
   private final String name;
-  private int strokeWidth;
+  private final int strokeWidth;
 
   /**
    * Constructor to create a Polyline
@@ -167,7 +167,6 @@ public final class Mpolyline implements Mshape {
       Mpoint point2 = mPoints.get(i + 1);
 
       if (distance(point1, point2, x, y) < acceptance) {
-        //System.out.println(distance(point1,point2, x, y));
         return true;
       }
     }
@@ -188,14 +187,11 @@ public final class Mpolyline implements Mshape {
   }
 
   /** https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line */
-  private int distance(Mpoint point1, Mpoint point2, int x, int y){
+  private int distance(Mpoint A, Mpoint C, int x, int y){
     int distance;
-    Mpoint A = point1;
-    Mpoint C = point2;
     Mpoint B = new Mpoint(x, y);
     double angleA;
     double angleC;
-    double angleB;
 
     //TODO använda skalärprodukt istället
 
@@ -205,7 +201,6 @@ public final class Mpolyline implements Mshape {
 
     angleA = Math.acos((Math.pow(distanceAB, 2) + Math.pow(distanceAC, 2) - Math.pow(distanceBC, 2)) / (2 * distanceAB * distanceAC));
     angleC = Math.acos((Math.pow(distanceBC, 2) + Math.pow(distanceAC, 2) - Math.pow(distanceAB, 2)) / (2 * distanceBC * distanceAC));
-    angleB = Math.PI - angleA - angleC;
 
     distance = (int) Math.round(Math.sin(angleA) * distanceAB);
 

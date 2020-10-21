@@ -22,6 +22,7 @@ import javafx.scene.shape.Polyline;
  * @since 0.1-SNAPSHOT
  */
 public final class JavaFXDrawVisitor implements DrawVisitor {
+  private static final double MODEL_COLOR_TO_JAVAFX_CONST = 256.0;
   private final BorderPane rootBorderPane;
 
   /** @param rootBorderPane Borderpane to add the JavaFX shape to */
@@ -31,10 +32,10 @@ public final class JavaFXDrawVisitor implements DrawVisitor {
 
   private javafx.scene.paint.Color colorToJavaFXColor(Color color) {
     return new javafx.scene.paint.Color(
-        color.getRed() / 256.0,
-        color.getGreen() / 256.0,
-        color.getBlue() / 256.0,
-        color.getAlpha() / 256.0);
+        color.getRed() / MODEL_COLOR_TO_JAVAFX_CONST,
+        color.getGreen() / MODEL_COLOR_TO_JAVAFX_CONST,
+        color.getBlue() / MODEL_COLOR_TO_JAVAFX_CONST,
+        color.getAlpha() / MODEL_COLOR_TO_JAVAFX_CONST);
   }
 
   /** {@inheritDoc} This provides the JavaFX implementation of visitMellipse */

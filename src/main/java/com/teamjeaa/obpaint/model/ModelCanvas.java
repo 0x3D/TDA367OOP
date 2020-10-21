@@ -1,6 +1,5 @@
 package com.teamjeaa.obpaint.model;
 
-import com.teamjeaa.obpaint.model.commands.Command;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 
 import java.util.ArrayList;

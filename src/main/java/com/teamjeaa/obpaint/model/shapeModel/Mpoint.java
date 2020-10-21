@@ -16,25 +16,15 @@ import java.util.Objects;
 public final class Mpoint implements Cloneable {
   private final int x;
   private final int y;
-  private final int z;
 
-  /**
-   * @param x x coordinate of the point created
-   * @param y y coordinate of the point created
-   * @param z z coordinate of the point created
-   */
-  private Mpoint(int x, int y, int z) {
-    this.x = x;
-    this.y = y;
-    this.z = z;
-  }
 
   /**
    * @param x x coordinate of the point created
    * @param y y coordinate of the point created
    */
   public Mpoint(int x, int y) {
-    this(x, y, 0);
+    this.x = x;
+    this.y = y;
   }
 
   /** @return The x coordinate of the point */
@@ -47,10 +37,6 @@ public final class Mpoint implements Cloneable {
     return y;
   }
 
-  /** @return This could be a third dimension to do buffering */
-  public int getZ() {
-    return z;
-  }
 
   /**
    * Method that checks if this object is the same as another object
@@ -63,12 +49,12 @@ public final class Mpoint implements Cloneable {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
     Mpoint mPoint = (Mpoint) o;
-    return getX() == mPoint.getX() && getY() == mPoint.getY() && getZ() == mPoint.getZ();
+    return getX() == mPoint.getX() && getY() == mPoint.getY();
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(getX(), getY(), getZ());
+    return Objects.hash(getX(), getY());
   }
 
   /** @return A copy of this point */
