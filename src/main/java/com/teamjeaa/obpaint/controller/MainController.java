@@ -27,36 +27,55 @@ import java.util.ResourceBundle;
  * Initializable and is used by mainView.fxml
  *
  * @author Jonas N
- * @since 0.1-SNAPSHOT
+ * @since 0.3-SNAPSHOT
  */
 public final class MainController implements Initializable {
   /**
    * FXML instances that holds the object in SceneBuilder
    */
-  private @FXML AnchorPane mainPane;
-  private @FXML ToggleButton darkModeToggle;
-  private @FXML AnchorPane startPagePane;
-  private @FXML AnchorPane canvasViewRoot;
-  private @FXML Button blancTemplateButton;
-  private @FXML Button blackTemplateButton;
-  private @FXML Button redTemplateButton;
-  private @FXML Button limeTemplateButton;
-  private @FXML AnchorPane messagePane;
-  private @FXML AnchorPane serverPane;
-  private @FXML AnchorPane serverPaneChild;
-  private @FXML TextField portTF;
-  private @FXML TextField ipTF;
-  private @FXML Button connectButton;
-  private @FXML AnchorPane aboutPage;
+  private @FXML
+  AnchorPane mainPane;
+  private @FXML
+  ToggleButton darkModeToggle;
+  private @FXML
+  AnchorPane startPagePane;
+  private @FXML
+  AnchorPane canvasViewRoot;
+  private @FXML
+  Button blancTemplateButton;
+  private @FXML
+  Button blackTemplateButton;
+  private @FXML
+  Button redTemplateButton;
+  private @FXML
+  Button limeTemplateButton;
+  private @FXML
+  AnchorPane messagePane;
+  private @FXML
+  AnchorPane serverPane;
+  private @FXML
+  AnchorPane serverPaneChild;
+  private @FXML
+  TextField portTF;
+  private @FXML
+  TextField ipTF;
+  private @FXML
+  Button connectButton;
+  private @FXML
+  AnchorPane aboutPage;
 
   /**
    * Controllers that doesn't seems it's used, but it is. When you name a included FXML file in to an other FXML file.
    * It's needed that the name is exactly like this, otherwise it wont work
    */
-  @FXML private ToolController toolViewController;
-  @FXML private CanvasController canvasViewController;
-  @FXML private ObjectListController objectListController;
-  @FXML private ShapeInfoController shapeInfoViewController;
+  @FXML
+  private ToolController toolViewController;
+  @FXML
+  private CanvasController canvasViewController;
+  @FXML
+  private ObjectListController objectListController;
+  @FXML
+  private ShapeInfoController shapeInfoViewController;
 
   /**
    * initialize the startpane of obPaint
@@ -72,7 +91,7 @@ public final class MainController implements Initializable {
   /**
    * This method initializes the controller for MainView
    *
-   * @param location - The location used to resolve relative paths for the root object
+   * @param location  - The location used to resolve relative paths for the root object
    * @param resources - The resources used to localize the root object
    */
   @Override
@@ -89,7 +108,7 @@ public final class MainController implements Initializable {
   }
 
   /**
-   *MenuItem that use this method to close the program
+   * MenuItem that use this method to close the program
    */
   @FXML
   private void onClose() {
@@ -99,16 +118,17 @@ public final class MainController implements Initializable {
   /**
    * MenuItem that uses this metohos to save a .svg file
    */
-  @FXML  private void onSave() {
+  @FXML
+  private void onSave() {
     // TODO: Move behaviour to new class
     StringBuilder sb = new StringBuilder();
     DrawVisitor drawVisitor = new SvgDrawVisitor(sb);
     sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n");
     sb.append("<svg width=\"")
-        .append(800)
-        .append("\" height=\"")
-        .append(800)
-        .append("\" xmlns=\"http://www.w3.org/2000/svg\">\n");
+            .append(800)
+            .append("\" height=\"")
+            .append(800)
+            .append("\" xmlns=\"http://www.w3.org/2000/svg\">\n");
     for (Mshape mshape : Model.INSTANCE.getCanvasShapes()) {
       mshape.acceptDrawVisitor(drawVisitor);
     }
@@ -152,6 +172,7 @@ public final class MainController implements Initializable {
     canvasViewController.getCanvasPane().setStyle("-fx-background-color: White");
     startPagePane.setVisible(false);
   }
+
   /**
    * Black Theme
    */
@@ -160,6 +181,7 @@ public final class MainController implements Initializable {
     canvasViewController.getCanvasPane().setStyle("-fx-background-color: Black");
     startPagePane.setVisible(false);
   }
+
   /**
    * Red Theme
    */
@@ -168,6 +190,7 @@ public final class MainController implements Initializable {
     canvasViewController.getCanvasPane().setStyle("-fx-background-color: red");
     startPagePane.setVisible(false);
   }
+
   /**
    * Lime Theme
    */
@@ -180,6 +203,7 @@ public final class MainController implements Initializable {
   /**
    * Updates the shapeInfo on a clicked shape in the objectListView.
    * ObjectListView holds a list on the object that are rendered on the rootBorderPane
+   *
    * @param mshape - is the sape that the info is about
    */
   public void updateShapeInfo(Mshape mshape) {
@@ -190,7 +214,7 @@ public final class MainController implements Initializable {
    * removes all the shapes from the renderList
    */
   @FXML
-  private void onRemoveAll(){
+  private void onRemoveAll() {
     messagePane.setVisible(true);
     messagePane.toFront();
     messagePane.setStyle("-fx-background-color: darkgrey");
@@ -201,7 +225,7 @@ public final class MainController implements Initializable {
    * WarningButton
    */
   @FXML
-  private void onYesButton (){
+  private void onYesButton() {
     Model.INSTANCE.removeAllShapes();
     messagePane.toBack();
     messagePane.setVisible(false);
@@ -210,22 +234,26 @@ public final class MainController implements Initializable {
   /**
    * CancelButton that you can press if you regrett that you want to remove all shapes
    */
-  @FXML private void onCancelButton (){
+  @FXML
+  private void onCancelButton() {
     messagePane.toBack();
     messagePane.setVisible(false);
 
   }
+
   /**
    * Undos the last move
    */
-  @FXML private void onUndoButton(){
+  @FXML
+  private void onUndoButton() {
     Model.INSTANCE.undo();
   }
 
   /**
    * Serverbutton that opens a Pane there you can type in the information needed to collaborate with a friend
    */
-  @FXML private void onServerButton (){
+  @FXML
+  private void onServerButton() {
     serverPane.toFront();
     serverPane.setVisible(true);
     serverPaneChild.setVisible(true);
@@ -237,30 +265,33 @@ public final class MainController implements Initializable {
   /**
    * Gets you back to the normal mainPane
    */
-  @FXML private void onCloseServerPane (){
+  @FXML
+  private void onCloseServerPane() {
     serverPane.toBack();
     serverPane.setVisible(false);
     serverPaneChild.setVisible(false);
     portTF.setVisible(false);
     ipTF.setVisible(false);
     connectButton.setVisible(false);
-    }
+  }
 
   /**
    * Connects to the CollaborateServer
    */
-  @FXML private void onConnectButton (){
-    ObPaintClient.INSTANCE.connect(ipTF.getText(),1337);
+  @FXML
+  private void onConnectButton() {
+    ObPaintClient.INSTANCE.connect(ipTF.getText(), 1337);
     portTF.getText();
     ipTF.getText();
   }
 
   /**
    * Blocks the mouse so you can click on a pane
+   *
    * @param event - is a mouseClick event in javaFx
    */
   @FXML
-  private void blockMouse(Event event){
+  private void blockMouse(Event event) {
     event.consume();
   }
 
@@ -268,7 +299,7 @@ public final class MainController implements Initializable {
    * opens the AboutPane
    */
   @FXML
-  private void openAbout(){
+  private void openAbout() {
     aboutPage.setVisible(true);
     aboutPage.toFront();
   }
@@ -277,13 +308,15 @@ public final class MainController implements Initializable {
    * Closes the aboutPane
    */
   @FXML
-  private void closeAbout(){
+  private void closeAbout() {
     aboutPage.setVisible(false);
     aboutPage.toBack();
   }
-  
+
+  /**
+   * Opens a saved file
+   */
   @FXML
   private void openFile() {
-    
   }
 }
