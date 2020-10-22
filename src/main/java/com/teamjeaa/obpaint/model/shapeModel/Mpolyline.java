@@ -67,7 +67,7 @@ public final class Mpolyline implements Mshape {
   }
 
   private Mpoint getMaxPosition() {
-    if (mPoints == null) {
+    if (0 == mPoints.size()) {
       throw new IllegalStateException("Mpolyline has no points, something went terribly wrong");
     }
     int x = mPoints.get(0).getX();
@@ -84,7 +84,7 @@ public final class Mpolyline implements Mshape {
   }
 
   private Mpoint getMinPosition() {
-    if (mPoints == null) {
+    if (0 == mPoints.size()) {
       throw new IllegalStateException("Mpolyline has no points, something went terribly wrong");
     }
     int x = mPoints.get(0).getX();
@@ -263,7 +263,6 @@ public final class Mpolyline implements Mshape {
     } else {
       distance = 999.9;
     }
-
     return distance;
   }
 }
