@@ -2,6 +2,8 @@ package com.teamjeaa.obpaint.server;
 
 import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.Model;
+import com.teamjeaa.obpaint.model.commands.Command;
+import com.teamjeaa.obpaint.model.commands.RemoveAllShapes;
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
@@ -22,7 +24,8 @@ import java.util.Scanner;
  */
 public final class ObPaintServer implements Runnable {
   private final int port;
-  public ObPaintServer(String port){
+
+  public ObPaintServer(String port) {
     this.port = Integer.parseInt(port);
   }
 
@@ -31,7 +34,9 @@ public final class ObPaintServer implements Runnable {
     Model.INSTANCE.addToRender(shapeFactory.createCircle(radius, centerX, centerY, color, name));
   }
 
-  /** This is the main code of the server.*/
+  /**
+   * This is the main code of the server.
+   */
   @Override
   public void run() {
     Socket socket;
@@ -64,8 +69,8 @@ public final class ObPaintServer implements Runnable {
       parseMove(coordinates);
     } else if (line.contains("Pencil")) {
       parsePencil(coordinates);
-    }
-
+    } else if (line.contains("ResetCanvas"))
+      parseRemoveAll();
     System.out.println(line);
   }
 
@@ -77,36 +82,36 @@ public final class ObPaintServer implements Runnable {
     //Add all points to our new list
     while (!coordinates[i + 2].contains("}")) {
       mPoints.add(
-          new Mpoint(Integer.parseInt(coordinates[i]), Integer.parseInt(coordinates[i + 1])));
+              new Mpoint(Integer.parseInt(coordinates[i]), Integer.parseInt(coordinates[i + 1])));
       i = i + 2;
     }
     //If this token is found at plus 2 we have one more
     if (coordinates[i + 2].contains("}")) {
       coordinates[i + 1] = coordinates[i + 1].replaceAll("([^\\d]|[A-Z]|[\"])", "");
       mPoints.add(
-          new Mpoint(Integer.parseInt(coordinates[i]), Integer.parseInt(coordinates[i + 1])));
+              new Mpoint(Integer.parseInt(coordinates[i]), Integer.parseInt(coordinates[i + 1])));
       i = i + 2;
     }
 
     //add newly created shape
     final ShapeFactory shapeFactory = new ConcreteShapeFactory();
     Model.INSTANCE.addToRender(
-        shapeFactory.createPolyline(
-            mPoints,
-            new Color(
-                Integer.parseInt(coordinates[i+1]),
-                Integer.parseInt(coordinates[i + 2]),
-                Integer.parseInt(coordinates[i + 3]),
-                Integer.parseInt(coordinates[i + 4])),
-            coordinates[i + 5],Integer.parseInt(coordinates[i + 6])));
+            shapeFactory.createPolyline(
+                    mPoints,
+                    new Color(
+                            Integer.parseInt(coordinates[i + 1]),
+                            Integer.parseInt(coordinates[i + 2]),
+                            Integer.parseInt(coordinates[i + 3]),
+                            Integer.parseInt(coordinates[i + 4])),
+                    coordinates[i + 5], Integer.parseInt(coordinates[i + 6])));
   }
 
   private void parseMove(String[] coordinates) {
     Mshape shapeToMove =
-        Model.INSTANCE.findShapeAtPoint(
-            Integer.parseInt(coordinates[1]), Integer.parseInt(coordinates[2]));
+            Model.INSTANCE.findShapeAtPoint(
+                    Integer.parseInt(coordinates[1]), Integer.parseInt(coordinates[2]));
     Model.INSTANCE.removeFromRenderByPoint(
-        Integer.parseInt(coordinates[1]), Integer.parseInt(coordinates[2]));
+            Integer.parseInt(coordinates[1]), Integer.parseInt(coordinates[2]));
     final int deltaX = Integer.parseInt(coordinates[3]) - Integer.parseInt(coordinates[1]);
     final int deltaY = Integer.parseInt(coordinates[4]) - Integer.parseInt(coordinates[2]);
     Model.INSTANCE.addToRender(shapeToMove.translate(deltaX, deltaY));
@@ -115,50 +120,57 @@ public final class ObPaintServer implements Runnable {
   private void parseRectangle(String[] coordinates) {
     final ShapeFactory shapeFactory = new ConcreteShapeFactory();
     Model.INSTANCE.addToRender(
-        shapeFactory.createRectangle(
-            Integer.parseInt(coordinates[1]),
-            Integer.parseInt(coordinates[2]),
-            Integer.parseInt(coordinates[3]),
-            Integer.parseInt(coordinates[4]),
-            new Color(
-                Integer.parseInt(coordinates[5]),
-                Integer.parseInt(coordinates[6]),
-                Integer.parseInt(coordinates[7]),
-                Integer.parseInt(coordinates[8])),
-            coordinates[9]));
+            shapeFactory.createRectangle(
+                    Integer.parseInt(coordinates[1]),
+                    Integer.parseInt(coordinates[2]),
+                    Integer.parseInt(coordinates[3]),
+                    Integer.parseInt(coordinates[4]),
+                    new Color(
+                            Integer.parseInt(coordinates[5]),
+                            Integer.parseInt(coordinates[6]),
+                            Integer.parseInt(coordinates[7]),
+                            Integer.parseInt(coordinates[8])),
+                    coordinates[9]));
   }
 
   private void parseLine(String[] coordinates) {
     final ShapeFactory shapeFactory = new ConcreteShapeFactory();
     Model.INSTANCE.addToRender(
-        shapeFactory.createLine(
-            Integer.parseInt(coordinates[1]),
-            Integer.parseInt(coordinates[2]),
-            Integer.parseInt(coordinates[3]),
-            Integer.parseInt(coordinates[4]),
-            new Color(
-                Integer.parseInt(coordinates[5]),
-                Integer.parseInt(coordinates[6]),
-                Integer.parseInt(coordinates[7]),
-                Integer.parseInt(coordinates[8])),
-            coordinates[9], Integer.parseInt(coordinates[10])));
+            shapeFactory.createLine(
+                    Integer.parseInt(coordinates[1]),
+                    Integer.parseInt(coordinates[2]),
+                    Integer.parseInt(coordinates[3]),
+                    Integer.parseInt(coordinates[4]),
+                    new Color(
+                            Integer.parseInt(coordinates[5]),
+                            Integer.parseInt(coordinates[6]),
+                            Integer.parseInt(coordinates[7]),
+                            Integer.parseInt(coordinates[8])),
+                    coordinates[9], Integer.parseInt(coordinates[10])));
   }
 
   private void parseRemove(String[] coordinates) {
     Model.INSTANCE.removeFromRenderByPoint(
-        Integer.parseInt(coordinates[1]), Integer.parseInt(coordinates[2]));
+            Integer.parseInt(coordinates[1]), Integer.parseInt(coordinates[2]));
   }
 
   private void parseCircle(String[] line) {
     addCircle(
-        Integer.parseInt(line[1]),
-        Integer.parseInt(line[2]),
-        Integer.parseInt(line[3]),
-        new Color(
-            Integer.parseInt(line[4]),
-            Integer.parseInt(line[5]),
-            Integer.parseInt(line[6]),
-            Integer.parseInt(line[7])),
-        line[8]);
+            Integer.parseInt(line[1]),
+            Integer.parseInt(line[2]),
+            Integer.parseInt(line[3]),
+            new Color(
+                    Integer.parseInt(line[4]),
+                    Integer.parseInt(line[5]),
+                    Integer.parseInt(line[6]),
+                    Integer.parseInt(line[7])),
+            line[8]);
+  }
+
+  /**
+   * removes everything from the canvas
+   */
+  private void parseRemoveAll() {
+    Model.INSTANCE.removeAllShapes();
   }
 }

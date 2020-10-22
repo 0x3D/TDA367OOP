@@ -4,6 +4,8 @@ import com.teamjeaa.obpaint.fileManager.FileManager;
 import com.teamjeaa.obpaint.fileManager.SvgDrawVisitor;
 import com.teamjeaa.obpaint.fileManager.SvgParser;
 import com.teamjeaa.obpaint.model.Model;
+import com.teamjeaa.obpaint.model.commands.Command;
+import com.teamjeaa.obpaint.model.commands.RemoveAllShapes;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.server.ObPaintClient;
 import com.teamjeaa.obpaint.view.DrawVisitor;
@@ -162,7 +164,8 @@ public final class MainController implements Initializable {
     svgParser.openFile(testFile);
     svgParser.parseFile();
     List<Mshape> openedShapes = svgParser.getMshapeList();
-    Model.INSTANCE.removeAllShapes();
+    Command command = new RemoveAllShapes();
+    command.execute();
     for (Mshape mshape : openedShapes) {
       Model.INSTANCE.addToRender(mshape);
     }
@@ -250,7 +253,8 @@ public final class MainController implements Initializable {
    */
   @FXML
   private void onYesButton() {
-    Model.INSTANCE.removeAllShapes();
+    Command command = new RemoveAllShapes();
+    command.execute();
     messagePane.toBack();
     messagePane.setVisible(false);
   }
