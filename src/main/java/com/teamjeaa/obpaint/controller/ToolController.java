@@ -90,7 +90,7 @@ public final class ToolController implements Initializable {
    * onPencilButton is the method that is calls when we want to use the pencil
    */
   @FXML
-  void onPencilButton() {
+  private void onPencilButton() {
     System.out.println("Selected Pencil tool");
     resetCanvasMouseEventHandlers();
     toolVisualiser = new PencilVisualiser(canvasController);
@@ -128,7 +128,7 @@ public final class ToolController implements Initializable {
    * onLineButton is the method that is calls when we want to use the line
    */
   @FXML
-  void onLineButton(ActionEvent event) {
+  private void onLineButton(ActionEvent event) {
     System.out.println("Selected line tool");
     resetCanvasMouseEventHandlers();
     toolVisualiser = new LineVisualiser(canvasController);
@@ -162,7 +162,7 @@ public final class ToolController implements Initializable {
    * onEraserButton is the method that is calls when we want to use the eraser
    */
   @FXML
-  void onEraserButton() {
+  private void onEraserButton() {
     System.out.println("Eraser");
     resetCanvasMouseEventHandlers();
     canvasPane.setOnMouseClicked(
