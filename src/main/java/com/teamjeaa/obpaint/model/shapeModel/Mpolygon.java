@@ -28,7 +28,6 @@ public final class Mpolygon implements Mshape {
    * @param color The color of the polygon
    */
   Mpolygon(List<Mpoint> points, Color color, String name) {
-    // TODO: This should make a new list
     this.points = points;
     this.color = color;
     this.name = name;

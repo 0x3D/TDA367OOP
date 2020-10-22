@@ -1,5 +1,7 @@
-package com.teamjeaa.obpaint;
+package com.teamjeaa.obpaint.fileManager;
 
+import com.teamjeaa.obpaint.fileManager.SvgDrawVisitor;
+import com.teamjeaa.obpaint.fileManager.SvgParser;
 import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;

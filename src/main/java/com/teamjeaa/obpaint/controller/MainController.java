@@ -1,7 +1,8 @@
 package com.teamjeaa.obpaint.controller;
 
-import com.teamjeaa.obpaint.SvgDrawVisitor;
-import com.teamjeaa.obpaint.SvgParser;
+import com.teamjeaa.obpaint.fileManager.FileManager;
+import com.teamjeaa.obpaint.fileManager.SvgDrawVisitor;
+import com.teamjeaa.obpaint.fileManager.SvgParser;
 import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.server.ObPaintClient;
@@ -14,6 +15,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,35 +37,58 @@ import java.util.ResourceBundle;
  * @since 0.3-SNAPSHOT
  */
 public final class MainController implements Initializable {
-  /** FXML instances that holds the object in SceneBuilder */
-  private @FXML AnchorPane mainPane;
+  /**
+   * FXML instances that holds the object in SceneBuilder
+   */
+  private @FXML
+  AnchorPane mainPane;
 
-  private @FXML ToggleButton darkModeToggle;
-  private @FXML AnchorPane startPagePane;
-  private @FXML AnchorPane canvasViewRoot;
-  private @FXML Button blancTemplateButton;
-  private @FXML Button blackTemplateButton;
-  private @FXML Button redTemplateButton;
-  private @FXML Button limeTemplateButton;
-  private @FXML AnchorPane messagePane;
-  private @FXML AnchorPane serverPane;
-  private @FXML AnchorPane serverPaneChild;
-  private @FXML TextField portTF;
-  private @FXML TextField ipTF;
-  private @FXML Button connectButton;
-  private @FXML AnchorPane aboutPage;
+  private @FXML
+  ToggleButton darkModeToggle;
+  private @FXML
+  AnchorPane startPagePane;
+  private @FXML
+  AnchorPane canvasViewRoot;
+  private @FXML
+  Button blancTemplateButton;
+  private @FXML
+  Button blackTemplateButton;
+  private @FXML
+  Button redTemplateButton;
+  private @FXML
+  Button limeTemplateButton;
+  private @FXML
+  AnchorPane messagePane;
+  private @FXML
+  AnchorPane serverPane;
+  private @FXML
+  AnchorPane serverPaneChild;
+  private @FXML
+  TextField portTF;
+  private @FXML
+  TextField ipTF;
+  private @FXML
+  Button connectButton;
+  private @FXML
+  AnchorPane aboutPage;
 
   /**
    * Controllers that doesn't seems it's used, but it is. When you name a included FXML file in to
    * an other FXML file. It's needed that the name is exactly like this, otherwise it wont work
    */
-  @FXML private ToolController toolViewController;
+  @FXML
+  private ToolController toolViewController;
 
-  @FXML private CanvasController canvasViewController;
-  @FXML private ObjectListController objectListController;
-  @FXML private ShapeInfoController shapeInfoViewController;
+  @FXML
+  private CanvasController canvasViewController;
+  @FXML
+  private ObjectListController objectListController;
+  @FXML
+  private ShapeInfoController shapeInfoViewController;
 
-  /** initialize the startpane of obPaint */
+  /**
+   * initialize the startpane of obPaint
+   */
   @FXML
   private void initializeStartPage() {
     startPagePane.toFront();
@@ -73,7 +100,7 @@ public final class MainController implements Initializable {
   /**
    * This method initializes the controller for MainView
    *
-   * @param location - The location used to resolve relative paths for the root object
+   * @param location  - The location used to resolve relative paths for the root object
    * @param resources - The resources used to localize the root object
    */
   @Override
@@ -89,31 +116,28 @@ public final class MainController implements Initializable {
     serverPaneChild.setVisible(false);
   }
 
-  /** MenuItem that use this method to close the program */
+  /**
+   * MenuItem that use this method to close the program
+   */
   @FXML
   private void onClose() {
     Platform.exit();
   }
 
-  /** MenuItem that uses this metohos to save a .svg file */
+  /**
+   * MenuItem that uses this metohos to save a .svg file
+   */
   @FXML
   private void onSave() {
-    // TODO: Move behaviour to new class
-    StringBuilder sb = new StringBuilder();
-    DrawVisitor drawVisitor = new SvgDrawVisitor(sb);
-    sb.append("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n");
-    sb.append("<svg width=\"")
-        .append(800)
-        .append("\" height=\"")
-        .append(800)
-        .append("\" xmlns=\"http://www.w3.org/2000/svg\">\n");
-    for (Mshape mshape : Model.INSTANCE.getCanvasShapes()) {
-      mshape.acceptDrawVisitor(drawVisitor);
-    }
-    sb.append("\n").append("</svg>");
+    String output = FileManager.createSvg();
+    FileChooser fileChooser = new FileChooser();
+    Window window = new Stage();
+    fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("svg", "*.svg"));
+    File file = fileChooser.showSaveDialog(window);
+
     try {
-      PrintWriter writer = new PrintWriter("output.svg", StandardCharsets.UTF_8);
-      writer.print(sb.toString());
+      PrintWriter writer = new PrintWriter(file, StandardCharsets.UTF_8);
+      writer.print(output);
       writer.flush();
       writer.close();
     } catch (IOException e) {
@@ -121,7 +145,32 @@ public final class MainController implements Initializable {
     }
   }
 
-  /** Puts darkmode on in obPaint so the progam gets a darker look. */
+  /**
+   * Opens a saved file
+   */
+  @FXML
+  private void openFile() {
+    FileChooser fileChooser = new FileChooser();
+    fileChooser.setTitle("Open file");
+    fileChooser.getExtensionFilters().addAll(
+            new FileChooser.ExtensionFilter("svg", "*.svg"),
+            new FileChooser.ExtensionFilter("all files", "*.*"));
+
+    Window window = new Stage();
+    File testFile = fileChooser.showOpenDialog(window);
+    SvgParser svgParser = new SvgParser();
+    svgParser.openFile(testFile);
+    svgParser.parseFile();
+    List<Mshape> openedShapes = svgParser.getMshapeList();
+    Model.INSTANCE.removeAllShapes();
+    for (Mshape mshape : openedShapes) {
+      Model.INSTANCE.addToRender(mshape);
+    }
+  }
+
+  /**
+   * Puts darkmode on in obPaint so the progam gets a darker look.
+   */
   @FXML
   private void darkModeOn() {
     if (darkModeToggle.isSelected()) {
@@ -131,35 +180,45 @@ public final class MainController implements Initializable {
     }
   }
 
-  /** Gets you back to the templatePane so you can chose a new template if wanted */
+  /**
+   * Gets you back to the templatePane so you can chose a new template if wanted
+   */
   @FXML
   private void backToTemplates() {
     startPagePane.setVisible(true);
     startPagePane.toFront();
   }
 
-  /** Blanc Theme */
+  /**
+   * Blanc Theme
+   */
   @FXML
   private void onBlancTemplate() {
     canvasViewController.getCanvasPane().setStyle("-fx-background-color: White");
     startPagePane.setVisible(false);
   }
 
-  /** Black Theme */
+  /**
+   * Black Theme
+   */
   @FXML
   private void onBlackTemplate() {
     canvasViewController.getCanvasPane().setStyle("-fx-background-color: Black");
     startPagePane.setVisible(false);
   }
 
-  /** Red Theme */
+  /**
+   * Red Theme
+   */
   @FXML
   private void onRedTemplate() {
     canvasViewController.getCanvasPane().setStyle("-fx-background-color: red");
     startPagePane.setVisible(false);
   }
 
-  /** Lime Theme */
+  /**
+   * Lime Theme
+   */
   @FXML
   private void onLimeTemplate() {
     canvasViewController.getCanvasPane().setStyle("-fx-background-color: Lime");
@@ -176,7 +235,9 @@ public final class MainController implements Initializable {
     shapeInfoViewController.updateInfo(mshape);
   }
 
-  /** removes all the shapes from the renderList */
+  /**
+   * removes all the shapes from the renderList
+   */
   @FXML
   private void onRemoveAll() {
     messagePane.setVisible(true);
@@ -184,7 +245,9 @@ public final class MainController implements Initializable {
     messagePane.setStyle("-fx-background-color: darkgrey");
   }
 
-  /** Is a yesButton. If you press yes you will remove all shapes WarningButton */
+  /**
+   * Is a yesButton. If you press yes you will remove all shapes WarningButton
+   */
   @FXML
   private void onYesButton() {
     Model.INSTANCE.removeAllShapes();
@@ -192,14 +255,18 @@ public final class MainController implements Initializable {
     messagePane.setVisible(false);
   }
 
-  /** CancelButton that you can press if you regrett that you want to remove all shapes */
+  /**
+   * CancelButton that you can press if you regrett that you want to remove all shapes
+   */
   @FXML
   private void onCancelButton() {
     messagePane.toBack();
     messagePane.setVisible(false);
   }
 
-  /** Undos the last move */
+  /**
+   * Undos the last move
+   */
   @FXML
   private void onUndoButton() {
     Model.INSTANCE.undo();
@@ -220,7 +287,9 @@ public final class MainController implements Initializable {
     portTF.setText("1337");
   }
 
-  /** Gets you back to the normal mainPane */
+  /**
+   * Gets you back to the normal mainPane
+   */
   @FXML
   private void onCloseServerPane() {
     serverPane.toBack();
@@ -231,7 +300,9 @@ public final class MainController implements Initializable {
     connectButton.setVisible(false);
   }
 
-  /** Connects to the CollaborateServer */
+  /**
+   * Connects to the CollaborateServer
+   */
   @FXML
   private void onConnectButton() {
     ObPaintClient.INSTANCE.connect(ipTF.getText(), Integer.parseInt(portTF.getText()));
@@ -247,33 +318,23 @@ public final class MainController implements Initializable {
     event.consume();
   }
 
-  /** opens the AboutPane */
+  /**
+   * opens the AboutPane
+   */
   @FXML
   private void openAbout() {
     aboutPage.setVisible(true);
     aboutPage.toFront();
   }
 
-  /** Closes the aboutPane */
+  /**
+   * Closes the aboutPane
+   */
   @FXML
   private void closeAbout() {
     aboutPage.setVisible(false);
     aboutPage.toBack();
   }
 
-  /** Opens a saved file */
-  @FXML
-  private void openFile() {
 
-    SvgParser svgParser = new SvgParser();
-    // TODO: Open file here
-    File testFile = new File("input.svg");
-    svgParser.openFile(testFile);
-    svgParser.parseFile();
-    List<Mshape> openedShapes = svgParser.getMshapeList();
-    Model.INSTANCE.removeAllShapes();
-    for (Mshape mshape : openedShapes) {
-      Model.INSTANCE.addToRender(mshape);
-    }
-  }
 }
