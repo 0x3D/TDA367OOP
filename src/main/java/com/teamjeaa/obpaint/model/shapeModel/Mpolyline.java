@@ -196,10 +196,8 @@ public final class Mpolyline implements Mshape {
   }
 
   /** https://en.wikipedia.org/wiki/Distance_from_a_point_to_a_line */
-  private double distance(Mpoint point1, Mpoint point2, int x, int y) {
+  private double distance(Mpoint A, Mpoint C, int x, int y) {
     double distance;
-    Mpoint A = point1;
-    Mpoint C = point2;
     Mpoint B = new Mpoint(x, y);
     double angleA;
     double angleC;

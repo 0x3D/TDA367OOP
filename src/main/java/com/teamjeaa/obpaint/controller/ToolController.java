@@ -2,7 +2,6 @@ package com.teamjeaa.obpaint.controller;
 
 import com.teamjeaa.obpaint.controller.controllerModel.*;
 import com.teamjeaa.obpaint.model.Color;
-import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.commands.*;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 

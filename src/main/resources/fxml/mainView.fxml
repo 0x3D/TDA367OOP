@@ -26,31 +26,32 @@ The main window of the application
 <?import javafx.scene.text.Font?>
 
 <fx:root fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="675.0" prefWidth="900.0" stylesheets="@../css/main.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.teamjeaa.obpaint.controller.MainController">
-   <AnchorPane fx:id="serverPane" onMousePressed="#onCloseServerPane" prefHeight="675.0" prefWidth="899.0" styleClass="aboutDarkScreen" visible="false">
-      <children>
-         <AnchorPane fx:id="serverPaneChild" onMousePressed="#blockMouse" prefHeight="118.0" prefWidth="200.0" styleClass="aboutBackground" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <children>
-               <Button mnemonicParsing="false" onAction="#onCloseServerPane" styleClass="FontType" text="%key.Close">
-                  <tooltip>
-                     <Tooltip styleClass="ToolTip" text="%key.Close" />
-                  </tooltip>
-               </Button>
-               <TextField fx:id="portTF" layoutX="129.0" layoutY="38.0" prefHeight="25.0" prefWidth="45.0" promptText="port" styleClass="FontType" />
-               <TextField fx:id="ipTF" layoutX="26.0" layoutY="38.0" prefHeight="25.0" prefWidth="86.0" promptText="ip-adress" styleClass="FontType" />
-               <Button fx:id="connectButton" layoutX="118.0" layoutY="74.0" mnemonicParsing="false" onAction="#onConnectButton" styleClass="FontType" text="Connect">
-                  <tooltip>
-                     <Tooltip styleClass="ToolTip" text="Click here to open CollaboreteWindow" />
-                  </tooltip>
-               </Button>
-               <Label layoutX="121.0" layoutY="37.0" prefHeight="27.0" prefWidth="2.0" text=":">
-                  <font>
-                     <Font size="18.0" />
-                  </font>
-               </Label>
-            </children>
-         </AnchorPane>
-      </children>
-   </AnchorPane>
+    <AnchorPane fx:id="serverPane" onMousePressed="#onCloseServerPane" prefHeight="675.0" prefWidth="899.0"
+                styleClass="aboutDarkScreen" visible="false">
+        <AnchorPane fx:id="serverPaneChild" onMousePressed="#blockMouse" prefHeight="118.0" prefWidth="200.0"
+                    styleClass="aboutBackground" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <Button mnemonicParsing="false" onAction="#onCloseServerPane" styleClass="FontType" text="%key.Close">
+                <tooltip>
+                    <Tooltip styleClass="ToolTip" text="%key.Close"/>
+                </tooltip>
+            </Button>
+            <TextField fx:id="portTF" layoutX="129.0" layoutY="38.0" prefHeight="25.0" prefWidth="45.0"
+                       promptText="port" styleClass="FontType"/>
+            <TextField fx:id="ipTF" layoutX="26.0" layoutY="38.0" prefHeight="25.0" prefWidth="86.0"
+                       promptText="ip-adress" styleClass="FontType"/>
+            <Button fx:id="connectButton" layoutX="118.0" layoutY="74.0" mnemonicParsing="false"
+                    onAction="#onConnectButton" styleClass="FontType" text="Connect">
+                <tooltip>
+                    <Tooltip styleClass="ToolTip" text="Click here to open CollaboreteWindow"/>
+                </tooltip>
+            </Button>
+            <Label layoutX="121.0" layoutY="37.0" prefHeight="27.0" prefWidth="2.0" text=":">
+                <font>
+                    <Font size="18.0"/>
+                </font>
+            </Label>
+        </AnchorPane>
+    </AnchorPane>
     <AnchorPane fx:id="messagePane" prefHeight="675.0" prefWidth="899.0" visible="false">
         <Label layoutX="165.0" layoutY="26.0" prefHeight="216.0" prefWidth="560.0" styleClass="FontType" text="%key.readyLabel" wrapText="true">
             <font>
@@ -203,29 +204,37 @@ The main window of the application
             <Tooltip styleClass="ToolTip" text="Click Here to open Collaborate page" />
          </tooltip></Button>
     </AnchorPane>
-   <AnchorPane fx:id="aboutPage" onMouseClicked="#closeAbout" prefHeight="675.0" prefWidth="899.0" styleClass="aboutDarkScreen" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <children>
-         <AnchorPane layoutX="210.0" layoutY="107.0" onMouseClicked="#blockMouse" prefHeight="345.0" prefWidth="480.0" styleClass="aboutBackground" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
-            <children>
-               <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="31.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                     <Image url="@../images/logo.png" />
-                  </image>
-               </ImageView>
-               <Button layoutX="598.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeAbout" prefHeight="68.0" prefWidth="81.0" styleClass="aboutCloseButton" text="X" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                  <font>
-                     <Font size="47.0" />
-                  </font>
-               </Button>
-               <Label layoutX="248.0" layoutY="29.0" prefHeight="60.0" prefWidth="318.0" styleClass="aboutTextTitle" text="About ObPaint" />
-               <Label layoutX="264.0" layoutY="90.0" prefHeight="158.0" prefWidth="318.0" styleClass="aboutText" text="OB paint is a vector based paint program that can work over the internet" />
-               <Label layoutX="31.0" layoutY="203.0" prefHeight="35.0" prefWidth="189.0" styleClass="aboutAuthor" text="\@Created by: Team JEEA" wrapText="true" />
-               <Label layoutX="31.0" layoutY="238.0" prefHeight="35.0" prefWidth="189.0" styleClass="aboutAuthor" text="\@Created by: Team JEEA" wrapText="true" />
-               <Label layoutX="31.0" layoutY="266.0" prefHeight="35.0" prefWidth="189.0" styleClass="aboutAuthor" text="\@Created by: Team JEEA" wrapText="true" />
-               <Label layoutX="31.0" layoutY="301.0" prefHeight="35.0" prefWidth="189.0" styleClass="aboutAuthor" text="\@Created by: Team JEEA" wrapText="true" />
-               <Label layoutX="31.0" layoutY="336.0" prefHeight="35.0" prefWidth="189.0" styleClass="aboutAuthor" text="\@Created by: Team JEEA" wrapText="true" />
-            </children>
-         </AnchorPane>
-      </children>
-   </AnchorPane>
+    <AnchorPane fx:id="aboutPage" onMouseClicked="#closeAbout" prefHeight="675.0" prefWidth="899.0"
+                styleClass="aboutDarkScreen" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <AnchorPane layoutX="210.0" layoutY="107.0" onMouseClicked="#blockMouse" prefHeight="345.0" prefWidth="480.0"
+                    styleClass="aboutBackground" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="100.0"
+                    AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="100.0">
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="31.0" layoutY="29.0" pickOnBounds="true"
+                       preserveRatio="true">
+                <Image url="@../images/logo.png"/>
+            </ImageView>
+            <Button layoutX="598.0" layoutY="14.0" mnemonicParsing="false" onAction="#closeAbout" prefHeight="68.0"
+                    prefWidth="81.0" styleClass="aboutCloseButton" text="X" AnchorPane.rightAnchor="10.0"
+                    AnchorPane.topAnchor="10.0">
+                <font>
+                    <Font size="47.0"/>
+                </font>
+            </Button>
+            <Label layoutX="248.0" layoutY="29.0" prefHeight="60.0" prefWidth="318.0" styleClass="aboutTextTitle"
+                   text="About ObPaint"/>
+            <Label layoutX="264.0" layoutY="90.0" prefHeight="158.0" prefWidth="318.0" styleClass="aboutText"
+                   text="OB paint is a vector based paint program that can work over the internet"/>
+            <Label layoutX="31.0" layoutY="203.0" prefHeight="35.0" prefWidth="189.0" styleClass="aboutAuthor"
+                   text="\@Created by: Team JEEA" wrapText="true"/>
+            <Label layoutX="31.0" layoutY="238.0" prefHeight="35.0" prefWidth="189.0" styleClass="aboutAuthor"
+                   text="\@Created by: Team JEEA" wrapText="true"/>
+            <Label layoutX="31.0" layoutY="266.0" prefHeight="35.0" prefWidth="189.0" styleClass="aboutAuthor"
+                   text="\@Created by: Team JEEA" wrapText="true"/>
+            <Label layoutX="31.0" layoutY="301.0" prefHeight="35.0" prefWidth="189.0" styleClass="aboutAuthor"
+                   text="\@Created by: Team JEEA" wrapText="true"/>
+            <Label layoutX="31.0" layoutY="336.0" prefHeight="35.0" prefWidth="189.0" styleClass="aboutAuthor"
+                   text="\@Created by: Team JEEA" wrapText="true"/>
+        </AnchorPane>
+    </AnchorPane>
 </fx:root>

@@ -27,11 +27,6 @@ public final class MpointTest {
   }
 
   @Test
-  public void testTestHashCode() {
-    // TODO: Implement
-  }
-
-  @Test
   public void testTestClone() {
     Mpoint mpoint1 = new Mpoint(2, 3);
     Mpoint mpoint2 = mpoint1.clone();

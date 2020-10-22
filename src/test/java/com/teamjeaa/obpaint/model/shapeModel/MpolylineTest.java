@@ -59,11 +59,6 @@ public final class MpolylineTest {
   }
 
   @Test
-  void acceptDrawVisitor() {
-    // TODO: Implement test for this
-  }
-
-  @Test
   void getPoints() {
     Mpolyline mpolyline = setUpMpolyline();
     List<Mpoint> mPoints = new ArrayList<>();
