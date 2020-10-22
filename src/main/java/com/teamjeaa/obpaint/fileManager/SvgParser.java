@@ -61,7 +61,7 @@ public final class SvgParser {
   }
 
   Mshape createPolyline(String line) {
-    List<String> tokens = Arrays.asList(line.split("="));
+    List<String> tokens = Arrays.asList(line.split("=")); //TODO: This and createPolygon() refactor
     List<Mpoint> mpoints = new ArrayList<>();
     Color color = new Color(255, 255, 255);
     for (String token : tokens) {
