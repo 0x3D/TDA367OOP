@@ -7,8 +7,8 @@ import com.teamjeaa.obpaint.server.ObPaintClient;
 /**
  * This class is responsible for executing command by removing desired object
  * It is also responsible for undoing latest command.
- *
- *
+ * <p>
+ * <p>
  * Used by ToolController, ShapeInfoController
  * Uses Mshape, Model
  *
@@ -22,6 +22,7 @@ public final class Eraser implements Command {
 
   /**
    * Constructor for the command Eraser
+   *
    * @param x x location of the object that will be removed from canvas
    * @param y y location of the object that will be removed from canvas
    */

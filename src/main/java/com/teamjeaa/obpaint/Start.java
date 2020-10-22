@@ -36,9 +36,9 @@ public final class Start extends Application {
    * @param args - args
    */
   public static void main(final String[] args) {
-    try{
+    try {
       makeConfig();
-    }catch (final IOException e) {
+    } catch (final IOException e) {
       //cant do anything about IO eeception
       e.printStackTrace();
     }
@@ -49,7 +49,7 @@ public final class Start extends Application {
   }
 
 
-  private static void makeConfig () throws IOException {
+  private static void makeConfig() throws IOException {
     File configFile = new File(CFG_PROPERTIES);
     try {
       FileReader fileReader = new FileReader(configFile);
@@ -57,8 +57,7 @@ public final class Start extends Application {
       properties.load(fileReader);
 
       String port = properties.getProperty(PORT);
-      System.out.println(port);
-    }catch (final FileNotFoundException fileNotFoundException) {
+    } catch (final FileNotFoundException fileNotFoundException) {
       FileWriter fileWriter = new FileWriter(CFG_PROPERTIES);
       Properties properties = new Properties();
       properties.setProperty(PORT, DEFAULT_PORT_VALUE);
@@ -70,20 +69,22 @@ public final class Start extends Application {
       e.printStackTrace();
     }
   }
-  private static String getPort()   {
+
+  private static String getPort() {
     File configFile = new File(CFG_PROPERTIES);
     try {
       FileReader fileReader = new FileReader(configFile);
       Properties properties = new Properties();
       properties.load(fileReader);
       return properties.getProperty(PORT);
-    }catch (final FileNotFoundException fileNotFoundException){
+    } catch (final FileNotFoundException fileNotFoundException) {
       return DEFAULT_PORT_VALUE;
-    }catch (final IOException ioException){
+    } catch (final IOException ioException) {
       ioException.printStackTrace();
     }
     return DEFAULT_PORT_VALUE;
   }
+
   /**
    * This method starts up JavaFX and initializes the Model
    *
@@ -98,15 +99,15 @@ public final class Start extends Application {
     Parent root = new MainView(XML_MAIN_VIEW);
 
     primaryStage.setOnCloseRequest(
-        e -> {
-          try {
-            stop();
-          } catch (Exception exception) {
-            exception.printStackTrace();
-          }
-          Platform.exit();
-          System.exit(0);
-        });
+            e -> {
+              try {
+                stop();
+              } catch (Exception exception) {
+                exception.printStackTrace();
+              }
+              Platform.exit();
+              System.exit(0);
+            });
 
     ResourceBundle obPaintResourceBundle = ResourceBundle.getBundle("obPaint");
     primaryStage.setTitle(obPaintResourceBundle.getString("application.name"));

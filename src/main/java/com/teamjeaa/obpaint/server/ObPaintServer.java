@@ -2,8 +2,6 @@ package com.teamjeaa.obpaint.server;
 
 import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.Model;
-import com.teamjeaa.obpaint.model.commands.Command;
-import com.teamjeaa.obpaint.model.commands.RemoveAllShapes;
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
@@ -29,11 +27,6 @@ public final class ObPaintServer implements Runnable {
     this.port = Integer.parseInt(port);
   }
 
-  private void addCircle(int radius, int centerX, int centerY, Color color, String name) {
-    ShapeFactory shapeFactory = new ConcreteShapeFactory();
-    Model.INSTANCE.addToRender(shapeFactory.createCircle(radius, centerX, centerY, color, name));
-  }
-
   /**
    * This is the main code of the server.
    */
@@ -56,6 +49,11 @@ public final class ObPaintServer implements Runnable {
     }
   }
 
+  private void addCircle(int radius, int centerX, int centerY, Color color, String name) {
+    ShapeFactory shapeFactory = new ConcreteShapeFactory();
+    Model.INSTANCE.addToRender(shapeFactory.createCircle(radius, centerX, centerY, color, name));
+  }
+
   private void handleInput(String line) {
     String[] coordinates = line.split(",");
     if (line.contains("Circle")) {
@@ -74,8 +72,6 @@ public final class ObPaintServer implements Runnable {
       parseRemoveAll();
     System.out.println(line);
   }
-
-  //TODO: Move to new class
 
   private void parsePencil(String[] coordinates) {
     final List<Mpoint> mPoints = new ArrayList<>();

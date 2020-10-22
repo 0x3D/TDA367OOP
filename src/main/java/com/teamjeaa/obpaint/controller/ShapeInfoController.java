@@ -22,19 +22,21 @@ import java.util.ResourceBundle;
  */
 public class ShapeInfoController implements Initializable {
   private static final String STYLE_CLASS_COLOR_PICKER = "button";
+
   private @FXML
   TextField xPosition;
   private @FXML
   TextField yPosition;
   private @FXML
   ColorPicker colorPicker;
+
   private Mshape mshape;
 
   /**
    * Initialize javaFx Controller
    *
-   * @param url            -
-   * @param resourceBundle -
+   * @param url Adress that JavaFx use. We dont need it
+   * @param resourceBundle Bundel already set on JavaFx file, not needed either
    */
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -3,6 +3,7 @@ package com.teamjeaa.obpaint.controller;
 import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.view.ObjectListItemView;
+
 import javafx.fxml.FXML;
 import javafx.scene.layout.FlowPane;
 
@@ -19,6 +20,17 @@ public class ObjectListController {
   private MainController parentController;
 
   /**
+   * SetParentController sets the maincontroller to this class so this method can be calles in mainController
+   * Its needed becuase we have a "singeview" javafx application that only can have one controller at the same time.
+   * We do this so we can separate theresponsibility to our  source code
+   *
+   * @param mainController is a mainController
+   */
+  public void setParentController(MainController mainController) {
+    this.parentController = mainController;
+  }
+
+  /**
    * updateList is a method that updates the list on the ObjectListView. If a shape is added to the rootBorderPane,
    * then its updated in the ObjectlistView
    */
@@ -32,14 +44,4 @@ public class ObjectListController {
     }
   }
 
-  /**
-   * SetParentController sets the maincontroller to this class so this method can be calles in mainController
-   * Its needed becuase we have a "singeview" javafx application that only can have one controller at the same time.
-   * We do this so we can separate theresponsibility to our  source code
-   *
-   * @param mainController is a mainController
-   */
-  public void setParentController(MainController mainController) {
-    this.parentController = mainController;
-  }
 }

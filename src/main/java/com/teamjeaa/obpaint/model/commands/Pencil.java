@@ -54,9 +54,9 @@ public final class Pencil implements Command {
         pencil = shapeFactory.createPolyline(points, color, name, strokeWidth);
         Model.INSTANCE.addToRender(pencil);
         Model.INSTANCE.addToCommandList(this);
-        if (ObPaintClient.INSTANCE.isConnected()) {
-            ObPaintClient.INSTANCE.sendPencilStroke(points,color,name, strokeWidth);
-        }
+      if (ObPaintClient.INSTANCE.isConnected()) {
+        ObPaintClient.INSTANCE.sendPencilStroke(points, color, name, strokeWidth);
+      }
     }
 
     /**

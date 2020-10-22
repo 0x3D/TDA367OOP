@@ -9,9 +9,9 @@ import com.teamjeaa.obpaint.server.ObPaintClient;
 
 /**
  * This class is responsible for executing command by adding a Mpolygon to program.
- *  Also responsible for undoing the executed action.
- *
- *
+ * Also responsible for undoing the executed action.
+ * <p>
+ * <p>
  * Used by ToolController
  * Uses Color, Mshape, ShapeFactory, Model
  *
@@ -30,12 +30,13 @@ public final class AddRectangle implements Command {
 
   /**
    * Constructor for command addRectangle.
-   * @param x1 First corner X-value for Mpolygon
-   * @param y1 First corner Y-value for Mpolygon
-   * @param x2 Second corner X-value for Mpolygon
-   * @param y2 Second corner Y-value for Mpolygon
+   *
+   * @param x1    First corner X-value for Mpolygon
+   * @param y1    First corner Y-value for Mpolygon
+   * @param x2    Second corner X-value for Mpolygon
+   * @param y2    Second corner Y-value for Mpolygon
    * @param color Color of Mpolygon
-   * @param name Name of Mpolygon
+   * @param name  Name of Mpolygon
    */
   public AddRectangle(int x1, int y1, int x2, int y2, Color color, String name) {
     this.x1 = x1;
@@ -57,9 +58,10 @@ public final class AddRectangle implements Command {
     Model.INSTANCE.addToRender(rectangle);
     Model.INSTANCE.addToCommandList(this);
     if (ObPaintClient.INSTANCE.isConnected()) {
-      ObPaintClient.INSTANCE.sendRectangle(x1,y1,x2,y2,color,name);
+      ObPaintClient.INSTANCE.sendRectangle(x1, y1, x2, y2, color, name);
     }
   }
+
   /**
    * This method will undo the command. In this class it will remove the Mpolygon that
    * was created in previous command.

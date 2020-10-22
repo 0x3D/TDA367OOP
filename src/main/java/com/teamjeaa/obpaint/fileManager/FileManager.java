@@ -22,7 +22,7 @@ public class FileManager {
     for (Mshape mshape : Model.INSTANCE.getCanvasShapes()) {
       mshape.acceptDrawVisitor(drawVisitor);
     }
-     sb.append("\n").append("</svg>");
+    sb.append("\n").append("</svg>");
     return sb.toString();
   }
 }

@@ -15,6 +15,7 @@ import java.util.Scanner;
 
 /**
  * Class to read a svg file and generate a list of MShapes from the file
+ *
  * @author Erik R
  * @since 0.2-SNAPSHOT
  */
@@ -22,14 +23,20 @@ public final class SvgParser {
   private final List<String> fileInStrings = new ArrayList<>();
   private final List<Mshape> mshapeList = new ArrayList<>();
 
-  /** Get generated shapes
-   * @return shapes that are generated */
+  /**
+   * Get generated shapes
+   *
+   * @return shapes that are generated
+   */
   public List<Mshape> getMshapeList() {
     return mshapeList;
   }
 
-  /** Open a file to ready class to read
-   * @param input file to read */
+  /**
+   * Open a file to ready class to read
+   *
+   * @param input file to read
+   */
   public void openFile(File input) {
     try {
       Scanner reader = new Scanner(input);
@@ -43,8 +50,9 @@ public final class SvgParser {
     }
   }
 
-  /** Go through file and generate all shapes
-   * */
+  /**
+   * Go through file and generate all shapes
+   */
   public void parseFile() {
     if (fileInStrings.isEmpty()) {
       throw new IllegalStateException("File not read no data to operate on");
@@ -92,12 +100,12 @@ public final class SvgParser {
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
     // TODO: make this create an polygon if more than 4 points
     return shapeFactory.createRectangle(
-        mpoints.get(0).getX(),
-        mpoints.get(0).getY(),
-        mpoints.get(2).getX(),
-        mpoints.get(2).getY(),
-        color,
-        "Rectangle");
+            mpoints.get(0).getX(),
+            mpoints.get(0).getY(),
+            mpoints.get(2).getX(),
+            mpoints.get(2).getY(),
+            color,
+            "Rectangle");
   }
 
   private void extractPoints(List<String> tokens, List<Mpoint> mpoints, String token) {

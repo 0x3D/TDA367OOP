@@ -22,7 +22,9 @@ public final class ModelCanvas {
     this.shapes = shapes;
   }
 
-  /** Initializes an empty model canvas object */
+  /**
+   * Initializes an empty model canvas object
+   */
   public ModelCanvas() {
     this(new ArrayList<>());
   }
@@ -36,13 +38,15 @@ public final class ModelCanvas {
     this.shapes.add(shape);
   }
 
-  /** Removes a shape from the list with objects created by the user */
+  /**
+   * Removes a shape from the list with objects created by the user
+   */
   public void removeFromRender(Mshape mshape) {
     this.shapes.remove(mshape);
   }
 
   /**
-   * Finds the shape at a specific point (x,y).
+   * Finds the shape at a specific point (x,y). We reverse the list to get the latest Shape
    *
    * @param x - Point x
    * @param y - Point y
@@ -71,7 +75,8 @@ public final class ModelCanvas {
     // Unmodifiable list so that any that uses the models list can't change it
     return Collections.unmodifiableList(shapes);
   }
-  void resetRenderList () {
+
+  void resetRenderList() {
     shapes.clear();
   }
 }

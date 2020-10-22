@@ -6,7 +6,6 @@ import com.teamjeaa.obpaint.controller.ToolController;
 import com.teamjeaa.obpaint.model.commands.Command;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 
-
 import java.util.EmptyStackException;
 import java.util.List;
 import java.util.Stack;
@@ -28,7 +27,6 @@ public enum Model {
   INSTANCE;
 
   private final ModelCanvas modelCanvas;
-
   public final Stack<Command> commandList;
 
   Model() {
@@ -51,11 +49,18 @@ public enum Model {
     }
   }
 
-  public void addToCommandList(Command command){
+  /**
+   * This method adds our commands to a stack so we can handle Undo
+   * @param command - Is the command we push to the stack
+   */
+  public void addToCommandList(Command command) {
     this.commandList.push(command);
   }
 
-  public void undo(){
+  /**
+   * Undo method
+   */
+  public void undo() {
     try {
       commandList.pop().undo();
     } catch (EmptyStackException e) {
@@ -63,6 +68,11 @@ public enum Model {
     }
   }
 
+  /**
+   * removes a shape by its points
+   * @param x is the xPoint
+   * @param y is the yPoint
+   */
   public void removeFromRenderByPoint(int x, int y) {
     try {
       modelCanvas.removeFromRender(modelCanvas.findShapeAt(x, y));
@@ -70,7 +80,12 @@ public enum Model {
       System.out.println("Found no Shape to Remove");
     }
   }
-  public void removeFromRender (Mshape mshape) {
+
+  /**
+   * Removes a single shape
+   * @param mshape is the shape that being removed
+   */
+  public void removeFromRender(Mshape mshape) {
     try {
       modelCanvas.removeFromRender(mshape);
     } catch (IllegalArgumentException e) {
@@ -78,14 +93,20 @@ public enum Model {
     }
   }
 
-  /** @return Returns the list of Mshapes collected from modelCanvas. */
+  /**
+   * @return Returns the list of Mshapes collected from modelCanvas.
+   */
   public List<Mshape> getCanvasShapes() {
     //TODO: Lockable object
     synchronized ("Server") {
       return modelCanvas.getShapes();
     }
   }
-  public void removeAllShapes () {
+
+  /**
+   * removes all shapes from the list
+   */
+  public void removeAllShapes() {
     modelCanvas.resetRenderList();
   }
 }

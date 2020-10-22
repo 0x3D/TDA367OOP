@@ -20,8 +20,9 @@ public enum ObPaintClient {
   INSTANCE;
 
   private boolean connected = false;
-  private String ip;
   private int port;
+  private String ip;
+
 
   private void sendMessage(String s) {
     try {

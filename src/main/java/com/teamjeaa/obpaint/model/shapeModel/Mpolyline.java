@@ -3,6 +3,7 @@ package com.teamjeaa.obpaint.model.shapeModel;
 import com.teamjeaa.obpaint.view.DrawVisitor;
 
 import com.teamjeaa.obpaint.model.Color;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -28,7 +29,7 @@ public final class Mpolyline implements Mshape {
    * Constructor to create a Polyline
    *
    * @param mPoints List of points to create polyline from
-   * @param color The color of this Polyline
+   * @param color   The color of this Polyline
    */
   public Mpolyline(List<Mpoint> mPoints, Color color, String name, int strokeWidth) {
     //Shallow copy but Mpoint is immutable
@@ -43,17 +44,46 @@ public final class Mpolyline implements Mshape {
    *
    * @return The color of the polyline as java.awt color
    */
-  public Color getColor() {
-    return color;
-  }
 
-  public int getStrokeWidth() {
-    return strokeWidth;
-  }
 
   @Override
   public String getName() {
     return name;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Mpolyline mpolyline = (Mpolyline) o;
+    return mPoints.equals(mpolyline.mPoints) && getColor().equals(mpolyline.getColor());
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(mPoints, getColor());
+  }
+
+  @Override
+  public void acceptDrawVisitor(DrawVisitor drawVisitor) {
+    drawVisitor.visitMpolyline(this);
+  }
+
+  @Override
+  public boolean isPointMemberOfShape(int x, int y) {
+    double acceptance = 10 + this.strokeWidth / 2.0;
+
+    for (int i = 0; i < mPoints.size() - 1; i++) {
+      Mpoint point1 = mPoints.get(i);
+      Mpoint point2 = mPoints.get(i + 1);
+
+      if (distance(point1, point2, x, y) <= acceptance) {
+        return true;
+      } else if (distanceFromPointToCoord(point1, x, y) <= acceptance) {
+        return true;
+      }
+    }
+    return false;
   }
 
 
@@ -109,7 +139,7 @@ public final class Mpolyline implements Mshape {
     Mpoint minPoint = getMinPosition();
     Mpoint maxPoint = getMaxPosition();
     return maxPoint.getX()
-        - minPoint.getX(); // Maybe should give an absolute value here since width>0
+            - minPoint.getX(); // Maybe should give an absolute value here since width>0
   }
 
   /**
@@ -123,10 +153,6 @@ public final class Mpolyline implements Mshape {
     return maxPoint.getY() - minPoint.getY();
   }
 
-  @Override
-  public void acceptDrawVisitor(DrawVisitor drawVisitor) {
-    drawVisitor.visitMpolyline(this);
-  }
 
   /**
    * Return list of all the points that make up polyline
@@ -153,44 +179,16 @@ public final class Mpolyline implements Mshape {
     return new Mpolyline(newPolyline, new Color(color.getRed(), color.getGreen(), color.getBlue(), color.getAlpha()), name, strokeWidth);
   }
 
-  @Override
-  public boolean isPointMemberOfShape(int x, int y) {
-    double acceptance = 10 + this.strokeWidth/2.0;
-
-    for (int i = 0; i < mPoints.size() - 1; i++) {
-      Mpoint point1 = mPoints.get(i);
-      Mpoint point2 = mPoints.get(i + 1);
-
-      if (distance(point1, point2, x, y) <= acceptance) {
-        return true;
-      } else if (distanceFromPointToCoord(point1, x, y) <= acceptance) {
-        return true;
-      }
-    }
-    return false;
-  }
-
   private double distanceFromPointToCoord(Mpoint p, int x, int y) {
     double deltaX = x - p.getX();
     double deltaY = y - p.getY();
     //phytagoras
-    return Math.sqrt(Math.pow(deltaX,2) + Math.pow(deltaY,2));
+    return Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Mpolyline mpolyline = (Mpolyline) o;
-    return mPoints.equals(mpolyline.mPoints) && getColor().equals(mpolyline.getColor());
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(mPoints, getColor());
-  }
-
-  /** Distance between a line between two points an another point */
+  /**
+   * Distance between a line between two points an another point
+   */
   private double distance(Mpoint A, Mpoint C, int x, int y) {
     double distance;
     Mpoint B = new Mpoint(x, y);
@@ -212,5 +210,13 @@ public final class Mpolyline implements Mshape {
     }
 
     return distance;
+  }
+
+  public Color getColor() {
+    return color;
+  }
+
+  public int getStrokeWidth() {
+    return strokeWidth;
   }
 }

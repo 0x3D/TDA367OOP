@@ -4,6 +4,7 @@ import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.view.DrawVisitor;
 import com.teamjeaa.obpaint.view.JavaFXDrawVisitor;
+
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,7 +26,8 @@ import java.util.ResourceBundle;
  * @since 0.1-SNAPSHOT
  */
 public final class CanvasController implements Initializable {
-  private @FXML BorderPane rootBorderPane;
+  private @FXML
+  BorderPane rootBorderPane;
 
   private Node ghost;
   private ObjectListController objectListController;

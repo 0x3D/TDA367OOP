@@ -1,6 +1,8 @@
 package com.teamjeaa.obpaint.model.commands;
 
-/** Interface Command for CommandPattern */
+/**
+ * Interface Command for CommandPattern
+ */
 public interface Command {
 
   /**

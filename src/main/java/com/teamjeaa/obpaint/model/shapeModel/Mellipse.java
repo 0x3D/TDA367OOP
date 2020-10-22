@@ -32,9 +32,9 @@ public final class Mellipse implements Mshape {
 
   /**
    * @param centerPoint The point in the center of the Ellipse
-   * @param semiAxesA The axis of the ellipse in the x direction
-   * @param semiAxesB The axis of the ellipse ion the y direction
-   * @param color The color the ellipse created
+   * @param semiAxesA   The axis of the ellipse in the x direction
+   * @param semiAxesB   The axis of the ellipse ion the y direction
+   * @param color       The color the ellipse created
    */
   Mellipse(Mpoint centerPoint, int semiAxesA, int semiAxesB, Color color, String name) {
     this.centerPoint = centerPoint;
@@ -44,20 +44,6 @@ public final class Mellipse implements Mshape {
     this.name = name;
   }
 
-  /**
-   * Getter for the Mpoint in the center of ellipse
-   *
-   * @return centerPoint, a Mpoint which is the middle of the ellipse
-   */
-  public Mpoint getCenterPoint() {
-    return this.centerPoint.clone();
-  }
-
-  /** @return The color of this Ellipse */
-  public Color getColor() {
-    //Color is immutable
-    return color;
-  }
 
   @Override
   public String getName() {
@@ -84,24 +70,14 @@ public final class Mellipse implements Mshape {
     drawVisitor.visitMellipse(this);
   }
 
-  /** @return The semi-axes in the x direction */
-  public int getSemiAxesA() {
-    return semiAxesA;
-  }
-
-  /** @return The semi-axes in the y direction */
-  public int getSemiAxesB() {
-    return semiAxesB;
-  }
-
   @Override
   public Mshape translate(int x, int y) {
     return new Mellipse(
-        new Mpoint(centerPoint.getX() + x, centerPoint.getY() + y),
-        this.semiAxesA,
-        this.semiAxesB,
-        this.color,
-        this.name);
+            new Mpoint(centerPoint.getX() + x, centerPoint.getY() + y),
+            this.semiAxesA,
+            this.semiAxesB,
+            this.color,
+            this.name);
   }
 
   @Override
@@ -110,9 +86,9 @@ public final class Mellipse implements Mshape {
     if (o == null || getClass() != o.getClass()) return false;
     Mellipse mellipse = (Mellipse) o;
     return getSemiAxesA() == mellipse.getSemiAxesA()
-        && getSemiAxesB() == mellipse.getSemiAxesB()
-        && getCenterPoint().equals(mellipse.getCenterPoint())
-        && getColor().equals(mellipse.getColor());
+            && getSemiAxesB() == mellipse.getSemiAxesB()
+            && getCenterPoint().equals(mellipse.getCenterPoint())
+            && getColor().equals(mellipse.getColor());
   }
 
   @Override
@@ -128,6 +104,38 @@ public final class Mellipse implements Mshape {
   public boolean isPointMemberOfShape(int x, int y) {
     return Math.pow(x - this.getCenterPoint().getX(), 2) / Math.pow(this.getSemiAxesA(), 2)
             + Math.pow(y - getCenterPoint().getY(), 2) / Math.pow(getSemiAxesB(), 2)
-        <= 1;
+            <= 1;
   }
+
+  /**
+   * Getter for the Mpoint in the center of ellipse
+   *
+   * @return centerPoint, a Mpoint which is the middle of the ellipse
+   */
+  public Mpoint getCenterPoint() {
+    return this.centerPoint.clone();
+  }
+
+  /**
+   * @return The color of this Ellipse
+   */
+  public Color getColor() {
+    //Color is immutable
+    return color;
+  }
+
+  /**
+   * @return The semi-axes in the x direction
+   */
+  public int getSemiAxesA() {
+    return semiAxesA;
+  }
+
+  /**
+   * @return The semi-axes in the y direction
+   */
+  public int getSemiAxesB() {
+    return semiAxesB;
+  }
+
 }

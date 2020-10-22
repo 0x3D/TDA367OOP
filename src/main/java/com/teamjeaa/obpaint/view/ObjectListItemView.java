@@ -3,6 +3,7 @@ package com.teamjeaa.obpaint.view;
 import com.teamjeaa.obpaint.controller.MainController;
 import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -21,23 +22,20 @@ import java.io.IOException;
 public final class ObjectListItemView extends AnchorPane {
 
   private static final String FXML_OBJECT_LIST_ITEM_VIEW_FXML = "/fxml/objectListItemView.fxml";
-  private final Mshape mshape;
-
-  //Used in FXML but IntelliJ cant find
-  private final MainController parentController;
-
 
   /**
    * IntelliJ cant recognize that these are used
    * But...they are
    */
-
   private @FXML
   Label objectLabel;
   private @FXML
   AnchorPane itemPane;
   private @FXML
   AnchorPane hoverPane;
+
+  private final Mshape mshape;
+  private final MainController parentController;
 
   /**
    * Constructor for the Item

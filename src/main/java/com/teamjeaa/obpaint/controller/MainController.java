@@ -7,6 +7,7 @@ import com.teamjeaa.obpaint.model.commands.Command;
 import com.teamjeaa.obpaint.model.commands.RemoveAllShapes;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.server.ObPaintClient;
+
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -22,8 +23,11 @@ import javafx.stage.Window;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import java.net.URL;
+
 import java.nio.charset.StandardCharsets;
+
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -87,17 +91,6 @@ public final class MainController implements Initializable {
   private ShapeInfoController shapeInfoViewController;
 
   /**
-   * initialize the startpane of obPaint
-   */
-  @FXML
-  private void initializeStartPage() {
-    startPagePane.toFront();
-    startPagePane.setStyle("-fx-background-color: white");
-    serverPane.toBack();
-    serverPane.toBack();
-  }
-
-  /**
    * This method initializes the controller for MainView
    *
    * @param location  - The location used to resolve relative paths for the root object
@@ -114,6 +107,27 @@ public final class MainController implements Initializable {
     connectButton.setVisible(false);
     serverPane.setVisible(false);
     serverPaneChild.setVisible(false);
+  }
+
+  /**
+   * Updates the shapeInfo on a clicked shape in the objectListView. ObjectListView holds a list on
+   * the object that are rendered on the rootBorderPane
+   *
+   * @param mshape - is the sape that the info is about
+   */
+  public void updateShapeInfo(Mshape mshape) {
+    shapeInfoViewController.updateInfo(mshape);
+  }
+
+  /**
+   * initialize the StartPane of obPaint
+   */
+  @FXML
+  private void initializeStartPage() {
+    startPagePane.toFront();
+    startPagePane.setStyle("-fx-background-color: white");
+    serverPane.toBack();
+    serverPane.toBack();
   }
 
   /**
@@ -227,16 +241,6 @@ public final class MainController implements Initializable {
   }
 
   /**
-   * Updates the shapeInfo on a clicked shape in the objectListView. ObjectListView holds a list on
-   * the object that are rendered on the rootBorderPane
-   *
-   * @param mshape - is the sape that the info is about
-   */
-  public void updateShapeInfo(Mshape mshape) {
-    shapeInfoViewController.updateInfo(mshape);
-  }
-
-  /**
    * removes all the shapes from the renderList
    */
   @FXML
@@ -337,6 +341,5 @@ public final class MainController implements Initializable {
     aboutPage.setVisible(false);
     aboutPage.toBack();
   }
-
 
 }

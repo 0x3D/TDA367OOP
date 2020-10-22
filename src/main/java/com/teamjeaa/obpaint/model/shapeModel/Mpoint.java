@@ -14,28 +14,9 @@ import java.util.Objects;
  * @since 0.1-SNAPSHOT
  */
 public final class Mpoint implements Cloneable {
+
   private final int x;
   private final int y;
-
-
-  /**
-   * @param x x coordinate of the point created
-   * @param y y coordinate of the point created
-   */
-  public Mpoint(int x, int y) {
-    this.x = x;
-    this.y = y;
-  }
-
-  /** @return The x coordinate of the point */
-  public int getX() {
-    return x;
-  }
-
-  /** @return The y coordinate of the point */
-  public int getY() {
-    return y;
-  }
 
 
   /**
@@ -57,7 +38,9 @@ public final class Mpoint implements Cloneable {
     return Objects.hash(getX(), getY());
   }
 
-  /** @return A copy of this point */
+  /**
+   * @return A copy of this point
+   */
   @Override
   public Mpoint clone() {
     final Mpoint clone;
@@ -68,4 +51,28 @@ public final class Mpoint implements Cloneable {
     }
     return clone;
   }
+
+  /**
+   * @param x x coordinate of the point created
+   * @param y y coordinate of the point created
+   */
+  public Mpoint(int x, int y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  /**
+   * @return The x coordinate of the point
+   */
+  public int getX() {
+    return x;
+  }
+
+  /**
+   * @return The y coordinate of the point
+   */
+  public int getY() {
+    return y;
+  }
+
 }

@@ -6,20 +6,27 @@ import com.teamjeaa.obpaint.view.DrawVisitor;
 /**
  * Class that implements the DrawVisitor using SVG Creates svg representation of shape using Visitor
  * pattern
+ *
  * @author Erik R
  * @since 0.2-SNAPSHOT
  */
- public final class SvgDrawVisitor implements DrawVisitor {
+public final class SvgDrawVisitor implements DrawVisitor {
   private final StringBuilder stringBuilder;
 
-  /** Constructor for the class
-   *  @param stringBuilder to add text lines to */
+  /**
+   * Constructor for the class
+   *
+   * @param stringBuilder to add text lines to
+   */
   public SvgDrawVisitor(StringBuilder stringBuilder) {
     this.stringBuilder = stringBuilder;
   }
 
-  /** Create a svg line to represent a ellipse
-   *  @param mellipse ellipse to create text from */
+  /**
+   * Create a svg line to represent a ellipse
+   *
+   * @param mellipse ellipse to create text from
+   */
   @Override
   public void visitMellipse(Mellipse mellipse) {
     stringBuilder.append("<ellipse cx=\"");
@@ -36,18 +43,11 @@ import com.teamjeaa.obpaint.view.DrawVisitor;
   }
 
 
-  private void addMshapeColor(Mshape mshape) {
-    stringBuilder
-        .append(mshape.getColor().getRed())
-        .append(",")
-        .append(mshape.getColor().getGreen())
-        .append(",")
-        .append(mshape.getColor().getBlue())
-        .append(")");
-  }
-
-  /** Create a svg line to represent a polygon
-   *  @param mpolygon Polygon to create svg text from */
+  /**
+   * Create a svg line to represent a polygon
+   *
+   * @param mpolygon Polygon to create svg text from
+   */
   @Override
   public void visitMpolyogon(Mpolygon mpolygon) {
     stringBuilder.append("<polygon points=\"");
@@ -60,8 +60,11 @@ import com.teamjeaa.obpaint.view.DrawVisitor;
     stringBuilder.append("\"/>\n");
   }
 
-  /** Create a svg line to represent a polyline
-   *  @param mpolyline Polyline to create svg text from */
+  /**
+   * Create a svg line to represent a polyline
+   *
+   * @param mpolyline Polyline to create svg text from
+   */
   @Override
   public void visitMpolyline(Mpolyline mpolyline) {
     stringBuilder.append("<polyline points=\"");
@@ -72,5 +75,15 @@ import com.teamjeaa.obpaint.view.DrawVisitor;
     stringBuilder.append("\" style=\"fill:none; stroke:rgb(");
     addMshapeColor(mpolyline);
     stringBuilder.append("\"/>\n");
+  }
+
+  private void addMshapeColor(Mshape mshape) {
+    stringBuilder
+            .append(mshape.getColor().getRed())
+            .append(",")
+            .append(mshape.getColor().getGreen())
+            .append(",")
+            .append(mshape.getColor().getBlue())
+            .append(")");
   }
 }

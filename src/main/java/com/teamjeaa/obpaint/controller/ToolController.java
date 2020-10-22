@@ -5,14 +5,12 @@ import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.commands.*;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
-
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -30,17 +28,27 @@ import java.util.ResourceBundle;
  */
 public final class ToolController implements Initializable {
   private static final int JAVAFX_MODEL_COLOR_CONSTANT = 255;
-  private final static int START_UP_STROKE_SIZE = 5;
-  @FXML private ColorPicker cp;
-  @FXML private ToggleButton pencilButton;
-  @FXML private ToggleButton brushButton;
-  @FXML private ToggleButton eraserButton;
-  @FXML private ToggleButton circleButton;
-  @FXML private ToggleButton rectangleButton;
-  @FXML private ToggleButton moveButton;
-  @FXML private TextField widthTextField;
-  @FXML private Line strokeLine;
-  @FXML private Label strokeLabel;
+  private static final int START_UP_STROKE_SIZE = 5;
+  @FXML
+  private ColorPicker cp;
+  @FXML
+  private ToggleButton pencilButton;
+  @FXML
+  private ToggleButton brushButton;
+  @FXML
+  private ToggleButton eraserButton;
+  @FXML
+  private ToggleButton circleButton;
+  @FXML
+  private ToggleButton rectangleButton;
+  @FXML
+  private ToggleButton moveButton;
+  @FXML
+  private TextField widthTextField;
+  @FXML
+  private Line strokeLine;
+  @FXML
+  private Label strokeLabel;
 
   private List<Mpoint> points = new ArrayList<>();
   private CanvasController canvasController;
@@ -53,7 +61,7 @@ public final class ToolController implements Initializable {
   /**
    * This method initializes the controller for ToolView
    *
-   * @param location - The location used to resolve relative paths for the root object
+   * @param location  - The location used to resolve relative paths for the root object
    * @param resources - The resources used to localize the root object
    */
   @Override
@@ -87,6 +95,32 @@ public final class ToolController implements Initializable {
   }
 
   /**
+   * Convers our own ColorClass to javaFxColor
+   *
+   * @param javafxColor is he javaFxColor
+   * @return our own Color class
+   */
+  private Color convertToModelColor(javafx.scene.paint.Color javafxColor) {
+    return new Color(
+            (int) (javafxColor.getRed() * JAVAFX_MODEL_COLOR_CONSTANT),
+            (int) (javafxColor.getGreen() * JAVAFX_MODEL_COLOR_CONSTANT),
+            (int) (javafxColor.getBlue() * JAVAFX_MODEL_COLOR_CONSTANT),
+            (int) (javafxColor.getOpacity() * JAVAFX_MODEL_COLOR_CONSTANT));
+  }
+
+  private void hideStrokeSize() {
+    widthTextField.setVisible(false);
+    strokeLabel.setVisible(false);
+    strokeLine.setVisible(false);
+  }
+
+  private void showStrokeSize() {
+    widthTextField.setVisible(true);
+    strokeLabel.setVisible(true);
+    strokeLine.setVisible(true);
+  }
+
+  /**
    * onPencilButton is the method that is calls when we want to use the pencil
    */
   @FXML
@@ -97,32 +131,32 @@ public final class ToolController implements Initializable {
     toolVisualiser = new PencilVisualiser(canvasController);
 
     canvasPane.setOnMousePressed(
-        mouseEvent -> {
-          x = (int) mouseEvent.getX();
-          y = (int) mouseEvent.getY();
-          toolVisualiser.initiateVisualisation(x, y);
-        });
+            mouseEvent -> {
+              x = (int) mouseEvent.getX();
+              y = (int) mouseEvent.getY();
+              toolVisualiser.initiateVisualisation(x, y);
+            });
 
     canvasPane.setOnMouseDragged(
-        mouseEvent -> {
-          points.add(new Mpoint((int) mouseEvent.getX(), (int) mouseEvent.getY()));
-          toolVisualiser.updateVisualisation((int) mouseEvent.getX(), (int) mouseEvent.getY());
-        });
+            mouseEvent -> {
+              points.add(new Mpoint((int) mouseEvent.getX(), (int) mouseEvent.getY()));
+              toolVisualiser.updateVisualisation((int) mouseEvent.getX(), (int) mouseEvent.getY());
+            });
 
 
     canvasPane.setOnMouseReleased(
-        mouseEvent -> {
-          points.add(new Mpoint((int) mouseEvent.getX(), (int) mouseEvent.getY()));
-          command =
-              new Pencil(
-                  points,
-                  convertToModelColor(cp.getValue()),
-                  "Drawn line",
-                  Integer.parseInt(widthTextField.getText()));
-          command.execute();
-          points = new ArrayList<>();
-          toolVisualiser.endVisualisation();
-        });
+            mouseEvent -> {
+              points.add(new Mpoint((int) mouseEvent.getX(), (int) mouseEvent.getY()));
+              command =
+                      new Pencil(
+                              points,
+                              convertToModelColor(cp.getValue()),
+                              "Drawn line",
+                              Integer.parseInt(widthTextField.getText()));
+              command.execute();
+              points = new ArrayList<>();
+              toolVisualiser.endVisualisation();
+            });
   }
 
   /**
@@ -136,30 +170,31 @@ public final class ToolController implements Initializable {
     toolVisualiser = new LineVisualiser(canvasController);
 
     canvasPane.setOnMousePressed(
-        mouseEvent -> {
-          this.x = (int) mouseEvent.getX();
-          this.y = (int) mouseEvent.getY();
-          toolVisualiser.initiateVisualisation(x, y);
-        });
+            mouseEvent -> {
+              this.x = (int) mouseEvent.getX();
+              this.y = (int) mouseEvent.getY();
+              toolVisualiser.initiateVisualisation(x, y);
+            });
 
     canvasPane.setOnMouseDragged(
-        e -> toolVisualiser.updateVisualisation((int) e.getX(), (int) e.getY()));
+            e -> toolVisualiser.updateVisualisation((int) e.getX(), (int) e.getY()));
 
     canvasPane.setOnMouseReleased(
-        mouseEvent -> {
-          this.command =
-              new AddLine(
-                  x,
-                  y,
-                  (int) mouseEvent.getX(),
-                  (int) mouseEvent.getY(),
-                  convertToModelColor(cp.getValue()),
-                  "Straight line",
-                  Integer.parseInt(widthTextField.getText()));
-          command.execute();
-          toolVisualiser.endVisualisation();
-        });
+            mouseEvent -> {
+              this.command =
+                      new AddLine(
+                              x,
+                              y,
+                              (int) mouseEvent.getX(),
+                              (int) mouseEvent.getY(),
+                              convertToModelColor(cp.getValue()),
+                              "Straight line",
+                              Integer.parseInt(widthTextField.getText()));
+              command.execute();
+              toolVisualiser.endVisualisation();
+            });
   }
+
   /**
    * onEraserButton is the method that is calls when we want to use the eraser
    */
@@ -169,11 +204,12 @@ public final class ToolController implements Initializable {
     resetCanvasMouseEventHandlers();
     hideStrokeSize();
     canvasPane.setOnMouseClicked(
-        mouseEvent -> {
-          command = new Eraser((int) mouseEvent.getX(), (int) mouseEvent.getY());
-          command.execute();
-        });
+            mouseEvent -> {
+              command = new Eraser((int) mouseEvent.getX(), (int) mouseEvent.getY());
+              command.execute();
+            });
   }
+
   /**
    * onCircleButton is the method that is calls when we want to use the circle
    */
@@ -185,30 +221,30 @@ public final class ToolController implements Initializable {
     toolVisualiser = new CircleVisualiser(canvasController);
 
     canvasPane.setOnMousePressed(
-        mouseEvent -> {
-          x = (int) mouseEvent.getX();
-          y = (int) mouseEvent.getY();
-          toolVisualiser.initiateVisualisation(x, y);
-        });
+            mouseEvent -> {
+              x = (int) mouseEvent.getX();
+              y = (int) mouseEvent.getY();
+              toolVisualiser.initiateVisualisation(x, y);
+            });
 
     canvasPane.setOnMouseDragged(
-        e -> toolVisualiser.updateVisualisation((int) e.getX(), (int) e.getY()));
+            e -> toolVisualiser.updateVisualisation((int) e.getX(), (int) e.getY()));
 
     canvasPane.setOnMouseReleased(
-        mouseEvent -> {
-          int dia =
-              (int)
-                  Math.sqrt(
-                      Math.pow(x - mouseEvent.getX(), 2) + Math.pow(y - mouseEvent.getY(), 2));
-          int centerX = (int) (x + mouseEvent.getX()) / 2;
-          int centerY = (int) (y + mouseEvent.getY()) / 2;
-          // Math
-          command =
-              new AddCircle(
-                  dia / 2, centerX, centerY, convertToModelColor(cp.getValue()), "Circle");
-          command.execute();
-          toolVisualiser.endVisualisation();
-        });
+            mouseEvent -> {
+              int dia =
+                      (int)
+                              Math.sqrt(
+                                      Math.pow(x - mouseEvent.getX(), 2) + Math.pow(y - mouseEvent.getY(), 2));
+              int centerX = (int) (x + mouseEvent.getX()) / 2;
+              int centerY = (int) (y + mouseEvent.getY()) / 2;
+              // Math
+              command =
+                      new AddCircle(
+                              dia / 2, centerX, centerY, convertToModelColor(cp.getValue()), "Circle");
+              command.execute();
+              toolVisualiser.endVisualisation();
+            });
   }
 
   /**
@@ -222,28 +258,28 @@ public final class ToolController implements Initializable {
     toolVisualiser = new RectangleVisualiser(canvasController);
 
     canvasPane.setOnMousePressed(
-        mouseEvent -> {
-          x = (int) mouseEvent.getX();
-          y = (int) mouseEvent.getY();
-          toolVisualiser.initiateVisualisation(x, y);
-        });
+            mouseEvent -> {
+              x = (int) mouseEvent.getX();
+              y = (int) mouseEvent.getY();
+              toolVisualiser.initiateVisualisation(x, y);
+            });
 
     canvasPane.setOnMouseDragged(
-        e -> toolVisualiser.updateVisualisation((int) e.getX(), (int) e.getY()));
+            e -> toolVisualiser.updateVisualisation((int) e.getX(), (int) e.getY()));
 
     canvasPane.setOnMouseReleased(
-        mouseEvent -> {
-          command =
-              new AddRectangle(
-                  x,
-                  y,
-                  (int) mouseEvent.getX(),
-                  (int) mouseEvent.getY(),
-                  convertToModelColor(cp.getValue()),
-                  "Rectangle");
-          command.execute();
-          toolVisualiser.endVisualisation();
-        });
+            mouseEvent -> {
+              command =
+                      new AddRectangle(
+                              x,
+                              y,
+                              (int) mouseEvent.getX(),
+                              (int) mouseEvent.getY(),
+                              convertToModelColor(cp.getValue()),
+                              "Rectangle");
+              command.execute();
+              toolVisualiser.endVisualisation();
+            });
   }
 
   /**
@@ -256,46 +292,22 @@ public final class ToolController implements Initializable {
     toolVisualiser = new MoveVisualiser(canvasController);
 
     canvasPane.setOnMousePressed(
-        mouseEvent -> {
-          x = (int) mouseEvent.getX();
-          y = (int) mouseEvent.getY();
-          toolVisualiser.initiateVisualisation(x, y);
-        });
+            mouseEvent -> {
+              x = (int) mouseEvent.getX();
+              y = (int) mouseEvent.getY();
+              toolVisualiser.initiateVisualisation(x, y);
+            });
 
     canvasPane.setOnMouseDragged(
-        e -> toolVisualiser.updateVisualisation((int) e.getX(), (int) e.getY()));
+            e -> toolVisualiser.updateVisualisation((int) e.getX(), (int) e.getY()));
 
     canvasPane.setOnMouseReleased(
-        mouseEvent -> {
-          toolVisualiser.endVisualisation();
-          command = new Move(x, y, (int) mouseEvent.getX(), (int) mouseEvent.getY());
-          command.execute();
-          toolVisualiser.endVisualisation();
-        });
+            mouseEvent -> {
+              toolVisualiser.endVisualisation();
+              command = new Move(x, y, (int) mouseEvent.getX(), (int) mouseEvent.getY());
+              command.execute();
+              toolVisualiser.endVisualisation();
+            });
   }
 
-  /**
-   * Convers our own ColorClass to javaFxColor
-   * @param javafxColor is he javaFxColor
-   * @return our own Color class
-   */
-  private Color convertToModelColor(javafx.scene.paint.Color javafxColor) {
-    return new Color(
-            (int) (javafxColor.getRed() * JAVAFX_MODEL_COLOR_CONSTANT),
-            (int) (javafxColor.getGreen() * JAVAFX_MODEL_COLOR_CONSTANT),
-            (int) (javafxColor.getBlue() * JAVAFX_MODEL_COLOR_CONSTANT),
-            (int) (javafxColor.getOpacity() * JAVAFX_MODEL_COLOR_CONSTANT));
-  }
-
-  private void hideStrokeSize() {
-        widthTextField.setVisible(false);
-        strokeLabel.setVisible(false);
-        strokeLine.setVisible(false);
-  }
-
-  private void showStrokeSize() {
-      widthTextField.setVisible(true);
-      strokeLabel.setVisible(true);
-      strokeLine.setVisible(true);
-  }
 }
