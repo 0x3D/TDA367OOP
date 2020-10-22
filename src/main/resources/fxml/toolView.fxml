@@ -142,14 +142,14 @@ The tool pane
             <Font name="Courier New" size="16.0" />
         </font>
     </Label>
-   <Label layoutX="20.0" layoutY="457.0" text="%key.strokes">
+   <Label fx:id="strokeLabel" layoutX="20.0" layoutY="457.0" text="%key.strokes">
       <font>
          <Font name="Courier New" size="16.0" />
       </font>
    </Label>
    <Line endX="95.0" layoutX="48.0" layoutY="239.0" startX="-40.0" stroke="#9e9999" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="6.5" />
    <Line endX="95.0" layoutX="47.0" layoutY="318.0" startX="-40.0" stroke="#9e9999" AnchorPane.leftAnchor="6.5" AnchorPane.rightAnchor="7.5" />
-   <Line endX="95.0" layoutX="48.0" layoutY="446.0" startX="-40.0" stroke="#9e9999" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="6.5" />
+   <Line fx:id="strokeLine" endX="95.0" layoutX="48.0" layoutY="446.0" startX="-40.0" stroke="#9e9999" AnchorPane.leftAnchor="7.5" AnchorPane.rightAnchor="6.5" />
    <Label layoutX="43.0" layoutY="537.0" text="%key.color">
       <font>
          <Font name="Courier New" size="16.0" />

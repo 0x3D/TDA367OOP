@@ -6,7 +6,7 @@ import javafx.scene.shape.Polyline;
 
 
 /**
- * CircleVisualiser is a class thats holds the logic about the visualization
+ * PencilVisualiser is a class thats holds the logic about the visualization
  * when you creating a free line
  *
  * </p> We only use Javafx shapes to visualize this.
@@ -28,9 +28,8 @@ public class PencilVisualiser implements ToolVisualiser {
     @Override
     public void initiateVisualisation(int x, int y) {
         polyline = new Polyline();
-
         polyline.getPoints().addAll((double) x, (double) y);
-        polyline.setStrokeWidth(2);
+        polyline.setStrokeWidth(5);
         polyline.setStroke(new Color(0.3,0.3,0.3,0.3));
         canvasController.setGhost(polyline);
     }

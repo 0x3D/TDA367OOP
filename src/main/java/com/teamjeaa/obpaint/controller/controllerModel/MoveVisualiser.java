@@ -8,7 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Shape;
 
 /**
- * CircleVisualiser is a class thats holds the logic about the visualization
+ * MoveVisualiser is a class thats holds the logic about the visualization
  * when you Moving
  *
  * </p> We only use Javafx shapes to visualize this.

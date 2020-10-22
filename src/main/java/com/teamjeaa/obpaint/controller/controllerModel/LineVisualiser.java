@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
 /**
- * CircleVisualiser is a class thats holds the logic about the visualization
+ * LineVisualiser is a class thats holds the logic about the visualization
  * when you creating a Line
  *
  * </p> We only use Javafx shapes to visualize this.
@@ -30,7 +30,7 @@ public class LineVisualiser implements ToolVisualiser {
         line.setStartY(y);
         line.setEndX(x);
         line.setEndY(y);
-        line.setStrokeWidth(2);
+        line.setStrokeWidth(5);
         line.setStroke(new Color(0.3,0.3,0.3,0.2));
         canvasController.setGhost(line);
     }

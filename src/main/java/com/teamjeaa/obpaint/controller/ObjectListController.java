@@ -14,7 +14,7 @@ import javafx.scene.layout.FlowPane;
  * @since 0.3-SNAPSHOT
  */
 public class ObjectListController {
-  public @FXML
+  private @FXML
   FlowPane objectFlowPane;
   private MainController parentController;
 
