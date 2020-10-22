@@ -168,9 +168,18 @@ public final class Mpolyline implements Mshape {
 
       if (distance(point1, point2, x, y) <= acceptance) {
         return true;
+      } else if (distanceFromPointToCoord(point1, x, y) <= acceptance) {
+        return true;
       }
     }
     return false;
+  }
+
+  private double distanceFromPointToCoord(Mpoint p, int x, int y) {
+    double deltaX = x - p.getX();
+    double deltaY = y - p.getY();
+    //phytagoras
+    return Math.sqrt(Math.pow(deltaX,2) + Math.pow(deltaY,2));
   }
 
   @Override
