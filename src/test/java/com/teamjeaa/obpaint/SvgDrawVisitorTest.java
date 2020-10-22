@@ -45,6 +45,7 @@ class SvgDrawVisitorTest {
     Mshape mRectangle = shapeFactory.createLine(0, 0, 300, 300, new Color(255, 175, 175), "test",1);
     mRectangle.acceptDrawVisitor(svgDrawVisitor);
     assertEquals(
-        "<polyline points=\"0,0 300,300\" style=\"stroke:rgb(255,175,175)\"/>\n", sb.toString());
+        "<polyline points=\"0,0 300,300\" style=\"fill:none; stroke:rgb(255,175,175)\"/>\n",
+        sb.toString());
   }
 }

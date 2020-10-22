@@ -284,5 +284,5 @@ local.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/eclipse
 
-output.svg
+test.svg
 input.svg

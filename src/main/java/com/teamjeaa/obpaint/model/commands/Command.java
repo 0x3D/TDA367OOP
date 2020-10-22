@@ -9,7 +9,9 @@ public interface Command {
    */
   void execute();
 
-
+  /**
+   * Undo command that revert what initially was made by the defined command.
+   */
   void undo();
 
 

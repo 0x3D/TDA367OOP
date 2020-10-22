@@ -3,13 +3,27 @@ package com.teamjeaa.obpaint.controller.controllerModel;
 import com.teamjeaa.obpaint.controller.CanvasController;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-
+/**
+ * CircleVisualiser is a class thats holds the logic about the visualization
+ * when you creating a Circle
+ *
+ * </p> We only use Javafx shapes to visualize this.
+ * Its implemented by ToolVisualiser
+ *
+ * @author Jonas N
+ * @since 0.3-SNAPSHOT
+ */
 public class CircleVisualiser implements ToolVisualiser {
   private final CanvasController canvasController;
   private Circle circle;
   private int initialX;
   private int initialY;
 
+  /**
+   * Constructor for our CircleVisualiser
+   * @param canvasController takes in a controller
+   *                         needed because of javafx
+   */
   public CircleVisualiser(CanvasController canvasController) {
     this.canvasController = canvasController;
   }
