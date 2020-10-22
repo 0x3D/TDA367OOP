@@ -18,7 +18,7 @@ import java.util.List;
  */
 
 public class RemoveAllShapes implements Command {
-  List<Mshape> removedShapes;
+  private List<Mshape> removedShapes;
 
   /**
    * executeMethod that will execute our Commands tha tare defined in the Command package,

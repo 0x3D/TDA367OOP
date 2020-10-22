@@ -17,11 +17,11 @@ import java.util.ResourceBundle;
  */
 public final class MainView extends AnchorPane {
 
-  public static final String OB_PAINT_EN = "obPaint_en";
-  public static final String OB_PAINT_SV = "obPaint_sv";
-  public static final String CFG_PROPERTIES = "cfg.properties";
-  public static final String LANGUAGE = "Language";
-  public static final String SWEDISH_LANGUAGE = "sv";
+  private static final String OB_PAINT_EN = "obPaint_en";
+  private static final String OB_PAINT_SV = "obPaint_sv";
+  private static final String CFG_PROPERTIES = "cfg.properties";
+  private static final String LANGUAGE = "Language";
+  private static final String SWEDISH_LANGUAGE = "sv";
 
   /** Constructor for our view that holds all the logic to load the FXML file */
   public MainView(String fxmlFileName) {
