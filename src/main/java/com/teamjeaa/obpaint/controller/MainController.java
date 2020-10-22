@@ -121,7 +121,10 @@ public final class MainController implements Initializable {
    */
   @FXML
   private void onClose() {
+    //Closing Javafx
     Platform.exit();
+    //Closing JDK
+    System.exit(0);
   }
 
   /**
