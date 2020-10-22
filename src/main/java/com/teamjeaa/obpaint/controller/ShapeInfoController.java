@@ -50,7 +50,7 @@ public class ShapeInfoController implements Initializable {
    *
    * @param mshape - is the shape that it updates the info about
    */
-  void updateInfo(Mshape mshape) {
+  public void updateInfo(Mshape mshape) {
     xPosition.setText(Integer.toString(mshape.getPosition().getX()));
     yPosition.setText(Integer.toString(mshape.getPosition().getY()));
     colorPicker.setValue(

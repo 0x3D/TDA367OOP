@@ -17,17 +17,17 @@ import javafx.scene.layout.FlowPane;
 public class ObjectListController {
   private @FXML
   FlowPane objectFlowPane;
-  private MainController parentController;
+  private ShapeInfoController shapeInfoController;
 
   /**
-   * SetParentController sets the maincontroller to this class so this method can be calles in mainController
+   * setShapeInfoController sets the shapeInfoController to this class so this method can update the shapeinfo-box
    * Its needed becuase we have a "singeview" javafx application that only can have one controller at the same time.
-   * We do this so we can separate theresponsibility to our  source code
+   * We do this so we can separate theresponsibility to our source code
    *
-   * @param mainController is a mainController
+   * @param shapeInfoController is a shapeInfoController
    */
-  public void setParentController(MainController mainController) {
-    this.parentController = mainController;
+  public void setShapeInfoController(ShapeInfoController shapeInfoController) {
+    this.shapeInfoController = shapeInfoController;
   }
 
   /**
@@ -39,9 +39,8 @@ public class ObjectListController {
     objectFlowPane.getChildren().clear();
     synchronized ("Server") {
       for (Mshape mshapes : Model.INSTANCE.getCanvasShapes()) {
-        objectFlowPane.getChildren().add(new ObjectListItemView(mshapes, parentController));
+        objectFlowPane.getChildren().add(new ObjectListItemView(mshapes, shapeInfoController));
       }
     }
   }
-
 }

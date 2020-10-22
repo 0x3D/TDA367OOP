@@ -1,6 +1,7 @@
 package com.teamjeaa.obpaint.view;
 
 import com.teamjeaa.obpaint.controller.MainController;
+import com.teamjeaa.obpaint.controller.ShapeInfoController;
 import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 
@@ -23,6 +24,9 @@ public final class ObjectListItemView extends AnchorPane {
 
   private static final String FXML_OBJECT_LIST_ITEM_VIEW_FXML = "/fxml/objectListItemView.fxml";
 
+  private final Mshape mshape;
+  private final ShapeInfoController shapeInfoController;
+
   /**
    * IntelliJ cant recognize that these are used
    * But...they are
@@ -34,17 +38,14 @@ public final class ObjectListItemView extends AnchorPane {
   private @FXML
   AnchorPane hoverPane;
 
-  private final Mshape mshape;
-  private final MainController parentController;
-
   /**
    * Constructor for the Item
    *
-   * @param mshape         we need to get the info about the shape
-   * @param mainController is the controller we sending. Needed in javafx because all visual things in javafx
-   *                       needs a controller
+   * @param mshape              we need to get the info about the shape
+   * @param shapeInfoController is the controller we sending. Needed in javafx because all visual things in javafx
+   *                            needs a controller
    */
-  public ObjectListItemView(Mshape mshape, MainController mainController) {
+  public ObjectListItemView(Mshape mshape, ShapeInfoController shapeInfoController) {
 
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(FXML_OBJECT_LIST_ITEM_VIEW_FXML));
     fxmlLoader.setRoot(this);
@@ -55,7 +56,7 @@ public final class ObjectListItemView extends AnchorPane {
       throw new RuntimeException(exception);
     }
     this.mshape = mshape;
-    this.parentController = mainController;
+    this.shapeInfoController = shapeInfoController;
     setColorBackground();
     setLabelName();
   }
@@ -98,7 +99,7 @@ public final class ObjectListItemView extends AnchorPane {
    */
   @FXML
   private void onClickedListItem() {
-    parentController.updateShapeInfo(mshape);
+    shapeInfoController.updateInfo(mshape);
   }
 
 }

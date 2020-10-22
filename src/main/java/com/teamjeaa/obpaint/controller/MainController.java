@@ -7,7 +7,6 @@ import com.teamjeaa.obpaint.model.commands.Command;
 import com.teamjeaa.obpaint.model.commands.RemoveAllShapes;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.server.ObPaintClient;
-
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -23,11 +22,8 @@ import javafx.stage.Window;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import java.net.URL;
-
 import java.nio.charset.StandardCharsets;
-
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -77,7 +73,7 @@ public final class MainController implements Initializable {
   AnchorPane aboutPage;
 
   /**
-   * Controllers that doesn't seems it's used, but it is. When you name a included FXML file in to
+   * Controllers that doesn't seems it's used, but it is. When you name an included FXML file in to
    * an other FXML file. It's needed that the name is exactly like this, otherwise it wont work
    */
   @FXML
@@ -101,7 +97,7 @@ public final class MainController implements Initializable {
     initializeStartPage();
     toolViewController.setCanvasController(canvasViewController);
     canvasViewController.setObjectListController(objectListController);
-    objectListController.setParentController(this);
+    objectListController.setShapeInfoController(shapeInfoViewController);
     portTF.setVisible(false);
     ipTF.setVisible(false);
     connectButton.setVisible(false);
@@ -110,17 +106,7 @@ public final class MainController implements Initializable {
   }
 
   /**
-   * Updates the shapeInfo on a clicked shape in the objectListView. ObjectListView holds a list on
-   * the object that are rendered on the rootBorderPane
-   *
-   * @param mshape - is the sape that the info is about
-   */
-  public void updateShapeInfo(Mshape mshape) {
-    shapeInfoViewController.updateInfo(mshape);
-  }
-
-  /**
-   * initialize the StartPane of obPaint
+   * initialize the startpane of obPaint
    */
   @FXML
   private void initializeStartPage() {
