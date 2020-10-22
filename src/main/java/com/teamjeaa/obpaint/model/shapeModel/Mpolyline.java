@@ -31,7 +31,8 @@ public final class Mpolyline implements Mshape {
    * @param color The color of this Polyline
    */
   public Mpolyline(List<Mpoint> mPoints, Color color, String name, int strokeWidth) {
-    this.mPoints = mPoints;
+    //Shallow copy but Mpoint is immutable
+    this.mPoints = new ArrayList<>(mPoints);
     this.color = color;
     this.name = name;
     this.strokeWidth = strokeWidth;
