@@ -34,6 +34,9 @@ public class RemoveAllShapes implements Command {
     }
   }
 
+
+  
+
   /**
    * Undo command that revert what initially was made by the defined command.
    */
