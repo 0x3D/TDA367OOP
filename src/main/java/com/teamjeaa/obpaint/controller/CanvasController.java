@@ -65,7 +65,7 @@ public final class CanvasController implements Initializable {
             });
   }
 
-  BorderPane getCanvasPane() {
+  public BorderPane getCanvasPane() {
     return rootBorderPane;
   }
 

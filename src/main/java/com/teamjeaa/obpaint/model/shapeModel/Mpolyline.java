@@ -208,7 +208,10 @@ public final class Mpolyline implements Mshape {
 
     distance = Math.sin(angleA) * distanceAB;
 
-    if (angleC >= Math.PI / 4 || angleA >= Math.PI / 4) {
+
+    // Change pi to better value
+    //and checkif Mouse click is in raduis of a point
+    if (angleC >= Math.PI / 3 || angleA >= Math.PI / 3) {
       distance = 999.9;
       return distance;
     }

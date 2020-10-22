@@ -8,8 +8,6 @@ import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 import com.teamjeaa.obpaint.server.ObPaintClient;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 public final class Pencil implements Command {
@@ -50,9 +48,9 @@ public final class Pencil implements Command {
             Mpoint point1 = points.get(i);
             Mpoint point2 = points.get(i + 1);
 
-            if (Math.abs(point1.getX()-point2.getX()) < 8 && Math.abs(point1.getY()-point2.getY()) < 8) {
+            if (Math.abs(point1.getX()-point2.getX()) < 4 && Math.abs(point1.getY()-point2.getY()) < 4) {
                 points.remove(i);
-                i--;
+                i = 0;
             }
         }
     }

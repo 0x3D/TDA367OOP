@@ -33,7 +33,7 @@ import java.util.ResourceBundle;
  */
 public final class ToolController implements Initializable {
   private static final int JAVAFX_MODEL_COLOR_CONSTANT = 255;
-  private final static int START_UP_STROKE_SIZE = 3;
+  private final static int START_UP_STROKE_SIZE = 5;
   @FXML private ColorPicker cp;
   @FXML private ToggleButton pencilButton;
   @FXML private ToggleButton brushButton;
@@ -254,6 +254,7 @@ public final class ToolController implements Initializable {
           toolVisualiser.endVisualisation();
           command = new Move(x, y, (int) mouseEvent.getX(), (int) mouseEvent.getY());
           command.execute();
+          toolVisualiser.endVisualisation();
         });
   }
 }
