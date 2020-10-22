@@ -23,7 +23,7 @@ public final class ObjectListItemView extends AnchorPane {
   private static final String FXML_OBJECT_LIST_ITEM_VIEW_FXML = "/fxml/objectListItemView.fxml";
   private final Mshape mshape;
 
-  //TODO: Never used in class but crashes program if removed
+  //Used in FXML but IntelliJ cant find
   private final MainController parentController;
 
 

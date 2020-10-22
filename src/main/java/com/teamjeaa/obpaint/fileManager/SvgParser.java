@@ -61,7 +61,7 @@ public final class SvgParser {
   }
 
   Mshape createPolyline(String line) {
-    List<String> tokens = Arrays.asList(line.split("="));
+    List<String> tokens = Arrays.asList(line.split("=")); //TODO: This and createPolygon() refactor
     List<Mpoint> mpoints = new ArrayList<>();
     Color color = new Color(255, 255, 255);
     for (String token : tokens) {
@@ -124,6 +124,7 @@ public final class SvgParser {
       } else if (token.contains("rx")) {
         rx = extractNumber(tokens.get(tokens.indexOf(token) + 1));
       } else if (token.contains("ry")) {
+        //Supposed to be used in an ellipse since it has 2 different half-axes
         ry = extractNumber(tokens.get(tokens.indexOf(token) + 1));
       } else if (token.contains("rgb")) {
         color = extractColor(token);

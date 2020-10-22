@@ -42,6 +42,7 @@ public final class ObPaintServer implements Runnable {
     Socket socket;
     try {
       var listener = new ServerSocket(port);
+      //Will not quit until program does
       while (true) {
         socket = listener.accept();
         Scanner in = new Scanner(socket.getInputStream());
@@ -73,6 +74,8 @@ public final class ObPaintServer implements Runnable {
       parseRemoveAll();
     System.out.println(line);
   }
+
+  //TODO: Move to new class
 
   private void parsePencil(String[] coordinates) {
     final List<Mpoint> mPoints = new ArrayList<>();

@@ -1,14 +1,12 @@
 package com.teamjeaa.obpaint.controller;
 
 import com.teamjeaa.obpaint.fileManager.FileManager;
-import com.teamjeaa.obpaint.fileManager.SvgDrawVisitor;
 import com.teamjeaa.obpaint.fileManager.SvgParser;
 import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.commands.Command;
 import com.teamjeaa.obpaint.model.commands.RemoveAllShapes;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.server.ObPaintClient;
-import com.teamjeaa.obpaint.view.DrawVisitor;
 import javafx.application.Platform;
 import javafx.event.Event;
 import javafx.fxml.FXML;
