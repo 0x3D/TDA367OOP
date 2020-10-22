@@ -73,7 +73,7 @@ public final class MainController implements Initializable {
   AnchorPane aboutPage;
 
   /**
-   * Controllers that doesn't seems it's used, but it is. When you name a included FXML file in to
+   * Controllers that doesn't seems it's used, but it is. When you name an included FXML file in to
    * an other FXML file. It's needed that the name is exactly like this, otherwise it wont work
    */
   @FXML
@@ -87,17 +87,6 @@ public final class MainController implements Initializable {
   private ShapeInfoController shapeInfoViewController;
 
   /**
-   * initialize the startpane of obPaint
-   */
-  @FXML
-  private void initializeStartPage() {
-    startPagePane.toFront();
-    startPagePane.setStyle("-fx-background-color: white");
-    serverPane.toBack();
-    serverPane.toBack();
-  }
-
-  /**
    * This method initializes the controller for MainView
    *
    * @param location  - The location used to resolve relative paths for the root object
@@ -108,12 +97,23 @@ public final class MainController implements Initializable {
     initializeStartPage();
     toolViewController.setCanvasController(canvasViewController);
     canvasViewController.setObjectListController(objectListController);
-    objectListController.setParentController(this);
+    objectListController.setShapeInfoController(shapeInfoViewController);
     portTF.setVisible(false);
     ipTF.setVisible(false);
     connectButton.setVisible(false);
     serverPane.setVisible(false);
     serverPaneChild.setVisible(false);
+  }
+
+  /**
+   * initialize the startpane of obPaint
+   */
+  @FXML
+  private void initializeStartPage() {
+    startPagePane.toFront();
+    startPagePane.setStyle("-fx-background-color: white");
+    serverPane.toBack();
+    serverPane.toBack();
   }
 
   /**
@@ -224,16 +224,6 @@ public final class MainController implements Initializable {
   private void onLimeTemplate() {
     canvasViewController.getCanvasPane().setStyle("-fx-background-color: Lime");
     startPagePane.setVisible(false);
-  }
-
-  /**
-   * Updates the shapeInfo on a clicked shape in the objectListView. ObjectListView holds a list on
-   * the object that are rendered on the rootBorderPane
-   *
-   * @param mshape - is the sape that the info is about
-   */
-  public void updateShapeInfo(Mshape mshape) {
-    shapeInfoViewController.updateInfo(mshape);
   }
 
   /**

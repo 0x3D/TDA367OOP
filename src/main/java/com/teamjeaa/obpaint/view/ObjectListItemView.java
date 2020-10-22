@@ -1,6 +1,7 @@
 package com.teamjeaa.obpaint.view;
 
 import com.teamjeaa.obpaint.controller.MainController;
+import com.teamjeaa.obpaint.controller.ShapeInfoController;
 import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import javafx.fxml.FXML;
@@ -22,9 +23,7 @@ public final class ObjectListItemView extends AnchorPane {
 
   private static final String FXML_OBJECT_LIST_ITEM_VIEW_FXML = "/fxml/objectListItemView.fxml";
   private final Mshape mshape;
-
-  //Used in FXML but IntelliJ cant find
-  private final MainController parentController;
+  private final ShapeInfoController shapeInfoController;
 
 
   /**
@@ -43,10 +42,10 @@ public final class ObjectListItemView extends AnchorPane {
    * Constructor for the Item
    *
    * @param mshape         we need to get the info about the shape
-   * @param mainController is the controller we sending. Needed in javafx because all visual things in javafx
+   * @param shapeInfoController is the controller we sending. Needed in javafx because all visual things in javafx
    *                       needs a controller
    */
-  public ObjectListItemView(Mshape mshape, MainController mainController) {
+  public ObjectListItemView(Mshape mshape, ShapeInfoController shapeInfoController) {
 
     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(FXML_OBJECT_LIST_ITEM_VIEW_FXML));
     fxmlLoader.setRoot(this);
@@ -57,7 +56,7 @@ public final class ObjectListItemView extends AnchorPane {
       throw new RuntimeException(exception);
     }
     this.mshape = mshape;
-    this.parentController = mainController;
+    this.shapeInfoController = shapeInfoController;
     setColorBackground();
     setLabelName();
   }
@@ -100,7 +99,7 @@ public final class ObjectListItemView extends AnchorPane {
    */
   @FXML
   private void onClickedListItem() {
-    parentController.updateShapeInfo(mshape);
+    shapeInfoController.updateInfo(mshape);
   }
 
 }
