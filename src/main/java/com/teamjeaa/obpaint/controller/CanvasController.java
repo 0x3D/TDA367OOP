@@ -25,8 +25,7 @@ import java.util.ResourceBundle;
  * @since 0.1-SNAPSHOT
  */
 public final class CanvasController implements Initializable {
-  private @FXML
-  BorderPane rootBorderPane;
+  private @FXML BorderPane rootBorderPane;
 
   private Node ghost;
   private ObjectListController objectListController;
@@ -76,7 +75,7 @@ public final class CanvasController implements Initializable {
    *
    * @return rootBorderPane
    */
-  BorderPane getCanvasPane() {
+  public BorderPane getCanvasPane() {
     return rootBorderPane;
   }
 

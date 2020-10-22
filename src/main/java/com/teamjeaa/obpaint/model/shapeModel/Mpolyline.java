@@ -22,7 +22,7 @@ public final class Mpolyline implements Mshape {
 
   private final Color color;
   private final String name;
-  private int strokeWidth;
+  private final int strokeWidth;
 
   /**
    * Constructor to create a Polyline
@@ -168,9 +168,18 @@ public final class Mpolyline implements Mshape {
 
       if (distance(point1, point2, x, y) <= acceptance) {
         return true;
+      } else if (distanceFromPointToCoord(point1, x, y) <= acceptance) {
+        return true;
       }
     }
     return false;
+  }
+
+  private double distanceFromPointToCoord(Mpoint p, int x, int y) {
+    double deltaX = x - p.getX();
+    double deltaY = y - p.getY();
+    //phytagoras
+    return Math.sqrt(Math.pow(deltaX,2) + Math.pow(deltaY,2));
   }
 
   @Override
@@ -208,7 +217,10 @@ public final class Mpolyline implements Mshape {
 
     distance = Math.sin(angleA) * distanceAB;
 
-    if (angleC >= Math.PI / 4 || angleA >= Math.PI / 4) {
+
+    // Change pi to better value
+    //and checkif Mouse click is in raduis of a point
+    if (angleC >= Math.PI / 3 || angleA >= Math.PI / 3) {
       distance = 999.9;
       return distance;
     }
