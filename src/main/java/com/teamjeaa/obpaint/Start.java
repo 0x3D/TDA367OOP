@@ -9,6 +9,8 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
+import java.io.*;
+import java.util.Properties;
 import java.util.ResourceBundle;
 
 /**
@@ -18,9 +20,15 @@ import java.util.ResourceBundle;
  * @since 0.1 SNAPSHOT
  */
 public final class Start extends Application {
+  public static final String CONFIGURATION_HEADER = "obPaints configuration";
   private static final String XML_MAIN_VIEW = "/fxml/mainView.fxml";
   public static final int SCENE_WIDTH = 900;
   public static final int SCENE_HEIGHT = 680;
+  public static final String CFG_PROPERTIES = "cfg.properties";
+  public static final String PORT = "port";
+  public static final String DEFAULT_PORT_VALUE = "1337";
+  public static final String LANGUAGE = "Language";
+  public static final String ENGLISH_LANGUAGE = "en";
 
   /**
    * Main method of the program
@@ -28,12 +36,54 @@ public final class Start extends Application {
    * @param args - args
    */
   public static void main(final String[] args) {
-    final Runnable server = new ObPaintServer();
+    try{
+      makeConfig();
+    }catch (final IOException e) {
+      //cant do anything about IO eeception
+      e.printStackTrace();
+    }
+    final Runnable server = new ObPaintServer(getPort());
     final Thread thread = new Thread(server);
     thread.start();
     launch(args);
   }
 
+
+  private static void makeConfig () throws IOException {
+    File configFile = new File(CFG_PROPERTIES);
+    try {
+      FileReader fileReader = new FileReader(configFile);
+      Properties properties = new Properties();
+      properties.load(fileReader);
+
+      String port = properties.getProperty(PORT);
+      System.out.println(port);
+    }catch (final FileNotFoundException fileNotFoundException) {
+      FileWriter fileWriter = new FileWriter(CFG_PROPERTIES);
+      Properties properties = new Properties();
+      properties.setProperty(PORT, DEFAULT_PORT_VALUE);
+
+      properties.setProperty(LANGUAGE, ENGLISH_LANGUAGE);
+      properties.store(fileWriter, CONFIGURATION_HEADER);
+      fileWriter.close();
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+  private static String getPort()   {
+    File configFile = new File(CFG_PROPERTIES);
+    try {
+      FileReader fileReader = new FileReader(configFile);
+      Properties properties = new Properties();
+      properties.load(fileReader);
+      return properties.getProperty(PORT);
+    }catch (final FileNotFoundException fileNotFoundException){
+      return DEFAULT_PORT_VALUE;
+    }catch (final IOException ioException){
+      ioException.printStackTrace();
+    }
+    return DEFAULT_PORT_VALUE;
+  }
   /**
    * This method starts up JavaFX and initializes the Model
    *

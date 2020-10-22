@@ -217,6 +217,7 @@ public final class MainController implements Initializable {
     portTF.setVisible(true);
     ipTF.setVisible(true);
     connectButton.setVisible(true);
+    portTF.setText("1337");
   }
 
   /** Gets you back to the normal mainPane */
@@ -233,9 +234,7 @@ public final class MainController implements Initializable {
   /** Connects to the CollaborateServer */
   @FXML
   private void onConnectButton() {
-    ObPaintClient.INSTANCE.connect(ipTF.getText(), 1337);
-    portTF.getText();
-    ipTF.getText();
+    ObPaintClient.INSTANCE.connect(ipTF.getText(), Integer.parseInt(portTF.getText()));
   }
 
   /**

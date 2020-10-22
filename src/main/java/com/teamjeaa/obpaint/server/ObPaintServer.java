@@ -21,6 +21,10 @@ import java.util.Scanner;
  * @since 0.2 SNAPSHOT
  */
 public final class ObPaintServer implements Runnable {
+  private final int port;
+  public ObPaintServer(String port){
+    this.port = Integer.parseInt(port);
+  }
 
   private void addCircle(int radius, int centerX, int centerY, Color color, String name) {
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
@@ -32,7 +36,7 @@ public final class ObPaintServer implements Runnable {
   public void run() {
     Socket socket;
     try {
-      var listener = new ServerSocket(1337);
+      var listener = new ServerSocket(port);
       while (true) {
         socket = listener.accept();
         Scanner in = new Scanner(socket.getInputStream());
