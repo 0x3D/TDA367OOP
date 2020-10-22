@@ -20,15 +20,15 @@ import java.util.ResourceBundle;
  * @since 0.1 SNAPSHOT
  */
 public final class Start extends Application {
-  public static final String CONFIGURATION_HEADER = "obPaints configuration";
+  private static final String CONFIGURATION_HEADER = "obPaints configuration";
   private static final String XML_MAIN_VIEW = "/fxml/mainView.fxml";
-  public static final int SCENE_WIDTH = 900;
-  public static final int SCENE_HEIGHT = 680;
-  public static final String CFG_PROPERTIES = "cfg.properties";
-  public static final String PORT = "port";
-  public static final String DEFAULT_PORT_VALUE = "1337";
-  public static final String LANGUAGE = "Language";
-  public static final String ENGLISH_LANGUAGE = "en";
+  private static final int SCENE_WIDTH = 900;
+  private static final int SCENE_HEIGHT = 680;
+  private static final String CFG_PROPERTIES = "cfg.properties";
+  private static final String PORT = "port";
+  private static final String DEFAULT_PORT_VALUE = "1337";
+  private static final String LANGUAGE = "Language";
+  private static final String ENGLISH_LANGUAGE = "en";
 
   /**
    * Main method of the program

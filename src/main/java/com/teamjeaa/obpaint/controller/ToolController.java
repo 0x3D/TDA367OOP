@@ -4,6 +4,8 @@ import com.teamjeaa.obpaint.controller.controllerModel.*;
 import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.commands.*;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -40,15 +42,13 @@ public final class ToolController implements Initializable {
   @FXML private Line strokeLine;
   @FXML private Label strokeLabel;
 
-  List<Mpoint> points = new ArrayList<>();
+  private List<Mpoint> points = new ArrayList<>();
   private CanvasController canvasController;
   private Pane canvasPane;
   private Command command;
   private int x;
   private int y;
   private ToolVisualiser toolVisualiser;
-
-  private Integer strokeWidth;
 
   /**
    * This method initializes the controller for ToolView
@@ -73,7 +73,6 @@ public final class ToolController implements Initializable {
     this.canvasPane = canvasController.getCanvasPane();
   }
 
-
   /**
    * resets all the mouseEventsHandlers
    */
@@ -91,7 +90,7 @@ public final class ToolController implements Initializable {
    * onPencilButton is the method that is calls when we want to use the pencil
    */
   @FXML
-  void onPencilButton() {
+  private void onPencilButton() {
     System.out.println("Selected Pencil tool");
     showStrokeSize();
     resetCanvasMouseEventHandlers();
@@ -130,7 +129,7 @@ public final class ToolController implements Initializable {
    * onLineButton is the method that is calls when we want to use the line
    */
   @FXML
-  void onLineButton() {
+  private void onLineButton() {
     System.out.println("Selected line tool");
     showStrokeSize();
     resetCanvasMouseEventHandlers();
@@ -165,7 +164,7 @@ public final class ToolController implements Initializable {
    * onEraserButton is the method that is calls when we want to use the eraser
    */
   @FXML
-  void onEraserButton() {
+  private void onEraserButton() {
     System.out.println("Eraser");
     resetCanvasMouseEventHandlers();
     hideStrokeSize();
