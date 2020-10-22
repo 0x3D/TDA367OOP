@@ -42,7 +42,7 @@ public final class ToolController implements Initializable {
   @FXML private ToggleButton moveButton;
   @FXML private TextField widthTextField;
 
-  List<Mpoint> points = new ArrayList<>();
+  private List<Mpoint> points = new ArrayList<>();
   private CanvasController canvasController;
   private Pane canvasPane;
   private Command command;
