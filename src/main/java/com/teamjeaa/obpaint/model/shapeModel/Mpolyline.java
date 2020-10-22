@@ -22,7 +22,7 @@ public final class Mpolyline implements Mshape {
 
   private final Color color;
   private final String name;
-  private int strokeWidth;
+  private final int strokeWidth;
 
   /**
    * Constructor to create a Polyline
