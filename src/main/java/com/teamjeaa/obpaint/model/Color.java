@@ -9,10 +9,9 @@ import java.util.Objects;
  * @since 0.2-SNAPSHOT
  */
 public final class Color {
-  /**
-   * Color range
-   */
+  /** Color range */
   private final int red;
+
   private final int green;
   private final int blue;
   private final int opacity;
@@ -20,12 +19,12 @@ public final class Color {
   /**
    * Create color with RGBA
    *
-   * @param red     Value for red color between 0 and 255
-   * @param green   Value for green color between 0 and 255
-   * @param blue    Value for blue color between 0 and 255
+   * @param red Value for red color between 0 and 255
+   * @param green Value for green color between 0 and 255
+   * @param blue Value for blue color between 0 and 255
    * @param opacity Value for opacity color between 0 and 255
    */
-  public Color(int red, int green, int blue, int opacity) {
+  public Color(final int red, final int green, final int blue, final int opacity) {
     this.red = red;
     this.green = green;
     this.blue = blue;
@@ -36,11 +35,11 @@ public final class Color {
   /**
    * Create color with RGB
    *
-   * @param red   Value for red color between 0 and 255
+   * @param red Value for red color between 0 and 255
    * @param green Value for green color between 0 and 255
-   * @param blue  Value for blue color between 0 and 255
+   * @param blue Value for blue color between 0 and 255
    */
-  public Color(int red, int green, int blue) {
+  public Color(final int red, final int green, final int blue) {
     this.red = red;
     this.green = green;
     this.blue = blue;
@@ -49,14 +48,14 @@ public final class Color {
   }
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(final Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    Color color = (Color) o;
-    return red == color.red
-            && green == color.green
-            && blue == color.blue
-            && opacity == color.opacity;
+    final Color color = (Color) o;
+    return red == color.getRed()
+        && green == color.getGreen()
+        && blue == color.getBlue()
+        && opacity == color.getAlpha();
   }
 
   @Override
@@ -71,24 +70,24 @@ public final class Color {
 
   private void validateValues() throws IllegalArgumentException {
     if (red > 255
-            || red < 0
-            || green > 255
-            || green < 0
-            || blue > 255
-            || blue < 0
-            || opacity > 255
-            || opacity < 0) {
+        || red < 0
+        || green > 255
+        || green < 0
+        || blue > 255
+        || blue < 0
+        || opacity > 255
+        || opacity < 0) {
       throw new IllegalArgumentException(
-              "Color not in the range 0-255"
-                      + ": "
-                      + "r: "
-                      + red
-                      + ", g: "
-                      + green
-                      + ", b: "
-                      + blue
-                      + ", opacity: "
-                      + opacity);
+          "Color not in the range 0-255"
+              + ": "
+              + "r: "
+              + red
+              + ", g: "
+              + green
+              + ", b: "
+              + blue
+              + ", opacity: "
+              + opacity);
     }
   }
 
@@ -107,6 +106,4 @@ public final class Color {
   public int getAlpha() {
     return opacity;
   }
-
-
 }

@@ -4,12 +4,13 @@ import com.teamjeaa.obpaint.model.Color;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public final class MpolylineTest {
+final class MpolylineTest {
 
   /*
    *
@@ -45,7 +46,7 @@ public final class MpolylineTest {
   }
 
   @Test
-  public void getHeight() {
+  void getHeight() {
     Mpolyline mpolyline = setUpMpolyline();
     assertEquals(mpolyline.getHeight(), 100);
   }
@@ -61,7 +62,7 @@ public final class MpolylineTest {
   @Test
   void getPoints() {
     Mpolyline mpolyline = setUpMpolyline();
-    List<Mpoint> mPoints = new ArrayList<>();
+    Collection<Mpoint> mPoints = new ArrayList<>();
     mPoints.add(new Mpoint(0, 0));
     mPoints.add(new Mpoint(0, 10));
     mPoints.add(new Mpoint(10, 100));

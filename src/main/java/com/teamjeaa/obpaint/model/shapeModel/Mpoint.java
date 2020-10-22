@@ -18,6 +18,14 @@ public final class Mpoint implements Cloneable {
   private final int x;
   private final int y;
 
+  /**
+   * @param x x coordinate of the point created
+   * @param y y coordinate of the point created
+   */
+  public Mpoint(final int x, final int y) {
+    this.x = x;
+    this.y = y;
+  }
 
   /**
    * Method that checks if this object is the same as another object
@@ -26,10 +34,10 @@ public final class Mpoint implements Cloneable {
    * @return True if equal and false if unequal
    */
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(final Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    Mpoint mPoint = (Mpoint) o;
+    final Mpoint mPoint = (Mpoint) o;
     return getX() == mPoint.getX() && getY() == mPoint.getY();
   }
 
@@ -38,41 +46,25 @@ public final class Mpoint implements Cloneable {
     return Objects.hash(getX(), getY());
   }
 
-  /**
-   * @return A copy of this point
-   */
+  /** @return A copy of this point */
   @Override
   public Mpoint clone() {
     final Mpoint clone;
     try {
       clone = (Mpoint) super.clone();
-    } catch (CloneNotSupportedException ex) {
+    } catch (final CloneNotSupportedException ex) {
       throw new RuntimeException("superclass messed up", ex);
     }
     return clone;
   }
 
-  /**
-   * @param x x coordinate of the point created
-   * @param y y coordinate of the point created
-   */
-  public Mpoint(int x, int y) {
-    this.x = x;
-    this.y = y;
-  }
-
-  /**
-   * @return The x coordinate of the point
-   */
+  /** @return The x coordinate of the point */
   public int getX() {
     return x;
   }
 
-  /**
-   * @return The y coordinate of the point
-   */
+  /** @return The y coordinate of the point */
   public int getY() {
     return y;
   }
-
 }

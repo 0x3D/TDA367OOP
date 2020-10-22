@@ -1,8 +1,6 @@
 package com.teamjeaa.obpaint.model.commands;
 
-/**
- * Interface Command for CommandPattern
- */
+/** Interface Command for CommandPattern */
 public interface Command {
 
   /**
@@ -11,10 +9,6 @@ public interface Command {
    */
   void execute();
 
-  /**
-   * Undo command that revert what initially was made by the defined command.
-   */
+  /** Undo command that revert what initially was made by the defined command. */
   void undo();
-
-
 }

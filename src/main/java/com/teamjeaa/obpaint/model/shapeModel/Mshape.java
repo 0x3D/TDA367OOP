@@ -1,7 +1,7 @@
 package com.teamjeaa.obpaint.model.shapeModel;
 
-import com.teamjeaa.obpaint.view.DrawVisitor;
 import com.teamjeaa.obpaint.model.Color;
+import com.teamjeaa.obpaint.view.DrawVisitor;
 
 /**
  * This is the common interface of the shapes in our model *
@@ -18,29 +18,19 @@ import com.teamjeaa.obpaint.model.Color;
  */
 public interface Mshape {
 
-  /**
-   * @return Position of the Mshape as a Mpoint
-   */
+  /** @return Position of the Mshape as a Mpoint */
   Mpoint getPosition();
 
-  /**
-   * @return Width of the Mshape
-   */
+  /** @return Width of the Mshape */
   int getWidth();
 
-  /**
-   * @return Height of the Mshape
-   */
+  /** @return Height of the Mshape */
   int getHeight();
 
-  /**
-   * @return Color of the Mshape
-   */
+  /** @return Color of the Mshape */
   Color getColor();
 
-  /**
-   * @return name of the Mshape
-   */
+  /** @return name of the Mshape */
   String getName();
 
   /**

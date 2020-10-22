@@ -6,7 +6,7 @@ package com.teamjeaa.obpaint;
  * @author Erik R
  * @since 0.3 SNAPSHOT
  */
-public class Launcher {
+final class Launcher {
   public static void main(final String[] args) {
     Start.main(args);
   }

@@ -4,7 +4,6 @@ import com.teamjeaa.obpaint.model.Model;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.view.DrawVisitor;
 import com.teamjeaa.obpaint.view.JavaFXDrawVisitor;
-
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -26,8 +25,8 @@ import java.util.ResourceBundle;
  * @since 0.1-SNAPSHOT
  */
 public final class CanvasController implements Initializable {
-  private @FXML
-  BorderPane rootBorderPane;
+  @FXML
+  private BorderPane rootBorderPane;
 
   private Node ghost;
   private ObjectListController objectListController;
@@ -36,19 +35,19 @@ public final class CanvasController implements Initializable {
   /**
    * This method initializes the controller for CanvasView
    *
-   * @param location  - The location used to resolve relative paths for the root object
+   * @param location - The location used to resolve relative paths for the root object
    * @param resources - The resources used to localize the root object
    */
   @Override
-  public void initialize(URL location, ResourceBundle resources) {
+  public void initialize(final URL location, final ResourceBundle resources) {
     backend = Model.INSTANCE;
-    JavaFXDrawVisitor javaFXDrawVisitor = new JavaFXDrawVisitor(rootBorderPane);
-    AnimationTimer animationTimer =
-            new AnimationTimer() {
-              public void handle(long now) {
-                render(javaFXDrawVisitor);
-              }
-            };
+    final DrawVisitor javaFXDrawVisitor = new JavaFXDrawVisitor(rootBorderPane);
+    final AnimationTimer animationTimer =
+        new AnimationTimer() {
+          public void handle(final long now) {
+            render(javaFXDrawVisitor);
+          }
+        };
     animationTimer.start();
     fixClipping(rootBorderPane);
   }
@@ -56,20 +55,20 @@ public final class CanvasController implements Initializable {
   /**
    * fixClipping method makes that you cant paint outside the "borderPane" /"region"
    *
-   * @param pane is the regian we limits
+   * @param pane is the region limited
    */
   // JavaFX is stupid with Borders of panes, this method adds clipping
-  private void fixClipping(Region pane) {
-    Rectangle clippingArea = new Rectangle();
+  private void fixClipping(final Region pane) {
+    final Rectangle clippingArea = new Rectangle();
 
     pane.setClip(clippingArea);
 
     pane.layoutBoundsProperty()
-            .addListener(
-                    (observable, oldValue, newValue) -> {
-                      clippingArea.setWidth(newValue.getWidth());
-                      clippingArea.setHeight(newValue.getHeight());
-                    });
+        .addListener(
+            (observable, oldValue, newValue) -> {
+              clippingArea.setWidth(newValue.getWidth());
+              clippingArea.setHeight(newValue.getHeight());
+            });
   }
 
   /**
@@ -82,14 +81,14 @@ public final class CanvasController implements Initializable {
   }
 
   /**
-   * The render method is the  one thats render all our visualisations on the rootBorderPane
+   * The render method is the one that renders all the visualisations on the rootBorderPane
    *
    * @param drawVisitor translates our own shapes to javaFx visualisations
    */
-  private void render(DrawVisitor drawVisitor) {
+  private void render(final DrawVisitor drawVisitor) {
     rootBorderPane.getChildren().clear();
     objectListController.updateList();
-    for (Mshape s : backend.getCanvasShapes()) {
+    for (final Mshape s : backend.getCanvasShapes()) {
       // It wants the old one to be removed if already is a child.
       s.acceptDrawVisitor(drawVisitor);
     }
@@ -103,24 +102,21 @@ public final class CanvasController implements Initializable {
    *
    * @param ghost is the object that visualise our "forms" before they adds on the rootBorderPane
    */
-  public void setGhost(Node ghost) {
+  public void setGhost(final Node ghost) {
     this.ghost = ghost;
   }
 
   /**
-   * setObjectListController is the method that sets the objectlistcontroller
-   * here in the canvasPane.
-   * Needed because of JavaFx controller need to be specified in all diffrent FXML files
+   * setObjectListController is the method that sets the objectlistcontroller here in the
+   * canvasPane. Needed because of JavaFx controller need to be specified in all different FXML files
    *
    * @param objectListController is the controller
    */
-  public void setObjectListController(ObjectListController objectListController) {
+  public void setObjectListController(final ObjectListController objectListController) {
     this.objectListController = objectListController;
   }
 
-  /**
-   * Cleares the ghost from the visualisation
-   */
+  /** Clears the ghost from the visualisation */
   public void clearGhost() {
     this.ghost = null;
   }

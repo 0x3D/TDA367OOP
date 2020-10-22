@@ -5,6 +5,7 @@ import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
+import com.teamjeaa.obpaint.view.DrawVisitor;
 import org.junit.jupiter.api.Test;
 
 
@@ -16,7 +17,7 @@ class SvgDrawVisitorTest {
   void visitMellipse() {
 
     StringBuilder sb = new StringBuilder();
-    SvgDrawVisitor svgDrawVisitor = new SvgDrawVisitor(sb);
+    DrawVisitor svgDrawVisitor = new SvgDrawVisitor(sb);
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
     Mshape mellipse = shapeFactory.createCircle(100, 80, 80, new Color(255, 175, 175), "test");
 
@@ -29,7 +30,7 @@ class SvgDrawVisitorTest {
   @Test
   void visitMpolyogon() {
     StringBuilder sb = new StringBuilder();
-    SvgDrawVisitor svgDrawVisitor = new SvgDrawVisitor(sb);
+    DrawVisitor svgDrawVisitor = new SvgDrawVisitor(sb);
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
     Mshape mRectangle = shapeFactory.createRectangle(80, 80, 300, 300, new Color(255, 175, 175), "test");
     mRectangle.acceptDrawVisitor(svgDrawVisitor);
@@ -41,7 +42,7 @@ class SvgDrawVisitorTest {
   @Test
   void visitMpolyline() {
     StringBuilder sb = new StringBuilder();
-    SvgDrawVisitor svgDrawVisitor = new SvgDrawVisitor(sb);
+    DrawVisitor svgDrawVisitor = new SvgDrawVisitor(sb);
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
     Mshape mRectangle = shapeFactory.createLine(0, 0, 300, 300, new Color(255, 175, 175), "test",1);
     mRectangle.acceptDrawVisitor(svgDrawVisitor);

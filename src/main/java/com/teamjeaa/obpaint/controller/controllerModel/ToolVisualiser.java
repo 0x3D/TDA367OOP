@@ -7,25 +7,22 @@ package com.teamjeaa.obpaint.controller.controllerModel;
  * @since 0.3-SNAPSHOT
  */
 public interface ToolVisualiser {
-    /**
-     * initiateVisualisation
-     * @param x - value to start from
-     * @param y - value to  start from
-     *{@inheritDoc}
-     */
-    void initiateVisualisation(int x, int y);
+  /**
+   * initiateVisualisation
+   *
+   * @param x - value to start from
+   */
+  void initiateVisualisation(int x, int y);
 
-    /**
-     * updateVisualisation
-     * @param x - value were it ends
-     * @param y were it ends
-     *@inheritDoc
-     */
-    void updateVisualisation(int x, int y);
+  /**
+   * updateVisualisation
+   *
+   * @param x - value were it ends
+   * @param y were it ends
+   * @inheritDoc
+   */
+  void updateVisualisation(int x, int y);
 
-    /**
-     * {@inheritDoc} the visualisation
-     * {@inheritDocends}
-     */
-    void endVisualisation();
+  /** the visualisation {@inheritDocends} */
+  void endVisualisation();
 }

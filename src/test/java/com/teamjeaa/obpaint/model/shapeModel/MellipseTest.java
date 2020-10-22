@@ -6,35 +6,35 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public final class MellipseTest {
-  private final ConcreteShapeFactory concreteShapeFactory = new ConcreteShapeFactory();
+final class MellipseTest {
+  private final ShapeFactory concreteShapeFactory = new ConcreteShapeFactory();
 
-  public Mshape createCircle() {
+  Mshape createCircle() {
     // Circle r = 10, y = 20, x = 15
     return concreteShapeFactory.createCircle(10, 15, 20, new Color(255, 175, 175), "Circle");
   }
 
   //
   @Test
-  public void testCircleFactory() {
+  void testCircleFactory() {
     Mshape c = createCircle();
     assertEquals(Mellipse.class, c.getClass());
   }
 
   @Test
-  public void testCircleHeight() {
+  void testCircleHeight() {
     Mshape c = createCircle();
     assertEquals(20, c.getHeight());
   }
 
   @Test
-  public void testCircleWidth() {
+  void testCircleWidth() {
     Mshape c = createCircle();
     assertEquals(20, c.getWidth());
   }
 
   @Test
-  public void testMove() {
+  void testMove() {
     Mshape c = createCircle();
     c = c.translate(5, 40);
     assertEquals(10, c.getPosition().getX());

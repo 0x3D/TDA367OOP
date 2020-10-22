@@ -18,7 +18,7 @@ public final class SvgDrawVisitor implements DrawVisitor {
    *
    * @param stringBuilder to add text lines to
    */
-  public SvgDrawVisitor(StringBuilder stringBuilder) {
+  public SvgDrawVisitor(final StringBuilder stringBuilder) {
     this.stringBuilder = stringBuilder;
   }
 
@@ -28,7 +28,7 @@ public final class SvgDrawVisitor implements DrawVisitor {
    * @param mellipse ellipse to create text from
    */
   @Override
-  public void visitMellipse(Mellipse mellipse) {
+  public void visitMellipse(final Mellipse mellipse) {
     stringBuilder.append("<ellipse cx=\"");
     stringBuilder.append(mellipse.getCenterPoint().getX());
     stringBuilder.append("\" cy=\"");
@@ -42,16 +42,15 @@ public final class SvgDrawVisitor implements DrawVisitor {
     stringBuilder.append("\"/>\n");
   }
 
-
   /**
    * Create a svg line to represent a polygon
    *
    * @param mpolygon Polygon to create svg text from
    */
   @Override
-  public void visitMpolyogon(Mpolygon mpolygon) {
+  public void visitMpolyogon(final Mpolygon mpolygon) {
     stringBuilder.append("<polygon points=\"");
-    for (Mpoint mpoint : mpolygon.getPoints()) {
+    for (final Mpoint mpoint : mpolygon.getPoints()) {
       stringBuilder.append(mpoint.getX()).append(",").append(mpoint.getY()).append(" ");
     }
     stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(" "));
@@ -66,9 +65,9 @@ public final class SvgDrawVisitor implements DrawVisitor {
    * @param mpolyline Polyline to create svg text from
    */
   @Override
-  public void visitMpolyline(Mpolyline mpolyline) {
+  public void visitMpolyline(final Mpolyline mpolyline) {
     stringBuilder.append("<polyline points=\"");
-    for (Mpoint mpoint : mpolyline.getPoints()) {
+    for (final Mpoint mpoint : mpolyline.getPoints()) {
       stringBuilder.append(mpoint.getX()).append(",").append(mpoint.getY()).append(" ");
     }
     stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(" "));
@@ -77,13 +76,13 @@ public final class SvgDrawVisitor implements DrawVisitor {
     stringBuilder.append("\"/>\n");
   }
 
-  private void addMshapeColor(Mshape mshape) {
+  private void addMshapeColor(final Mshape mshape) {
     stringBuilder
-            .append(mshape.getColor().getRed())
-            .append(",")
-            .append(mshape.getColor().getGreen())
-            .append(",")
-            .append(mshape.getColor().getBlue())
-            .append(")");
+        .append(mshape.getColor().getRed())
+        .append(",")
+        .append(mshape.getColor().getGreen())
+        .append(",")
+        .append(mshape.getColor().getBlue())
+        .append(")");
   }
 }

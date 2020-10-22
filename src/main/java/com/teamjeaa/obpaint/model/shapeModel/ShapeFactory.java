@@ -18,20 +18,19 @@ public interface ShapeFactory {
    * Concrete factory uses method to create a Circle
    *
    * @param radius Radius of the circle
-   * @param x      x value on screen.
-   * @param y      y value on screen.
+   * @param x x value on screen.
+   * @param y y value on screen.
    * @return returns new instance of the Mellipse (circle) class.
    */
   Mshape createCircle(int radius, int x, int y, Color color, String name);
 
-
   /**
    * Method used by factory to create a Rectangle.
    *
-   * @param x1    X value for point where user starts mouse click.
-   * @param y1    Y value for point where user starts mouse click.
-   * @param x2    X value for point where user releases mouse.
-   * @param y2    Y value for point where user releases mouse.
+   * @param x1 X value for point where user starts mouse click.
+   * @param y1 Y value for point where user starts mouse click.
+   * @param x2 X value for point where user releases mouse.
+   * @param y2 Y value for point where user releases mouse.
    * @param color is the color of the rectangle
    * @return returns instance of a Mpolygon.
    */
@@ -40,10 +39,10 @@ public interface ShapeFactory {
   /**
    * Method used by factory to create a Rectangle.
    *
-   * @param x1    X value for point where user starts mouse click.
-   * @param y1    Y value for point where user starts mouse click.
-   * @param x2    X value for point where user releases mouse.
-   * @param y2    Y value for point where user releases mouse.
+   * @param x1 X value for point where user starts mouse click.
+   * @param y1 Y value for point where user starts mouse click.
+   * @param x2 X value for point where user releases mouse.
+   * @param y2 Y value for point where user releases mouse.
    * @param color is the color of the line
    * @return returns instance of a Mpolygon.
    */
@@ -53,7 +52,7 @@ public interface ShapeFactory {
    * Method used by factory to create a Polyline.
    *
    * @param points - the points for the line
-   * @param color  - color of the line
+   * @param color - color of the line
    * @return - a Mshape
    */
   Mshape createPolyline(List<Mpoint> points, Color color, String name, int strokeSize);
