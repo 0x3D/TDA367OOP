@@ -18,7 +18,7 @@ import java.util.Scanner;
  * @author Erik R
  * @since 0.2-SNAPSHOT
  */
-public class SvgParser {
+public final class SvgParser {
   private final List<String> fileInStrings = new ArrayList<>();
   private final List<Mshape> mshapeList = new ArrayList<>();
 

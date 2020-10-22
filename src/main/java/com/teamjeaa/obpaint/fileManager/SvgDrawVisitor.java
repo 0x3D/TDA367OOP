@@ -9,7 +9,7 @@ import com.teamjeaa.obpaint.view.DrawVisitor;
  * @author Erik R
  * @since 0.2-SNAPSHOT
  */
-public final class SvgDrawVisitor implements DrawVisitor {
+ public final class SvgDrawVisitor implements DrawVisitor {
   private final StringBuilder stringBuilder;
 
   /** Constructor for the class
