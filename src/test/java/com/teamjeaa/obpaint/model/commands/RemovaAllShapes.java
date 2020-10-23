@@ -8,10 +8,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class RemovaAllShapes {
+class RemovaAllShapes {
 
-    Command command;
-    int size;
+    private Command command;
+    private int size;
     @Test
     void removeAllShapes(){
         ShapeFactory sf = new ConcreteShapeFactory();

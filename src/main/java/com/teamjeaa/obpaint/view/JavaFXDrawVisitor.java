@@ -26,22 +26,14 @@ public final class JavaFXDrawVisitor implements DrawVisitor {
   private final BorderPane rootBorderPane;
 
   /** @param rootBorderPane Borderpane to add the JavaFX shape to */
-  public JavaFXDrawVisitor(BorderPane rootBorderPane) {
+  public JavaFXDrawVisitor(final BorderPane rootBorderPane) {
     this.rootBorderPane = rootBorderPane;
-  }
-
-  private javafx.scene.paint.Color colorToJavaFXColor(Color color) {
-    return new javafx.scene.paint.Color(
-        color.getRed() / MODEL_COLOR_TO_JAVAFX_CONST,
-        color.getGreen() / MODEL_COLOR_TO_JAVAFX_CONST,
-        color.getBlue() / MODEL_COLOR_TO_JAVAFX_CONST,
-        color.getAlpha() / MODEL_COLOR_TO_JAVAFX_CONST);
   }
 
   /** {@inheritDoc} This provides the JavaFX implementation of visitMellipse */
   @Override
-  public void visitMellipse(Mellipse mellipse) {
-    Ellipse ellipse =
+  public void visitMellipse(final Mellipse mellipse) {
+    final Ellipse ellipse =
         new Ellipse(
             mellipse.getCenterPoint().getX(),
             mellipse.getCenterPoint().getY(),
@@ -49,13 +41,12 @@ public final class JavaFXDrawVisitor implements DrawVisitor {
             mellipse.getSemiAxesB());
     ellipse.setFill(colorToJavaFXColor(mellipse.getColor()));
     rootBorderPane.getChildren().add(ellipse);
-    //    ObObjectListControllerjectListController.objectFlowPane.getChildren().add(new ObjectListItemView("FuckOf"));
   }
 
   /** {@inheritDoc} This provides the JavaFX implementation of visitMpolygon */
   @Override
-  public void visitMpolyogon(Mpolygon mpolygon) {
-    Polygon polygon = new Polygon();
+  public void visitMpolyogon(final Mpolygon mpolygon) {
+    final Polygon polygon = new Polygon();
     // TODO: Make prettier
     mpolygon
         .getPoints()
@@ -71,8 +62,8 @@ public final class JavaFXDrawVisitor implements DrawVisitor {
 
   /** {@inheritDoc} This provides the JavaFX implementation of visitMpolygon */
   @Override
-  public void visitMpolyline(Mpolyline mpolyline) {
-    Polyline polyline = new Polyline();
+  public void visitMpolyline(final Mpolyline mpolyline) {
+    final Polyline polyline = new Polyline();
     mpolyline
         .getPoints()
         .forEach(
@@ -80,5 +71,13 @@ public final class JavaFXDrawVisitor implements DrawVisitor {
     polyline.setStroke(colorToJavaFXColor(mpolyline.getColor()));
     polyline.setStrokeWidth(mpolyline.getStrokeWidth());
     rootBorderPane.getChildren().add(polyline);
+  }
+
+  private javafx.scene.paint.Color colorToJavaFXColor(final Color color) {
+    return new javafx.scene.paint.Color(
+        color.getRed() / MODEL_COLOR_TO_JAVAFX_CONST,
+        color.getGreen() / MODEL_COLOR_TO_JAVAFX_CONST,
+        color.getBlue() / MODEL_COLOR_TO_JAVAFX_CONST,
+        color.getAlpha() / MODEL_COLOR_TO_JAVAFX_CONST);
   }
 }

@@ -19,7 +19,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SvgCommonTest {
+class SvgCommonTest {
 
   private List<Mshape> createShapes(){
     ShapeFactory shapeFactory = new ConcreteShapeFactory();

@@ -1,8 +1,7 @@
 package com.teamjeaa.obpaint.model.shapeModel;
 
-import com.teamjeaa.obpaint.view.DrawVisitor;
-
 import com.teamjeaa.obpaint.model.Color;
+import com.teamjeaa.obpaint.view.DrawVisitor;
 
 /**
  * This is the common interface of the shapes in our model *
@@ -13,9 +12,9 @@ import com.teamjeaa.obpaint.model.Color;
  * Uses Mpoint, DrawVisitor
  *
  * @author Erik R
- * @since 0.1-SNAPSHOT
  * @see Mellipse
  * @see Mpolygon
+ * @since 0.1-SNAPSHOT
  */
 public interface Mshape {
 

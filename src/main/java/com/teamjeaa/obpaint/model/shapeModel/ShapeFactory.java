@@ -24,7 +24,6 @@ public interface ShapeFactory {
    */
   Mshape createCircle(int radius, int x, int y, Color color, String name);
 
-
   /**
    * Method used by factory to create a Rectangle.
    *
@@ -54,7 +53,7 @@ public interface ShapeFactory {
    *
    * @param points - the points for the line
    * @param color - color of the line
-   * @return - an Mshape
+   * @return - a Mshape
    */
   Mshape createPolyline(List<Mpoint> points, Color color, String name, int strokeSize);
 }

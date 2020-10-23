@@ -9,9 +9,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public final class ModelCanvasTest {
+final class ModelCanvasTest {
   @Test
-  public void addToModel() {
+  void addToModel() {
     // Shape shape = new Rectangle();
     ModelCanvas modelCanvas = new ModelCanvas();
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
@@ -23,7 +23,7 @@ public final class ModelCanvasTest {
   }
 
   @Test
-  public void removeFromModel() {
+  void removeFromModel() {
     // set up
     ModelCanvas modelCanvas = new ModelCanvas();
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
@@ -42,17 +42,17 @@ public final class ModelCanvasTest {
   }
 
   @Test
-  public void addToRender() {
+  void addToRender() {
     // TODO: Implement
   }
 
   @Test
-  public void removeFromRender() {
+  void removeFromRender() {
     // TODO: Implement
   }
 
   @Test
-  public void findShapeAt() {
+  void findShapeAt() {
     int x = 19;
     int y = 19;
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
@@ -63,7 +63,7 @@ public final class ModelCanvasTest {
   }
 
   @Test
-  public void testFindShapeAtException() throws IllegalArgumentException {
+  void testFindShapeAtException() throws IllegalArgumentException {
     int x = 22;
     int y = 22;
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
@@ -77,7 +77,7 @@ public final class ModelCanvasTest {
   }
 
   @Test
-  public void findCircleAt() {
+  void findCircleAt() {
     int x = 55;
     int y = 55;
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
@@ -88,7 +88,7 @@ public final class ModelCanvasTest {
   }
 
   @Test
-  public void findPolyLineAt() {
+  void findPolyLineAt() {
     int x = 49;
     int y = 47;
     ShapeFactory shapeFactory = new ConcreteShapeFactory();
@@ -99,7 +99,7 @@ public final class ModelCanvasTest {
   }
 
   @Test
-  public void getShapes() {
+  void getShapes() {
     // TODO: Implement
   }
 }

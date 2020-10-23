@@ -1,6 +1,5 @@
 package com.teamjeaa.obpaint.model.shapeModel;
 
-
 import com.teamjeaa.obpaint.model.Color;
 
 import java.util.ArrayList;
@@ -24,13 +23,13 @@ import java.util.List;
 public final class ConcreteShapeFactory implements ShapeFactory {
 
   @Override
-  public Mshape createCircle(int radius, int x, int y, Color color, String name) {
+  public Mshape createCircle(final int radius, final int x, final int y, final Color color, final String name) {
     return new Mellipse(new Mpoint(x, y), radius, radius, color, name);
   }
 
   @Override
-  public Mshape createRectangle(int x1, int y1, int x2, int y2, Color color, String name) {
-    List<Mpoint> mpointList = new ArrayList<>();
+  public Mshape createRectangle(final int x1, final int y1, final int x2, final int y2, final Color color, final String name) {
+    final List<Mpoint> mpointList = new ArrayList<>();
     mpointList.add(new Mpoint(x1, y1));
     mpointList.add(new Mpoint(x2, y1));
     mpointList.add(new Mpoint(x2, y2));
@@ -39,15 +38,16 @@ public final class ConcreteShapeFactory implements ShapeFactory {
   }
 
   @Override
-  public Mshape createLine(int x1, int y1, int x2, int y2, Color color, String name,int strokeWidth) {
-    List<Mpoint> mpointList = new ArrayList<>();
+  public Mshape createLine(
+          final int x1, final int y1, final int x2, final int y2, final Color color, final String name, final int strokeWidth) {
+    final List<Mpoint> mpointList = new ArrayList<>();
     mpointList.add(new Mpoint(x1, y1));
     mpointList.add(new Mpoint(x2, y2));
-    return new Mpolyline(mpointList, color, name,strokeWidth);
+    return new Mpolyline(mpointList, color, name, strokeWidth);
   }
 
   @Override
-  public Mshape createPolyline(List<Mpoint> points, Color color, String name, int strokeWidth) {
+  public Mshape createPolyline(final List<Mpoint> points, final Color color, final String name, final int strokeWidth) {
     return new Mpolyline(points, color, name, strokeWidth);
   }
 }

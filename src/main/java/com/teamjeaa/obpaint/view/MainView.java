@@ -24,27 +24,26 @@ public final class MainView extends AnchorPane {
   private static final String SWEDISH_LANGUAGE = "sv";
 
   /** Constructor for our view that holds all the logic to load the FXML file */
-  public MainView(String fxmlFileName) {
-    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFileName));
+  public MainView(final String fxmlFileName) {
+    final FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFileName));
     fxmlLoader.setRoot(this);
     ResourceBundle resourceBundle = ResourceBundle.getBundle(OB_PAINT_EN);
-    try{
-      File file = new File(CFG_PROPERTIES);
-      Properties properties = new Properties();
-      FileReader fileReader = new FileReader(file);
+    try {
+      final File file = new File(CFG_PROPERTIES);
+      final Properties properties = new Properties();
+      final FileReader fileReader = new FileReader(file);
       properties.load(fileReader);
-      String language = properties.getProperty(LANGUAGE);
-      if ( language.equals(SWEDISH_LANGUAGE)) {
+      final String language = properties.getProperty(LANGUAGE);
+      if (language.equals(SWEDISH_LANGUAGE)) {
         resourceBundle = ResourceBundle.getBundle(OB_PAINT_SV);
       }
       fxmlLoader.setResources(resourceBundle);
-    }
-     catch (IOException e) {
+    } catch (final IOException e) {
       e.printStackTrace();
     }
     try {
       fxmlLoader.load();
-    } catch (IOException exception) {
+    } catch (final IOException exception) {
       throw new RuntimeException(exception);
     }
   }

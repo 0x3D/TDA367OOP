@@ -13,12 +13,12 @@ import java.util.List;
  * @author Erik R
  * @since 0.1 SNAPSHOT
  */
-public final class ModelCanvas {
+final class ModelCanvas {
 
   // Can't use generics because read and write out of list
   private final List<Mshape> shapes;
 
-  private ModelCanvas(List<Mshape> shapes) {
+  private ModelCanvas(final List<Mshape> shapes) {
     this.shapes = shapes;
   }
 
@@ -32,27 +32,27 @@ public final class ModelCanvas {
    *
    * @param shape - The object to be added
    */
-  public void addToRender(Mshape shape) {
+  public void addToRender(final Mshape shape) {
     this.shapes.add(shape);
   }
 
   /** Removes a shape from the list with objects created by the user */
-  public void removeFromRender(Mshape mshape) {
+  public void removeFromRender(final Mshape mshape) {
     this.shapes.remove(mshape);
   }
 
   /**
-   * Finds the shape at a specific point (x,y).
+   * Finds the shape at a specific point (x,y). We reverse the list to get the latest Shape
    *
    * @param x - Point x
    * @param y - Point y
    * @return - The shape at the point (x,y)
    * @throws IllegalArgumentException If Shape is not in list
    */
-  public Mshape findShapeAt(int x, int y) throws IllegalArgumentException {
+  public Mshape findShapeAt(final int x, final int y) throws IllegalArgumentException {
     // Maybe not optimal solution
     Collections.reverse(shapes);
-    for (Mshape shape : shapes) {
+    for (final Mshape shape : shapes) {
       if (shape.isPointMemberOfShape(x, y)) {
         Collections.reverse(shapes);
         return shape;
@@ -71,7 +71,8 @@ public final class ModelCanvas {
     // Unmodifiable list so that any that uses the models list can't change it
     return Collections.unmodifiableList(shapes);
   }
-  void resetRenderList () {
+
+  void resetRenderList() {
     shapes.clear();
   }
 }

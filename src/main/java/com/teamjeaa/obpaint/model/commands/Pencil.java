@@ -12,12 +12,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class is responsible for executing command by adding a Mpolyline to program.
- *  Also responsible for undoing the executed action.
+ * This class is responsible for executing command by adding a Mpolyline to program. Also
+ * responsible for undoing the executed action.
  *
- *
- * Used by ToolController
- * Uses Color, Mshape, ShapeFactory, Model, Math
+ * <p>Used by ToolController Uses Color, Mshape, ShapeFactory, Model, Math
  *
  * @author Jonas N
  * @since 0.3-SNAPSHOT
@@ -29,14 +27,15 @@ public final class Pencil implements Command {
     private Mshape pencil;
     private final int strokeWidth;
 
-    /**
-     * Constructor class for creating Pencil command.
-     * @param points list of points that will be used creating Mpolyline
-     * @param color Color of line
-     * @param name name of line
-     * @param strokeWidth width of the line
-     */
-  public Pencil(List<Mpoint> points, Color color, String name, int strokeWidth) {
+  /**
+   * Constructor class for creating Pencil command.
+   *
+   * @param points list of points that will be used creating Mpolyline
+   * @param color Color of line
+   * @param name name of line
+   * @param strokeWidth width of the line
+   */
+  public Pencil(final List<Mpoint> points, final Color color, final String name, final int strokeWidth) {
     this.points = points;
     this.color = color;
     this.name = name;
@@ -61,13 +60,11 @@ public final class Pencil implements Command {
         }
     }
 
-    /**
-     * Executes command by removing the previously added Mpolyline.
-     */
-    @Override
-    public void undo() {
-        Model.INSTANCE.removeFromRender(pencil);
-    }
+  /** Executes command by removing the previously added Mpolyline. */
+  @Override
+  public void undo() {
+    Model.INSTANCE.removeFromRender(pencil);
+  }
 
 
     /**

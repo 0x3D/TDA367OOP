@@ -36,10 +36,10 @@ public final class Start extends Application {
    * @param args - args
    */
   public static void main(final String[] args) {
-    try{
+    try {
       makeConfig();
-    }catch (final IOException e) {
-      //cant do anything about IO eeception
+    } catch (final IOException e) {
+      // cant do anything about IO exception
       e.printStackTrace();
     }
     final Runnable server = new ObPaintServer(getPort());
@@ -48,69 +48,71 @@ public final class Start extends Application {
     launch(args);
   }
 
-
-  private static void makeConfig () throws IOException {
-    File configFile = new File(CFG_PROPERTIES);
+  private static void makeConfig() throws IOException {
+    final File configFile = new File(CFG_PROPERTIES);
     try {
-      FileReader fileReader = new FileReader(configFile);
-      Properties properties = new Properties();
+      final FileReader fileReader = new FileReader(configFile);
+      final Properties properties = new Properties();
       properties.load(fileReader);
 
-      String port = properties.getProperty(PORT);
-      System.out.println(port);
-    }catch (final FileNotFoundException fileNotFoundException) {
-      FileWriter fileWriter = new FileWriter(CFG_PROPERTIES);
-      Properties properties = new Properties();
+      final String port = properties.getProperty(PORT);
+    } catch (final FileNotFoundException fileNotFoundException) {
+      final FileWriter fileWriter = new FileWriter(CFG_PROPERTIES);
+      final Properties properties = new Properties();
       properties.setProperty(PORT, DEFAULT_PORT_VALUE);
 
       properties.setProperty(LANGUAGE, ENGLISH_LANGUAGE);
       properties.store(fileWriter, CONFIGURATION_HEADER);
       fileWriter.close();
-    } catch (IOException e) {
+    } catch (final IOException e) {
       e.printStackTrace();
     }
   }
-  private static String getPort()   {
-    File configFile = new File(CFG_PROPERTIES);
+
+  private static String getPort() {
+    final File configFile = new File(CFG_PROPERTIES);
     try {
-      FileReader fileReader = new FileReader(configFile);
-      Properties properties = new Properties();
+      final FileReader fileReader = new FileReader(configFile);
+      final Properties properties = new Properties();
       properties.load(fileReader);
       return properties.getProperty(PORT);
-    }catch (final FileNotFoundException fileNotFoundException){
+    } catch (final FileNotFoundException fileNotFoundException) {
       return DEFAULT_PORT_VALUE;
-    }catch (final IOException ioException){
+    } catch (final IOException ioException) {
       ioException.printStackTrace();
     }
     return DEFAULT_PORT_VALUE;
   }
+
   /**
    * This method starts up JavaFX and initializes the Model
    *
    * @param primaryStage - The root view of the project
    */
   @Override
-  public void start(Stage primaryStage) {
+  public void start(final Stage primaryStage) {
     setupScene(primaryStage);
   }
 
-  private void setupScene(Stage primaryStage) {
-    Parent root = new MainView(XML_MAIN_VIEW);
+  private void setupScene(final Stage primaryStage) {
+    final Parent root = new MainView(XML_MAIN_VIEW);
 
     primaryStage.setOnCloseRequest(
         e -> {
           try {
             stop();
-          } catch (Exception exception) {
+          } catch (final Exception exception) {
             exception.printStackTrace();
           }
           Platform.exit();
           System.exit(0);
         });
 
-    ResourceBundle obPaintResourceBundle = ResourceBundle.getBundle("obPaint");
+    final ResourceBundle obPaintResourceBundle = ResourceBundle.getBundle("obPaint");
     primaryStage.setTitle(obPaintResourceBundle.getString("application.name"));
-    primaryStage.getIcons().add(new Image(obPaintResourceBundle.getString("application.logo.path")));
+    primaryStage
+        .getIcons()
+        .add(new Image(obPaintResourceBundle.getString("application.logo.path")));
     primaryStage.setScene(new Scene(root, SCENE_WIDTH, SCENE_HEIGHT));
     primaryStage.setMinHeight(SCENE_HEIGHT);
     primaryStage.setMinWidth(SCENE_WIDTH);

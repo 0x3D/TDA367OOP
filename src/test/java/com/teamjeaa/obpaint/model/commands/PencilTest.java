@@ -2,19 +2,16 @@ package com.teamjeaa.obpaint.model.commands;
 
 import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.Model;
-import com.teamjeaa.obpaint.model.shapeModel.ConcreteShapeFactory;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
-import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 import org.junit.jupiter.api.Test;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PencilTest {
+class PencilTest {
 
-    Command command;
+    private Command command;
 
 
     @Test

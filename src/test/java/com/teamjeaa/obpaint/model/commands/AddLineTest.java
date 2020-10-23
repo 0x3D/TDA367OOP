@@ -10,12 +10,12 @@ class AddLineTest {
 
   @Test
   void executeTest() {
-    int x = 5;
-    int y = 0;
-    int x2 = 10;
-    int y2 = 10;
-    Command command = new AddLine(x, y, x2, y2, new Color(255, 175, 175), "test",1);
-    int size = Model.INSTANCE.getCanvasShapes().size();
+    final int x = 5;
+    final int y = 0;
+    final int x2 = 10;
+    final int y2 = 10;
+    final Command command = new AddLine(x, y, x2, y2, new Color(255, 175, 175), "test",1);
+    final int size = Model.INSTANCE.getCanvasShapes().size();
     command.execute();
     assertEquals(size + 1, Model.INSTANCE.getCanvasShapes().size());
   }

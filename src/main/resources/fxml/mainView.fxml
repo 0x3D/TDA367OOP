@@ -42,7 +42,7 @@ The main window of the application
             <Button fx:id="connectButton" layoutX="118.0" layoutY="74.0" mnemonicParsing="false"
                     onAction="#onConnectButton" styleClass="FontType" text="Connect">
                 <tooltip>
-                    <Tooltip styleClass="ToolTip" text="Click here to open CollaboreteWindow"/>
+                    <Tooltip styleClass="ToolTip" text="Click here to open Collaborate Window"/>
                 </tooltip>
             </Button>
             <Label layoutX="121.0" layoutY="37.0" prefHeight="27.0" prefWidth="2.0" text=":">

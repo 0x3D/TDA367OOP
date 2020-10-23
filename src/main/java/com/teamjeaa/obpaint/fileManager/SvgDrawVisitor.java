@@ -6,22 +6,29 @@ import com.teamjeaa.obpaint.view.DrawVisitor;
 /**
  * Class that implements the DrawVisitor using SVG Creates svg representation of shape using Visitor
  * pattern
+ *
  * @author Erik R
  * @since 0.2-SNAPSHOT
  */
- public final class SvgDrawVisitor implements DrawVisitor {
+public final class SvgDrawVisitor implements DrawVisitor {
   private final StringBuilder stringBuilder;
 
-  /** Constructor for the class
-   *  @param stringBuilder to add text lines to */
-  public SvgDrawVisitor(StringBuilder stringBuilder) {
+  /**
+   * Constructor for the class
+   *
+   * @param stringBuilder to add text lines to
+   */
+  public SvgDrawVisitor(final StringBuilder stringBuilder) {
     this.stringBuilder = stringBuilder;
   }
 
-  /** Create a svg line to represent a ellipse
-   *  @param mellipse ellipse to create text from */
+  /**
+   * Create a svg line to represent a ellipse
+   *
+   * @param mellipse ellipse to create text from
+   */
   @Override
-  public void visitMellipse(Mellipse mellipse) {
+  public void visitMellipse(final Mellipse mellipse) {
     stringBuilder.append("<ellipse cx=\"");
     stringBuilder.append(mellipse.getCenterPoint().getX());
     stringBuilder.append("\" cy=\"");
@@ -35,23 +42,15 @@ import com.teamjeaa.obpaint.view.DrawVisitor;
     stringBuilder.append("\"/>\n");
   }
 
-
-  private void addMshapeColor(Mshape mshape) {
-    stringBuilder
-        .append(mshape.getColor().getRed())
-        .append(",")
-        .append(mshape.getColor().getGreen())
-        .append(",")
-        .append(mshape.getColor().getBlue())
-        .append(")");
-  }
-
-  /** Create a svg line to represent a polygon
-   *  @param mpolygon Polygon to create svg text from */
+  /**
+   * Create a svg line to represent a polygon
+   *
+   * @param mpolygon Polygon to create svg text from
+   */
   @Override
-  public void visitMpolyogon(Mpolygon mpolygon) {
+  public void visitMpolyogon(final Mpolygon mpolygon) {
     stringBuilder.append("<polygon points=\"");
-    for (Mpoint mpoint : mpolygon.getPoints()) {
+    for (final Mpoint mpoint : mpolygon.getPoints()) {
       stringBuilder.append(mpoint.getX()).append(",").append(mpoint.getY()).append(" ");
     }
     stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(" "));
@@ -60,17 +59,30 @@ import com.teamjeaa.obpaint.view.DrawVisitor;
     stringBuilder.append("\"/>\n");
   }
 
-  /** Create a svg line to represent a polyline
-   *  @param mpolyline Polyline to create svg text from */
+  /**
+   * Create a svg line to represent a polyline
+   *
+   * @param mpolyline Polyline to create svg text from
+   */
   @Override
-  public void visitMpolyline(Mpolyline mpolyline) {
+  public void visitMpolyline(final Mpolyline mpolyline) {
     stringBuilder.append("<polyline points=\"");
-    for (Mpoint mpoint : mpolyline.getPoints()) {
+    for (final Mpoint mpoint : mpolyline.getPoints()) {
       stringBuilder.append(mpoint.getX()).append(",").append(mpoint.getY()).append(" ");
     }
     stringBuilder.deleteCharAt(stringBuilder.lastIndexOf(" "));
     stringBuilder.append("\" style=\"fill:none; stroke:rgb(");
     addMshapeColor(mpolyline);
     stringBuilder.append("\"/>\n");
+  }
+
+  private void addMshapeColor(final Mshape mshape) {
+    stringBuilder
+        .append(mshape.getColor().getRed())
+        .append(",")
+        .append(mshape.getColor().getGreen())
+        .append(",")
+        .append(mshape.getColor().getBlue())
+        .append(")");
   }
 }

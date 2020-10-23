@@ -11,10 +11,10 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MoveTest {
+class MoveTest {
 
   @Test
-  void excecuteTest() {
+  void executeTest() {
     ShapeFactory sp = new ConcreteShapeFactory();
     Mshape mshape = sp.createRectangle(0, 0, 10, 10, new Color(255, 175, 175), "test");
     Model.INSTANCE.addToRender(mshape);
@@ -22,8 +22,8 @@ public class MoveTest {
     int x1 = 40;
     int y = 0;
     int y1 = 40;
-    Command cmnd = new Move(x, y, x1, y1);
-    cmnd.execute();
+    Command cmd = new Move(x, y, x1, y1);
+    cmd.execute();
     assertEquals(mshape.translate(40, 40), Model.INSTANCE.findShapeAtPoint(40, 40));
   }
 }

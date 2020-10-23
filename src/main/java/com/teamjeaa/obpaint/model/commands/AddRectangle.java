@@ -8,12 +8,12 @@ import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 import com.teamjeaa.obpaint.server.ObPaintClient;
 
 /**
- * This class is responsible for executing command by adding a Mpolygon to program.
- *  Also responsible for undoing the executed action.
+ * This class is responsible for executing command by adding a Mpolygon to program. Also responsible
+ * for undoing the executed action.
  *
+ * <p>
  *
- * Used by ToolController
- * Uses Color, Mshape, ShapeFactory, Model
+ * <p>Used by ToolController Uses Color, Mshape, ShapeFactory, Model
  *
  * @author Axel H
  * @since 0.3-SNAPSHOT
@@ -30,6 +30,7 @@ public final class AddRectangle implements Command {
 
   /**
    * Constructor for command addRectangle.
+   *
    * @param x1 First corner X-value for Mpolygon
    * @param y1 First corner Y-value for Mpolygon
    * @param x2 Second corner X-value for Mpolygon
@@ -37,7 +38,7 @@ public final class AddRectangle implements Command {
    * @param color Color of Mpolygon
    * @param name Name of Mpolygon
    */
-  public AddRectangle(int x1, int y1, int x2, int y2, Color color, String name) {
+  public AddRectangle(final int x1, final int y1, final int x2, final int y2, final Color color, final String name) {
     this.x1 = x1;
     this.y1 = y1;
     this.x2 = x2;
@@ -47,22 +48,23 @@ public final class AddRectangle implements Command {
   }
 
   /**
-   * Will execute the command for creating a Mpolygon with initial values from command.
-   * It will also add command to list of command and if server is connected send message to client.
+   * Will execute the command for creating a Mpolygon with initial values from command. It will also
+   * add command to list of command and if server is connected send message to client.
    */
   @Override
   public void execute() {
-    ShapeFactory shapeFactory = new ConcreteShapeFactory();
+    final ShapeFactory shapeFactory = new ConcreteShapeFactory();
     rectangle = shapeFactory.createRectangle(x1, y1, x2, y2, color, name);
     Model.INSTANCE.addToRender(rectangle);
     Model.INSTANCE.addToCommandList(this);
     if (ObPaintClient.INSTANCE.isConnected()) {
-      ObPaintClient.INSTANCE.sendRectangle(x1,y1,x2,y2,color,name);
+      ObPaintClient.INSTANCE.sendRectangle(x1, y1, x2, y2, color, name);
     }
   }
+
   /**
-   * This method will undo the command. In this class it will remove the Mpolygon that
-   * was created in previous command.
+   * This method will undo the command. In this class it will remove the Mpolygon that was created
+   * in previous command.
    */
   @Override
   public void undo() {

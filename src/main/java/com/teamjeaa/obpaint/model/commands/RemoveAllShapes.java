@@ -9,15 +9,13 @@ import java.util.List;
 
 /**
  * RemoveAllShape command removes all the shapes on the canvas
- * <p>
- * Used by MainController
- * Uses Mshape and Model
+ *
+ * <p>Used by MainController Uses Mshape and Model
  *
  * @author Axel h
  * @since 0.3 SNAPSHOT
  */
-
-public class RemoveAllShapes implements Command {
+public final class RemoveAllShapes implements Command {
   private List<Mshape> removedShapes;
 
   /**
@@ -34,12 +32,10 @@ public class RemoveAllShapes implements Command {
     }
   }
 
-  /**
-   * Undo command that revert what initially was made by the defined command.
-   */
+  /** Undo command that revert what initially was made by the defined command. */
   @Override
   public void undo() {
-    for (Mshape mshape : removedShapes) {
+    for (final Mshape mshape : removedShapes) {
       Model.INSTANCE.addToRender(mshape);
     }
   }

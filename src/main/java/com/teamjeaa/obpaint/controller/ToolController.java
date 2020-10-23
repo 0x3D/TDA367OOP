@@ -4,15 +4,11 @@ import com.teamjeaa.obpaint.controller.controllerModel.*;
 import com.teamjeaa.obpaint.model.Color;
 import com.teamjeaa.obpaint.model.commands.*;
 import com.teamjeaa.obpaint.model.shapeModel.Mpoint;
-
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
-
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -30,7 +26,7 @@ import java.util.ResourceBundle;
  */
 public final class ToolController implements Initializable {
   private static final int JAVAFX_MODEL_COLOR_CONSTANT = 255;
-  private final static int START_UP_STROKE_SIZE = 5;
+  private static final int START_UP_STROKE_SIZE = 5;
   @FXML private ColorPicker cp;
   @FXML private ToggleButton pencilButton;
   @FXML private ToggleButton brushButton;
@@ -57,8 +53,8 @@ public final class ToolController implements Initializable {
    * @param resources - The resources used to localize the root object
    */
   @Override
-  public void initialize(URL location, ResourceBundle resources) {
-    ToggleGroup toolButtons = new ToggleGroup();
+  public void initialize(final URL location, final ResourceBundle resources) {
+    final ToggleGroup toolButtons = new ToggleGroup();
     pencilButton.setToggleGroup(toolButtons);
     brushButton.setToggleGroup(toolButtons);
     eraserButton.setToggleGroup(toolButtons);
@@ -68,16 +64,14 @@ public final class ToolController implements Initializable {
     widthTextField.setText(String.valueOf(START_UP_STROKE_SIZE));
   }
 
-  void setCanvasController(CanvasController canvasController) {
+  void setCanvasController(final CanvasController canvasController) {
     this.canvasController = canvasController;
     this.canvasPane = canvasController.getCanvasPane();
   }
 
-  /**
-   * resets all the mouseEventsHandlers
-   */
+  /** resets all the mouseEventsHandlers */
   private void resetCanvasMouseEventHandlers() {
-    //unfortunately this is the only way to reset all mouseevent-handlers...
+    // unfortunately this is the only way to reset all mouseevent-handlers...
     canvasPane.setOnMouseClicked(null);
     canvasPane.setOnMousePressed(null);
     canvasPane.setOnMouseReleased(null);
@@ -87,8 +81,32 @@ public final class ToolController implements Initializable {
   }
 
   /**
-   * onPencilButton is the method that is calls when we want to use the pencil
+   * Converts our own ColorClass to javaFxColor
+   *
+   * @param javafxColor is he javaFxColor
+   * @return our own Color class
    */
+  private Color convertToModelColor(final javafx.scene.paint.Color javafxColor) {
+    return new Color(
+        (int) (javafxColor.getRed() * JAVAFX_MODEL_COLOR_CONSTANT),
+        (int) (javafxColor.getGreen() * JAVAFX_MODEL_COLOR_CONSTANT),
+        (int) (javafxColor.getBlue() * JAVAFX_MODEL_COLOR_CONSTANT),
+        (int) (javafxColor.getOpacity() * JAVAFX_MODEL_COLOR_CONSTANT));
+  }
+
+  private void hideStrokeSize() {
+    widthTextField.setVisible(false);
+    strokeLabel.setVisible(false);
+    strokeLine.setVisible(false);
+  }
+
+  private void showStrokeSize() {
+    widthTextField.setVisible(true);
+    strokeLabel.setVisible(true);
+    strokeLine.setVisible(true);
+  }
+
+  /** onPencilButton is the method that is calls when we want to use the pencil */
   @FXML
   private void onPencilButton() {
     System.out.println("Selected Pencil tool");
@@ -109,7 +127,6 @@ public final class ToolController implements Initializable {
           toolVisualiser.updateVisualisation((int) mouseEvent.getX(), (int) mouseEvent.getY());
         });
 
-
     canvasPane.setOnMouseReleased(
         mouseEvent -> {
           points.add(new Mpoint((int) mouseEvent.getX(), (int) mouseEvent.getY()));
@@ -125,9 +142,7 @@ public final class ToolController implements Initializable {
         });
   }
 
-  /**
-   * onLineButton is the method that is calls when we want to use the line
-   */
+  /** onLineButton is the method that is calls when we want to use the line */
   @FXML
   private void onLineButton() {
     System.out.println("Selected line tool");
@@ -160,9 +175,8 @@ public final class ToolController implements Initializable {
           toolVisualiser.endVisualisation();
         });
   }
-  /**
-   * onEraserButton is the method that is calls when we want to use the eraser
-   */
+
+  /** onEraserButton is the method that is calls when we want to use the eraser */
   @FXML
   private void onEraserButton() {
     System.out.println("Eraser");
@@ -174,9 +188,8 @@ public final class ToolController implements Initializable {
           command.execute();
         });
   }
-  /**
-   * onCircleButton is the method that is calls when we want to use the circle
-   */
+
+  /** onCircleButton is the method that is calls when we want to use the circle */
   @FXML
   private void onCircleButton() {
     System.out.println("Selecting Circle");
@@ -196,12 +209,12 @@ public final class ToolController implements Initializable {
 
     canvasPane.setOnMouseReleased(
         mouseEvent -> {
-          int dia =
+          final int dia =
               (int)
                   Math.sqrt(
                       Math.pow(x - mouseEvent.getX(), 2) + Math.pow(y - mouseEvent.getY(), 2));
-          int centerX = (int) (x + mouseEvent.getX()) / 2;
-          int centerY = (int) (y + mouseEvent.getY()) / 2;
+          final int centerX = (int) (x + mouseEvent.getX()) / 2;
+          final int centerY = (int) (y + mouseEvent.getY()) / 2;
           // Math
           command =
               new AddCircle(
@@ -211,9 +224,7 @@ public final class ToolController implements Initializable {
         });
   }
 
-  /**
-   * onRectangleButton is the method that is calls when we want to use the rectangle
-   */
+  /** onRectangleButton is the method that is calls when we want to use the rectangle */
   @FXML
   private void onRectangleButton() {
     System.out.println("Selecting Rectangle");
@@ -246,9 +257,7 @@ public final class ToolController implements Initializable {
         });
   }
 
-  /**
-   * onMoveButton is the method that is calls when we want to use the moveCommand
-   */
+  /** onMoveButton is the method that is calls when we want to use the moveCommand */
   @FXML
   private void onMoveButton() {
     resetCanvasMouseEventHandlers();
@@ -272,30 +281,5 @@ public final class ToolController implements Initializable {
           command.execute();
           toolVisualiser.endVisualisation();
         });
-  }
-
-  /**
-   * Convers our own ColorClass to javaFxColor
-   * @param javafxColor is he javaFxColor
-   * @return our own Color class
-   */
-  private Color convertToModelColor(javafx.scene.paint.Color javafxColor) {
-    return new Color(
-            (int) (javafxColor.getRed() * JAVAFX_MODEL_COLOR_CONSTANT),
-            (int) (javafxColor.getGreen() * JAVAFX_MODEL_COLOR_CONSTANT),
-            (int) (javafxColor.getBlue() * JAVAFX_MODEL_COLOR_CONSTANT),
-            (int) (javafxColor.getOpacity() * JAVAFX_MODEL_COLOR_CONSTANT));
-  }
-
-  private void hideStrokeSize() {
-        widthTextField.setVisible(false);
-        strokeLabel.setVisible(false);
-        strokeLine.setVisible(false);
-  }
-
-  private void showStrokeSize() {
-      widthTextField.setVisible(true);
-      strokeLabel.setVisible(true);
-      strokeLine.setVisible(true);
   }
 }

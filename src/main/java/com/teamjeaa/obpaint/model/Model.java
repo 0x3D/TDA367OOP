@@ -6,7 +6,6 @@ import com.teamjeaa.obpaint.controller.ToolController;
 import com.teamjeaa.obpaint.model.commands.Command;
 import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 
-
 import java.util.EmptyStackException;
 import java.util.List;
 import java.util.Stack;
@@ -28,15 +27,14 @@ public enum Model {
   INSTANCE;
 
   private final ModelCanvas modelCanvas;
-
-  public final Stack<Command> commandList;
+  private final Stack<Command> commandList;
 
   Model() {
     modelCanvas = new ModelCanvas();
     commandList = new Stack<>();
   }
 
-  public Mshape findShapeAtPoint(int x, int y) {
+  public Mshape findShapeAtPoint(final int x, final int y) {
     return modelCanvas.findShapeAt(x, y);
   }
 
@@ -45,47 +43,67 @@ public enum Model {
    *
    * @param s some kind of Mshape.
    */
-  public void addToRender(Mshape s) {
+  public void addToRender(final Mshape s) {
     synchronized ("Server") {
       modelCanvas.addToRender(s);
     }
   }
 
-  public void addToCommandList(Command command){
+  /**
+   * This method adds our commands to a stack so we can handle Undo
+   *
+   * @param command - Is the command we push to the stack
+   */
+  public void addToCommandList(final Command command) {
     this.commandList.push(command);
   }
 
-  public void undo(){
+  /** Undo method */
+  public void undo() {
     try {
       commandList.pop().undo();
-    } catch (EmptyStackException e) {
+    } catch (final EmptyStackException e) {
       System.out.println("Found no Command to undo");
     }
   }
 
-  public void removeFromRenderByPoint(int x, int y) {
+  /**
+   * removes a shape by its points
+   *
+   * @param x is the xPoint
+   * @param y is the yPoint
+   */
+  public void removeFromRenderByPoint(final int x, final int y) {
     try {
       modelCanvas.removeFromRender(modelCanvas.findShapeAt(x, y));
-    } catch (IllegalArgumentException e) {
+    } catch (final IllegalArgumentException e) {
       System.out.println("Found no Shape to Remove");
     }
   }
-  public void removeFromRender (Mshape mshape) {
+
+  /**
+   * Removes a single shape
+   *
+   * @param mshape is the shape that being removed
+   */
+  public void removeFromRender(final Mshape mshape) {
     try {
       modelCanvas.removeFromRender(mshape);
-    } catch (IllegalArgumentException e) {
+    } catch (final IllegalArgumentException e) {
       System.out.println("Found no Shape to Remove");
     }
   }
 
   /** @return Returns the list of Mshapes collected from modelCanvas. */
   public List<Mshape> getCanvasShapes() {
-    //TODO: Lockable object
+    // TODO: Lockable object
     synchronized ("Server") {
       return modelCanvas.getShapes();
     }
   }
-  public void removeAllShapes () {
+
+  /** removes all shapes from the list */
+  public void removeAllShapes() {
     modelCanvas.resetRenderList();
   }
 }
