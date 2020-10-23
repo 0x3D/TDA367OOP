@@ -49,8 +49,6 @@ public final class Pencil implements Command {
     @Override
     public void execute() {
         ShapeFactory shapeFactory = new ConcreteShapeFactory();
-        //removeDuplicatePoints(points);
-        //removeUnnecessaryPoints(points);
         points = optimizedPointList(points);
         pencil = shapeFactory.createPolyline(points, color, name, strokeWidth);
         Model.INSTANCE.addToRender(pencil);
