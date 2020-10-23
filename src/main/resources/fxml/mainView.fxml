@@ -228,13 +228,13 @@ The main window of the application
             <Label layoutX="31.0" layoutY="203.0" prefHeight="35.0" prefWidth="189.0" styleClass="aboutAuthor"
                    text="\@Created by: Team JEEA" wrapText="true"/>
             <Label layoutX="31.0" layoutY="238.0" prefHeight="35.0" prefWidth="189.0" styleClass="aboutAuthor"
-                   text="\@Created by: Team JEEA" wrapText="true"/>
+                   text="Jonas Nordin" wrapText="true"/>
             <Label layoutX="31.0" layoutY="266.0" prefHeight="35.0" prefWidth="189.0" styleClass="aboutAuthor"
-                   text="\@Created by: Team JEEA" wrapText="true"/>
+                   text="Erik Anttila Ryderup" wrapText="true"/>
             <Label layoutX="31.0" layoutY="301.0" prefHeight="35.0" prefWidth="189.0" styleClass="aboutAuthor"
-                   text="\@Created by: Team JEEA" wrapText="true"/>
+                   text="Erik Bengtsson" wrapText="true"/>
             <Label layoutX="31.0" layoutY="336.0" prefHeight="35.0" prefWidth="189.0" styleClass="aboutAuthor"
-                   text="\@Created by: Team JEEA" wrapText="true"/>
+                   text="Axel Hertzberg" wrapText="true"/>
         </AnchorPane>
     </AnchorPane>
 </fx:root>
