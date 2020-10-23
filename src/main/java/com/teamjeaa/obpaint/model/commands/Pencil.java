@@ -80,6 +80,7 @@ public final class Pencil implements Command {
                 olPoint = optimizedList.get(optimizedList.size() - 1);
             }
         }
+        optimizedList.add(points.get(points.size()-1));
         return optimizedList;
     }
 }
