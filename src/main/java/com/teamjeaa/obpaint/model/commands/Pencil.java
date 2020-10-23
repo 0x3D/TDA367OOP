@@ -8,6 +8,7 @@ import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 import com.teamjeaa.obpaint.server.ObPaintClient;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,11 +21,11 @@ import java.util.List;
  * @since 0.3-SNAPSHOT
  */
 public final class Pencil implements Command {
-  private final List<Mpoint> points;
-  private final Color color;
-  private final String name;
-  private final int strokeWidth;
-  private Mshape pencil;
+    private List<Mpoint> points;
+    private final Color color;
+    private final String name;
+    private Mshape pencil;
+    private final int strokeWidth;
 
   /**
    * Constructor class for creating Pencil command.
@@ -41,22 +42,21 @@ public final class Pencil implements Command {
     this.strokeWidth = strokeWidth;
   }
 
-  /**
-   * Executes command by creating a Mpolyline through shape factory. Adds Mpolyline to render and
-   * adds command to list of command.
-   */
-  @Override
-  public void execute() {
-    final ShapeFactory shapeFactory = new ConcreteShapeFactory();
-    // removeDuplicatePoints(points);
-    removeUnnecessaryPoints(points);
-    pencil = shapeFactory.createPolyline(points, color, name, strokeWidth);
-    Model.INSTANCE.addToRender(pencil);
-    Model.INSTANCE.addToCommandList(this);
-    if (ObPaintClient.INSTANCE.isConnected()) {
-      ObPaintClient.INSTANCE.sendPencilStroke(points, color, name, strokeWidth);
+    /**
+     * Executes command by creating a Mpolyline through shape factory.
+     * Adds Mpolyline to render and adds command to list of command.
+     */
+    @Override
+    public void execute() {
+        ShapeFactory shapeFactory = new ConcreteShapeFactory();
+        points = optimizedPointList(points);
+        pencil = shapeFactory.createPolyline(points, color, name, strokeWidth);
+        Model.INSTANCE.addToRender(pencil);
+        Model.INSTANCE.addToCommandList(this);
+        if (ObPaintClient.INSTANCE.isConnected()) {
+            ObPaintClient.INSTANCE.sendPencilStroke(points,color,name, strokeWidth);
+        }
     }
-  }
 
   /** Executes command by removing the previously added Mpolyline. */
   @Override
@@ -64,21 +64,22 @@ public final class Pencil implements Command {
     Model.INSTANCE.removeFromRender(pencil);
   }
 
-  /**
-   * Removes points in line that is too close to previous.
-   *
-   * @param points List of point that is used to create Mpolyline.
-   */
-  private void removeUnnecessaryPoints(final List<Mpoint> points) {
-    for (int i = 0; i < points.size() - 1; i++) {
-      final Mpoint point1 = points.get(i);
-      final Mpoint point2 = points.get(i + 1);
 
-      if (Math.abs(point1.getX() - point2.getX()) < 4
-          && Math.abs(point1.getY() - point2.getY()) < 4) {
-        points.remove(i);
-        i = 0;
-      }
+    /**
+     * Removes points in line that is too close eachother.
+     * @param points List of point that is used to create Mpolyline.
+     */
+    private List<Mpoint> optimizedPointList(List<Mpoint> points) {
+        List<Mpoint> optimizedList = new ArrayList<>();
+        optimizedList.add(points.get(0));
+        Mpoint olPoint = optimizedList.get(optimizedList.size() - 1);
+
+        for (Mpoint point : points) {
+            if (Math.abs(olPoint.getX() - point.getX()) > 3 && Math.abs(olPoint.getY() - point.getY()) > 3) {
+                optimizedList.add(point);
+                olPoint = optimizedList.get(optimizedList.size() - 1);
+            }
+        }
+        return optimizedList;
     }
-  }
 }
