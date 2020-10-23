@@ -19,9 +19,11 @@ public final class MainView extends AnchorPane {
 
   private static final String OB_PAINT_EN = "obPaint_en";
   private static final String OB_PAINT_SV = "obPaint_sv";
+  private static final String OB_PAINT_SP = "obPaint_sp";
   private static final String CFG_PROPERTIES = "cfg.properties";
   private static final String LANGUAGE = "Language";
   private static final String SWEDISH_LANGUAGE = "sv";
+  private static final String SPANISH_LANGUAGE = "sp";
 
   /** Constructor for our view that holds all the logic to load the FXML file */
   public MainView(final String fxmlFileName) {
@@ -36,6 +38,8 @@ public final class MainView extends AnchorPane {
       final String language = properties.getProperty(LANGUAGE);
       if (language.equals(SWEDISH_LANGUAGE)) {
         resourceBundle = ResourceBundle.getBundle(OB_PAINT_SV);
+      }else if ( language.equals(SPANISH_LANGUAGE)) {
+        resourceBundle = ResourceBundle.getBundle(OB_PAINT_SP);
       }
       fxmlLoader.setResources(resourceBundle);
     } catch (final IOException e) {
