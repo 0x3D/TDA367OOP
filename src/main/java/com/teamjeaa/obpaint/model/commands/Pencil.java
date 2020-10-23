@@ -8,6 +8,7 @@ import com.teamjeaa.obpaint.model.shapeModel.Mshape;
 import com.teamjeaa.obpaint.model.shapeModel.ShapeFactory;
 import com.teamjeaa.obpaint.server.ObPaintClient;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,7 +23,7 @@ import java.util.List;
  * @since 0.3-SNAPSHOT
  */
 public final class Pencil implements Command {
-    private final List<Mpoint> points;
+    private List<Mpoint> points;
     private final Color color;
     private final String name;
     private Mshape pencil;
@@ -50,7 +51,8 @@ public final class Pencil implements Command {
     public void execute() {
         ShapeFactory shapeFactory = new ConcreteShapeFactory();
         //removeDuplicatePoints(points);
-        removeUnnecessaryPoints(points);
+        //removeUnnecessaryPoints(points);
+        points = optimizedPointList(points);
         pencil = shapeFactory.createPolyline(points, color, name, strokeWidth);
         Model.INSTANCE.addToRender(pencil);
         Model.INSTANCE.addToCommandList(this);
@@ -67,19 +69,22 @@ public final class Pencil implements Command {
         Model.INSTANCE.removeFromRender(pencil);
     }
 
+
     /**
-     * Removes points in line that is too close to previous.
+     * Removes points in line that is too close eachother.
      * @param points List of point that is used to create Mpolyline.
      */
-    private void removeUnnecessaryPoints(List<Mpoint> points) {
-        for (int i = 0; i < points.size() - 1; i++) {
-            Mpoint point1 = points.get(i);
-            Mpoint point2 = points.get(i + 1);
+    private List<Mpoint> optimizedPointList(List<Mpoint> points) {
+        List<Mpoint> optimizedList = new ArrayList<>();
+        optimizedList.add(points.get(0));
+        Mpoint olPoint = optimizedList.get(optimizedList.size() - 1);
 
-            if (Math.abs(point1.getX()-point2.getX()) < 4 && Math.abs(point1.getY()-point2.getY()) < 4) {
-                points.remove(i);
-                i = 0;
+        for (Mpoint point : points) {
+            if (Math.abs(olPoint.getX() - point.getX()) > 3 && Math.abs(olPoint.getY() - point.getY()) > 3) {
+                optimizedList.add(point);
+                olPoint = optimizedList.get(optimizedList.size() - 1);
             }
         }
+        return optimizedList;
     }
 }
