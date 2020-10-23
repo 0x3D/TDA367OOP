@@ -112,7 +112,8 @@ public final class Start extends Application {
     primaryStage.setTitle(obPaintResourceBundle.getString("application.name"));
     primaryStage
         .getIcons()
-        .add(new Image(obPaintResourceBundle.getString("application.logo.path")));
+        .addAll(new Image(obPaintResourceBundle.getString("application.logo.path"))
+        , new Image(obPaintResourceBundle.getString("application.logo.icon")));
     primaryStage.setScene(new Scene(root, SCENE_WIDTH, SCENE_HEIGHT));
     primaryStage.setMinHeight(SCENE_HEIGHT);
     primaryStage.setMinWidth(SCENE_WIDTH);
